@@ -22,7 +22,7 @@ export function BannaaHome({ content, locale }: BannaaHomeProps) {
         <ToolsSection content={content.tools} />
         <CtaSection content={content.cta} locale={locale} />
       </main>
-      <SiteFooter content={content.footer} />
+      <SiteFooter content={content.footer} locale={locale} />
     </>
   );
 }

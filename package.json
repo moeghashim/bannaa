@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "check": "npm run lint && npm run build",
     "dev": "WATCHPACK_POLLING=true next dev",
     "build": "next build",
     "start": "next start",

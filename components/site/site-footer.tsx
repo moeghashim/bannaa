@@ -2,17 +2,19 @@ import { BrandLogo } from "@/components/site/brand-logo";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import type { SiteContent } from "@/lib/content";
+import type { Locale } from "@/lib/i18n";
 
 type SiteFooterProps = {
   content: SiteContent["footer"];
+  locale: Locale;
 };
 
-export function SiteFooter({ content }: SiteFooterProps) {
+export function SiteFooter({ content, locale }: SiteFooterProps) {
   return (
     <Section className="site-footer" id="footer" tone="muted">
       <Container className="site-footer__grid">
         <div className="site-footer__brand-block">
-          <BrandLogo href="/" label={content.brand} size="footer" />
+          <BrandLogo href={`/${locale}`} label={content.brand} locale={locale} size="footer" />
           <p className="site-footer__description">{content.description}</p>
         </div>
         {content.linkGroups.map((group) => (

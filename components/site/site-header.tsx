@@ -15,7 +15,7 @@ export function SiteHeader({ content, locale }: SiteHeaderProps) {
   return (
     <header className="site-header">
       <Container className="site-header__inner">
-        <BrandLogo href={`/${locale}`} label={content.brand} size="header" />
+        <BrandLogo href={`/${locale}`} label={content.brand} locale={locale} size="header" />
         <nav aria-label="Primary" className="site-header__nav">
           {content.links.map((link) => (
             <a className="site-header__link" href={link.href} key={link.href}>
