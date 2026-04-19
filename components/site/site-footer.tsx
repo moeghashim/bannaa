@@ -1,42 +1,55 @@
-import { BrandLogo } from "@/components/site/brand-logo";
-import { Container } from "@/components/ui/container";
-import { Section } from "@/components/ui/section";
+import type { Locale } from "@/lib/i18n";
 import type { SiteContent } from "@/lib/content";
 
 type SiteFooterProps = {
   content: SiteContent["footer"];
+  locale: Locale;
 };
 
-export function SiteFooter({ content }: SiteFooterProps) {
+export function SiteFooter({ content, locale }: SiteFooterProps) {
   return (
-    <Section className="site-footer" id="footer" tone="muted">
-      <Container className="site-footer__grid">
-        <div className="site-footer__brand-block">
-          <BrandLogo href="/" label={content.brand} size="footer" />
-          <p className="site-footer__description">{content.description}</p>
+    <footer className="footer wrap" id="footer">
+      <div className="footer__grid">
+        <div className="footer__brand-col">
+          <div className="brand" style={{ marginBottom: 16 }}>
+            <span className="brand-mark" aria-hidden="true" />
+            <span>{locale === "ar" ? "بنّاء" : "Bannaa"}</span>
+          </div>
+          <p>{content.description}</p>
+          <div className="tags">
+            {content.tags.map((t, i) => (
+              <span key={t} className="tag">
+                {i === 0 ? <span className="pip" /> : null}
+                {t}
+              </span>
+            ))}
+          </div>
         </div>
-        {content.linkGroups.map((group) => (
-          <div className="site-footer__group" key={group.title}>
-            <h3 className="site-footer__group-title">{group.title}</h3>
-            <ul className="site-footer__links">
-              {group.links.map((link) => (
-                <li key={link}>{link}</li>
+        {content.groups.map((g) => (
+          <div className="footer__col" key={g.title}>
+            <h4>{g.title}</h4>
+            <ul>
+              {g.items.map((it) => (
+                <li key={it}>
+                  <a href="#">{it}</a>
+                </li>
               ))}
             </ul>
           </div>
         ))}
-        <div className="site-footer__group">
-          <h3 className="site-footer__group-title">{content.socialTitle}</h3>
-          <ul className="site-footer__links">
-            {content.social.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
+        <div className="footer__coords">
+          LAT 24.71
+          <br />
+          LNG 46.67
+          <br />
+          v3.0.1
         </div>
-      </Container>
-      <Container>
-        <div className="site-footer__copyright">{content.copyright}</div>
-      </Container>
-    </Section>
+      </div>
+      <hr className="hairline" style={{ margin: "32px 0 16px" }} />
+      <div className="footer__bottom">
+        <span>{content.copyright}</span>
+        <span>{content.slogan}</span>
+      </div>
+    </footer>
   );
 }

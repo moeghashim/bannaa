@@ -1,30 +1,36 @@
-import { IBM_Plex_Sans_Arabic, Inter, Space_Grotesk } from "next/font/google";
+import { IBM_Plex_Sans_Arabic, JetBrains_Mono, Rubik } from "next/font/google";
 import Script from "next/script";
 import type { PropsWithChildren } from "react";
 
 import "@/app/globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
+const body = IBM_Plex_Sans_Arabic({
+  subsets: ["arabic", "latin"],
+  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-body"
 });
 
-const grotesk = Space_Grotesk({
-  subsets: ["latin"],
+const display = Rubik({
+  subsets: ["latin", "arabic"],
+  weight: ["400", "500", "600", "700", "800", "900"],
   variable: "--font-display"
 });
 
-const arabic = IBM_Plex_Sans_Arabic({
-  subsets: ["arabic"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-arabic"
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-mono"
 });
 
 const GOOGLE_TAG_ID = "G-56QKJXZJNK";
 
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
-    <html className={`${inter.variable} ${grotesk.variable} ${arabic.variable}`} lang="en">
+    <html
+      className={`${body.variable} ${display.variable} ${mono.variable}`}
+      lang="en"
+      suppressHydrationWarning
+    >
       <body>
         <Script
           async

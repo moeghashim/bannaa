@@ -1,29 +1,33 @@
-import { Button } from "@/components/ui/button";
-import { Container } from "@/components/ui/container";
-import { Input } from "@/components/ui/input";
-import { Section } from "@/components/ui/section";
 import type { SiteContent } from "@/lib/content";
-import type { Locale } from "@/lib/i18n";
 
 type CtaSectionProps = {
   content: SiteContent["cta"];
-  locale: Locale;
 };
 
-export function CtaSection({ content, locale }: CtaSectionProps) {
+export function CtaSection({ content }: CtaSectionProps) {
   return (
-    <Section className="cta-section blueprint-grid-dark" id="cta" tone="dark">
-      <Container className="cta-section__inner">
-        <h2 className="cta-section__title">
-          {content.title} <span>{content.accent}</span>
-        </h2>
-        <p className="cta-section__description">{content.description}</p>
-        <form className="cta-section__form">
-          <Input dir={locale === "ar" ? "rtl" : "ltr"} placeholder={content.placeholder} />
-          <Button size="lg">{content.button}</Button>
-        </form>
-        <p className="cta-section__hint">{content.hint}</p>
-      </Container>
-    </Section>
+    <section className="cta" id="cta">
+      <div className="cta__wrap">
+        <div className="cta__row">
+          <div>
+            <div className="cta__eyebrow">{content.eyebrow}</div>
+            <h2>
+              {content.titleLine1}
+              <br />
+              <span className="accent">{content.titleAccent}</span>
+            </h2>
+          </div>
+          <div className="cta__form-col">
+            <p>{content.description}</p>
+            <form className="cta__form" action="#cta">
+              <input type="email" placeholder={content.placeholder} aria-label={content.placeholder} />
+              <button type="submit" className="btn primary">
+                {content.button}
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

@@ -1,46 +1,57 @@
-import { Button } from "@/components/ui/button";
-import { Container } from "@/components/ui/container";
-import { Section } from "@/components/ui/section";
-import { TerminalBlock } from "@/components/ui/terminal-block";
+import { PipelineTerminal } from "@/components/site/pipeline-terminal";
 import type { SiteContent } from "@/lib/content";
-import type { Locale } from "@/lib/i18n";
 
 type HeroSectionProps = {
   content: SiteContent["hero"];
-  locale: Locale;
 };
 
-export function HeroSection({ content, locale }: HeroSectionProps) {
+export function HeroSection({ content }: HeroSectionProps) {
   return (
-    <Section className="hero-section blueprint-grid" tone="default">
-      <Container className="hero-section__grid">
-        <div className="hero-section__copy">
-          <span className="hero-section__eyebrow">{content.eyebrow}</span>
-          <h1 className="hero-section__title">
-            {content.titleLines.map((line) => (
-              <span className="hero-section__title-line" key={line}>
-                {line}
-              </span>
-            ))}
-            <span className="hero-section__title-line hero-section__title-line-accent">{content.accentLine}</span>
-          </h1>
-          <p className="hero-section__description">{content.description}</p>
-          <div className="hero-section__actions">
-            <Button href="#cta" size="lg">
-              {content.primaryCta}
-            </Button>
-            <Button href={`/${locale}/system`} size="lg" variant="secondary">
-              {content.secondaryCta}
-            </Button>
+    <section className="hero" id="top">
+      <div className="abs-fill grid-bg hero__grid-bg" aria-hidden="true" />
+      <div className="hero__wrap">
+        <div className="hero__tags">
+          {content.tags.map((t) => (
+            <span key={t.label} className={`tag${t.tone === "warn" ? " warn" : ""}`}>
+              <span className="pip" />
+              {t.label}
+            </span>
+          ))}
+        </div>
+
+        <div className="hero__layout">
+          <div className="hero__copy">
+            <h1 className="hero__title">
+              {content.titleLine1}
+              <br />
+              <span className="accent">{content.titleAccent}</span>
+              {content.titleTail}
+            </h1>
+            <p className="hero__desc">{content.description}</p>
+            <div className="hero__actions">
+              <a className="btn primary" href="#tracks">
+                {content.primaryCta}
+              </a>
+              <a className="btn" href="#templates">
+                {content.secondaryCta}
+              </a>
+            </div>
+          </div>
+          <div className="hero__terminal-slot">
+            <PipelineTerminal content={content.terminal} />
           </div>
         </div>
-        <div className="hero-section__visual">
-          <TerminalBlock label={content.terminalLabel} lines={content.terminalLines} />
+
+        <div className="hero__stats">
+          {content.stats.map((s) => (
+            <div key={s.sub} className="stat-block">
+              <div className="n">{s.num}</div>
+              <div className="label">{s.label}</div>
+              <div className="sub">{s.sub}</div>
+            </div>
+          ))}
         </div>
-        <div className="hero-section__watermark" aria-hidden="true">
-          {locale === "en" ? "OS" : "٠١"}
-        </div>
-      </Container>
-    </Section>
+      </div>
+    </section>
   );
 }

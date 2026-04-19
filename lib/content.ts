@@ -1,300 +1,450 @@
 import type { Locale } from "@/lib/i18n";
 
-export type ModuleItem = {
+export type NavLink = { id: string; label: string; href: string };
+
+export type HeroStage = { key: string; status: string };
+export type HeroStat = { num: string; label: string; sub: string };
+export type HeroTag = { label: string; tone?: "warn" };
+
+export type TrackKind = "foundations" | "agents" | "media";
+export type TrackCard = {
   id: string;
+  num: string;
   title: string;
-  description: string;
-  bullets: string[];
+  sub: string;
+  desc: string;
+  weeks: string;
+  level: string;
+  kind: TrackKind;
 };
 
-export type ToolCard = {
+export type ConceptCell = {
   id: string;
   title: string;
-  description: string;
-  label: string;
-  featured?: boolean;
-  accent?: boolean;
+  sub: string;
+  desc: string;
+};
+
+export type TemplateKind = "prompt" | "flow";
+export type TemplateCard = {
+  id: string;
+  kind: TemplateKind;
+  tag: string;
+  title: string;
+  uses: string;
+};
+
+export type FooterGroup = {
+  title: string;
+  items: string[];
 };
 
 export type SiteContent = {
-  metadata: {
-    title: string;
-    description: string;
+  metadata: { title: string; description: string };
+  statusBar: {
+    os: string;
+    region: string;
+    signal: string;
+    langLabel: string;
+    themeDark: string;
+    themeLight: string;
   };
-  header: {
-    brand: string;
-    links: { label: string; href: string }[];
-    cta: string;
+  nav: {
+    langSwitch: string;
+    ghostCta: string;
+    primaryCta: string;
+    links: NavLink[];
   };
   hero: {
-    eyebrow: string;
-    titleLines: string[];
-    accentLine: string;
+    tags: HeroTag[];
+    titleLine1: string;
+    titleAccent: string;
+    titleTail: string;
     description: string;
     primaryCta: string;
     secondaryCta: string;
-    terminalLabel: string;
-    terminalLines: string[];
+    terminal: {
+      chromeTitle: string;
+      liveLabel: string;
+      stages: HeroStage[];
+      planHead: string;
+      planRows: { k: string; v: string }[];
+      planTags: string[];
+      sitePreview: { head: string; accent: string };
+    };
+    stats: HeroStat[];
   };
-  curriculum: {
+  marquee: string[];
+  tracks: {
+    eyebrow: string;
     title: string;
-    accent: string;
+    titleAccent: string;
     description: string;
-    meta: string[];
-    modules: ModuleItem[];
+    allLink: string;
+    cards: TrackCard[];
   };
-  tools: {
+  concepts: {
+    eyebrow: string;
     title: string;
-    cards: ToolCard[];
+    titleAccent: string;
+    description: string;
+    meta: string;
+    cells: ConceptCell[];
+  };
+  templates: {
+    eyebrow: string;
+    title: string;
+    titleAccent: string;
+    description: string;
+    allLink: string;
+    usesSuffix: string;
+    hint: string;
+    cards: TemplateCard[];
   };
   cta: {
-    title: string;
-    accent: string;
+    eyebrow: string;
+    titleLine1: string;
+    titleAccent: string;
     description: string;
     placeholder: string;
     button: string;
-    hint: string;
   };
   footer: {
-    brand: string;
     description: string;
-    socialTitle: string;
-    social: string[];
-    linkGroups: {
-      title: string;
-      links: string[];
-    }[];
+    tags: string[];
+    groups: FooterGroup[];
     copyright: string;
+    slogan: string;
   };
 };
 
 export const siteContent: Record<Locale, SiteContent> = {
-  en: {
-    metadata: {
-      title: "Bannaa",
-      description: "A bilingual architectural blueprint landing page for builders, creators, and modern production teams."
-    },
-    header: {
-      brand: "Bannaa",
-      links: [
-        { label: "Curriculum", href: "#curriculum" },
-        { label: "Tools", href: "#tools" },
-        { label: "About", href: "#footer" }
-      ],
-      cta: "Join Now"
-    },
-    hero: {
-      eyebrow: "System Version 2.0.4 // Active",
-      titleLines: ["BUILD"],
-      accentLine: "OR DIE.",
-      description:
-        "The definitive operating system for modern builders. Move beyond theory into production environments with discipline, clarity, and speed.",
-      primaryCta: "Initialize Protocol",
-      secondaryCta: "View Specs",
-      terminalLabel: "terminal_os_v1",
-      terminalLines: [
-        ">> architect_init --force",
-        "[SUCCESS] Grid system established.",
-        "[SUCCESS] Material tokens injected.",
-        "[WARNING] High performance detected."
-      ]
-    },
-    curriculum: {
-      title: "Curriculum",
-      accent: "Structure",
-      description:
-        "A technical learning path engineered as four focused modules, each designed to move from design theory into applied production.",
-      meta: ["Total Modules: 04", "Core Competency: Master"],
-      modules: [
-        {
-          id: "01",
-          title: "Foundation Theory",
-          description: "Master geometry, proportion, and the brutalist constraints that keep systems coherent.",
-          bullets: ["Grid Logic", "Optic Balance", "Spatial Math"]
-        },
-        {
-          id: "02",
-          title: "Token Engineering",
-          description: "Convert visual language into reusable variables, scales, and predictable components.",
-          bullets: ["Theme Logic", "Type Scales", "Token Maps"]
-        },
-        {
-          id: "03",
-          title: "Interface Physics",
-          description: "Shape interaction, motion, and density so interfaces feel structural rather than decorative.",
-          bullets: ["Kinetic Motion", "Layer Stacking", "Input Logic"]
-        },
-        {
-          id: "04",
-          title: "Full Stack OS",
-          description: "Assemble the final system from infrastructure through interface without losing visual discipline.",
-          bullets: ["Env Config", "Shell Design", "Deployment"]
-        }
-      ]
-    },
-    tools: {
-      title: "Builder Tools",
-      cards: [
-        {
-          id: "engine",
-          title: "The Blueprint Engine",
-          description: "A featured command surface for drafting system primitives and rendering structural decisions fast.",
-          label: "Explore Engine",
-          featured: true
-        },
-        {
-          id: "type",
-          title: "Typography Lab",
-          description: "Tune headline weight, annotation rhythm, and technical readability across scripts.",
-          label: "Aa"
-        },
-        {
-          id: "surface",
-          title: "Accent Panel",
-          description: "A live accent block that demonstrates how urgency and hierarchy are encoded in the system.",
-          label: "Live Protocol",
-          accent: true
-        },
-        {
-          id: "assets",
-          title: "Asset Manager",
-          description: "Route references, specs, and release surfaces without fragmenting the design language.",
-          label: "Go"
-        }
-      ]
-    },
-    cta: {
-      title: "READY TO",
-      accent: "CONSTRUCT?",
-      description: "Limited access cohorts for builders who want a sharper operating system for modern production work.",
-      placeholder: "ENTER_EMAIL_PROTOCOL",
-      button: "ACCESS NOW",
-      hint: "Priority invites only. No generic newsletter noise."
-    },
-    footer: {
-      brand: "Bannaa",
-      description: "A technical environment for the next generation of builders, operators, and creative systems teams.",
-      socialTitle: "Signals",
-      social: ["X", "GitHub", "LinkedIn"],
-      linkGroups: [
-        { title: "Ecosystem", links: ["Community", "Discord", "GitHub"] },
-        { title: "Support", links: ["Documentation", "Privacy", "Contact"] }
-      ],
-      copyright: "© 2026 ARCHITECT_OS. Built for production-minded teams."
-    }
-  },
   ar: {
     metadata: {
-      title: "بناء",
-      description: "واجهة هبوط ثنائية اللغة بطابع مخطط معماري موجهة للبنّائين والمبدعين وفرق الإنتاج الحديثة."
+      title: "بنّاء — ابنِ. ثم ابنِ أكثر.",
+      description: "منصّة عربيّة لتعلّم الذكاء الاصطناعي: مفاهيم مُكثّفة، مسارات مُركّبة، وقوالب جاهزة للشحن."
     },
-    header: {
-      brand: "بنّاء",
+    statusBar: {
+      os: "BANNAA_OS // v3.0.1 // ACTIVE",
+      region: "REGION: MENA",
+      signal: "SIGNAL: STABLE",
+      langLabel: "LANG: العربية",
+      themeDark: "DARK",
+      themeLight: "LIGHT"
+    },
+    nav: {
+      langSwitch: "AR / EN",
+      ghostCta: "تسجيل الدخول",
+      primaryCta: "ابدأ الآن ↙",
       links: [
-        { label: "المنهج", href: "#curriculum" },
-        { label: "الأدوات", href: "#tools" },
-        { label: "حول", href: "#footer" }
-      ],
-      cta: "انضم الآن"
+        { id: "home", label: "الرئيسية", href: "#top" },
+        { id: "tracks", label: "المسارات", href: "#tracks" },
+        { id: "templates", label: "القوالب", href: "#templates" },
+        { id: "concepts", label: "المفاهيم", href: "#concepts" },
+        { id: "about", label: "عن بنّاء", href: "#footer" }
+      ]
     },
     hero: {
-      eyebrow: "نسخة النظام 2.0.4 // نشط",
-      titleLines: ["البناء"],
-      accentLine: "أو الفناء.",
+      tags: [
+        { label: "نُسخة البِناء 3.0" },
+        { label: "منصّة عربيّة · مفتوحة" },
+        { label: "قبول محدود", tone: "warn" }
+      ],
+      titleLine1: "ابنِ.",
+      titleAccent: "ثم ابنِ",
+      titleTail: " أكثر.",
       description:
-        "نظام تشغيل حاسم للبنّائين المعاصرين. انتقل من النظرية إلى بيئات إنتاج منضبطة وسريعة وواضحة.",
-      primaryCta: "بدء البروتوكول",
-      secondaryCta: "عرض المواصفات",
-      terminalLabel: "terminal_os_v1",
-      terminalLines: [
-        ">> architect_init --force",
-        "[SUCCESS] Grid system established.",
-        "[SUCCESS] Material tokens injected.",
-        "[WARNING] High performance detected."
+        "بنّاء منصّة عربيّة لتعلّم الذكاء الاصطناعي. مفاهيم مُكثّفة، مسارات مُركّبة، وقوالب جاهزة للشحن. لا نظريّة بلا تطبيق، ولا تطبيق بلا نظام.",
+      primaryCta: "ابدأ من المسارات ↙",
+      secondaryCta: "معرض القوالب",
+      terminal: {
+        chromeTitle: "bannaa://pipeline — live",
+        liveLabel: "● live",
+        stages: [
+          { key: "01 · PLAN", status: "drafting plan…" },
+          { key: "02 · DESIGN", status: "sketching system…" },
+          { key: "03 · AGENT", status: "agent thinking…" },
+          { key: "04 · SITE", status: "rendering view…" }
+        ],
+        planHead: "// BRIEF.md",
+        planRows: [
+          { k: "الهدف", v: "منصّة تعلّم عربيّة" },
+          { k: "الجمهور", v: "طلّاب + مهنيّون" },
+          { k: "المسارات", v: "03 طبقات" },
+          { k: "القوالب", v: "38 قالب" },
+          { k: "اللغة", v: "العربيّة" }
+        ],
+        planTags: ["bold", "terminal", "rtl-first", "dark"],
+        sitePreview: { head: "ابنِ.", accent: "معنا." }
+      },
+      stats: [
+        { num: "12", label: "مسار متكامل", sub: "MODULE / PATH" },
+        { num: "94", label: "مفهوم مكثّف", sub: "CONCEPT / IDEA" },
+        { num: "38", label: "قالب جاهز", sub: "PROMPT / FLOW" },
+        { num: "2.4k", label: "بنّاء نشط", sub: "ACTIVE / BUILDERS" }
       ]
     },
-    curriculum: {
-      title: "هيكل",
-      accent: "المنهج",
-      description:
-        "مسار تعليمي تقني مكوّن من أربع وحدات مركزة، صُمم لينقل الفكرة من النظرية البصرية إلى التطبيق الإنتاجي.",
-      meta: ["إجمالي الوحدات: 04", "الكفاءة الأساسية: خبير"],
-      modules: [
-        {
-          id: "01",
-          title: "نظرية التأسيس",
-          description: "إتقان الهندسة والنسب والقيود البصرية التي تجعل النظام متماسكاً.",
-          bullets: ["منطق الشبكة", "التوازن البصري", "رياضيات المكان"]
-        },
-        {
-          id: "02",
-          title: "هندسة الرموز",
-          description: "تحويل اللغة البصرية إلى متغيرات قابلة لإعادة الاستخدام ومقاييس واضحة ومكونات ثابتة.",
-          bullets: ["منطق السمة", "مقاييس الخط", "خرائط الرموز"]
-        },
-        {
-          id: "03",
-          title: "فيزياء الواجهة",
-          description: "صياغة التفاعل والحركة والكثافة لتبدو الواجهة بنيوية لا زخرفية.",
-          bullets: ["الحركة الحركية", "رص الطبقات", "منطق الإدخال"]
-        },
-        {
-          id: "04",
-          title: "نظام التشغيل المتكامل",
-          description: "تركيب النظام النهائي من البنية الأساسية حتى الواجهة دون فقدان الانضباط البصري.",
-          bullets: ["إعداد البيئة", "تصميم الغلاف", "النشر"]
-        }
-      ]
-    },
-    tools: {
-      title: "أدوات البناء",
+    marquee: [
+      "ابنِ ما لا يُبنى",
+      "AI × البناؤون",
+      "مسارات حيّة",
+      "قوالب مُقاتلة",
+      "نتعلّم بالتصنيع",
+      "لا وصفات جاهزة",
+      "التجريب أوّلاً",
+      "الإتقان شرط"
+    ],
+    tracks: {
+      eyebrow: "/ 01 — المسارات",
+      title: "ثلاث",
+      titleAccent: "طبقات.",
+      description: "مسارات موضوعيّة، مبنيّة على مفاهيم حيّة وقوالب جاهزة.",
+      allLink: "كلّ المسارات →",
       cards: [
         {
-          id: "engine",
-          title: "محرك المخططات",
-          description: "واجهة أوامر رئيسية لصياغة اللبنات الأساسية ورسم القرارات الهيكلية بسرعة.",
-          label: "استكشف المحرك",
-          featured: true
+          id: "foundations",
+          num: "01",
+          title: "الأساسيّات",
+          sub: "FOUNDATIONS",
+          desc: "اللبنات الأولى: نماذج، احتمالات، رموز، وتمثيل. من صفر إلى فَهم.",
+          weeks: "4 أسابيع",
+          level: "مبتدئ → متوسّط",
+          kind: "foundations"
         },
         {
-          id: "type",
-          title: "مختبر الخطوط",
-          description: "ضبط ثقل العناوين وإيقاع الشروح وسهولة القراءة عبر اللغات.",
-          label: "أب"
+          id: "agents",
+          num: "02",
+          title: "الوكلاء",
+          sub: "AGENTS",
+          desc: "أنظمة مستقلّة تُخطِّط، تتذكّر، وتُنفِّذ. من وكيل واحد إلى شبكة.",
+          weeks: "6 أسابيع",
+          level: "متوسّط → متقدّم",
+          kind: "agents"
         },
         {
-          id: "surface",
-          title: "لوحة الإشارة",
-          description: "لوحة Accent حية توضّح كيف تُبنى الأولوية والحدة داخل النظام.",
-          label: "بروتوكول",
-          accent: true
-        },
-        {
-          id: "assets",
-          title: "مدير الأصول",
-          description: "تنظيم المراجع والمواصفات ونقاط الإصدار من دون كسر اللغة البصرية.",
-          label: "اذهب"
+          id: "media",
+          num: "03",
+          title: "الميديا",
+          sub: "MEDIA",
+          desc: "توليد الصورة والصوت والفيديو. من موجة إلى مَشهد.",
+          weeks: "5 أسابيع",
+          level: "متوسّط",
+          kind: "media"
         }
+      ]
+    },
+    concepts: {
+      eyebrow: "/ 02 — المفاهيم",
+      title: "مفاهيم",
+      titleAccent: "في دقيقتين.",
+      description: "موسوعة مُكثّفة: تعريف، مثال، ثم استخدام.",
+      meta: "94 مفهوم · متجدّد أسبوعيّاً",
+      cells: [
+        { id: "042", title: "التَّلميح المُتَسَلسِل", sub: "Chain-of-Thought", desc: "كيف يُفكِّر النموذج بصوتٍ عالٍ قبل أن يُجيب." },
+        { id: "017", title: "التضمين الدّلالي", sub: "Embeddings", desc: "تحويل المعنى إلى إحداثيّات قابلة للقياس." },
+        { id: "063", title: "الاسترجاع المُعزَّز", sub: "RAG", desc: "ذاكرة خارجيّة للنموذج بدون إعادة تدريبه." },
+        { id: "028", title: "حرارة النموذج", sub: "Temperature", desc: "مقبض العشوائيّة: متى نضبطه على صفر؟" },
+        { id: "091", title: "الوكيل متعدّد الخطوات", sub: "Multi-step Agent", desc: "خطّة، تنفيذ، تأمُّل، إعادة." },
+        { id: "005", title: "نافذة السّياق", sub: "Context Window", desc: "حدود ذاكرة النموذج العاملة، ولماذا تضيق." }
+      ]
+    },
+    templates: {
+      eyebrow: "/ 03 — القوالب",
+      title: "شحن",
+      titleAccent: "فوريّ.",
+      description: "قوالب قتاليّة: تَنسخ، تُعدِّل، تُشغِّل.",
+      allLink: "المعرض كامل →",
+      usesSuffix: "استخدام",
+      hint: "نسخ. عدّل. شغّل.",
+      cards: [
+        { id: "t1", kind: "prompt", tag: "PROMPT", title: "مُراجِع كود بعين ناقدة", uses: "1.2k" },
+        { id: "t2", kind: "flow", tag: "WORKFLOW", title: "سير: بحث → ملخّص → تغريدة", uses: "840" },
+        { id: "t3", kind: "prompt", tag: "PROMPT", title: "مُقابِل وظيفي بدور فنّي", uses: "612" },
+        { id: "t4", kind: "flow", tag: "WORKFLOW", title: "وكيل دعم عملاء بلهجة خليجيّة", uses: "298" }
       ]
     },
     cta: {
-      title: "هل أنت مستعد",
-      accent: "للبناء؟",
-      description: "دفعات محدودة للبنّائين الذين يريدون نظام تشغيل أكثر دقة للعمل الإنتاجي الحديث.",
-      placeholder: "ادخل_بريدك_الآن",
-      button: "احصل على الوصول",
-      hint: "دعوات أولوية فقط. لا رسائل عامة بلا قيمة."
+      eyebrow: "/ READY.SET.BUILD",
+      titleLine1: "ابنِ معنا.",
+      titleAccent: "الآن.",
+      description: "الدفعات محدودة. الدعوات بالأولويّة. لا نشرات بريديّة مُتطفّلة.",
+      placeholder: "بريدك الإلكتروني",
+      button: "انضمّ ↙"
     },
     footer: {
-      brand: "بنّاء",
-      description: "بيئة تقنية للجيل القادم من البنّائين والمشغلين وفرق الأنظمة الإبداعية.",
-      socialTitle: "الإشارات",
-      social: ["X", "GitHub", "LinkedIn"],
-      linkGroups: [
-        { title: "المنظومة", links: ["المجتمع", "ديسكورد", "غيت هاب"] },
-        { title: "الدعم", links: ["الوثائق", "الخصوصية", "تواصل"] }
+      description: "بيئة تقنيّة عربيّة للجيل القادم من البنّائين والمشغّلين وفِرق الأنظمة الإبداعيّة.",
+      tags: ["مُصمّم في الرياض", "© 2026"],
+      groups: [
+        { title: "المنظومة", items: ["المجتمع", "ديسكورد", "جيت‌هَب", "المدوّنة"] },
+        { title: "الدعم", items: ["التوثيق", "الخصوصيّة", "الشروط", "تواصل"] },
+        { title: "الإشارات", items: ["X / تويتر", "لينكدإن", "يوتيوب", "التلغرام"] }
       ],
-      copyright: "© 2026 ARCHITECT_OS. صُمم لفرق الإنتاج الجادة."
+      copyright: "© 2026 BANNAA_OS. مصنوع بعناية لصنّاع الأنظمة.",
+      slogan: "ABRA CADABRA / BUILD OR PERISH"
+    }
+  },
+  en: {
+    metadata: {
+      title: "Bannaa — Build. Then build more.",
+      description: "Arabic-first AI learning platform: condensed concepts, layered tracks, and templates that ship."
+    },
+    statusBar: {
+      os: "BANNAA_OS // v3.0.1 // ACTIVE",
+      region: "REGION: MENA",
+      signal: "SIGNAL: STABLE",
+      langLabel: "LANG: EN",
+      themeDark: "DARK",
+      themeLight: "LIGHT"
+    },
+    nav: {
+      langSwitch: "AR / EN",
+      ghostCta: "Sign in",
+      primaryCta: "Get started ↙",
+      links: [
+        { id: "home", label: "Home", href: "#top" },
+        { id: "tracks", label: "Tracks", href: "#tracks" },
+        { id: "templates", label: "Templates", href: "#templates" },
+        { id: "concepts", label: "Concepts", href: "#concepts" },
+        { id: "about", label: "About", href: "#footer" }
+      ]
+    },
+    hero: {
+      tags: [
+        { label: "Build Version 3.0" },
+        { label: "Arabic-first · open" },
+        { label: "Limited intake", tone: "warn" }
+      ],
+      titleLine1: "Build.",
+      titleAccent: "Then build",
+      titleTail: " more.",
+      description:
+        "Bannaa is an AI learning platform for Arabic builders. Condensed concepts, layered tracks, and templates that ship. No theory without practice, no practice without system.",
+      primaryCta: "Start with tracks ↙",
+      secondaryCta: "Template gallery",
+      terminal: {
+        chromeTitle: "bannaa://pipeline — live",
+        liveLabel: "● live",
+        stages: [
+          { key: "01 · PLAN", status: "drafting plan…" },
+          { key: "02 · DESIGN", status: "sketching system…" },
+          { key: "03 · AGENT", status: "agent thinking…" },
+          { key: "04 · SITE", status: "rendering view…" }
+        ],
+        planHead: "// BRIEF.md",
+        planRows: [
+          { k: "Goal", v: "Arabic learning OS" },
+          { k: "Audience", v: "Students + pros" },
+          { k: "Tracks", v: "03 layers" },
+          { k: "Templates", v: "38 ready" },
+          { k: "Language", v: "Arabic" }
+        ],
+        planTags: ["bold", "terminal", "rtl-first", "dark"],
+        sitePreview: { head: "Build.", accent: "With us." }
+      },
+      stats: [
+        { num: "12", label: "Tracks", sub: "MODULE / PATH" },
+        { num: "94", label: "Concepts", sub: "CONCEPT / IDEA" },
+        { num: "38", label: "Templates", sub: "PROMPT / FLOW" },
+        { num: "2.4k", label: "Builders", sub: "ACTIVE / BUILDERS" }
+      ]
+    },
+    marquee: [
+      "Build the unbuildable",
+      "AI × builders",
+      "Live tracks",
+      "Combat templates",
+      "Learn by making",
+      "No canned recipes",
+      "Experiment first",
+      "Craft is the bar"
+    ],
+    tracks: {
+      eyebrow: "/ 01 — TRACKS",
+      title: "Three",
+      titleAccent: "layers.",
+      description: "Thematic tracks built on live concepts and ready-to-ship templates.",
+      allLink: "All tracks →",
+      cards: [
+        {
+          id: "foundations",
+          num: "01",
+          title: "Foundations",
+          sub: "FOUNDATIONS",
+          desc: "The first primitives: models, probabilities, tokens, and representation. From zero to grasp.",
+          weeks: "4 weeks",
+          level: "Beginner → Mid",
+          kind: "foundations"
+        },
+        {
+          id: "agents",
+          num: "02",
+          title: "Agents",
+          sub: "AGENTS",
+          desc: "Autonomous systems that plan, remember, and execute. From one agent to a network.",
+          weeks: "6 weeks",
+          level: "Mid → Advanced",
+          kind: "agents"
+        },
+        {
+          id: "media",
+          num: "03",
+          title: "Media",
+          sub: "MEDIA",
+          desc: "Generating image, sound, and video. From waveform to scene.",
+          weeks: "5 weeks",
+          level: "Mid",
+          kind: "media"
+        }
+      ]
+    },
+    concepts: {
+      eyebrow: "/ 02 — CONCEPTS",
+      title: "Concepts",
+      titleAccent: "in two minutes.",
+      description: "A dense encyclopedia: define, illustrate, then apply.",
+      meta: "94 concepts · weekly drops",
+      cells: [
+        { id: "042", title: "Chain-of-Thought", sub: "Reasoning", desc: "How a model thinks out loud before it answers." },
+        { id: "017", title: "Embeddings", sub: "Semantic", desc: "Turning meaning into coordinates you can measure." },
+        { id: "063", title: "Retrieval-Augmented", sub: "RAG", desc: "External memory for the model — no retraining required." },
+        { id: "028", title: "Temperature", sub: "Sampling", desc: "The randomness dial — when do you pin it to zero?" },
+        { id: "091", title: "Multi-step Agent", sub: "Agentic", desc: "Plan, act, reflect, retry." },
+        { id: "005", title: "Context Window", sub: "Memory", desc: "The model's working memory — and why it keeps shrinking." }
+      ]
+    },
+    templates: {
+      eyebrow: "/ 03 — TEMPLATES",
+      title: "Instant",
+      titleAccent: "ship.",
+      description: "Combat-ready templates: copy, tweak, run.",
+      allLink: "Full gallery →",
+      usesSuffix: "uses",
+      hint: "Copy. Edit. Run.",
+      cards: [
+        { id: "t1", kind: "prompt", tag: "PROMPT", title: "Code reviewer with a critical eye", uses: "1.2k" },
+        { id: "t2", kind: "flow", tag: "WORKFLOW", title: "Flow: research → summary → tweet", uses: "840" },
+        { id: "t3", kind: "prompt", tag: "PROMPT", title: "Job interviewer in an artist's voice", uses: "612" },
+        { id: "t4", kind: "flow", tag: "WORKFLOW", title: "Gulf-dialect customer-support agent", uses: "298" }
+      ]
+    },
+    cta: {
+      eyebrow: "/ READY.SET.BUILD",
+      titleLine1: "Build with us.",
+      titleAccent: "Now.",
+      description: "Cohorts are limited. Invites go by priority. No noisy newsletters.",
+      placeholder: "your@email",
+      button: "Join ↙"
+    },
+    footer: {
+      description: "An Arabic-first technical environment for the next wave of builders, operators, and creative systems teams.",
+      tags: ["Designed in Riyadh", "© 2026"],
+      groups: [
+        { title: "Ecosystem", items: ["Community", "Discord", "GitHub", "Blog"] },
+        { title: "Support", items: ["Docs", "Privacy", "Terms", "Contact"] },
+        { title: "Signals", items: ["X / Twitter", "LinkedIn", "YouTube", "Telegram"] }
+      ],
+      copyright: "© 2026 BANNAA_OS. Crafted for systems builders.",
+      slogan: "ABRA CADABRA / BUILD OR PERISH"
     }
   }
 };
