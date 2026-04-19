@@ -1,6 +1,6 @@
-# CLAUDE.md
+# AGENTS.md
 
-> Mirror of [AGENTS.md](AGENTS.md). When editing either file, update both.
+> Mirror of [CLAUDE.md](CLAUDE.md). When editing either file, update both.
 
 ## Project Overview
 
