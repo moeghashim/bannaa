@@ -45,3 +45,7 @@ the exact hash).
 - Wrap analytics tracker in suspense
 - Fix Arabic font for LANG: العربية indicator in the status bar
 - Add mobile hamburger menu to collapse nav links and actions under 860px
+
+## 2026-04-20
+
+- Fix mobile nav overlap by raising specificity of hidden nav-right/left rules

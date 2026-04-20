@@ -217,9 +217,9 @@ body {
 
 @media (max-width: 860px) {
   .nav { flex-wrap: wrap; gap: 12px; }
-  .nav-left { gap: 16px; flex: 1; min-width: 0; }
+  .nav .nav-left { gap: 16px; flex: 1; min-width: 0; }
   .nav-left .nav-links { display: none; }
-  .nav-right { display: none; }
+  .nav .nav-right { display: none; }
   .nav-toggle { display: inline-flex; }
 }
 
