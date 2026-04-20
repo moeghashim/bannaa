@@ -76,4 +76,4 @@ Before creating **any** commit in this repo:
 
 - `npm run dev` — local dev server
 - `npm run build` — static production build
-- `npm run lint` — ESLint (ignores `.next/**` and `PI-Starter/**`)
+- `npm run lint` — ESLint (ignores `.next/**`)

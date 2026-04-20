@@ -41,3 +41,4 @@ the exact hash).
 - Add Arabic fallback to mono font stack so Arabic text in tags and eyebrows renders in Plex Arabic
 - Explicitly switch mono-styled Arabic-bearing elements to the body font in RTL mode
 - Track GA pageviews on locale navigation
+- Remove PI-Starter scaffold and references
