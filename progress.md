@@ -40,3 +40,4 @@ the exact hash).
 - Default root redirect and html lang/dir to Arabic
 - Add Arabic fallback to mono font stack so Arabic text in tags and eyebrows renders in Plex Arabic
 - Explicitly switch mono-styled Arabic-bearing elements to the body font in RTL mode
+- Track GA pageviews on locale navigation

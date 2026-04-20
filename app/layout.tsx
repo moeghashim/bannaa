@@ -1,8 +1,8 @@
 import { IBM_Plex_Sans_Arabic, JetBrains_Mono, Rubik } from "next/font/google";
-import Script from "next/script";
 import type { PropsWithChildren } from "react";
 
 import "@/app/globals.css";
+import { GoogleAnalytics } from "@/components/site/google-analytics";
 
 const body = IBM_Plex_Sans_Arabic({
   subsets: ["arabic", "latin"],
@@ -33,19 +33,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
       suppressHydrationWarning
     >
       <body>
-        <Script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_TAG_ID}`}
-          strategy="afterInteractive"
-        />
-        <Script id="google-tag-manager" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GOOGLE_TAG_ID}');
-          `}
-        </Script>
+        <GoogleAnalytics measurementId={GOOGLE_TAG_ID} />
         {children}
       </body>
     </html>
