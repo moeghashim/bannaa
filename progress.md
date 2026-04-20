@@ -42,3 +42,4 @@ the exact hash).
 - Explicitly switch mono-styled Arabic-bearing elements to the body font in RTL mode
 - Track GA pageviews on locale navigation
 - Remove PI-Starter scaffold and references
+- Wrap analytics tracker in suspense

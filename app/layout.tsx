@@ -1,5 +1,6 @@
 import { IBM_Plex_Sans_Arabic, JetBrains_Mono, Rubik } from "next/font/google";
 import type { PropsWithChildren } from "react";
+import { Suspense } from "react";
 
 import "@/app/globals.css";
 import { GoogleAnalytics } from "@/components/site/google-analytics";
@@ -33,7 +34,9 @@ export default function RootLayout({ children }: PropsWithChildren) {
       suppressHydrationWarning
     >
       <body>
-        <GoogleAnalytics measurementId={GOOGLE_TAG_ID} />
+        <Suspense fallback={null}>
+          <GoogleAnalytics measurementId={GOOGLE_TAG_ID} />
+        </Suspense>
         {children}
       </body>
     </html>
