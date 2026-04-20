@@ -213,3 +213,33 @@ rsvg-convert -w 512 -h 512 public/bannaa-logo-light.svg -o public/bannaa-logo-li
 - **Do not** introduce a third colour, recolour the block outside the
   two defined variants, distort the aspect ratio, or add shadows,
   gradients, or outlines beyond the existing frame.
+
+### Social media assets
+
+Social assets live under [`public/social/`](public/social/) as PNGs
+(no SVG sources checked in — regeneration notes below). They share
+one design language: dark canvas, faint grid, the logo mark on the
+RTL start edge, Arabic wordmark **بنّاء** in IBM Plex Sans Arabic,
+and mono technical metadata (`BANNAA_OS // v3.0.1`,
+`BANNAA.AI // MENA // AR`) in the corners. Horizontal banners keep
+only the wordmark next to the icon (bottom-aligned). The portrait
+cover (stacked layout) also carries the tagline **ابنِ ثم ابنِ أكثر**.
+
+| Platform | Profile | Banner / cover | Size |
+| --- | --- | --- | --- |
+| TikTok | [`profile.png`](public/social/profile.png) | [`portrait-cover.png`](public/social/portrait-cover.png) | profile 1024×1024 · cover 1080×1920 |
+| X | [`profile.png`](public/social/profile.png) | [`x-banner.png`](public/social/x-banner.png) | profile 1024×1024 · banner 1500×500 |
+| Facebook | [`facebook-profile.png`](public/social/facebook-profile.png) | [`facebook-cover.png`](public/social/facebook-cover.png) | profile 1080×1080 · cover 1640×624 |
+| Instagram | [`profile.png`](public/social/profile.png) | [`portrait-cover.png`](public/social/portrait-cover.png) (shared with TikTok; suitable for story / highlight cover) | profile 1024×1024 · story 1080×1920 |
+| LinkedIn | [`profile.png`](public/social/profile.png) | [`linkedin-banner.png`](public/social/linkedin-banner.png) | profile 1024×1024 · banner 1584×396 |
+| YouTube | [`youtube-profile.png`](public/social/youtube-profile.png) | [`youtube-banner.png`](public/social/youtube-banner.png) | profile 1080×1080 · banner 2048×1152 |
+
+### Regenerating social PNGs
+
+The PNGs are generated from inline SVGs rendered through Chrome
+headless so Google Fonts (IBM Plex Sans Arabic + JetBrains Mono)
+load correctly; a final top-left crop with ImageMagick removes a
+~40 px baseline offset that Chrome introduces. Keep the source
+SVGs out of the repo — rebuild from scratch when the design
+changes. See `git log -- public/social/` for prior iterations if
+you need a reference.

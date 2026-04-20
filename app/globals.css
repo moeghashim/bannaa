@@ -20,7 +20,7 @@
 
   --f-display: var(--font-display), "IBM Plex Sans Arabic", system-ui, sans-serif;
   --f-body: var(--font-body), "IBM Plex Sans Arabic", system-ui, sans-serif;
-  --f-mono: var(--font-mono), ui-monospace, monospace;
+  --f-mono: var(--font-mono), var(--font-body), "IBM Plex Sans Arabic", ui-monospace, monospace;
   --radius: 2px;
   --gutter: 24px;
   --density: 0.85;
@@ -792,6 +792,24 @@ body {
 @media (max-width: 860px) {
   .footer__grid { grid-template-columns: 1fr; }
   .footer__brand-col, .footer__col, .footer__coords { grid-column: auto; text-align: start; }
+}
+
+/* Arabic font overrides for mono-styled elements that carry Arabic copy.
+   JetBrains Mono has no Arabic glyphs, so these elements use the body
+   face (IBM Plex Sans Arabic) when the page is in RTL mode. Elements
+   that stay English in both locales (status bar, terminal chrome,
+   stat sublabels, concept sub, coords) keep the mono face. */
+[dir="rtl"] .tag,
+[dir="rtl"] .sec-head .eyebrow,
+[dir="rtl"] .sec-head .right,
+[dir="rtl"] .marquee-track,
+[dir="rtl"] .track-card__meta,
+[dir="rtl"] .tpl-card__uses,
+[dir="rtl"] .tpl-card__hint,
+[dir="rtl"] .footer__col h4,
+[dir="rtl"] .footer__bottom {
+  font-family: var(--f-body);
+  letter-spacing: 0;
 }
 
 /* Scrollbar */

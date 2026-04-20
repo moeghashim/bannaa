@@ -32,3 +32,11 @@ the exact hash).
 - Add new logo mark, DESIGN.md branding doc, and theme-aware BrandMark component
 - Rewrite DESIGN.md in Stitch format and embed theme backgrounds in logo variants
 - Replace logo mark with centered-block design matching deployed site, update favicon and DESIGN.md accordingly
+- Add Arabic social-media profile and banner assets for TikTok, X, Facebook, Instagram, LinkedIn, and YouTube
+- Rerender social assets with IBM Plex Sans Arabic via Chrome headless and bottom-align wordmark with logo
+- Add dedicated Facebook page profile logo at 1080x1080
+- Add dedicated YouTube channel profile logo at 1080x1080
+- Swap Facebook and YouTube profile logos to icon-only (no wordmark) for circular crop legibility
+- Default root redirect and html lang/dir to Arabic
+- Add Arabic fallback to mono font stack so Arabic text in tags and eyebrows renders in Plex Arabic
+- Explicitly switch mono-styled Arabic-bearing elements to the body font in RTL mode

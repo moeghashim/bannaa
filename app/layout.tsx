@@ -28,7 +28,8 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html
       className={`${body.variable} ${display.variable} ${mono.variable}`}
-      lang="en"
+      lang="ar"
+      dir="rtl"
       suppressHydrationWarning
     >
       <body>
