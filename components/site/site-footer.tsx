@@ -1,3 +1,4 @@
+import { BrandMark } from "@/components/site/brand-mark";
 import type { Locale } from "@/lib/i18n";
 import type { SiteContent } from "@/lib/content";
 
@@ -12,7 +13,7 @@ export function SiteFooter({ content, locale }: SiteFooterProps) {
       <div className="footer__grid">
         <div className="footer__brand-col">
           <div className="brand" style={{ marginBottom: 16 }}>
-            <span className="brand-mark" aria-hidden="true" />
+            <BrandMark size={28} />
             <span>{locale === "ar" ? "بنّاء" : "Bannaa"}</span>
           </div>
           <p>{content.description}</p>

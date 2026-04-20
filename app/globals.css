@@ -138,20 +138,7 @@ body {
   color: var(--fg);
   text-decoration: none;
 }
-.brand-mark {
-  width: 28px;
-  height: 28px;
-  border: 1.5px solid var(--fg);
-  display: grid;
-  place-items: center;
-  position: relative;
-}
-.brand-mark::before {
-  content: "";
-  width: 10px;
-  height: 10px;
-  background: var(--accent);
-}
+.brand svg { flex-shrink: 0; }
 .nav-links { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
 .nav-links a {
   padding: 8px 14px;

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+import { BrandMark } from "@/components/site/brand-mark";
 import type { SiteContent } from "@/lib/content";
 import type { Locale } from "@/lib/i18n";
 
@@ -81,7 +82,7 @@ function SiteNav({ content, locale }: { content: SiteContent["nav"]; locale: Loc
     <nav className="nav">
       <div className="nav-left">
         <Link className="brand" href={`/${locale}`}>
-          <span className="brand-mark" aria-hidden="true" />
+          <BrandMark size={28} />
           <span>{locale === "ar" ? "بنّاء" : "Bannaa"}</span>
         </Link>
         <div className="nav-links">

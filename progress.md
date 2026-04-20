@@ -29,3 +29,6 @@ the exact hash).
 - Use body font for Arabic plan-row text in pipeline terminal
 - Add progress.md changelog and CLAUDE.md pre-commit instructions
 - Adopt PI-Starter AGENTS conventions and switch progress.md to append-only
+- Add new logo mark, DESIGN.md branding doc, and theme-aware BrandMark component
+- Rewrite DESIGN.md in Stitch format and embed theme backgrounds in logo variants
+- Replace logo mark with centered-block design matching deployed site, update favicon and DESIGN.md accordingly

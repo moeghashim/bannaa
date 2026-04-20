@@ -22,6 +22,12 @@
 - `lib/content.ts` — single source of truth for bilingual copy.
 - `lib/i18n.ts` — locale definitions and direction helpers.
 
+## Design
+
+All branding (logo files, color tokens, typography, theme system, RTL
+rules, iconography) is documented in [`DESIGN.md`](DESIGN.md). Keep it in
+sync when you add or replace brand assets.
+
 ## Code Quality
 
 - No `any` types unless absolutely necessary.
