@@ -153,6 +153,76 @@ body {
 .nav-links a:hover { color: var(--fg); border-color: var(--line-2); }
 .nav-links a.active { color: var(--fg); background: var(--bg-2); border-color: var(--line-2); }
 
+/* Mobile menu */
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--line-2);
+  color: var(--fg);
+  padding: 6px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: 0.18s ease;
+}
+.nav-toggle:hover { border-color: var(--fg); }
+.nav-mobile {
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 12px;
+  margin-top: 4px;
+  border-top: 1px solid var(--line);
+}
+.nav-mobile--open { display: flex; }
+.nav-mobile__links {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.nav-mobile__links a {
+  padding: 12px 14px;
+  color: var(--fg);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  transition: 0.18s ease;
+}
+.nav-mobile__links a:hover,
+.nav-mobile__links a:focus-visible {
+  background: var(--bg-2);
+  border-color: var(--line-2);
+}
+.nav-mobile__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  padding: 12px 4px 4px;
+  border-top: 1px solid var(--line);
+}
+.nav-mobile__lang {
+  font-size: 12px;
+  color: var(--fg-mute);
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  padding: 6px 10px;
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius);
+}
+
+@media (max-width: 860px) {
+  .nav { flex-wrap: wrap; gap: 12px; }
+  .nav-left { gap: 16px; flex: 1; min-width: 0; }
+  .nav-left .nav-links { display: none; }
+  .nav-right { display: none; }
+  .nav-toggle { display: inline-flex; }
+}
+
 /* Button */
 .btn {
   display: inline-flex;
@@ -807,7 +877,8 @@ body {
 [dir="rtl"] .tpl-card__uses,
 [dir="rtl"] .tpl-card__hint,
 [dir="rtl"] .footer__col h4,
-[dir="rtl"] .footer__bottom {
+[dir="rtl"] .footer__bottom,
+[dir="rtl"] .statusbar__lang {
   font-family: var(--f-body);
   letter-spacing: 0;
 }

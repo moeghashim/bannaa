@@ -65,7 +65,7 @@ function StatusBar({ content }: { content: SiteContent["statusBar"] }) {
       </div>
       <div className="seg">
         <span>{content.signal}</span>
-        <span>{content.langLabel}</span>
+        <span className="statusbar__lang">{content.langLabel}</span>
         <span suppressHydrationWarning>{clock ?? "--:--:--"}</span>
         <button type="button" className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
           {theme === "dark" ? content.themeLight : content.themeDark}
@@ -77,6 +77,8 @@ function StatusBar({ content }: { content: SiteContent["statusBar"] }) {
 
 function SiteNav({ content, locale }: { content: SiteContent["nav"]; locale: Locale }) {
   const otherLocale: Locale = locale === "ar" ? "en" : "ar";
+  const [menuOpen, setMenuOpen] = useState(false);
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <nav className="nav">
@@ -107,6 +109,53 @@ function SiteNav({ content, locale }: { content: SiteContent["nav"]; locale: Loc
         <a className="btn primary" href="#cta">
           {content.primaryCta}
         </a>
+      </div>
+      <button
+        type="button"
+        className="nav-toggle"
+        aria-label="Menu"
+        aria-expanded={menuOpen}
+        aria-controls="nav-mobile"
+        onClick={() => setMenuOpen((open) => !open)}
+      >
+        <svg width={22} height={22} viewBox="0 0 22 22" aria-hidden="true">
+          {menuOpen ? (
+            <>
+              <line x1="4" y1="4" x2="18" y2="18" stroke="currentColor" strokeWidth="2" />
+              <line x1="4" y1="18" x2="18" y2="4" stroke="currentColor" strokeWidth="2" />
+            </>
+          ) : (
+            <>
+              <line x1="3" y1="6" x2="19" y2="6" stroke="currentColor" strokeWidth="2" />
+              <line x1="3" y1="11" x2="19" y2="11" stroke="currentColor" strokeWidth="2" />
+              <line x1="3" y1="16" x2="19" y2="16" stroke="currentColor" strokeWidth="2" />
+            </>
+          )}
+        </svg>
+      </button>
+      <div id="nav-mobile" className={`nav-mobile${menuOpen ? " nav-mobile--open" : ""}`}>
+        <div className="nav-mobile__links">
+          {content.links.map((link) => (
+            <a key={link.id} href={link.href} onClick={closeMenu}>
+              {link.label}
+            </a>
+          ))}
+        </div>
+        <div className="nav-mobile__actions">
+          <Link
+            className="mono nav-mobile__lang"
+            href={`/${otherLocale}`}
+            onClick={closeMenu}
+          >
+            {content.langSwitch}
+          </Link>
+          <button type="button" className="btn ghost">
+            {content.ghostCta}
+          </button>
+          <a className="btn primary" href="#cta" onClick={closeMenu}>
+            {content.primaryCta}
+          </a>
+        </div>
       </div>
     </nav>
   );

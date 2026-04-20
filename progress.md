@@ -43,3 +43,5 @@ the exact hash).
 - Track GA pageviews on locale navigation
 - Remove PI-Starter scaffold and references
 - Wrap analytics tracker in suspense
+- Fix Arabic font for LANG: العربية indicator in the status bar
+- Add mobile hamburger menu to collapse nav links and actions under 860px
