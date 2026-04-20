@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 import { BrandMark } from "@/components/site/brand-mark";
 import type { Locale } from "@/lib/i18n";
 import type { SiteContent } from "@/lib/content";
@@ -6,6 +8,28 @@ type SiteFooterProps = {
   content: SiteContent["footer"];
   locale: Locale;
 };
+
+const PARENT_DOMAIN = "10claws.com";
+const PARENT_URL = "https://10claws.com";
+
+function renderCopyright(text: string): ReactNode {
+  const idx = text.indexOf(PARENT_DOMAIN);
+  if (idx === -1) return text;
+  return (
+    <>
+      {text.slice(0, idx)}
+      <a
+        className="footer__parent-link"
+        href={PARENT_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {PARENT_DOMAIN}
+      </a>
+      {text.slice(idx + PARENT_DOMAIN.length)}
+    </>
+  );
+}
 
 export function SiteFooter({ content, locale }: SiteFooterProps) {
   return (
@@ -48,7 +72,7 @@ export function SiteFooter({ content, locale }: SiteFooterProps) {
       </div>
       <hr className="hairline" style={{ margin: "32px 0 16px" }} />
       <div className="footer__bottom">
-        <span>{content.copyright}</span>
+        <span>{renderCopyright(content.copyright)}</span>
         <span>{content.slogan}</span>
       </div>
     </footer>

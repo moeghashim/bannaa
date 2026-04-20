@@ -858,6 +858,17 @@ body {
   gap: 16px;
   flex-wrap: wrap;
 }
+.footer__parent-link {
+  color: var(--fg-dim);
+  text-decoration: underline;
+  text-decoration-color: var(--line-2);
+  text-underline-offset: 3px;
+  transition: 0.18s ease;
+}
+.footer__parent-link:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
 
 @media (max-width: 860px) {
   .footer__grid { grid-template-columns: 1fr; }

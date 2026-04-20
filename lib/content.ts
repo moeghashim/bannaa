@@ -328,7 +328,7 @@ export const siteContent: Record<Locale, SiteContent> = {
           ]
         }
       ],
-      copyright: "© 2026 10claws Inc. — بنّاء. مصنوع بعناية لصنّاع الأنظمة.",
+      copyright: "جزء من 10claws.com — بنّاء. مصنوع بعناية لصنّاع الأنظمة.",
       slogan: "ABRA CADABRA / BUILD OR PERISH"
     },
     legal: {
@@ -662,7 +662,7 @@ export const siteContent: Record<Locale, SiteContent> = {
           ]
         }
       ],
-      copyright: "© 2026 10claws Inc. — Bannaa. Crafted for systems builders.",
+      copyright: "Part of 10claws.com — Bannaa. Crafted for systems builders.",
       slogan: "ABRA CADABRA / BUILD OR PERISH"
     },
     legal: {
