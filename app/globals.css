@@ -864,6 +864,90 @@ body {
   .footer__brand-col, .footer__col, .footer__coords { grid-column: auto; text-align: start; }
 }
 
+/* ========= Legal / about pages ========= */
+.legal {
+  padding: 48px 0 80px;
+  max-width: 760px;
+}
+.legal__eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  margin: 0 0 16px;
+}
+.legal__title {
+  font-size: clamp(40px, 7vw, 72px);
+  margin: 0 0 20px;
+  color: var(--fg);
+}
+.legal__intro {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--fg-dim);
+  margin: 0 0 12px;
+  max-width: 640px;
+}
+.legal__updated {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--fg-mute);
+  margin: 0 0 40px;
+  text-transform: uppercase;
+}
+.legal__sections {
+  display: grid;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+.legal__section h2 {
+  font-size: 20px;
+  margin: 0 0 10px;
+  color: var(--fg);
+}
+.legal__section p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--fg-dim);
+  margin: 0 0 10px;
+}
+.legal__contact {
+  border-top: 1px solid var(--line);
+  padding-top: 28px;
+  margin-bottom: 32px;
+}
+.legal__contact h2 {
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-family: var(--f-mono);
+  font-weight: 400;
+  color: var(--fg-dim);
+  margin: 0 0 12px;
+}
+.legal__address {
+  display: grid;
+  gap: 4px;
+  font-style: normal;
+  font-size: 13px;
+  color: var(--fg);
+  line-height: 1.5;
+}
+.legal__back a {
+  font-size: 12px;
+  color: var(--fg-mute);
+  text-decoration: none;
+  letter-spacing: 0.1em;
+}
+.legal__back a:hover { color: var(--fg); }
+
+[dir="rtl"] .legal__eyebrow,
+[dir="rtl"] .legal__updated,
+[dir="rtl"] .legal__contact h2 {
+  font-family: var(--f-body);
+  letter-spacing: 0;
+}
+
 /* Arabic font overrides for mono-styled elements that carry Arabic copy.
    JetBrains Mono has no Arabic glyphs, so these elements use the body
    face (IBM Plex Sans Arabic) when the page is in RTL mode. Elements

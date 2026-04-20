@@ -31,8 +31,8 @@ export function SiteFooter({ content, locale }: SiteFooterProps) {
             <h4>{g.title}</h4>
             <ul>
               {g.items.map((it) => (
-                <li key={it}>
-                  <a href="#">{it}</a>
+                <li key={it.label}>
+                  <a href={it.href ?? "#"}>{it.label}</a>
                 </li>
               ))}
             </ul>

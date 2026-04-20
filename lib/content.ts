@@ -34,9 +34,29 @@ export type TemplateCard = {
   uses: string;
 };
 
+export type FooterItem = { label: string; href?: string };
+
 export type FooterGroup = {
   title: string;
-  items: string[];
+  items: FooterItem[];
+};
+
+export type LegalSection = {
+  heading: string;
+  body: string[];
+};
+
+export type LegalPageCopy = {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  updated: string;
+  sections: LegalSection[];
+  contact: {
+    heading: string;
+    lines: string[];
+  };
+  backLabel: string;
 };
 
 export type SiteContent = {
@@ -116,6 +136,11 @@ export type SiteContent = {
     copyright: string;
     slogan: string;
   };
+  legal: {
+    about: LegalPageCopy;
+    privacy: LegalPageCopy;
+    terms: LegalPageCopy;
+  };
 };
 
 export const siteContent: Record<Locale, SiteContent> = {
@@ -141,7 +166,7 @@ export const siteContent: Record<Locale, SiteContent> = {
         { id: "tracks", label: "المسارات", href: "#tracks" },
         { id: "templates", label: "القوالب", href: "#templates" },
         { id: "concepts", label: "المفاهيم", href: "#concepts" },
-        { id: "about", label: "عن بنّاء", href: "#footer" }
+        { id: "about", label: "عن بنّاء", href: "/ar/about" }
       ]
     },
     hero: {
@@ -275,12 +300,182 @@ export const siteContent: Record<Locale, SiteContent> = {
       description: "بيئة تقنيّة عربيّة للجيل القادم من البنّائين والمشغّلين وفِرق الأنظمة الإبداعيّة.",
       tags: ["مُصمّم في الرياض", "© 2026"],
       groups: [
-        { title: "المنظومة", items: ["المجتمع", "ديسكورد", "جيت‌هَب", "المدوّنة"] },
-        { title: "الدعم", items: ["التوثيق", "الخصوصيّة", "الشروط", "تواصل"] },
-        { title: "الإشارات", items: ["X / تويتر", "لينكدإن", "يوتيوب", "التلغرام"] }
+        {
+          title: "المنظومة",
+          items: [
+            { label: "المجتمع" },
+            { label: "ديسكورد" },
+            { label: "جيت‌هَب" },
+            { label: "المدوّنة" }
+          ]
+        },
+        {
+          title: "الدعم",
+          items: [
+            { label: "التوثيق" },
+            { label: "الخصوصيّة", href: "/ar/privacy" },
+            { label: "الشروط", href: "/ar/terms" },
+            { label: "عن بنّاء", href: "/ar/about" }
+          ]
+        },
+        {
+          title: "الإشارات",
+          items: [
+            { label: "X / تويتر" },
+            { label: "لينكدإن" },
+            { label: "يوتيوب" },
+            { label: "التلغرام" }
+          ]
+        }
       ],
-      copyright: "© 2026 BANNAA_OS. مصنوع بعناية لصنّاع الأنظمة.",
+      copyright: "© 2026 10claws Inc. — بنّاء. مصنوع بعناية لصنّاع الأنظمة.",
       slogan: "ABRA CADABRA / BUILD OR PERISH"
+    },
+    legal: {
+      about: {
+        eyebrow: "/ عن بنّاء",
+        title: "بنّاء. منصّة عربيّة للبنّائين.",
+        intro:
+          "بنّاء بيئة تقنيّة عربيّة للجيل القادم من البنّائين والمشغّلين وفِرق الأنظمة الإبداعيّة. نُصمِّم مسارات، مفاهيم، وقوالب تُشحَن.",
+        updated: "آخر تحديث: 20 نيسان 2026",
+        sections: [
+          {
+            heading: "مَن نحن",
+            body: [
+              "بنّاء مُشغَّل من قِبل شركة 10claws Inc.، وهي شركة مُسجَّلة في ولاية تكساس الأمريكيّة.",
+              "نُركِّز على صناعة أدوات تعلُّم عربيّة-أوّلاً حول الذكاء الاصطناعي، بعقليّة الشحن لا النظريّة."
+            ]
+          },
+          {
+            heading: "أين نبني",
+            body: [
+              "مقرّنا الإداري في هيوستن، تكساس، مع تركيز تشغيلي على منطقة الشرق الأوسط وشمال أفريقيا."
+            ]
+          },
+          {
+            heading: "ما نصنعه",
+            body: [
+              "مسارات طبقيّة، مفاهيم مُكثّفة في دقيقتين، وقوالب قتاليّة جاهزة للنَسخ والتعديل والتشغيل."
+            ]
+          }
+        ],
+        contact: {
+          heading: "تواصل معنا",
+          lines: [
+            "10claws Inc.",
+            "2500 CityWest Blvd Ste. 150",
+            "Houston, TX 77042",
+            "United States"
+          ]
+        },
+        backLabel: "↩ العودة للرئيسية"
+      },
+      privacy: {
+        eyebrow: "/ سياسة الخصوصيّة",
+        title: "الخصوصيّة.",
+        intro:
+          "تُوضِّح هذه السياسة ما نجمعه عند زيارتك لموقع بنّاء، ولماذا نجمعه، وكيف يمكنك التحكّم فيه.",
+        updated: "آخر تحديث: 20 نيسان 2026",
+        sections: [
+          {
+            heading: "المعلومات التي نجمعها",
+            body: [
+              "نستخدم Google Analytics لجمع إحصائيّات مجهولة الهويّة حول زيارات الموقع (الصفحات، المدّة، المصدر، نوع الجهاز).",
+              "إذا أرسلت نموذج تواصل أو اشتركت في قائمة بريديّة، نحتفظ بالبيانات التي تُقدِّمها طوعاً (الاسم، البريد الإلكتروني، والرسالة)."
+            ]
+          },
+          {
+            heading: "كيف نستخدمها",
+            body: [
+              "لتحسين تجربة الموقع، وفهم ما يلقى تفاعلاً، وللردّ على استفساراتك. لا نبيع بياناتك لأطراف ثالثة."
+            ]
+          },
+          {
+            heading: "ملفّات تعريف الارتباط",
+            body: [
+              "يستخدم الموقع ملفّات تعريف ارتباط تحليليّة عبر Google Analytics. يمكنك تعطيلها من إعدادات المتصفِّح أو عبر إضافة «Google Analytics Opt-out»."
+            ]
+          },
+          {
+            heading: "حقوقك",
+            body: [
+              "يحقّ لك الاطِّلاع على بياناتك، أو طلب تعديلها، أو حذفها، عبر مراسلتنا على العنوان أدناه."
+            ]
+          },
+          {
+            heading: "تحديثات السياسة",
+            body: [
+              "قد نُحدِّث هذه السياسة من حينٍ لآخر. ستظهر التحديثات على هذه الصفحة مع تاريخ التحديث."
+            ]
+          }
+        ],
+        contact: {
+          heading: "جهة الاتّصال",
+          lines: [
+            "10claws Inc.",
+            "2500 CityWest Blvd Ste. 150",
+            "Houston, TX 77042",
+            "United States"
+          ]
+        },
+        backLabel: "↩ العودة للرئيسية"
+      },
+      terms: {
+        eyebrow: "/ شروط الاستخدام",
+        title: "الشروط.",
+        intro:
+          "باستخدامك موقع بنّاء، فإنّك توافق على هذه الشروط. اقرأها بتأنٍّ.",
+        updated: "آخر تحديث: 20 نيسان 2026",
+        sections: [
+          {
+            heading: "استخدام الموقع",
+            body: [
+              "يُتاح الموقع لأغراض التعلُّم والمرجعيّة. لا يُسمح باستخدامه لأيّ نشاط غير قانوني أو ينتهك حقوق الآخرين."
+            ]
+          },
+          {
+            heading: "الملكيّة الفكريّة",
+            body: [
+              "جميع المحتويات (النصوص، الشعارات، التصاميم، القوالب) مملوكة لشركة 10claws Inc. ما لم يُذكر خلاف ذلك.",
+              "يمكنك نَسخ واستخدام القوالب المُعلَنة كـ«قوالب مفتوحة» وفق الترخيص المُرفَق بكلّ قالب."
+            ]
+          },
+          {
+            heading: "المحتوى الذي تُقدِّمه",
+            body: [
+              "تحتفظ بملكيّة ما تُرسله من محتوى، وتمنحنا ترخيصاً غير حصري لاستخدامه في تشغيل الخدمة."
+            ]
+          },
+          {
+            heading: "إخلاء المسؤوليّة",
+            body: [
+              "يُقدَّم الموقع «كما هو» دون أيّ ضمانات. لا نتحمّل مسؤوليّة أيّ أضرار ناتجة عن استخدامه."
+            ]
+          },
+          {
+            heading: "القانون الحاكم",
+            body: [
+              "تخضع هذه الشروط لقوانين ولاية تكساس في الولايات المتّحدة الأمريكيّة."
+            ]
+          },
+          {
+            heading: "التعديلات",
+            body: [
+              "قد نُعدِّل هذه الشروط من حينٍ لآخر. الاستمرار في استخدام الموقع بعد التعديل يعني قبول الشروط الجديدة."
+            ]
+          }
+        ],
+        contact: {
+          heading: "جهة الاتّصال",
+          lines: [
+            "10claws Inc.",
+            "2500 CityWest Blvd Ste. 150",
+            "Houston, TX 77042",
+            "United States"
+          ]
+        },
+        backLabel: "↩ العودة للرئيسية"
+      }
     }
   },
   en: {
@@ -305,7 +500,7 @@ export const siteContent: Record<Locale, SiteContent> = {
         { id: "tracks", label: "Tracks", href: "#tracks" },
         { id: "templates", label: "Templates", href: "#templates" },
         { id: "concepts", label: "Concepts", href: "#concepts" },
-        { id: "about", label: "About", href: "#footer" }
+        { id: "about", label: "About", href: "/en/about" }
       ]
     },
     hero: {
@@ -439,12 +634,182 @@ export const siteContent: Record<Locale, SiteContent> = {
       description: "An Arabic-first technical environment for the next wave of builders, operators, and creative systems teams.",
       tags: ["Designed in Riyadh", "© 2026"],
       groups: [
-        { title: "Ecosystem", items: ["Community", "Discord", "GitHub", "Blog"] },
-        { title: "Support", items: ["Docs", "Privacy", "Terms", "Contact"] },
-        { title: "Signals", items: ["X / Twitter", "LinkedIn", "YouTube", "Telegram"] }
+        {
+          title: "Ecosystem",
+          items: [
+            { label: "Community" },
+            { label: "Discord" },
+            { label: "GitHub" },
+            { label: "Blog" }
+          ]
+        },
+        {
+          title: "Support",
+          items: [
+            { label: "Docs" },
+            { label: "Privacy", href: "/en/privacy" },
+            { label: "Terms", href: "/en/terms" },
+            { label: "About", href: "/en/about" }
+          ]
+        },
+        {
+          title: "Signals",
+          items: [
+            { label: "X / Twitter" },
+            { label: "LinkedIn" },
+            { label: "YouTube" },
+            { label: "Telegram" }
+          ]
+        }
       ],
-      copyright: "© 2026 BANNAA_OS. Crafted for systems builders.",
+      copyright: "© 2026 10claws Inc. — Bannaa. Crafted for systems builders.",
       slogan: "ABRA CADABRA / BUILD OR PERISH"
+    },
+    legal: {
+      about: {
+        eyebrow: "/ About Bannaa",
+        title: "Bannaa. An Arabic-first build environment.",
+        intro:
+          "Bannaa is a technical environment for the next wave of Arabic-first builders, operators, and creative systems teams. We design tracks, concepts, and templates that ship.",
+        updated: "Last updated: April 20, 2026",
+        sections: [
+          {
+            heading: "Who we are",
+            body: [
+              "Bannaa is operated by 10claws Inc., a corporation registered in the State of Texas, USA.",
+              "We focus on shipping Arabic-first AI learning tools with a build-first mindset."
+            ]
+          },
+          {
+            heading: "Where we build",
+            body: [
+              "Our headquarters is in Houston, Texas, with an operational focus on the MENA region."
+            ]
+          },
+          {
+            heading: "What we make",
+            body: [
+              "Layered tracks, two-minute condensed concepts, and battle-tested templates ready to copy, edit, and run."
+            ]
+          }
+        ],
+        contact: {
+          heading: "Contact",
+          lines: [
+            "10claws Inc.",
+            "2500 CityWest Blvd Ste. 150",
+            "Houston, TX 77042",
+            "United States"
+          ]
+        },
+        backLabel: "↩ Back to home"
+      },
+      privacy: {
+        eyebrow: "/ Privacy Policy",
+        title: "Privacy.",
+        intro:
+          "This policy explains what we collect when you visit Bannaa, why we collect it, and how you can control it.",
+        updated: "Last updated: April 20, 2026",
+        sections: [
+          {
+            heading: "Information we collect",
+            body: [
+              "We use Google Analytics to collect anonymous visit statistics (pages viewed, time on page, referrer, device type).",
+              "If you submit a contact form or subscribe to a mailing list, we retain the data you voluntarily provide (name, email, message)."
+            ]
+          },
+          {
+            heading: "How we use it",
+            body: [
+              "To improve the site experience, understand what resonates, and respond to your questions. We do not sell your data to third parties."
+            ]
+          },
+          {
+            heading: "Cookies",
+            body: [
+              "The site uses analytics cookies via Google Analytics. You can disable them in your browser settings or via the Google Analytics Opt-out add-on."
+            ]
+          },
+          {
+            heading: "Your rights",
+            body: [
+              "You may request access to, correction of, or deletion of your data by emailing us at the address below."
+            ]
+          },
+          {
+            heading: "Changes",
+            body: [
+              "We may update this policy from time to time. Updates will appear on this page with a new revision date."
+            ]
+          }
+        ],
+        contact: {
+          heading: "Contact",
+          lines: [
+            "10claws Inc.",
+            "2500 CityWest Blvd Ste. 150",
+            "Houston, TX 77042",
+            "United States"
+          ]
+        },
+        backLabel: "↩ Back to home"
+      },
+      terms: {
+        eyebrow: "/ Terms of Use",
+        title: "Terms.",
+        intro:
+          "By using Bannaa, you agree to these terms. Please read them carefully.",
+        updated: "Last updated: April 20, 2026",
+        sections: [
+          {
+            heading: "Use of the site",
+            body: [
+              "The site is provided for learning and reference. You may not use it for any unlawful activity or in a way that infringes the rights of others."
+            ]
+          },
+          {
+            heading: "Intellectual property",
+            body: [
+              "All content (text, logos, designs, templates) is owned by 10claws Inc. unless otherwise stated.",
+              "Templates marked as open may be copied and used under the license attached to each template."
+            ]
+          },
+          {
+            heading: "Content you submit",
+            body: [
+              "You retain ownership of content you submit, and grant us a non-exclusive license to use it for operating the service."
+            ]
+          },
+          {
+            heading: "Disclaimer",
+            body: [
+              "The site is provided \"as is\" without any warranty. We are not liable for any damages arising from its use."
+            ]
+          },
+          {
+            heading: "Governing law",
+            body: [
+              "These terms are governed by the laws of the State of Texas, USA."
+            ]
+          },
+          {
+            heading: "Changes",
+            body: [
+              "We may modify these terms from time to time. Continued use of the site after changes means acceptance of the updated terms."
+            ]
+          }
+        ],
+        contact: {
+          heading: "Contact",
+          lines: [
+            "10claws Inc.",
+            "2500 CityWest Blvd Ste. 150",
+            "Houston, TX 77042",
+            "United States"
+          ]
+        },
+        backLabel: "↩ Back to home"
+      }
     }
   }
 };

@@ -49,3 +49,4 @@ the exact hash).
 ## 2026-04-20
 
 - Fix mobile nav overlap by raising specificity of hidden nav-right/left rules
+- Add bilingual About, Privacy, and Terms pages with 10claws Inc. address and contact block
