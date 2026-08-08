@@ -1,11 +1,13 @@
 import { PipelineTerminal } from "@/components/site/pipeline-terminal";
 import type { SiteContent } from "@/lib/content";
+import type { Locale } from "@/lib/i18n";
 
 type HeroSectionProps = {
   content: SiteContent["hero"];
+  locale: Locale;
 };
 
-export function HeroSection({ content }: HeroSectionProps) {
+export function HeroSection({ content, locale }: HeroSectionProps) {
   return (
     <section className="hero" id="top">
       <div className="abs-fill grid-bg hero__grid-bg" aria-hidden="true" />
@@ -29,10 +31,10 @@ export function HeroSection({ content }: HeroSectionProps) {
             </h1>
             <p className="hero__desc">{content.description}</p>
             <div className="hero__actions">
-              <a className="btn primary" href="#tracks">
+              <a className="btn primary" href={`/${locale}/community`}>
                 {content.primaryCta}
               </a>
-              <a className="btn" href="#templates">
+              <a className="btn" href={`/${locale}/tracks`}>
                 {content.secondaryCta}
               </a>
             </div>

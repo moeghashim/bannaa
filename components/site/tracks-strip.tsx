@@ -1,11 +1,13 @@
 import { TrackGlyph } from "@/components/site/track-glyph";
 import type { SiteContent } from "@/lib/content";
+import type { Locale } from "@/lib/i18n";
 
 type TracksStripProps = {
   content: SiteContent["tracks"];
+  locale: Locale;
 };
 
-export function TracksStrip({ content }: TracksStripProps) {
+export function TracksStrip({ content, locale }: TracksStripProps) {
   return (
     <section className="wrap" id="tracks">
       <header className="sec-head">
@@ -19,7 +21,7 @@ export function TracksStrip({ content }: TracksStripProps) {
         </div>
         <div className="right">
           <div>{content.description}</div>
-          <a className="ul" href="#tracks" style={{ marginTop: 12 }}>
+          <a className="ul" href={`/${locale}/tracks`} style={{ marginTop: 12 }}>
             {content.allLink}
           </a>
         </div>
@@ -41,6 +43,11 @@ export function TracksStrip({ content }: TracksStripProps) {
             <div className="track-card__body">
               <h3>{t.title}</h3>
               <p>{t.desc}</p>
+              <ul className="track-card__outcomes">
+                {t.outcomes.slice(0, 3).map((outcome) => (
+                  <li key={outcome}>{outcome}</li>
+                ))}
+              </ul>
               <div className="track-card__meta">
                 <span>{t.weeks}</span>
                 <span>{t.level}</span>

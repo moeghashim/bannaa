@@ -1,7 +1,20 @@
-import type { SiteContent } from "@/lib/content";
-
 type TemplatesStripProps = {
-  content: SiteContent["templates"];
+  content: {
+    eyebrow: string;
+    title: string;
+    titleAccent: string;
+    description: string;
+    allLink: string;
+    usesSuffix: string;
+    hint: string;
+    cards: {
+      id: string;
+      kind: "prompt" | "flow";
+      tag: string;
+      title: string;
+      uses: string;
+    }[];
+  };
 };
 
 export function TemplatesStrip({ content }: TemplatesStripProps) {

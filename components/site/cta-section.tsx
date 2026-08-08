@@ -1,10 +1,12 @@
 import type { SiteContent } from "@/lib/content";
+import type { Locale } from "@/lib/i18n";
 
 type CtaSectionProps = {
   content: SiteContent["cta"];
+  locale: Locale;
 };
 
-export function CtaSection({ content }: CtaSectionProps) {
+export function CtaSection({ content, locale }: CtaSectionProps) {
   return (
     <section className="cta" id="cta">
       <div className="cta__wrap">
@@ -19,7 +21,7 @@ export function CtaSection({ content }: CtaSectionProps) {
           </div>
           <div className="cta__form-col">
             <p>{content.description}</p>
-            <form className="cta__form" action="#cta">
+            <form className="cta__form" action={`/${locale}/join`}>
               <input type="email" placeholder={content.placeholder} aria-label={content.placeholder} />
               <button type="submit" className="btn primary">
                 {content.button}

@@ -38,7 +38,7 @@ export function SiteFooter({ content, locale }: SiteFooterProps) {
         <div className="footer__brand-col">
           <div className="brand" style={{ marginBottom: 16 }}>
             <BrandMark size={28} />
-            <span>{locale === "ar" ? "بنّاء" : "Bannaa"}</span>
+            <span>{locale === "ar" ? "بنّاء" : "Banna"}</span>
           </div>
           <p>{content.description}</p>
           <div className="tags">

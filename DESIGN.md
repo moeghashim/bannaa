@@ -1,245 +1,293 @@
-# Design System: Bannaa
-
-**Project ID:** bannaa-v3
-
-This document is the single source of truth for Bannaa's visual language,
-written in the [Stitch DESIGN.md format][stitch]. It pairs atmospheric
-descriptions with precise tokens so AI tooling and human contributors can
-both generate and verify new screens. Keep it in sync whenever you add or
-replace a brand asset.
-
-[stitch]: https://github.com/google-labs-code/stitch-skills/blob/main/skills/design-md/SKILL.md
-
-## 1. Visual Theme & Atmosphere
-
-Bannaa is a bilingual (Arabic-first) technical learning platform whose
-visual language is **Terminal Brutalism**. The interface reads like a
-dense operator console rather than a soft marketing page: sharp
-squared-off edges, high-contrast blocks of ink and canvas, monospace
-annotation layered over a bold display face, and generous technical
-metadata (status bars, coordinates, version strings) surfaced
-unapologetically.
-
-The atmosphere is **dense and functional**, never airy. Surfaces are
-flat — no blurred glass, no drop shadows, no gradients except a single
-radial wash of the accent colour behind the hero. Negative space is
-structural: it exists so hard-edged rules can breathe, not to soften
-the composition. Motion is minimal and deliberate (a fading four-stage
-pipeline terminal, a slow marquee scroll, a blinking cursor);
-decoration is absent.
-
-The palette is **binary and confident** — near-black paper with a
-single electric accent in dark mode, near-white paper with a warm
-industrial accent in light mode — so every colour on screen carries
-a functional role, never pure decoration.
-
-## 2. Color Palette & Roles
-
-Two themes share one token shape; the active theme is toggled by
-`data-theme="light"` on `<html>`. All colours are declared as CSS
-custom properties in `app/globals.css`.
-
-### Dark theme (default)
-
-- **Ink Black (`#0a0a0a`)** — primary canvas; the page itself.
-- **Graphite 800 (`#111111`)** — raised surfaces: cards, marquee strip, status bar.
-- **Graphite 700 (`#161616`)** — recessed wells: track-card artwork frames.
-- **Line 900 (`#242424`)** — low-contrast hairlines; defines structure without dominating.
-- **Line 800 (`#2e2e2e`)** — medium-contrast borders on interactive elements.
-- **Off-White Ink (`#f2f2ef`)** — primary text and the frame of the logo mark. Warm, faintly yellowed.
-- **Ash Gray (`#9a9a93`)** — secondary text and supporting copy.
-- **Pebble Gray (`#6b6b66`)** — tertiary metadata: timestamps, counters, mono labels.
-- **Electric Lime (`#d4ff3a`)** — the only accent. Reserved for the primary button fill, the centered block of the logo mark, the active phase of the pipeline terminal, section eyebrow pips, and the selected tab underline. Carries all attention; never decorative.
-- **Accent Ink (`#0a0a0a`)** — text colour on top of the lime accent fill.
-- **Warning (`#ff6a3d`)** and **OK (`#8ae66e`)** — terminal-only indicators (traffic-light dots, status glyphs). Never used as page-level accents.
-
-### Light theme
-
-- **Paper White (`#ffffff`)** — primary canvas.
-- **Bone 50 (`#f6f6f4`)** — raised surfaces.
-- **Linen 100 (`#eeece6`)** — recessed wells.
-- **Line 100 (`#e6e4dc`)** and **Line 300 (`#c9c6bb`)** — structural rules, borders.
-- **Carbon Ink (`#0e0e0c`)** — primary text and logo frame.
-- **Dust (`#4a4740`)** — secondary text.
-- **Sand (`#8a8677`)** — tertiary text.
-- **Industrial Orange (`#ff6a3d`)** — the only accent.
-- **Accent Ink (`#ffffff`)** — text colour on the orange accent fill.
-- **Warning (`#c94a1f`)** and **OK (`#2f6d2d`)** — terminal-only.
-
-Terminal panels hold their **dark palette in both themes** deliberately,
-as a visual signifier that "this is machinery."
-
-## 3. Typography Rules
-
-Three families, loaded via `next/font/google` in `app/layout.tsx` and
-exposed as CSS variables.
-
-- **Rubik 800–900 (display)** — reserved for the hero headline, section
-  titles, and oversized stat numerals. Tight tracking (`-0.02em`),
-  compressed line-height (`0.92`), and dramatic scale
-  (`clamp(48px, 7.5vw, 128px)` in the hero) give the page its
-  brutalist weight. Never use Rubik below 22px.
-- **IBM Plex Sans Arabic 400–700 (body)** — the default for paragraphs,
-  UI copy, button labels, and **any Arabic text anywhere in the app**.
-  JetBrains Mono has no Arabic glyphs, so monospace containers that
-  may contain Arabic must override back to this face (see the pipeline
-  terminal's plan rows, where `.stage-plan__row .k` and `.v` explicitly
-  reset to `var(--f-body)`).
-- **JetBrains Mono 400–600 (mono)** — exclusively technical context:
-  eyebrow labels, terminal chrome, tag pills, status-bar strings, stat
-  sublabels, timestamps, coordinates. Letter-spaced generously
-  (`0.1em`–`0.14em`) and uppercased to reinforce the operator-console feel.
-
-## 4. Component Stylings
-
-### Buttons
-
-- **Primary:** Sharp, **squared-off edges** (2px corner radius — effectively a rectangle). Filled with the active accent colour; label in the accent-ink colour; `font-weight: 600`. On hover, brightness lifts by ~8% and a 4px-wide diffused accent glow (`accent 20%`) expands around the element. Label casing tracks the content — uppercase is not forced.
-- **Secondary / outline:** Transparent fill, 1px border in the medium line colour, label in primary ink. On hover, the border darkens to the primary ink colour. Same 2px corners.
-- **Ghost:** Transparent border and fill; dim text that brightens to primary ink on hover. For tertiary actions only (e.g., "Sign in" in the nav).
-- No rounded buttons, no pill buttons, no icon-only circular buttons.
-
-### Cards and Containers
-
-- Flat surfaces with a single hairline border. 2px corner radius. **No shadow** — elevation is communicated by stepping the background one tier (`--bg` → `--bg-2`) and by a small bracket-style accent-coloured corner notch (`.card .corner`) anchored to the top-inline-end corner of each card.
-- On hover, the border colour steps up one tier (`--line` → `--line-2`). No lift, no scale transform.
-- Padding scales with density: `calc(20px * var(--density))` where `--density: 0.85` (compact) across the design.
-
-### Inputs and Forms
-
-- **Stroke-only.** 1px border in the medium line colour, transparent fill, no inner shadow.
-- The CTA email field shares a single stroke with its submit button, forming one rectangle split in two by a vertical line (no radius between them).
-- Placeholder text renders in the tertiary muted colour.
-- Focus state is implicit — the caret is the signal. No custom focus ring is added (the browser default is acceptable here).
-
-### Terminal Panels
-
-- A distinct UI primitive. Dark `--term-bg` background (held dark in
-  **both** themes), 1px medium-line border, 2px radius.
-- **Chrome row:** 11px monospace title in dimmed ink on the start edge;
-  three 8px traffic-light dots (warning / amber / ok) on the end edge.
-- **Pipeline variant:** four phase labels across the top; the four
-  stages (Plan / Design / Agent / Site) stack absolutely over each
-  other and crossfade on a 0.4s opacity transition; the active stage's
-  label block tints to translucent accent (`accent 8%`).
-- **Status row:** 10px monospace at the bottom showing current phase
-  status and a "● live" ok-coloured dot.
-
-### Tags (Chips)
-
-- **Pill-shaped** (999px radius — the only place curved edges appear).
-  1px border in the medium line colour, 10.5px uppercase mono label
-  with `0.1em` tracking. A 5px accent-coloured circle "pip" leads the
-  label. A `.warn` modifier flips the pip to the warning colour. A
-  `.solid` modifier inverts to a filled accent pill (used sparingly).
-
-### Status Bar
-
-- A sticky utilitarian ribbon at the top of every page. Mono 11px,
-  dimmed text, a pulsing accent-coloured dot on the start edge, and a
-  live 24-hour clock plus theme toggle on the end edge. Backdrop-blurred
-  at 90% opacity so page content bleeds faintly through.
-
-### Navigation
-
-- Flat bar under the status bar, separated by a 1px hairline. Brand mark
-  + wordmark on the start edge; anchor links, language switch, ghost
-  CTA, and primary CTA on the end edge. Active link pill uses `--bg-2`
-  fill with a `--line-2` border.
-
-## 5. Layout Principles
-
-- **Fixed outer gutter:** 24px on all sides, scaling up to a 1440px max
-  content width (`.wrap`). No fluid containers beyond this cap — the
-  design holds the same column widths on any display.
-- **12-column implicit grid in the hero** (a 7/5 split between copy and
-  pipeline terminal); 3-column and 4-column explicit grids everywhere
-  else (tracks, concepts, templates, footer).
-- Grids lean on **CSS logical properties** (`border-inline-start`,
-  `inset-inline-end`, `margin-inline-start`, …) so every layout mirrors
-  cleanly between the `/en` and `/ar` routes without duplicate rules.
-- **Section heading pattern:** a small monospace eyebrow
-  ("`/ 01 — TRACKS`"), a two-line display headline, and a right-aligned
-  mono paragraph with an optional inline underlined link. Every section
-  that uses this pattern is separated from the next by an explicit 1px
-  rule, never by whitespace alone.
-- **Whitespace is structural.** Stat blocks sit snug against their
-  inline dividers (`padding: 4px 20px`); section tops use
-  `padding: 56px 0 24px` to create a single dominant breathing moment
-  per section; the CTA uses `padding: 80px 24px` to punctuate the end
-  of the page.
-- **Density is "compact."** Body line-height is `1.5`, display is
-  `0.92`. Card padding is `20px * 0.85`. Everything reads denser than
-  a typical marketing site, on purpose.
-
+---
+version: alpha
+name: Banna
+description: Bilingual Arabic-first platform for building lean AI-powered micro-companies, with a dense terminal-brutalist visual identity.
+colors:
+  primary: "#0a0a0a"
+  secondary: "#9a9a93"
+  tertiary: "#d4ff3a"
+  neutral: "#f2f2ef"
+  darkBg: "#0a0a0a"
+  darkSurface: "#111111"
+  darkSurfaceRaised: "#161616"
+  darkLine: "#242424"
+  darkLineStrong: "#2e2e2e"
+  darkText: "#f2f2ef"
+  darkTextDim: "#9a9a93"
+  darkTextMuted: "#6b6b66"
+  darkAccent: "#d4ff3a"
+  darkAccentInk: "#0a0a0a"
+  lightBg: "#ffffff"
+  lightSurface: "#f6f6f4"
+  lightSurfaceRaised: "#eeece6"
+  lightLine: "#e6e4dc"
+  lightLineStrong: "#c9c6bb"
+  lightText: "#0e0e0c"
+  lightTextDim: "#4a4740"
+  lightTextMuted: "#8a8677"
+  lightAccent: "#ff6a3d"
+  lightAccentInk: "#ffffff"
+  warning: "#ff6a3d"
+  warningLight: "#c94a1f"
+  ok: "#8ae66e"
+  okLight: "#2f6d2d"
+  terminalBg: "#0d0d0d"
+  terminalInk: "#f2f2ef"
+typography:
+  displayHero:
+    fontFamily: Rubik
+    fontSize: 8rem
+    fontWeight: 800
+    lineHeight: 0.9
+    letterSpacing: "-0.02em"
+  displaySection:
+    fontFamily: Rubik
+    fontSize: 4rem
+    fontWeight: 800
+    lineHeight: 0.95
+    letterSpacing: "-0.02em"
+  displayCard:
+    fontFamily: Rubik
+    fontSize: 2.25rem
+    fontWeight: 800
+    lineHeight: 0.92
+    letterSpacing: "-0.02em"
+  bodyMd:
+    fontFamily: IBM Plex Sans Arabic
+    fontSize: 1rem
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: 0px
+  bodyLg:
+    fontFamily: IBM Plex Sans Arabic
+    fontSize: 1.125rem
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: 0px
+  button:
+    fontFamily: IBM Plex Sans Arabic
+    fontSize: 0.875rem
+    fontWeight: 600
+    lineHeight: 1.2
+    letterSpacing: 0px
+  monoUi:
+    fontFamily: JetBrains Mono
+    fontSize: 0.6875rem
+    fontWeight: 400
+    lineHeight: 1.4
+    letterSpacing: "0.1em"
+  monoCaps:
+    fontFamily: JetBrains Mono
+    fontSize: 0.6875rem
+    fontWeight: 400
+    lineHeight: 1.4
+    letterSpacing: "0.14em"
+rounded:
+  none: 0px
+  sm: 2px
+  pill: 999px
+spacing:
+  xs: 4px
+  sm: 8px
+  md: 16px
+  lg: 24px
+  xl: 32px
+  section: 56px
+  heroY: 72px
+  ctaY: 80px
+components:
+  pageDark:
+    backgroundColor: "{colors.darkBg}"
+    textColor: "{colors.darkText}"
+    typography: "{typography.bodyMd}"
+  pageLight:
+    backgroundColor: "{colors.lightBg}"
+    textColor: "{colors.lightText}"
+    typography: "{typography.bodyMd}"
+  buttonPrimaryDark:
+    backgroundColor: "{colors.darkAccent}"
+    textColor: "{colors.darkAccentInk}"
+    typography: "{typography.button}"
+    rounded: "{rounded.sm}"
+    padding: 10px
+  buttonPrimaryLight:
+    backgroundColor: "{colors.lightAccent}"
+    textColor: "{colors.lightAccentInk}"
+    typography: "{typography.button}"
+    rounded: "{rounded.sm}"
+    padding: 10px
+  buttonOutlineDark:
+    backgroundColor: "{colors.darkBg}"
+    textColor: "{colors.darkText}"
+    typography: "{typography.button}"
+    rounded: "{rounded.sm}"
+    padding: 10px
+  cardDark:
+    backgroundColor: "{colors.darkSurface}"
+    textColor: "{colors.darkText}"
+    rounded: "{rounded.sm}"
+    padding: 17px
+  cardLight:
+    backgroundColor: "{colors.lightSurface}"
+    textColor: "{colors.lightText}"
+    rounded: "{rounded.sm}"
+    padding: 17px
+  tagDark:
+    backgroundColor: "{colors.darkBg}"
+    textColor: "{colors.darkTextDim}"
+    typography: "{typography.monoUi}"
+    rounded: "{rounded.pill}"
+    padding: 4px
+  tagLight:
+    backgroundColor: "{colors.lightBg}"
+    textColor: "{colors.lightTextDim}"
+    typography: "{typography.monoUi}"
+    rounded: "{rounded.pill}"
+    padding: 4px
+  terminalPanel:
+    backgroundColor: "{colors.terminalBg}"
+    textColor: "{colors.terminalInk}"
+    typography: "{typography.monoUi}"
+    rounded: "{rounded.sm}"
+    padding: 12px
 ---
 
-## Appendix: Brand Assets
+## Overview
 
-Not part of the Stitch spec — contributor-facing pointers to the files
-that embody the system above.
+Banna is a bilingual, Arabic-first platform and community for helping Arab youth build lean, AI-powered micro-companies of 1 to 10 people. Its visual identity is Terminal Brutalism: a dense operator-console interface with hard edges, high-contrast panels, visible grid structure, monospace metadata, and a single forceful accent per theme.
 
-### Logo / brand mark
+The site should feel functional, sharp, and engineered. It is a marketing surface, but not a soft landing page. The first impression is a live system: status ribbons, route-like terminal chrome, pipeline stages, hard rules, compact spacing, and bilingual content that mirrors cleanly between `/ar` and `/en`.
 
-The mark is a single solid 12-unit accent block, centered inside a
-36-unit square frame with a 4-unit stroke, drawn on a 40×40 viewBox.
-The inner block is 30% of the viewBox edge; the frame stroke is 10%.
-It reads as "a block held inside a structure."
+Preserve this direction unless a task explicitly asks for a brand change. New screens should look like they belong beside the existing hero terminal, mission metrics, track cards, content hub, community console, CTA form, and sticky status bar.
 
-| File | Purpose | Frame | Block | Background |
-| --- | --- | --- | --- | --- |
-| [`public/bannaa-logo-dark.svg`](public/bannaa-logo-dark.svg) | Standalone dark-theme preview. | `#f2f2ef` | `#d4ff3a` | `#0a0a0a` |
-| [`public/bannaa-logo-dark.png`](public/bannaa-logo-dark.png) | 512×512 rasterised PNG of the dark SVG. | — | — | — |
-| [`public/bannaa-logo-light.svg`](public/bannaa-logo-light.svg) | Standalone light-theme preview. | `#0e0e0c` | `#ff6a3d` | `#ffffff` |
-| [`public/bannaa-logo-light.png`](public/bannaa-logo-light.png) | 512×512 rasterised PNG of the light SVG. | — | — | — |
-| [`app/icon.svg`](app/icon.svg) | Favicon served by Next.js convention. Dark variant. | `#f2f2ef` | `#d4ff3a` | `#0a0a0a` |
-| [`components/site/brand-mark.tsx`](components/site/brand-mark.tsx) | Inline SVG component used in the site header and footer. Uses `currentColor` for the frame stroke and `var(--accent)` for the block, so it tracks theme automatically and has no baked-in background. | dynamic | dynamic | transparent |
+## Colors
 
-### Regenerating PNGs
+The palette uses two theme maps with matching roles. Dark mode is the default; light mode is enabled by setting `data-theme="light"` on the `html` element. All runtime values live in [app/globals.css](/Users/moe/bannaa/app/globals.css).
 
-From the repo root:
+Dark theme:
 
-```
-rsvg-convert -w 512 -h 512 public/bannaa-logo-dark.svg  -o public/bannaa-logo-dark.png
-rsvg-convert -w 512 -h 512 public/bannaa-logo-light.svg -o public/bannaa-logo-light.png
-```
+- **Primary / darkBg (`#0a0a0a`)** is the page canvas and dark accent ink.
+- **darkSurface (`#111111`)** is the raised surface for cards, strips, nav states, and CTA bands.
+- **darkSurfaceRaised (`#161616`)** is the recessed art well behind track glyphs.
+- **darkLine (`#242424`)** and **darkLineStrong (`#2e2e2e`)** define structure with 1px hairlines and interactive borders.
+- **darkText (`#f2f2ef`)**, **darkTextDim (`#9a9a93`)**, and **darkTextMuted (`#6b6b66`)** are the three text levels.
+- **darkAccent (`#d4ff3a`)** is electric lime. It is the only dark-mode accent and should be reserved for primary actions, active terminal phases, accent pips, logo block fill, hero emphasis, and key data marks.
 
-### Clear space and minimum size
+Light theme:
 
-- **Minimum rendered size:** 20 px tall. Below that the frame stroke
-  loses fidelity — fall back to `app/icon.svg` only above that size.
-- **Clear space:** at least one inner-block height (≈ `mark-size / 3.3`)
-  on every side of the mark.
-- **Do not** introduce a third colour, recolour the block outside the
-  two defined variants, distort the aspect ratio, or add shadows,
-  gradients, or outlines beyond the existing frame.
+- **lightBg (`#ffffff`)** is the page canvas.
+- **lightSurface (`#f6f6f4`)** and **lightSurfaceRaised (`#eeece6`)** replace dark surfaces without changing layout behavior.
+- **lightLine (`#e6e4dc`)** and **lightLineStrong (`#c9c6bb`)** are warm structural borders.
+- **lightText (`#0e0e0c`)**, **lightTextDim (`#4a4740`)**, and **lightTextMuted (`#8a8677`)** carry the same text hierarchy as dark mode.
+- **lightAccent (`#ff6a3d`)** is industrial orange. It replaces lime in light mode and should remain the only light-mode page accent.
 
-### Social media assets
+Terminal panels keep **terminalBg (`#0d0d0d`)** and **terminalInk (`#f2f2ef`)** in both themes because they represent machinery, not normal page content. **warning**, **warningLight**, **ok**, and **okLight** are terminal indicators only; do not promote them into general accent colors.
 
-Social assets live under [`public/social/`](public/social/) as PNGs
-(no SVG sources checked in — regeneration notes below). They share
-one design language: dark canvas, faint grid, the logo mark on the
-RTL start edge, Arabic wordmark **بنّاء** in IBM Plex Sans Arabic,
-and mono technical metadata (`BANNAA_OS // v3.0.1`,
-`BANNAA.AI // MENA // AR`) in the corners. Horizontal banners keep
-only the wordmark next to the icon (bottom-aligned). The portrait
-cover (stacked layout) also carries the tagline **ابنِ ثم ابنِ أكثر**.
+## Typography
 
-| Platform | Profile | Banner / cover | Size |
-| --- | --- | --- | --- |
-| TikTok | [`profile.png`](public/social/profile.png) | [`portrait-cover.png`](public/social/portrait-cover.png) | profile 1024×1024 · cover 1080×1920 |
-| X | [`profile.png`](public/social/profile.png) | [`x-banner.png`](public/social/x-banner.png) | profile 1024×1024 · banner 1500×500 |
-| Facebook | [`facebook-profile.png`](public/social/facebook-profile.png) | [`facebook-cover.png`](public/social/facebook-cover.png) | profile 1080×1080 · cover 1640×624 |
-| Instagram | [`profile.png`](public/social/profile.png) | [`portrait-cover.png`](public/social/portrait-cover.png) (shared with TikTok; suitable for story / highlight cover) | profile 1024×1024 · story 1080×1920 |
-| LinkedIn | [`profile.png`](public/social/profile.png) | [`linkedin-banner.png`](public/social/linkedin-banner.png) | profile 1024×1024 · banner 1584×396 |
-| YouTube | [`youtube-profile.png`](public/social/youtube-profile.png) | [`youtube-banner.png`](public/social/youtube-banner.png) | profile 1080×1080 · banner 2048×1152 |
+The app loads Rubik, IBM Plex Sans Arabic, and JetBrains Mono through `next/font/google` in [app/layout.tsx](/Users/moe/bannaa/app/layout.tsx). CSS exposes them as `--f-display`, `--f-body`, and `--f-mono`.
 
-### Regenerating social PNGs
+- **Rubik** is the display face. Use it for hero headlines, section titles, oversized statistics, and prominent card headings. Keep it heavy, compact, and tightly tracked. Current headline treatments use `font-weight: 800`, `letter-spacing: -0.02em`, and line heights around `0.9` to `0.95`.
+- **IBM Plex Sans Arabic** is the body and UI face. It is mandatory for Arabic copy and safe for bilingual text. Use it for paragraphs, buttons, form inputs, navigation labels, legal pages, and any monospace-styled container that may receive Arabic content.
+- **JetBrains Mono** is for technical metadata only: status bars, terminal chrome, stat sublabels, labels, timestamps, coordinates, and English-only eyebrow text. It should be small, often uppercase, and tracked at `0.1em` to `0.14em`.
 
-The PNGs are generated from inline SVGs rendered through Chrome
-headless so Google Fonts (IBM Plex Sans Arabic + JetBrains Mono)
-load correctly; a final top-left crop with ImageMagick removes a
-~40 px baseline offset that Chrome introduces. Keep the source
-SVGs out of the repo — rebuild from scratch when the design
-changes. See `git log -- public/social/` for prior iterations if
-you need a reference.
+RTL routes must not force JetBrains Mono onto Arabic strings. The stylesheet already overrides several mono-styled elements under `[dir="rtl"]`; keep that behavior symmetric when adding new bilingual elements.
+
+## Layout
+
+Use a maximum content width of `1440px` with a fixed `24px` outer gutter. The layout should feel compact and systematic, not spacious or editorial.
+
+The hero uses a 12-column grid with a 7/5 split between copy and the pipeline terminal. Content sections use simple 3-column or 4-column grids, then collapse to one column under `860px`. Use CSS logical properties such as `border-inline-start`, `inset-inline-end`, and `margin-inline-start` so English and Arabic routes mirror without duplicate styles.
+
+Section headers follow the established structure: a small technical eyebrow, a heavy two-line display heading, and a compact right-side support block with optional underlined link. Separate major regions with explicit 1px rules rather than relying on empty whitespace.
+
+Spacing is intentionally dense:
+
+- Page gutter: `24px`.
+- Grid gaps: usually `16px`, with `32px` in the hero and footer.
+- Section header top padding: `56px`.
+- Hero vertical padding: `72px` top and `100px` bottom.
+- CTA vertical padding: `80px`.
+- Card padding: `calc(20px * var(--density))`, where density is `0.85`.
+
+## Elevation & Depth
+
+Avoid shadows, glass, soft blurs, neumorphism, and layered floating cards. Banna expresses hierarchy through flat color steps and stroke contrast:
+
+- Page canvas: `--bg`.
+- Raised surface: `--bg-2`.
+- Recessed/art surface: `--bg-3`.
+- Hairline border: `--line`.
+- Interactive border: `--line-2`.
+
+Hover states should be mechanical: border color steps up, text brightens, or accent glow appears around a primary button. Do not lift, scale, or rotate cards on hover.
+
+The only ambient depth is the page-level radial accent wash behind the hero. Keep it subtle and tied to `--accent`; do not introduce decorative blobs, extra gradients, or atmospheric imagery.
+
+## Shapes
+
+The default corner radius is `2px`. Treat most UI as squared-off: buttons, cards, terminal panels, nav states, form fields, art frames, icon boxes, and number tiles.
+
+Pills are allowed only for tag chips and tiny metadata badges. They use `999px` radius with a 1px border and usually include a 5px accent pip.
+
+The logo mark is a geometric 40x40 SVG: a 36-unit square frame with 4-unit stroke and a centered 12-unit accent block. The mark must remain square, flat, and two-color.
+
+## Components
+
+**Status Bar:** A sticky utilitarian ribbon at the top of the page. It uses 11px mono text, dimmed foreground, a live clock, theme toggle, and a small accent dot with a subtle halo.
+
+**Navigation:** A flat bar beneath the status bar with brand mark, localized wordmark, anchor links, language switch, ghost CTA, and primary CTA. Active or hovered links use surface fill and a stronger border.
+
+**Buttons:** Primary buttons are filled with the active accent and use the matching accent-ink color. Outline buttons stay transparent with a 1px border. Ghost buttons are tertiary and use dim text. Keep all button corners at `2px`; do not create rounded or pill CTAs.
+
+**Cards:** Cards are flat `--bg-2` surfaces with 1px borders, `2px` radius, compact padding, and a bracket-style accent corner notch. On hover, only the border color changes.
+
+**Terminal Panels:** Terminals are dark in both themes. They use a chrome row, traffic-light dots, four pipeline labels, crossfading absolute stages, and a status row. Keep terminal Arabic text in the body face when needed.
+
+**Track Glyphs:** Track cards use simple SVG diagrams inside a 4:3 art well. The visuals are abstract but functional: bars for foundations, node networks for agents, waveform bars for media. Use `--accent` sparingly for the key mark in each glyph.
+
+**Content Hub:** Filter controls are compact segmented buttons, not large tabs. Content cards must expose format, duration, title, description, and track tag so videos, shorts, X threads, and newsletters can grow from the same structured content source.
+
+**Community Console:** Community signup and posts use a terminal panel, not a social-feed aesthetic. The simple signup requires name and email at minimum and creates a signed HTTP-only session cookie through Next route handlers. Production deployments must provide `COMMUNITY_AUTH_SECRET`; the post composer should remain compact and is ready to connect to a persistent database layer.
+
+**CTA Form:** The email field and submit button form one stroked rectangle. The input is transparent, borderless inside the shared outline, and compact. Do not split it into separate floating controls.
+
+**Legal Pages:** Legal/about pages are narrower and calmer, but still inherit the same type, color, and rule system. They should not become a separate editorial template.
+
+## Do's and Don'ts
+
+Do:
+
+- Keep content changes centralized in [lib/content.ts](/Users/moe/bannaa/lib/content.ts) unless the task is structural.
+- Keep `/ar` and `/en` behavior symmetric.
+- Use logical CSS properties so RTL and LTR layouts mirror naturally.
+- Use a single accent per theme and make it mean interaction, state, or identity.
+- Preserve the terminal-console density: visible rules, compact type, explicit metadata, and flat surfaces.
+- Keep brand assets in [public/](/Users/moe/bannaa/public) and update this file when adding or replacing them.
+- Keep the three learning tracks expandable: Founder Skill Set, Building in the Age of AI, and Builder Skill Set.
+
+Don't:
+
+- Add extra accent colors, soft gradients, decorative blobs, heavy shadows, rounded marketing cards, or glass effects.
+- Use JetBrains Mono for Arabic strings.
+- Use pill shapes for primary controls.
+- Introduce stock imagery or decorative illustration in place of the current system diagrams.
+- Create English-only layout assumptions; every new section must work in RTL.
+- Hard-code theme colors outside the existing CSS token system.
+
+## Brand Assets
+
+Logo and social assets are part of the design system even though they are file assets rather than token values. Existing filenames still use the historical `bannaa` spelling; the visible English wordmark is now `Banna`, while Arabic remains `بنّاء`.
+
+| File | Purpose |
+| --- | --- |
+| [public/bannaa-logo-dark.svg](/Users/moe/bannaa/public/bannaa-logo-dark.svg) | Standalone dark-theme logo preview. |
+| [public/bannaa-logo-dark.png](/Users/moe/bannaa/public/bannaa-logo-dark.png) | 512x512 raster dark logo. |
+| [public/bannaa-logo-light.svg](/Users/moe/bannaa/public/bannaa-logo-light.svg) | Standalone light-theme logo preview. |
+| [public/bannaa-logo-light.png](/Users/moe/bannaa/public/bannaa-logo-light.png) | 512x512 raster light logo. |
+| [app/icon.svg](/Users/moe/bannaa/app/icon.svg) | Next.js favicon, using the dark variant. |
+| [components/site/brand-mark.tsx](/Users/moe/bannaa/components/site/brand-mark.tsx) | Inline SVG brand mark that inherits `currentColor` for the frame and `var(--accent)` for the center block. |
+
+Minimum rendered logo size is `20px`. Clear space should be at least one inner-block height on every side. Do not distort the mark, recolor the center block outside the two defined theme accents, add outlines, add shadows, or introduce a third color.
+
+Social media PNGs live in [public/social/](/Users/moe/bannaa/public/social). They share the dark canvas, faint grid, logo mark, Arabic wordmark, and technical metadata. Treat them as generated outputs; if the brand changes, regenerate the whole set instead of manually editing one platform in isolation.

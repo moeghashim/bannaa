@@ -51,3 +51,7 @@ the exact hash).
 - Fix mobile nav overlap by raising specificity of hidden nav-right/left rules
 - Add bilingual About, Privacy, and Terms pages with 10claws Inc. address and contact block
 - Reframe footer copyright as "Part of 10claws.com" with a link to the parent site
+
+## 2026-08-08
+
+- Build bilingual Banna platform site

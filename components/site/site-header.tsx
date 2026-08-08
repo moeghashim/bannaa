@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { BrandMark } from "@/components/site/brand-mark";
@@ -77,6 +78,10 @@ function StatusBar({ content }: { content: SiteContent["statusBar"] }) {
 
 function SiteNav({ content, locale }: { content: SiteContent["nav"]; locale: Locale }) {
   const otherLocale: Locale = locale === "ar" ? "en" : "ar";
+  const pathname = usePathname();
+  const localizedPath = pathname?.startsWith(`/${locale}`)
+    ? pathname.replace(`/${locale}`, `/${otherLocale}`)
+    : `/${otherLocale}`;
   const [menuOpen, setMenuOpen] = useState(false);
   const closeMenu = () => setMenuOpen(false);
 
@@ -85,7 +90,7 @@ function SiteNav({ content, locale }: { content: SiteContent["nav"]; locale: Loc
       <div className="nav-left">
         <Link className="brand" href={`/${locale}`}>
           <BrandMark size={28} />
-          <span>{locale === "ar" ? "بنّاء" : "Bannaa"}</span>
+          <span>{locale === "ar" ? "بنّاء" : "Banna"}</span>
         </Link>
         <div className="nav-links">
           {content.links.map((link) => (
@@ -98,22 +103,22 @@ function SiteNav({ content, locale }: { content: SiteContent["nav"]; locale: Loc
       <div className="nav-right">
         <Link
           className="mono"
-          href={`/${otherLocale}`}
+          href={localizedPath}
           style={{ fontSize: 11, color: "var(--fg-mute)", textDecoration: "none" }}
         >
           {content.langSwitch}
         </Link>
-        <button type="button" className="btn ghost">
+        <Link href={`/${locale}/community`} className="btn ghost">
           {content.ghostCta}
-        </button>
-        <a className="btn primary" href="#cta">
+        </Link>
+        <Link className="btn primary" href={`/${locale}/join`}>
           {content.primaryCta}
-        </a>
+        </Link>
       </div>
       <button
         type="button"
         className="nav-toggle"
-        aria-label="Menu"
+        aria-label={content.menuLabel}
         aria-expanded={menuOpen}
         aria-controls="nav-mobile"
         onClick={() => setMenuOpen((open) => !open)}
@@ -144,17 +149,17 @@ function SiteNav({ content, locale }: { content: SiteContent["nav"]; locale: Loc
         <div className="nav-mobile__actions">
           <Link
             className="mono nav-mobile__lang"
-            href={`/${otherLocale}`}
+            href={localizedPath}
             onClick={closeMenu}
           >
             {content.langSwitch}
           </Link>
-          <button type="button" className="btn ghost">
+          <Link href={`/${locale}/community`} className="btn ghost" onClick={closeMenu}>
             {content.ghostCta}
-          </button>
-          <a className="btn primary" href="#cta" onClick={closeMenu}>
+          </Link>
+          <Link className="btn primary" href={`/${locale}/join`} onClick={closeMenu}>
             {content.primaryCta}
-          </a>
+          </Link>
         </div>
       </div>
     </nav>

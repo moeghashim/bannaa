@@ -1,7 +1,17 @@
-import type { SiteContent } from "@/lib/content";
-
 type ConceptsSectionProps = {
-  content: SiteContent["concepts"];
+  content: {
+    eyebrow: string;
+    title: string;
+    titleAccent: string;
+    description: string;
+    meta: string;
+    cells: {
+      id: string;
+      title: string;
+      sub: string;
+      desc: string;
+    }[];
+  };
 };
 
 export function ConceptsSection({ content }: ConceptsSectionProps) {
