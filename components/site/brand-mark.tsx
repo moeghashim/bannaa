@@ -1,3 +1,8 @@
+import Image from "next/image";
+import type { CSSProperties } from "react";
+
+import type { Locale } from "@/lib/i18n";
+
 type BrandMarkProps = {
   size?: number;
   className?: string;
@@ -5,20 +10,39 @@ type BrandMarkProps = {
 };
 
 export function BrandMark({ size = 28, className, title }: BrandMarkProps) {
+  const style = { "--brand-mark-size": `${size}px` } as CSSProperties;
+
   return (
-    <svg
-      aria-hidden={title ? undefined : true}
-      role={title ? "img" : undefined}
-      aria-label={title}
-      className={className}
-      width={size}
-      height={size}
-      viewBox="0 0 40 40"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect x="2" y="2" width="36" height="36" stroke="currentColor" strokeWidth={4} />
-      <rect x="14" y="14" width="12" height="12" style={{ fill: "var(--accent)" }} />
-    </svg>
+    <span className={`brand-mark${className ? ` ${className}` : ""}`} style={style}>
+      <Image src="/assets/brand/icon.svg" alt={title ?? ""} width={size} height={size} unoptimized />
+    </span>
+  );
+}
+
+type BrandLogoProps = {
+  locale: Locale;
+  className?: string;
+};
+
+export function BrandLogo({ locale, className }: BrandLogoProps) {
+  if (locale === "ar") {
+    return (
+      <Image
+        className={`brand-logo brand-logo--ar${className ? ` ${className}` : ""}`}
+        src="/assets/brand/arabic_logo.svg"
+        alt="بنّاء"
+        width={126}
+        height={45}
+        priority
+        unoptimized
+      />
+    );
+  }
+
+  return (
+    <span className={`brand-logo brand-logo--en${className ? ` ${className}` : ""}`}>
+      <BrandMark size={30} title="Bannaa" />
+      <span>Bannaa</span>
+    </span>
   );
 }

@@ -4,11 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { BrandMark } from "@/components/site/brand-mark";
+import { BrandLogo } from "@/components/site/brand-mark";
 import type { SiteContent } from "@/lib/content";
 import type { Locale } from "@/lib/i18n";
-
-type Theme = "dark" | "light";
 
 type SiteHeaderProps = {
   content: Pick<SiteContent, "statusBar" | "nav">;
@@ -26,12 +24,6 @@ export function SiteHeader({ content, locale }: SiteHeaderProps) {
 
 function StatusBar({ content }: { content: SiteContent["statusBar"] }) {
   const [clock, setClock] = useState<string | null>(null);
-  const [theme, setTheme] = useState<Theme>("dark");
-
-  useEffect(() => {
-    const stored = typeof window !== "undefined" ? localStorage.getItem("bannaa.theme") : null;
-    setTheme(stored === "light" ? "light" : "dark");
-  }, []);
 
   useEffect(() => {
     const tick = () => {
@@ -42,18 +34,6 @@ function StatusBar({ content }: { content: SiteContent["statusBar"] }) {
     const id = window.setInterval(tick, 1000);
     return () => window.clearInterval(id);
   }, []);
-
-  const toggleTheme = () => {
-    const next: Theme = theme === "dark" ? "light" : "dark";
-    setTheme(next);
-    if (next === "light") document.documentElement.setAttribute("data-theme", "light");
-    else document.documentElement.removeAttribute("data-theme");
-    try {
-      localStorage.setItem("bannaa.theme", next);
-    } catch {
-      /* noop */
-    }
-  };
 
   return (
     <div className="statusbar">
@@ -68,9 +48,6 @@ function StatusBar({ content }: { content: SiteContent["statusBar"] }) {
         <span>{content.signal}</span>
         <span className="statusbar__lang">{content.langLabel}</span>
         <span suppressHydrationWarning>{clock ?? "--:--:--"}</span>
-        <button type="button" className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
-          {theme === "dark" ? content.themeLight : content.themeDark}
-        </button>
       </div>
     </div>
   );
@@ -89,8 +66,7 @@ function SiteNav({ content, locale }: { content: SiteContent["nav"]; locale: Loc
     <nav className="nav">
       <div className="nav-left">
         <Link className="brand" href={`/${locale}`}>
-          <BrandMark size={28} />
-          <span>{locale === "ar" ? "بنّاء" : "Banna"}</span>
+          <BrandLogo locale={locale} />
         </Link>
         <div className="nav-links">
           {content.links.map((link) => (

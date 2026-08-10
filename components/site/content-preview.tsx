@@ -1,3 +1,4 @@
+import { HubVideoThumbnail } from "@/components/site/hub-video-thumbnail";
 import type { SiteContent } from "@/lib/content";
 import type { Locale } from "@/lib/i18n";
 
@@ -31,6 +32,7 @@ export function ContentPreview({ content, locale }: ContentPreviewProps) {
           return (
             <article key={item.id} className="card hub-card">
               <span className="corner" />
+              <HubVideoThumbnail item={item} />
               <div className="tpl-card__head">
                 <span className="tag">
                   <span className="pip" />

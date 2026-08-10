@@ -1,22 +1,26 @@
 /* ========= Bannaa — core styles ========= */
 
 :root {
-  /* Dark theme (default) */
-  --bg: #0a0a0a;
-  --bg-2: #111111;
-  --bg-3: #161616;
-  --line: #242424;
-  --line-2: #2e2e2e;
-  --fg: #f2f2ef;
-  --fg-dim: #9a9a93;
-  --fg-mute: #6b6b66;
-  --accent: #d4ff3a;
-  --accent-ink: #0a0a0a;
-  --warn: #ff6a3d;
-  --ok: #8ae66e;
-  --term-bg: #0d0d0d;
-  --term-ink: #f2f2ef;
-  --art-bg: #0f0f0f;
+  /* Light brand theme (default) */
+  --bg: #ffffff;
+  --bg-2: #f5f6f8;
+  --bg-3: #f6efe5;
+  --line: #ede2d3;
+  --line-2: #dce6de;
+  --fg: #111111;
+  --fg-dim: #596274;
+  --fg-mute: #8a94a6;
+  --accent: #2563eb;
+  --accent-ink: #ffffff;
+  --warn: #e8a48b;
+  --ok: #2563eb;
+  --term-bg: #ffffff;
+  --term-ink: #111111;
+  --art-bg: #f5f6f8;
+  --brand-coral: #efcfcb;
+  --brand-peach: #e8a48b;
+  --brand-cream: #f6efe5;
+  --brand-sage: #dce6de;
 
   --f-display: var(--font-display), "IBM Plex Sans Arabic", system-ui, sans-serif;
   --f-body: var(--font-body), "IBM Plex Sans Arabic", system-ui, sans-serif;
@@ -24,23 +28,6 @@
   --radius: 2px;
   --gutter: 24px;
   --density: 0.85;
-}
-
-:root[data-theme="light"] {
-  --bg: #ffffff;
-  --bg-2: #f6f6f4;
-  --bg-3: #eeece6;
-  --line: #e6e4dc;
-  --line-2: #c9c6bb;
-  --fg: #0e0e0c;
-  --fg-dim: #4a4740;
-  --fg-mute: #8a8677;
-  --accent: #ff6a3d;
-  --accent-ink: #ffffff;
-  --warn: #c94a1f;
-  --ok: #2f6d2d;
-  --term-bg: #0e0e0c;
-  --term-ink: #ffffff;
 }
 
 * { box-sizing: border-box; }
@@ -52,7 +39,8 @@ body {
   -webkit-font-smoothing: antialiased;
   line-height: 1.5;
   background:
-    radial-gradient(1200px 600px at 85% -10%, color-mix(in oklab, var(--accent) 8%, transparent), transparent 60%),
+    radial-gradient(900px 460px at 88% -8%, color-mix(in oklab, var(--brand-coral) 46%, transparent), transparent 64%),
+    radial-gradient(760px 420px at 4% 14%, color-mix(in oklab, var(--brand-cream) 72%, transparent), transparent 68%),
     var(--bg);
   min-height: 100vh;
   overflow-x: hidden;
@@ -83,13 +71,12 @@ body {
   font-family: var(--f-mono);
   font-size: 11px;
   color: var(--fg-dim);
-  background: color-mix(in oklab, var(--bg) 90%, transparent);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(8px);
   position: sticky;
   top: 0;
   z-index: 40;
 }
-:root[data-theme="light"] .statusbar { background: rgba(255, 255, 255, 0.92); }
 .statusbar .dot {
   width: 8px;
   height: 8px;
@@ -97,23 +84,9 @@ body {
   border-radius: 50%;
   display: inline-block;
   margin-inline-end: 8px;
-  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 18%, transparent);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
-:root[data-theme="light"] .statusbar .dot { box-shadow: 0 0 0 3px rgba(14, 14, 12, 0.10); }
 .statusbar .seg { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
-.statusbar .theme-toggle {
-  background: transparent;
-  border: 1px solid var(--line-2);
-  color: var(--fg-dim);
-  font-family: inherit;
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  padding: 3px 10px;
-  cursor: pointer;
-  border-radius: var(--radius);
-  text-transform: uppercase;
-}
-.statusbar .theme-toggle:hover { color: var(--fg); border-color: var(--fg-dim); }
 
 /* Nav */
 .nav {
@@ -138,7 +111,31 @@ body {
   color: var(--fg);
   text-decoration: none;
 }
-.brand svg { flex-shrink: 0; }
+.brand-mark {
+  width: var(--brand-mark-size);
+  height: var(--brand-mark-size);
+  display: inline-block;
+  position: relative;
+  flex-shrink: 0;
+}
+.brand-mark img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.brand-logo--ar {
+  width: 126px;
+  height: auto;
+  display: block;
+}
+.brand-logo--en {
+  gap: 10px;
+}
 .nav-links { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
 .nav-links a {
   padding: 8px 14px;
@@ -952,7 +949,7 @@ body {
 }
 .legal__back a:hover { color: var(--fg); }
 
-/* ========= Banna platform pages ========= */
+/* ========= Bannaa platform pages ========= */
 .accent { color: var(--accent); }
 .btn:disabled {
   cursor: not-allowed;
@@ -1049,6 +1046,61 @@ body {
   font-size: 14px;
   line-height: 1.6;
   margin: 0;
+}
+.mission-track-map {
+  padding-bottom: 32px;
+}
+.mission-track-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.mission-track-card {
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.mission-track-card h3 {
+  font-family: var(--f-display);
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin: 10px 0 0;
+}
+.mission-track-card p {
+  color: var(--fg-dim);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+.mission-track-card h4 {
+  color: var(--fg-dim);
+  font-family: var(--f-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  margin: 0 0 10px;
+  text-transform: uppercase;
+}
+.mission-track-card ul {
+  display: grid;
+  gap: 7px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.mission-track-card li {
+  color: var(--fg);
+  font-size: 13px;
+  line-height: 1.45;
+}
+.mission-track-card li::before {
+  content: "■";
+  color: var(--accent);
+  font-size: 8px;
+  margin-inline-end: 8px;
 }
 
 .track-card__outcomes {
@@ -1210,6 +1262,87 @@ body {
   flex-direction: column;
   gap: 14px;
 }
+.hub-video-thumb {
+  aspect-ratio: 16 / 9;
+  background:
+    linear-gradient(135deg, color-mix(in oklab, var(--accent) 18%, transparent), transparent 42%),
+    var(--bg-3);
+  border: 1px solid var(--line);
+  margin: calc(-20px * var(--density)) calc(-20px * var(--density)) 2px;
+  overflow: hidden;
+  position: relative;
+}
+.hub-video-thumb::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, transparent 0 42%, color-mix(in oklab, var(--accent) 18%, transparent) 42% 43%, transparent 43%),
+    linear-gradient(0deg, color-mix(in oklab, var(--bg) 38%, transparent), transparent 48%);
+  opacity: 0.9;
+}
+.hub-video-thumb__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.72;
+}
+.hub-video-thumb__play {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  z-index: 2;
+}
+.hub-video-thumb__play span {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--accent);
+  background: color-mix(in oklab, var(--term-bg) 78%, transparent);
+  display: grid;
+  place-items: center;
+}
+.hub-video-thumb__play span::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-block: 9px solid transparent;
+  border-inline-start: 14px solid var(--accent);
+  margin-inline-start: 3px;
+}
+.hub-video-thumb__copy {
+  position: absolute;
+  inset-inline: 14px;
+  bottom: 12px;
+  z-index: 3;
+  display: grid;
+  gap: 3px;
+}
+.hub-video-thumb__copy span {
+  color: var(--fg-mute);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+}
+.hub-video-thumb__copy strong {
+  color: var(--term-ink);
+  font-family: var(--f-display);
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.hub-video-thumb--founder {
+  background:
+    linear-gradient(135deg, color-mix(in oklab, var(--accent) 22%, transparent), transparent 46%),
+    repeating-linear-gradient(90deg, var(--bg-3) 0 18px, var(--bg-2) 18px 22px);
+}
+.hub-video-thumb--builder {
+  background:
+    radial-gradient(circle at 78% 24%, color-mix(in oklab, var(--accent) 26%, transparent), transparent 28%),
+    linear-gradient(135deg, var(--bg-3), var(--term-bg));
+}
 .hub-card h3 { font-size: 24px; }
 .hub-card__foot {
   margin-top: auto;
@@ -1315,7 +1448,7 @@ body {
 }
 .community-post {
   border: 1px solid var(--line);
-  background: color-mix(in oklab, var(--term-bg) 82%, var(--accent) 4%);
+  background: color-mix(in oklab, var(--bg-2) 88%, var(--accent) 6%);
   padding: 12px;
 }
 .community-post div {
@@ -1419,6 +1552,7 @@ body {
     grid-template-columns: 1fr;
   }
   .mission-pillars,
+  .mission-track-grid,
   .hub-grid {
     grid-template-columns: 1fr;
   }
@@ -1465,6 +1599,31 @@ body {
   letter-spacing: 0;
 }
 
+/* Arabic display text uses IBM Plex Sans Arabic directly. Inter is loaded
+   for English display typography only, so RTL pages should not rely on
+   browser font fallback for headings or branded Arabic copy. */
+[dir="rtl"] .display,
+[dir="rtl"] .brand,
+[dir="rtl"] .hero__title,
+[dir="rtl"] .sec-head h2,
+[dir="rtl"] .track-card__body h3,
+[dir="rtl"] .concept-cell h3,
+[dir="rtl"] .tpl-card h3,
+[dir="rtl"] .cta h2,
+[dir="rtl"] .legal__title,
+[dir="rtl"] .page-hero__title,
+[dir="rtl"] .mission-pillar h3,
+[dir="rtl"] .mission-track-card h3,
+[dir="rtl"] .step-card h2,
+[dir="rtl"] .resource-card h3,
+[dir="rtl"] .hub-card h3,
+[dir="rtl"] .track-detail__body h2,
+[dir="rtl"] .community-copy h2,
+[dir="rtl"] .action-form h2,
+[dir="rtl"] .hub-video-thumb__copy strong {
+  font-family: var(--f-body);
+}
+
 /* Arabic font overrides for mono-styled elements that carry Arabic copy.
    JetBrains Mono has no Arabic glyphs, so these elements use the body
    face (IBM Plex Sans Arabic) when the page is in RTL mode. Elements
@@ -1481,6 +1640,7 @@ body {
 [dir="rtl"] .footer__bottom,
 [dir="rtl"] .page-hero__eyebrow,
 [dir="rtl"] .track-detail__cols h3,
+[dir="rtl"] .mission-track-card h4,
 [dir="rtl"] .hub-card__track,
 [dir="rtl"] .statusbar__lang {
   font-family: var(--f-body);
