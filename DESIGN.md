@@ -186,9 +186,12 @@ The current site structure is:
 - Homepage with hero, mission, three tracks, content preview, community, and CTA.
 - Mission/about page.
 - Tracks/learn page with Founder Skill Set, Building in the Age of AI, and Builder Skill Set.
+- Track roadmap page with Done, Doing, and To do status columns for each track.
 - Community page with simple signup and posting UI.
 - Content hub with filterable videos, shorts, X threads, and newsletters.
+- TikTok and YouTube channel section for sourcing short and long-form video posts.
 - Resources, join/get-started, and contact/partnership pages.
+- Brand guideline page displaying the supplied visual identity reference.
 
 ## Components
 
@@ -199,6 +202,8 @@ The current site structure is:
 **Cards:** Cards should be light gray or warm cream with fine borders. Use flat color changes for hover states; avoid shadows and ornamental depth.
 
 **Video Thumbnails:** Video posts in the content hub should show a thumbnail area. Use light, brand-colored generated thumbnails by default, then replace with real video stills when available.
+
+**Video Channels:** Keep TikTok and YouTube links in the content system, not hard-coded in page markup. YouTube videos should render as lightweight fetched thumbnail cards from the public channel feed. TikTok should use the official profile embed so the account can load current public videos without a private API key.
 
 **Community:** Signup requires name and email at minimum and uses a signed HTTP-only cookie through Next route handlers. Production deployments must provide `COMMUNITY_AUTH_SECRET`; posts are ready to connect to a persistent database layer.
 

@@ -62,11 +62,9 @@ export function SiteFooter({ content, locale }: SiteFooterProps) {
           </div>
         ))}
         <div className="footer__coords">
-          LAT 24.71
-          <br />
-          LNG 46.67
-          <br />
-          v3.0.1
+          <span>LAT 24.71</span>
+          <span>LNG 46.67</span>
+          <span>v3.0.1</span>
         </div>
       </div>
       <hr className="hairline" style={{ margin: "32px 0 16px" }} />

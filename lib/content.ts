@@ -55,6 +55,17 @@ export type VideoChannel = {
   formats: string[];
 };
 
+export type ExternalVideo = {
+  id: string;
+  platform: "youtube";
+  title: string;
+  href: string;
+  thumbnail: string;
+  published: string;
+  channelTitle: string;
+  views?: string;
+};
+
 export type ResourceItem = {
   title: string;
   desc: string;
@@ -240,6 +251,7 @@ export type SiteContent = {
     mission: PageHero & { sections: LegalSection[] };
     tracks: PageHero;
     roadmap: PageHero;
+    brand: PageHero;
     community: PageHero;
     hub: PageHero;
   };
@@ -804,6 +816,12 @@ export const siteContent: Record<Locale, SiteContent> = {
         accent: "تم، قيد العمل، لاحقاً.",
         intro: "عرض واضح لما أصبح أساساً في المنهج، وما يتم تحويله إلى محتوى الآن، وما ينتظر توسعة لاحقة."
       },
+      brand: {
+        eyebrow: "/ الهوية",
+        title: "دليل هوية بنّاء",
+        accent: "الشعار، الألوان، والاستخدام.",
+        intro: "المرجع البصري المختصر لهوية بنّاء: نظام الشعار، المساحات، الألوان، الخطوط، وأمثلة الاستخدام."
+      },
       community: {
         eyebrow: "/ المجتمع",
         title: "غرفة تشغيل",
@@ -836,6 +854,7 @@ export const siteContent: Record<Locale, SiteContent> = {
             { label: "المهمة", href: "/ar/mission" },
             { label: "تعلّم", href: "/ar/tracks" },
             { label: "الخطة", href: "/ar/roadmap" },
+            { label: "الهوية", href: "/ar/brand" },
             { label: "المجتمع", href: "/ar/community" },
             { label: "المحتوى", href: "/ar/hub" }
           ]
@@ -1470,6 +1489,12 @@ export const siteContent: Record<Locale, SiteContent> = {
         accent: "Done, doing, to do.",
         intro: "A clear view of what is already established, what is being converted into content now, and what waits for later expansion."
       },
+      brand: {
+        eyebrow: "/ brand",
+        title: "Bannaa brand guide",
+        accent: "Logo, colors, and usage.",
+        intro: "The compact visual reference for Bannaa: logo system, clear space, color palette, typography, and usage examples."
+      },
       community: {
         eyebrow: "/ community",
         title: "An operating room",
@@ -1502,6 +1527,7 @@ export const siteContent: Record<Locale, SiteContent> = {
             { label: "Mission", href: "/en/mission" },
             { label: "Learn", href: "/en/tracks" },
             { label: "Roadmap", href: "/en/roadmap" },
+            { label: "Brand", href: "/en/brand" },
             { label: "Community", href: "/en/community" },
             { label: "Content", href: "/en/hub" }
           ]
