@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { notFound } from "next/navigation";
 import type { PropsWithChildren } from "react";
 
@@ -29,15 +28,6 @@ export async function generateMetadata({ params }: LocaleLayoutProps): Promise<M
   };
 }
 
-const THEME_INIT_SCRIPT = `(() => {
-  try {
-    const saved = localStorage.getItem('bannaa.theme');
-    const theme = saved === 'light' || saved === 'dark' ? saved : 'dark';
-    if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
-    else document.documentElement.removeAttribute('data-theme');
-  } catch (_) {}
-})();`;
-
 export default async function LocaleLayout({ children, params }: LocaleLayoutProps) {
   const { locale } = await params;
 
@@ -48,13 +38,8 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const direction = getDirection(locale as Locale);
 
   return (
-    <>
-      <Script id="theme-init" strategy="beforeInteractive">
-        {THEME_INIT_SCRIPT}
-      </Script>
-      <div className="locale-shell" dir={direction} lang={locale}>
-        {children}
-      </div>
-    </>
+    <div className="locale-shell" dir={direction} lang={locale}>
+      {children}
+    </div>
   );
 }

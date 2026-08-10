@@ -1,4 +1,4 @@
-import { IBM_Plex_Sans_Arabic, JetBrains_Mono, Rubik } from "next/font/google";
+import { IBM_Plex_Sans_Arabic, Inter, JetBrains_Mono } from "next/font/google";
 import type { PropsWithChildren } from "react";
 import { Suspense } from "react";
 
@@ -11,8 +11,8 @@ const body = IBM_Plex_Sans_Arabic({
   variable: "--font-body"
 });
 
-const display = Rubik({
-  subsets: ["latin", "arabic"],
+const display = Inter({
+  subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800", "900"],
   variable: "--font-display"
 });

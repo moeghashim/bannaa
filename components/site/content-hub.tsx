@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 
+import { HubVideoThumbnail } from "@/components/site/hub-video-thumbnail";
 import type { SiteContent, TrackId } from "@/lib/content";
 
 type ContentHubProps = {
@@ -41,6 +42,7 @@ export function ContentHub({ content }: ContentHubProps) {
           return (
             <article key={item.id} className="card hub-card">
               <span className="corner" />
+              <HubVideoThumbnail item={item} />
               <div className="tpl-card__head">
                 <span className="tag">
                   <span className="pip" />

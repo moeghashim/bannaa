@@ -55,3 +55,7 @@ the exact hash).
 ## 2026-08-08
 
 - Build bilingual Banna platform site
+
+## 2026-08-10
+
+- Refresh Banna site branding and mission content
