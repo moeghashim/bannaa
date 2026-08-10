@@ -1448,7 +1448,7 @@ body {
   display: grid;
   gap: 12px;
   grid-template-columns: 34px minmax(0, 1fr);
-  min-height: 132px;
+  min-height: auto;
   padding: 14px;
 }
 .roadmap-column__item-num {

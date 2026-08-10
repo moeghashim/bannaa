@@ -28,7 +28,7 @@ Everything Banna teaches and builds content around falls into three tracks.
 This track prepares the individual who will start and lead the company.
 
 - What it means to be a solo founder in the AI era
-- Thinking big while staying lean (1–10 person companies targeting significant revenue)
+- Thinking big while staying lean (1–10 person companies targeting tens or hundreds of millions)
 - Solo founder mindset and daily operating system
 - Building a highly performative team of under ten people
 - Hiring for AI-native companies (skills, culture, speed)

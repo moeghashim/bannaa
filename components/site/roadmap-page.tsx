@@ -72,7 +72,7 @@ export function RoadmapPage({ content, locale }: RoadmapPageProps) {
                             </span>
                             <div>
                               <h3>{item.title}</h3>
-                              <p>{item.desc}</p>
+                              {item.desc ? <p>{item.desc}</p> : null}
                             </div>
                           </li>
                         ))}

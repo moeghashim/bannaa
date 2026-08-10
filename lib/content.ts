@@ -82,7 +82,7 @@ export type RoadmapStatus = "done" | "doing" | "todo";
 
 export type RoadmapItem = {
   title: string;
-  desc: string;
+  desc?: string;
 };
 
 export type RoadmapColumn = {
@@ -624,9 +624,10 @@ export const siteContent: Record<Locale, SiteContent> = {
               label: "تم",
               summary: "الأساس الفكري والتشغيلي للمؤسس الفردي.",
               items: [
-                { title: "المؤسس الفردي في عصر AI", desc: "ما يعنيه أن تبدأ وتقود شركة صغيرة عالية الإنتاجية." },
-                { title: "تفكير كبير مع شركة lean", desc: "شركة من 1 إلى 10 أشخاص تستهدف إيرادات كبيرة بدون تضخيم الفريق." },
-                { title: "نظام التشغيل اليومي", desc: "عادات وقرارات وتركيز المؤسس عندما يكون التنفيذ سريعاً." }
+                { title: "ما يعنيه أن تكون مؤسساً فردياً في عصر الذكاء الاصطناعي" },
+                { title: "التفكير بشكل كبير مع البقاء lean (شركات من 1 إلى 10 أشخاص تستهدف عشرات أو مئات الملايين)" },
+                { title: "عقلية المؤسس الفردي ونظام التشغيل اليومي" },
+                { title: "بناء فريق عالي الأداء من أقل من عشرة أشخاص" }
               ]
             },
             {
@@ -634,9 +635,10 @@ export const siteContent: Record<Locale, SiteContent> = {
               label: "قيد العمل",
               summary: "تحويل مهارات القيادة الأولى إلى مواد عملية.",
               items: [
-                { title: "فريق أقل من عشرة", desc: "بناء فريق عالي الأداء يملك السرعة والثقافة والمهارة." },
-                { title: "التوظيف لشركات AI-native", desc: "ما الذي تبحث عنه في المهارات والسلوك وطريقة العمل." },
-                { title: "متطلبات المنتج عندما يشحن AI بسرعة", desc: "كتابة PRD واضح عندما يمكن تنفيذ المزايا خلال ليلة." }
+                { title: "التوظيف لشركات AI-native (المهارات، الثقافة، السرعة)" },
+                { title: "تعريف متطلبات المنتج عندما يستطيع AI شحن المزايا خلال ليلة" },
+                { title: "التمويل مقابل البناء الذاتي والبقاء مربحاً" },
+                { title: "فهم حوافز المستثمر مقابل حوافز المؤسس" }
               ]
             },
             {
@@ -644,9 +646,11 @@ export const siteContent: Record<Locale, SiteContent> = {
               label: "لاحقاً",
               summary: "موضوعات النمو والتمويل والحوكمة عند ظهور النتائج.",
               items: [
-                { title: "التمويل مقابل الربحية", desc: "متى تجمع تمويلاً، متى تبقى مربحاً، وكيف تفهم حوافز المستثمر." },
-                { title: "المجلس والنمو غير التقليدي", desc: "التعامل مع ضغط المجلس عندما يكون النمو حقيقياً لكنه ليس VC-style." },
-                { title: "الحفاظ على الرؤية والسيطرة", desc: "توسيع القرار بعد فريق التأسيس بدون فقدان اتجاه الشركة." }
+                { title: "التعامل مع المجلس في شركات تنمو بأسلوب غير VC" },
+                { title: "ماذا يحدث عندما يكون النمو حقيقياً لكنه غير مقبول لدى صناديق رأس المال الجريء" },
+                { title: "ضغط المجلس لتغيير الاتجاه نحو معدلات نمو أعلى" },
+                { title: "توسيع اتخاذ القرار بعد تجاوز فريق التأسيس" },
+                { title: "الحفاظ على سيطرة المؤسس ورؤيته داخل فرق صغيرة عالية الإنتاجية" }
               ]
             }
           ]
@@ -659,9 +663,10 @@ export const siteContent: Record<Locale, SiteContent> = {
               label: "تم",
               summary: "إطار البناء السريع وفهم أدوات AI الأساسية.",
               items: [
-                { title: "السرعة كميزة تنافسية", desc: "اختصار دورة البناء والشحن من أشهر إلى أيام." },
-                { title: "فهم LLMs للبنّائين", desc: "كيف تعمل النماذج عملياً وما حدودها في المنتج." },
-                { title: "LLM harnesses", desc: "طبقة الاختبار والتحكم التي تجعل النموذج جزءاً قابلاً للإدارة." }
+                { title: "السرعة كميزة تنافسية" },
+                { title: "فهم LLMs وكيف تعمل فعلياً للبنّائين" },
+                { title: "LLM harnesses: ما هي وكيف تستخدمها" },
+                { title: "المنتجات متعددة اللاعبين وخصائص التعاون اللحظي" }
               ]
             },
             {
@@ -669,9 +674,10 @@ export const siteContent: Record<Locale, SiteContent> = {
               label: "قيد العمل",
               summary: "تشغيل الوكلاء والنشر والتكرار المستمر.",
               items: [
-                { title: "Agent coding", desc: "كتابة الكود مع وكلاء AI وللوكلاء داخل نظام تطوير واضح." },
-                { title: "النشر والتطوير المحلي/البعيد", desc: "اختيار بيئة التطوير والاستدلال والنشر المناسبة لفريق صغير." },
-                { title: "اختبار وتحديث وتكرار مستمر", desc: "حلقة يومية للشحن والقياس والتحسين بدون انتظار طويل." }
+                { title: "Agent coding: كتابة الكود مع وكلاء AI وللوكلاء" },
+                { title: "استراتيجيات نشر المنتجات المدعومة بالذكاء الاصطناعي" },
+                { title: "التطوير والاستدلال محلياً مقابل عن بُعد" },
+                { title: "حلقات التحديث والاختبار والتكرار المستمر" }
               ]
             },
             {
@@ -679,9 +685,10 @@ export const siteContent: Record<Locale, SiteContent> = {
               label: "لاحقاً",
               summary: "موضوعات المنتج المتقدمة عندما يصبح AI في المسار الحرج.",
               items: [
-                { title: "المنتجات متعددة اللاعبين", desc: "تعاون لحظي وخصائص real-time داخل المنتجات." },
-                { title: "المراقبة والاعتمادية", desc: "Observability لأنظمة الوكلاء عندما تبدأ خدمة مستخدمين حقيقيين." },
-                { title: "التكلفة والأمان", desc: "اقتصاد التوكن، التحكم في المصروف، والمخاطر الأمنية." }
+                { title: "الشحن خلال أيام بدلاً من أشهر" },
+                { title: "المراقبة والـ observability لأنظمة الوكلاء" },
+                { title: "ضبط التكلفة واقتصاد التوكن للفرق الصغيرة" },
+                { title: "الأمان والاعتمادية عندما يكون AI في المسار الحرج" }
               ]
             }
           ]
@@ -694,9 +701,12 @@ export const siteContent: Record<Locale, SiteContent> = {
               label: "تم",
               summary: "تعريف مهارة البنّاء الجنراليست في فريق صغير.",
               items: [
-                { title: "من التخصص إلى الجنراليست", desc: "لماذا تقل قيمة الحدود الصارمة بين الأدوار في عصر AI." },
-                { title: "كل شخص يجب أن يفهم التصميم", desc: "قرارات واجهة وتجربة لا تنتظر فريقاً منفصلاً." },
-                { title: "كتابة الوثائق والمواصفات", desc: "استخدام AI لصناعة docs و product specs واضحة." }
+                { title: "التحول من الأدوار المتخصصة إلى البنّائين عامّي المهارات" },
+                { title: "لماذا يجب أن يكون كل فرد في الفريق جيداً في التصميم" },
+                { title: "كتابة وثائق ومواصفات منتج واضحة باستخدام AI" },
+                { title: "بناء المنتج بنفسك" },
+                { title: "اختبار المنتج بعمق" },
+                { title: "نشر النظام الحي وامتلاكه" }
               ]
             },
             {
@@ -704,19 +714,27 @@ export const siteContent: Record<Locale, SiteContent> = {
               label: "قيد العمل",
               summary: "تحويل مهارة التنفيذ إلى مسار تطبيقي.",
               items: [
-                { title: "بناء المنتج بنفسك", desc: "استخدام AI لتقليل الفجوة بين الفكرة والنظام العامل." },
-                { title: "اختبار ونشر وامتلاك النظام", desc: "كل بنّاء يفهم ما يحدث قبل وبعد الإطلاق." },
-                { title: "التكرار بدون احتراق", desc: "إيقاع عمل سريع يحافظ على الطاقة والوضوح." }
+                { title: "التكرار بسرعة بدون احتراق" },
+                { title: "ما الذي تغيّر: المهارة الجديدة المتوقعة من كل عضو في الفريق" },
+                { title: "صناعة ثقافة فريق مريحة مع التغيير السريع المستمر" },
+                { title: "تقبّل أن المنتج قد يتغير بشكل كبير كل ثلاثة أشهر" },
+                { title: "تقبّل أن المنتج قد يُعاد اختراعه بالكامل كل ستة أشهر" },
+                { title: "منع الاحتراق في بيئات AI عالية السرعة" },
+                { title: "كيف يبني كل فريق صغير خندقه التنافسي ويدافع عنه" }
               ]
             },
             {
               status: "todo",
               label: "لاحقاً",
-              summary: "الموات ومسارات التعلم حسب نقطة البداية.",
+              summary: "الخنادق التنافسية ومسارات التعلم حسب نقطة البداية.",
               items: [
-                { title: "التغيير المستمر في المنتج", desc: "تقبّل تغيّر المنتج كل ثلاثة أشهر وربما إعادة اختراعه كل ستة أشهر." },
-                { title: "موات الفرق الصغيرة", desc: "كيف يبني فريق من 1 إلى 10 أشخاص دفاعه الخاص." },
-                { title: "مسارات تعلم عملية", desc: "ما يتعلمه التقني أو المصمم أو التجاري لسد الفجوات." }
+                { title: "أنواع الخنادق التنافسية المناسبة لشركات AI من 1 إلى 10 أشخاص" },
+                { title: "كيف تختار ما تتعلمه لاحقاً كصاحب مهارات عامة" },
+                { title: "إذا كنت تقنياً: مهارات الأعمال والتصميم التي تتعلمها لسد الفجوات" },
+                { title: "إذا كنت مصمماً: المهارات التقنية والتجارية التي تتعلمها لسد الفجوات" },
+                { title: "إذا كنت تجارياً: المهارات التقنية والتصميمية التي تتعلمها لسد الفجوات" },
+                { title: "مسارات تعلم عملية لكل نقطة بداية" },
+                { title: "الموازنة بين العمق والاتساع عندما يكون الوقت محدوداً" }
               ]
             }
           ]
@@ -1297,9 +1315,10 @@ export const siteContent: Record<Locale, SiteContent> = {
               label: "Done",
               summary: "The mindset and operating base for a solo founder.",
               items: [
-                { title: "Solo founder in the AI era", desc: "What it means to start and lead a high-output micro-company." },
-                { title: "Think big while staying lean", desc: "A company of 1 to 10 people targeting serious revenue without bloating the team." },
-                { title: "Daily operating system", desc: "Founder habits, decisions, and focus when execution speed rises." }
+                { title: "What it means to be a solo founder in the AI era" },
+                { title: "Thinking big while staying lean (1–10 person companies targeting tens or hundreds of millions)" },
+                { title: "Solo founder mindset and daily operating system" },
+                { title: "Building a highly performative team of under ten people" }
               ]
             },
             {
@@ -1307,9 +1326,10 @@ export const siteContent: Record<Locale, SiteContent> = {
               label: "Doing",
               summary: "Turning early leadership skills into practical material.",
               items: [
-                { title: "Team under ten", desc: "Build a high-performance team with speed, culture, and capability." },
-                { title: "Hiring for AI-native companies", desc: "What to look for in skills, behavior, and ways of working." },
-                { title: "Product requirements when AI ships fast", desc: "Write clear PRDs when features can be built overnight." }
+                { title: "Hiring for AI-native companies (skills, culture, speed)" },
+                { title: "Defining product requirements when AI can ship features overnight" },
+                { title: "Fundraising versus bootstrapping and staying profitable" },
+                { title: "Understanding investor incentives versus founder incentives" }
               ]
             },
             {
@@ -1317,9 +1337,11 @@ export const siteContent: Record<Locale, SiteContent> = {
               label: "To do",
               summary: "Growth, funding, and governance topics once results appear.",
               items: [
-                { title: "Fundraising versus profitability", desc: "When to raise, when to stay profitable, and how investor incentives work." },
-                { title: "Boards and non-standard growth", desc: "Handle board pressure when growth is real but not VC-style." },
-                { title: "Keep control and vision", desc: "Scale decision-making beyond the founding team without losing direction." }
+                { title: "Dealing with the board in non-VC-style growth companies" },
+                { title: "What happens when growth is real but not “VC acceptable”" },
+                { title: "Board pressure to change direction for higher growth rates" },
+                { title: "Scaling decision-making as the company grows past the founding team" },
+                { title: "Maintaining founder control and vision in small high-output teams" }
               ]
             }
           ]
@@ -1332,9 +1354,10 @@ export const siteContent: Record<Locale, SiteContent> = {
               label: "Done",
               summary: "The fast-building frame and core AI tooling basics.",
               items: [
-                { title: "Speed as advantage", desc: "Compress build and shipping cycles from months to days." },
-                { title: "LLMs for builders", desc: "How models actually work in products and where their limits show up." },
-                { title: "LLM harnesses", desc: "The testing and control layer that makes a model manageable." }
+                { title: "Speed as a competitive advantage" },
+                { title: "Understanding LLMs and how they actually work for builders" },
+                { title: "LLM harnesses: what they are and how to use them" },
+                { title: "Multiplayer products and real-time collaboration features" }
               ]
             },
             {
@@ -1342,9 +1365,10 @@ export const siteContent: Record<Locale, SiteContent> = {
               label: "Doing",
               summary: "Operating agents, deployment, and continuous iteration.",
               items: [
-                { title: "Agent coding", desc: "Write code with AI agents and for agents inside a clear development system." },
-                { title: "Local and remote development", desc: "Choose development, inference, and deployment setups for a tiny team." },
-                { title: "Continuous update, test, iterate", desc: "A daily loop for shipping, measuring, and improving without long waits." }
+                { title: "Agent coding: writing code with and for AI agents" },
+                { title: "Deployment strategies for AI-powered products" },
+                { title: "Local versus remote development and inference" },
+                { title: "Continuous update, test, and iterate loops" }
               ]
             },
             {
@@ -1352,9 +1376,10 @@ export const siteContent: Record<Locale, SiteContent> = {
               label: "To do",
               summary: "Advanced product topics once AI sits in the critical path.",
               items: [
-                { title: "Multiplayer products", desc: "Real-time collaboration features inside AI-powered products." },
-                { title: "Observability and reliability", desc: "Monitor agent systems once real users depend on them." },
-                { title: "Cost and security", desc: "Token economics, spend control, and AI security risks." }
+                { title: "Shipping in days instead of months" },
+                { title: "Observability and monitoring for agent-based systems" },
+                { title: "Cost control and token economics for small teams" },
+                { title: "Security and reliability when AI is in the critical path" }
               ]
             }
           ]
@@ -1367,9 +1392,12 @@ export const siteContent: Record<Locale, SiteContent> = {
               label: "Done",
               summary: "The definition of the generalist builder on a tiny team.",
               items: [
-                { title: "From specialist to generalist", desc: "Why hard role boundaries matter less in the age of AI." },
-                { title: "Everyone understands design", desc: "Interface and experience decisions cannot wait for a separate team." },
-                { title: "Documents and specs", desc: "Use AI to create clear documents and product specs." }
+                { title: "The shift from specialized roles to generalist builders" },
+                { title: "Why everyone on the team must be good at design" },
+                { title: "Writing clear documents and product specs with AI" },
+                { title: "Building the product yourself" },
+                { title: "Testing the product thoroughly" },
+                { title: "Deploying and owning the live system" }
               ]
             },
             {
@@ -1377,9 +1405,13 @@ export const siteContent: Record<Locale, SiteContent> = {
               label: "Doing",
               summary: "Turning execution skill into an applied learning path.",
               items: [
-                { title: "Build the product yourself", desc: "Use AI to close the gap between idea and working system." },
-                { title: "Test, deploy, own the system", desc: "Every builder understands what happens before and after launch." },
-                { title: "Iterate without burnout", desc: "A high-speed work rhythm that preserves energy and clarity." }
+                { title: "Iterating rapidly without burnout" },
+                { title: "What changed: the new expected skill set for every team member" },
+                { title: "Creating a team culture comfortable with continuous fast change" },
+                { title: "Accepting that the product can change significantly every three months" },
+                { title: "Accepting that the product can be reinvented entirely every six months" },
+                { title: "Preventing burnout in high-velocity AI environments" },
+                { title: "How each small team builds and defends its own moat" }
               ]
             },
             {
@@ -1387,9 +1419,13 @@ export const siteContent: Record<Locale, SiteContent> = {
               label: "To do",
               summary: "Moats and learning paths based on each builder's starting point.",
               items: [
-                { title: "Continuous product change", desc: "Accept major product change every three months and reinvention every six." },
-                { title: "Moats for small teams", desc: "How a team of 1 to 10 people builds and defends its edge." },
-                { title: "Practical learning paths", desc: "What technical, design, and business-oriented builders learn to close gaps." }
+                { title: "Moat types that work for 1–10 person AI companies" },
+                { title: "How to choose what to learn next as a generalist" },
+                { title: "If you are technical: what business and design skills to learn to cover the gaps" },
+                { title: "If you are design-oriented: what technical and business skills to learn to cover the gaps" },
+                { title: "If you are business-oriented: what technical and design skills to learn to cover the gaps" },
+                { title: "Practical learning paths for each starting point" },
+                { title: "Balancing depth versus breadth when time is limited" }
               ]
             }
           ]
