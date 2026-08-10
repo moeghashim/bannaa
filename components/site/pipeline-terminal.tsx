@@ -8,6 +8,15 @@ type PipelineTerminalProps = {
   content: SiteContent["hero"]["terminal"];
 };
 
+const agentOrbitPoints = [
+  { x: 300, y: 130 },
+  { x: 250, y: 216.6025403784 },
+  { x: 150, y: 216.6025403784 },
+  { x: 100, y: 130 },
+  { x: 150, y: 43.3974596216 },
+  { x: 250, y: 43.3974596216 }
+];
+
 export function PipelineTerminal({ content }: PipelineTerminalProps) {
   const [phase, setPhase] = useState(0);
 
@@ -176,25 +185,17 @@ function AgentCore({ active }: { active: boolean }) {
           }}
         />
       ))}
-      {[0, 1, 2, 3, 4, 5].map((i) => {
-        const a = (i / 6) * Math.PI * 2;
-        return (
-          <g
-            key={i}
-            style={{
-              transformOrigin: "200px 130px",
-              animation: active ? "orbit 8s linear infinite" : undefined
-            }}
-          >
-            <circle
-              cx={200 + Math.cos(a) * 100}
-              cy={130 + Math.sin(a) * 100}
-              r={4}
-              fill={i % 2 === 0 ? "var(--accent)" : "var(--fg)"}
-            />
-          </g>
-        );
-      })}
+      {agentOrbitPoints.map((point, i) => (
+        <g
+          key={`${point.x}-${point.y}`}
+          style={{
+            transformOrigin: "200px 130px",
+            animation: active ? "orbit 8s linear infinite" : undefined
+          }}
+        >
+          <circle cx={point.x} cy={point.y} r={4} fill={i % 2 === 0 ? "var(--accent)" : "var(--fg)"} />
+        </g>
+      ))}
       <circle cx={200} cy={130} r={22} fill="var(--term-bg)" stroke="var(--accent)" strokeWidth={1.5} />
       <circle cx={200} cy={130} r={10} fill="var(--accent)" opacity={active ? 1 : 0.4}>
         {active && <animate attributeName="r" values="8;14;8" dur="1.6s" repeatCount="indefinite" />}

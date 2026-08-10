@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { HubPage } from "@/components/site/hub-page";
+import { BrandGuidelinePage } from "@/components/site/brand-guideline-page";
 import { siteContent } from "@/lib/content";
 import { isLocale } from "@/lib/i18n";
-import { getLatestYouTubeVideos } from "@/lib/video-feeds";
-
-export const revalidate = 3600;
 
 type PageProps = {
   params: Promise<{ locale: string }>;
@@ -15,13 +12,12 @@ type PageProps = {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
-  const copy = siteContent[locale].pages.hub;
+  const copy = siteContent[locale].pages.brand;
   return { title: copy.title, description: copy.intro };
 }
 
-export default async function HubRoute({ params }: PageProps) {
+export default async function BrandRoute({ params }: PageProps) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
-  const latestVideos = await getLatestYouTubeVideos({ limit: 6 });
-  return <HubPage content={siteContent[locale]} locale={locale} latestVideos={latestVideos} />;
+  return <BrandGuidelinePage content={siteContent[locale]} locale={locale} />;
 }
