@@ -61,3 +61,4 @@ the exact hash).
 - Refresh Banna site branding and mission content
 - Add bilingual roadmap page
 - Add brand page and live video hub
+- Expand bilingual roadmap topics
