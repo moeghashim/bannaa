@@ -59,3 +59,4 @@ the exact hash).
 ## 2026-08-10
 
 - Refresh Banna site branding and mission content
+- Add bilingual roadmap page
