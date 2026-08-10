@@ -45,6 +45,16 @@ export type HubItem = {
   };
 };
 
+export type VideoChannel = {
+  platform: string;
+  handle: string;
+  title: string;
+  desc: string;
+  href: string;
+  cta: string;
+  formats: string[];
+};
+
 export type ResourceItem = {
   title: string;
   desc: string;
@@ -55,6 +65,25 @@ export type ResourceItem = {
 export type MissionPillar = {
   title: string;
   desc: string;
+};
+
+export type RoadmapStatus = "done" | "doing" | "todo";
+
+export type RoadmapItem = {
+  title: string;
+  desc: string;
+};
+
+export type RoadmapColumn = {
+  status: RoadmapStatus;
+  label: string;
+  summary: string;
+  items: RoadmapItem[];
+};
+
+export type RoadmapTrack = {
+  id: TrackId;
+  columns: RoadmapColumn[];
 };
 
 export type PageHero = {
@@ -159,6 +188,13 @@ export type SiteContent = {
     description: string;
     filterAll: string;
     typeLabels: Record<ContentType, string>;
+    videoChannels: {
+      eyebrow: string;
+      title: string;
+      titleAccent: string;
+      description: string;
+      channels: VideoChannel[];
+    };
     items: HubItem[];
   };
   resources: {
@@ -167,6 +203,13 @@ export type SiteContent = {
       title: string;
       items: ResourceItem[];
     }[];
+  };
+  roadmap: {
+    hero: PageHero;
+    sourceLabel: string;
+    sourceHref: string;
+    legend: Record<RoadmapStatus, string>;
+    tracks: RoadmapTrack[];
   };
   join: {
     hero: PageHero;
@@ -196,6 +239,7 @@ export type SiteContent = {
   pages: {
     mission: PageHero & { sections: LegalSection[] };
     tracks: PageHero;
+    roadmap: PageHero;
     community: PageHero;
     hub: PageHero;
   };
@@ -250,6 +294,7 @@ export const siteContent: Record<Locale, SiteContent> = {
         { id: "home", label: "الرئيسية", href: "/ar" },
         { id: "mission", label: "المهمة", href: "/ar/mission" },
         { id: "tracks", label: "تعلّم", href: "/ar/tracks" },
+        { id: "roadmap", label: "الخطة", href: "/ar/roadmap" },
         { id: "community", label: "المجتمع", href: "/ar/community" },
         { id: "hub", label: "المحتوى", href: "/ar/hub" },
         { id: "resources", label: "الموارد", href: "/ar/resources" }
@@ -427,6 +472,33 @@ export const siteContent: Record<Locale, SiteContent> = {
         thread: "خيط X",
         newsletter: "نشرة"
       },
+      videoChannels: {
+        eyebrow: "/ قنوات الفيديو",
+        title: "فيديوهات بنّاء",
+        titleAccent: "من TikTok و YouTube.",
+        description:
+          "أضف فيديوهات قصيرة وطويلة من القناتين، ثم اربط كل فيديو بالمسار المناسب داخل مركز المحتوى.",
+        channels: [
+          {
+            platform: "TikTok",
+            handle: "@bannaahq",
+            title: "مقاطع قصيرة وسريعة",
+            desc: "أفضل مكان للقطات التنفيذ، الأفكار المختصرة، والتجارب السريعة التي تقود الناس إلى المسارات.",
+            href: "https://www.tiktok.com/@bannaahq",
+            cta: "افتح TikTok",
+            formats: ["Shorts", "Founder clips", "AI build clips"]
+          },
+          {
+            platform: "YouTube",
+            handle: "@bannaateam",
+            title: "فيديوهات شرح أطول",
+            desc: "مساحة للفيديوهات التعليمية، شروحات المسارات، والمحادثات العميقة مع مؤسسين وبنّائين.",
+            href: "https://www.youtube.com/@bannaateam",
+            cta: "افتح YouTube",
+            formats: ["Long-form", "Tutorials", "Founder talks"]
+          }
+        ]
+      },
       items: [
         {
           id: "h1",
@@ -512,6 +584,129 @@ export const siteContent: Record<Locale, SiteContent> = {
           items: [
             { title: "Brief منتج AI", desc: "تحويل الفكرة إلى متطلبات واضحة للوكيل أو الفريق.", href: "#", tag: "AI BUILD" },
             { title: "قائمة إطلاق أسبوعية", desc: "ما يجب شحنه وقياسه كل أسبوع.", href: "#", tag: "OPS" }
+          ]
+        }
+      ]
+    },
+    roadmap: {
+      hero: {
+        eyebrow: "/ الخطة",
+        title: "خارطة المسارات",
+        accent: "من الفكرة إلى الشركة.",
+        intro:
+          "خطة تنفيذية للمحتوى والمهارات داخل المسارات الثلاثة. كل عمود يوضّح ما تم تثبيته، ما يتم بناؤه الآن، وما سيأتي لاحقاً."
+      },
+      sourceLabel: "مبنية على ملف الهدف والمسارات",
+      sourceHref: "/assets/banna-goal-and-tracks.md",
+      legend: {
+        done: "تم تثبيته كأساس للمسار",
+        doing: "قيد التحويل إلى دروس وتمارين وقوالب",
+        todo: "قادم في توسعة المنهج والمحتوى"
+      },
+      tracks: [
+        {
+          id: "founder",
+          columns: [
+            {
+              status: "done",
+              label: "تم",
+              summary: "الأساس الفكري والتشغيلي للمؤسس الفردي.",
+              items: [
+                { title: "المؤسس الفردي في عصر AI", desc: "ما يعنيه أن تبدأ وتقود شركة صغيرة عالية الإنتاجية." },
+                { title: "تفكير كبير مع شركة lean", desc: "شركة من 1 إلى 10 أشخاص تستهدف إيرادات كبيرة بدون تضخيم الفريق." },
+                { title: "نظام التشغيل اليومي", desc: "عادات وقرارات وتركيز المؤسس عندما يكون التنفيذ سريعاً." }
+              ]
+            },
+            {
+              status: "doing",
+              label: "قيد العمل",
+              summary: "تحويل مهارات القيادة الأولى إلى مواد عملية.",
+              items: [
+                { title: "فريق أقل من عشرة", desc: "بناء فريق عالي الأداء يملك السرعة والثقافة والمهارة." },
+                { title: "التوظيف لشركات AI-native", desc: "ما الذي تبحث عنه في المهارات والسلوك وطريقة العمل." },
+                { title: "متطلبات المنتج عندما يشحن AI بسرعة", desc: "كتابة PRD واضح عندما يمكن تنفيذ المزايا خلال ليلة." }
+              ]
+            },
+            {
+              status: "todo",
+              label: "لاحقاً",
+              summary: "موضوعات النمو والتمويل والحوكمة عند ظهور النتائج.",
+              items: [
+                { title: "التمويل مقابل الربحية", desc: "متى تجمع تمويلاً، متى تبقى مربحاً، وكيف تفهم حوافز المستثمر." },
+                { title: "المجلس والنمو غير التقليدي", desc: "التعامل مع ضغط المجلس عندما يكون النمو حقيقياً لكنه ليس VC-style." },
+                { title: "الحفاظ على الرؤية والسيطرة", desc: "توسيع القرار بعد فريق التأسيس بدون فقدان اتجاه الشركة." }
+              ]
+            }
+          ]
+        },
+        {
+          id: "ai-building",
+          columns: [
+            {
+              status: "done",
+              label: "تم",
+              summary: "إطار البناء السريع وفهم أدوات AI الأساسية.",
+              items: [
+                { title: "السرعة كميزة تنافسية", desc: "اختصار دورة البناء والشحن من أشهر إلى أيام." },
+                { title: "فهم LLMs للبنّائين", desc: "كيف تعمل النماذج عملياً وما حدودها في المنتج." },
+                { title: "LLM harnesses", desc: "طبقة الاختبار والتحكم التي تجعل النموذج جزءاً قابلاً للإدارة." }
+              ]
+            },
+            {
+              status: "doing",
+              label: "قيد العمل",
+              summary: "تشغيل الوكلاء والنشر والتكرار المستمر.",
+              items: [
+                { title: "Agent coding", desc: "كتابة الكود مع وكلاء AI وللوكلاء داخل نظام تطوير واضح." },
+                { title: "النشر والتطوير المحلي/البعيد", desc: "اختيار بيئة التطوير والاستدلال والنشر المناسبة لفريق صغير." },
+                { title: "اختبار وتحديث وتكرار مستمر", desc: "حلقة يومية للشحن والقياس والتحسين بدون انتظار طويل." }
+              ]
+            },
+            {
+              status: "todo",
+              label: "لاحقاً",
+              summary: "موضوعات المنتج المتقدمة عندما يصبح AI في المسار الحرج.",
+              items: [
+                { title: "المنتجات متعددة اللاعبين", desc: "تعاون لحظي وخصائص real-time داخل المنتجات." },
+                { title: "المراقبة والاعتمادية", desc: "Observability لأنظمة الوكلاء عندما تبدأ خدمة مستخدمين حقيقيين." },
+                { title: "التكلفة والأمان", desc: "اقتصاد التوكن، التحكم في المصروف، والمخاطر الأمنية." }
+              ]
+            }
+          ]
+        },
+        {
+          id: "builder",
+          columns: [
+            {
+              status: "done",
+              label: "تم",
+              summary: "تعريف مهارة البنّاء الجنراليست في فريق صغير.",
+              items: [
+                { title: "من التخصص إلى الجنراليست", desc: "لماذا تقل قيمة الحدود الصارمة بين الأدوار في عصر AI." },
+                { title: "كل شخص يجب أن يفهم التصميم", desc: "قرارات واجهة وتجربة لا تنتظر فريقاً منفصلاً." },
+                { title: "كتابة الوثائق والمواصفات", desc: "استخدام AI لصناعة docs و product specs واضحة." }
+              ]
+            },
+            {
+              status: "doing",
+              label: "قيد العمل",
+              summary: "تحويل مهارة التنفيذ إلى مسار تطبيقي.",
+              items: [
+                { title: "بناء المنتج بنفسك", desc: "استخدام AI لتقليل الفجوة بين الفكرة والنظام العامل." },
+                { title: "اختبار ونشر وامتلاك النظام", desc: "كل بنّاء يفهم ما يحدث قبل وبعد الإطلاق." },
+                { title: "التكرار بدون احتراق", desc: "إيقاع عمل سريع يحافظ على الطاقة والوضوح." }
+              ]
+            },
+            {
+              status: "todo",
+              label: "لاحقاً",
+              summary: "الموات ومسارات التعلم حسب نقطة البداية.",
+              items: [
+                { title: "التغيير المستمر في المنتج", desc: "تقبّل تغيّر المنتج كل ثلاثة أشهر وربما إعادة اختراعه كل ستة أشهر." },
+                { title: "موات الفرق الصغيرة", desc: "كيف يبني فريق من 1 إلى 10 أشخاص دفاعه الخاص." },
+                { title: "مسارات تعلم عملية", desc: "ما يتعلمه التقني أو المصمم أو التجاري لسد الفجوات." }
+              ]
+            }
           ]
         }
       ]
@@ -603,6 +798,12 @@ export const siteContent: Record<Locale, SiteContent> = {
         accent: "قابلة للتوسعة.",
         intro: "كل مسار يبدأ بإطار واضح، ثم تمارين، محتوى، قوالب، ومخرجات يمكن قياسها."
       },
+      roadmap: {
+        eyebrow: "/ الخطة",
+        title: "خارطة المسارات",
+        accent: "تم، قيد العمل، لاحقاً.",
+        intro: "عرض واضح لما أصبح أساساً في المنهج، وما يتم تحويله إلى محتوى الآن، وما ينتظر توسعة لاحقة."
+      },
       community: {
         eyebrow: "/ المجتمع",
         title: "غرفة تشغيل",
@@ -634,6 +835,7 @@ export const siteContent: Record<Locale, SiteContent> = {
           items: [
             { label: "المهمة", href: "/ar/mission" },
             { label: "تعلّم", href: "/ar/tracks" },
+            { label: "الخطة", href: "/ar/roadmap" },
             { label: "المجتمع", href: "/ar/community" },
             { label: "المحتوى", href: "/ar/hub" }
           ]
@@ -758,6 +960,7 @@ export const siteContent: Record<Locale, SiteContent> = {
         { id: "home", label: "Home", href: "/en" },
         { id: "mission", label: "Mission", href: "/en/mission" },
         { id: "tracks", label: "Learn", href: "/en/tracks" },
+        { id: "roadmap", label: "Roadmap", href: "/en/roadmap" },
         { id: "community", label: "Community", href: "/en/community" },
         { id: "hub", label: "Content", href: "/en/hub" },
         { id: "resources", label: "Resources", href: "/en/resources" }
@@ -935,6 +1138,33 @@ export const siteContent: Record<Locale, SiteContent> = {
         thread: "X thread",
         newsletter: "Newsletter"
       },
+      videoChannels: {
+        eyebrow: "/ video channels",
+        title: "Bannaa videos",
+        titleAccent: "from TikTok and YouTube.",
+        description:
+          "Add short and long-form videos from both channels, then map each video back to the right learning track in the content hub.",
+        channels: [
+          {
+            platform: "TikTok",
+            handle: "@bannaahq",
+            title: "Short execution clips",
+            desc: "The place for quick ideas, build clips, and fast experiments that pull people into the tracks.",
+            href: "https://www.tiktok.com/@bannaahq",
+            cta: "Open TikTok",
+            formats: ["Shorts", "Founder clips", "AI build clips"]
+          },
+          {
+            platform: "YouTube",
+            handle: "@bannaateam",
+            title: "Longer explainers",
+            desc: "The home for teaching videos, track explainers, and deeper conversations with founders and builders.",
+            href: "https://www.youtube.com/@bannaateam",
+            cta: "Open YouTube",
+            formats: ["Long-form", "Tutorials", "Founder talks"]
+          }
+        ]
+      },
       items: [
         {
           id: "h1",
@@ -1020,6 +1250,129 @@ export const siteContent: Record<Locale, SiteContent> = {
           items: [
             { title: "AI product brief", desc: "Turn an idea into clear requirements for an agent or team.", href: "#", tag: "AI BUILD" },
             { title: "Weekly launch checklist", desc: "What to ship and measure every week.", href: "#", tag: "OPS" }
+          ]
+        }
+      ]
+    },
+    roadmap: {
+      hero: {
+        eyebrow: "/ roadmap",
+        title: "Track roadmap",
+        accent: "from idea to company.",
+        intro:
+          "An execution map for the three tracks. Each column shows what is already framed, what is being turned into lessons and templates now, and what comes next."
+      },
+      sourceLabel: "Based on the goal and tracks file",
+      sourceHref: "/assets/banna-goal-and-tracks.md",
+      legend: {
+        done: "Established as the track foundation",
+        doing: "Being turned into lessons, exercises, and templates",
+        todo: "Coming in curriculum and content expansion"
+      },
+      tracks: [
+        {
+          id: "founder",
+          columns: [
+            {
+              status: "done",
+              label: "Done",
+              summary: "The mindset and operating base for a solo founder.",
+              items: [
+                { title: "Solo founder in the AI era", desc: "What it means to start and lead a high-output micro-company." },
+                { title: "Think big while staying lean", desc: "A company of 1 to 10 people targeting serious revenue without bloating the team." },
+                { title: "Daily operating system", desc: "Founder habits, decisions, and focus when execution speed rises." }
+              ]
+            },
+            {
+              status: "doing",
+              label: "Doing",
+              summary: "Turning early leadership skills into practical material.",
+              items: [
+                { title: "Team under ten", desc: "Build a high-performance team with speed, culture, and capability." },
+                { title: "Hiring for AI-native companies", desc: "What to look for in skills, behavior, and ways of working." },
+                { title: "Product requirements when AI ships fast", desc: "Write clear PRDs when features can be built overnight." }
+              ]
+            },
+            {
+              status: "todo",
+              label: "To do",
+              summary: "Growth, funding, and governance topics once results appear.",
+              items: [
+                { title: "Fundraising versus profitability", desc: "When to raise, when to stay profitable, and how investor incentives work." },
+                { title: "Boards and non-standard growth", desc: "Handle board pressure when growth is real but not VC-style." },
+                { title: "Keep control and vision", desc: "Scale decision-making beyond the founding team without losing direction." }
+              ]
+            }
+          ]
+        },
+        {
+          id: "ai-building",
+          columns: [
+            {
+              status: "done",
+              label: "Done",
+              summary: "The fast-building frame and core AI tooling basics.",
+              items: [
+                { title: "Speed as advantage", desc: "Compress build and shipping cycles from months to days." },
+                { title: "LLMs for builders", desc: "How models actually work in products and where their limits show up." },
+                { title: "LLM harnesses", desc: "The testing and control layer that makes a model manageable." }
+              ]
+            },
+            {
+              status: "doing",
+              label: "Doing",
+              summary: "Operating agents, deployment, and continuous iteration.",
+              items: [
+                { title: "Agent coding", desc: "Write code with AI agents and for agents inside a clear development system." },
+                { title: "Local and remote development", desc: "Choose development, inference, and deployment setups for a tiny team." },
+                { title: "Continuous update, test, iterate", desc: "A daily loop for shipping, measuring, and improving without long waits." }
+              ]
+            },
+            {
+              status: "todo",
+              label: "To do",
+              summary: "Advanced product topics once AI sits in the critical path.",
+              items: [
+                { title: "Multiplayer products", desc: "Real-time collaboration features inside AI-powered products." },
+                { title: "Observability and reliability", desc: "Monitor agent systems once real users depend on them." },
+                { title: "Cost and security", desc: "Token economics, spend control, and AI security risks." }
+              ]
+            }
+          ]
+        },
+        {
+          id: "builder",
+          columns: [
+            {
+              status: "done",
+              label: "Done",
+              summary: "The definition of the generalist builder on a tiny team.",
+              items: [
+                { title: "From specialist to generalist", desc: "Why hard role boundaries matter less in the age of AI." },
+                { title: "Everyone understands design", desc: "Interface and experience decisions cannot wait for a separate team." },
+                { title: "Documents and specs", desc: "Use AI to create clear documents and product specs." }
+              ]
+            },
+            {
+              status: "doing",
+              label: "Doing",
+              summary: "Turning execution skill into an applied learning path.",
+              items: [
+                { title: "Build the product yourself", desc: "Use AI to close the gap between idea and working system." },
+                { title: "Test, deploy, own the system", desc: "Every builder understands what happens before and after launch." },
+                { title: "Iterate without burnout", desc: "A high-speed work rhythm that preserves energy and clarity." }
+              ]
+            },
+            {
+              status: "todo",
+              label: "To do",
+              summary: "Moats and learning paths based on each builder's starting point.",
+              items: [
+                { title: "Continuous product change", desc: "Accept major product change every three months and reinvention every six." },
+                { title: "Moats for small teams", desc: "How a team of 1 to 10 people builds and defends its edge." },
+                { title: "Practical learning paths", desc: "What technical, design, and business-oriented builders learn to close gaps." }
+              ]
+            }
           ]
         }
       ]
@@ -1111,6 +1464,12 @@ export const siteContent: Record<Locale, SiteContent> = {
         accent: "built to expand.",
         intro: "Each track starts with a clear frame, then exercises, content, templates, and measurable outputs."
       },
+      roadmap: {
+        eyebrow: "/ roadmap",
+        title: "Track roadmap",
+        accent: "Done, doing, to do.",
+        intro: "A clear view of what is already established, what is being converted into content now, and what waits for later expansion."
+      },
       community: {
         eyebrow: "/ community",
         title: "An operating room",
@@ -1142,6 +1501,7 @@ export const siteContent: Record<Locale, SiteContent> = {
           items: [
             { label: "Mission", href: "/en/mission" },
             { label: "Learn", href: "/en/tracks" },
+            { label: "Roadmap", href: "/en/roadmap" },
             { label: "Community", href: "/en/community" },
             { label: "Content", href: "/en/hub" }
           ]
