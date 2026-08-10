@@ -62,3 +62,4 @@ the exact hash).
 - Add bilingual roadmap page
 - Add brand page and live video hub
 - Expand bilingual roadmap topics
+- Clarify brand guide footer and Arabic company copy
