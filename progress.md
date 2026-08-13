@@ -64,3 +64,7 @@ the exact hash).
 - Expand bilingual roadmap topics
 - Clarify brand guide footer and Arabic company copy
 - Render brand guide as HTML
+
+## 2026-08-13
+
+- Add brand merch examples

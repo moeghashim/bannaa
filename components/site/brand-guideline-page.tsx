@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { ReactNode } from "react";
 
 import { BrandLogo, BrandMark } from "@/components/site/brand-mark";
@@ -41,6 +42,8 @@ type BrandGuideCopy = {
     warmBackground: string;
     do: string;
     dont: string;
+    download: string;
+    downloadAll: string;
   };
   bodyExamples: {
     english: string;
@@ -79,7 +82,9 @@ const copy: Record<Locale, BrandGuideCopy> = {
       darkBackground: "على خلفية داكنة",
       warmBackground: "على خلفية دافئة",
       do: "افعل",
-      dont: "لا تفعل"
+      dont: "لا تفعل",
+      download: "تحميل",
+      downloadAll: "تحميل ملفات الشعار"
     },
     bodyExamples: {
       english: "Bannaa is an AI community for the Arab world. We share knowledge, build projects, and create impact together.",
@@ -116,7 +121,9 @@ const copy: Record<Locale, BrandGuideCopy> = {
       darkBackground: "On dark background",
       warmBackground: "On warm background",
       do: "Do",
-      dont: "Don't"
+      dont: "Don't",
+      download: "Download",
+      downloadAll: "Download logo files"
     },
     bodyExamples: {
       english: "Bannaa is an AI community for the Arab world. We share knowledge, build projects, and create impact together.",
@@ -179,6 +186,41 @@ const principles = [
   }
 ];
 
+const logoDownloads = {
+  icon: [
+    { label: "SVG", href: "/assets/brand/icon.svg", filename: "bannaa-icon.svg" },
+    { label: "PNG", href: "/assets/brand/icon.png", filename: "bannaa-icon.png" }
+  ],
+  en: [{ label: "PNG", href: "/assets/brand/english_logo.png", filename: "bannaa-english-logo.png" }],
+  ar: [
+    { label: "SVG", href: "/assets/brand/arabic_logo.svg", filename: "bannaa-arabic-logo.svg" },
+    { label: "PNG", href: "/assets/brand/arabic_logo.png", filename: "bannaa-arabic-logo.png" }
+  ]
+} as const;
+
+const allLogoDownloads = [...logoDownloads.icon, ...logoDownloads.en, ...logoDownloads.ar];
+
+const merchExamples = [
+  {
+    title: "T-shirt",
+    arTitle: "تيشيرت",
+    src: "/assets/brand/merch-tshirt.png",
+    alt: "Banna logo t-shirt mockup"
+  },
+  {
+    title: "Tote bag",
+    arTitle: "حقيبة قماش",
+    src: "/assets/brand/merch-tote.png",
+    alt: "Banna logo tote bag mockup"
+  },
+  {
+    title: "Cap",
+    arTitle: "قبعة",
+    src: "/assets/brand/merch-cap.png",
+    alt: "Banna logo cap mockup"
+  }
+];
+
 function SectionNumber({ value }: { value: number }) {
   return <span className="brand-guide__num mono">{value}.</span>;
 }
@@ -213,6 +255,26 @@ function LogoLockup({ variant, locale }: { variant: "icon" | "en" | "ar"; locale
     <span className="brand-guide-lockup brand-guide-lockup--en" dir="ltr">
       <BrandLogo locale={locale === "ar" ? "en" : locale} />
     </span>
+  );
+}
+
+function LogoDownloadLinks({
+  title,
+  files,
+  downloadLabel
+}: {
+  title: string;
+  files: readonly { label: string; href: string; filename: string }[];
+  downloadLabel: string;
+}) {
+  return (
+    <div className="logo-downloads" aria-label={`${downloadLabel} ${title}`}>
+      {files.map((file) => (
+        <a key={file.href} href={file.href} download={file.filename}>
+          {downloadLabel} {file.label}
+        </a>
+      ))}
+    </div>
   );
 }
 
@@ -256,15 +318,28 @@ export function BrandGuidelinePage({ content, locale }: BrandGuidelinePageProps)
             <article>
               <LogoLockup variant="icon" locale={locale} />
               <p>{t.labels.icon}</p>
+              <LogoDownloadLinks title={t.labels.icon} files={logoDownloads.icon} downloadLabel={t.labels.download} />
             </article>
             <article>
               <LogoLockup variant="en" locale={locale} />
               <p>{t.labels.englishLockup}</p>
+              <LogoDownloadLinks title={t.labels.englishLockup} files={logoDownloads.en} downloadLabel={t.labels.download} />
             </article>
             <article>
               <LogoLockup variant="ar" locale={locale} />
               <p>{t.labels.arabicLockup}</p>
+              <LogoDownloadLinks title={t.labels.arabicLockup} files={logoDownloads.ar} downloadLabel={t.labels.download} />
             </article>
+          </div>
+          <div className="brand-download-kit" aria-label={t.labels.downloadAll}>
+            <strong>{t.labels.downloadAll}</strong>
+            <div>
+              {allLogoDownloads.map((file) => (
+                <a key={file.href} href={file.href} download={file.filename}>
+                  {file.filename}
+                </a>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -420,14 +495,12 @@ export function BrandGuidelinePage({ content, locale }: BrandGuidelinePageProps)
               </div>
               <p>App / UI</p>
             </article>
-            <article className="application-card application-card--merch">
-              <BrandMark size={46} title="Bannaa" />
-              <p>Apparel</p>
-            </article>
-            <article className="application-card application-card--touch">
-              <BrandMark size={52} title="Bannaa" />
-              <p>Brand Touchpoints</p>
-            </article>
+            {merchExamples.map((item) => (
+              <article key={item.src} className="application-card application-card--merch-image">
+                <Image src={item.src} alt={item.alt} width={1254} height={1254} sizes="(max-width: 980px) 50vw, 16vw" />
+                <p>{locale === "ar" ? item.arTitle : item.title}</p>
+              </article>
+            ))}
           </div>
         </section>
       </section>
