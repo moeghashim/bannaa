@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 import { BrandLogo, BrandMark } from "@/components/site/brand-mark";
 import { PageHero } from "@/components/site/page-hero";
@@ -75,9 +75,9 @@ const copy: Record<Locale, BrandGuideCopy> = {
       icon: "الأيقونة",
       englishLockup: "الأيقونة + الاسم الإنجليزي",
       arabicLockup: "الأيقونة + الاسم العربي",
-      squareExpression: "المربع التعبيري",
+      squareExpression: "الشعار التعبيري",
       expressionIntro:
-        "يمكن استخدام مربع بنّاء كشخصية خفيفة في المحتوى، المجتمع، والواجهات. الشكل يبقى أسود، بسيطاً، ومبنياً من مربعات واضحة مع تعبيرات مرحة.",
+        "الشعار الجديد ينتقل إلى مربع تعبيري ملوّن بعينين واضحتين فقط. النسخة المتحمسة هي الشعار الرسمي، وبقية الألوان تساعد في المحتوى، المجتمع، والواجهات.",
       staticExpressions: "تعبيرات ثابتة",
       animatedExpressions: "تعبيرات متحركة",
       animatedIntro: "الحركة قصيرة وهادئة: رمشة، ارتداد، ميل خفيف، أو نعاس. تتوقف تلقائياً عند تفضيل تقليل الحركة.",
@@ -121,9 +121,9 @@ const copy: Record<Locale, BrandGuideCopy> = {
       icon: "Icon",
       englishLockup: "Icon + English wordmark",
       arabicLockup: "Icon + Arabic wordmark",
-      squareExpression: "Expression square",
+      squareExpression: "Expression logo",
       expressionIntro:
-        "Use the Banna square as a light character across content, community, and product moments. The shape stays black, simple, and built from crisp square geometry with playful expressions.",
+        "The new logo moves to a colored expression square with eyes only. The excited version is the official mark, while the wider color set supports content, community, and product moments.",
       staticExpressions: "Static expressions",
       animatedExpressions: "Animated expressions",
       animatedIntro: "Motion should stay short and restrained: a blink, bounce, tilt, or sleepy drift. It respects reduced-motion preferences.",
@@ -259,30 +259,36 @@ type ExpressionKey =
   | "unimpressed"
   | "sleepy";
 
-const expressionSamples: { key: ExpressionKey; label: string; arLabel: string }[] = [
-  { key: "neutral", label: "Neutral", arLabel: "حيادي" },
-  { key: "attentive", label: "Attentive", arLabel: "منتبه" },
-  { key: "surprised", label: "Surprised", arLabel: "متفاجئ" },
-  { key: "excited", label: "Excited", arLabel: "متحمس" },
-  { key: "happy", label: "Happy", arLabel: "سعيد" },
-  { key: "laughing", label: "Laughing", arLabel: "يضحك" },
-  { key: "angry", label: "Angry", arLabel: "غاضب" },
-  { key: "sad", label: "Sad", arLabel: "حزين" },
-  { key: "scared", label: "Scared", arLabel: "خائف" },
-  { key: "suspicious", label: "Suspicious", arLabel: "متشكك" },
-  { key: "confused", label: "Confused", arLabel: "محتار" },
-  { key: "curious", label: "Curious", arLabel: "فضولي" },
-  { key: "proud", label: "Proud", arLabel: "فخور" },
-  { key: "shy", label: "Shy", arLabel: "خجول" },
-  { key: "unimpressed", label: "Unimpressed", arLabel: "غير مبهر" },
-  { key: "sleepy", label: "Sleepy", arLabel: "نعسان" }
+const expressionSamples: { key: ExpressionKey; label: string; arLabel: string; color: string }[] = [
+  { key: "neutral", label: "Neutral", arLabel: "حيادي", color: "#111111" },
+  { key: "attentive", label: "Attentive", arLabel: "منتبه", color: "#2563EB" },
+  { key: "surprised", label: "Surprised", arLabel: "متفاجئ", color: "#E8A48B" },
+  { key: "excited", label: "Excited", arLabel: "متحمس", color: "#2563EB" },
+  { key: "happy", label: "Happy", arLabel: "سعيد", color: "#2F855A" },
+  { key: "laughing", label: "Laughing", arLabel: "يضحك", color: "#EFCFCB" },
+  { key: "angry", label: "Angry", arLabel: "غاضب", color: "#C2410C" },
+  { key: "sad", label: "Sad", arLabel: "حزين", color: "#596274" },
+  { key: "scared", label: "Scared", arLabel: "خائف", color: "#6D5BD0" },
+  { key: "suspicious", label: "Suspicious", arLabel: "متشكك", color: "#7C2D12" },
+  { key: "confused", label: "Confused", arLabel: "محتار", color: "#0F766E" },
+  { key: "curious", label: "Curious", arLabel: "فضولي", color: "#D97706" },
+  { key: "proud", label: "Proud", arLabel: "فخور", color: "#111111" },
+  { key: "shy", label: "Shy", arLabel: "خجول", color: "#BE5B7B" },
+  { key: "unimpressed", label: "Unimpressed", arLabel: "غير مبهر", color: "#475569" },
+  { key: "sleepy", label: "Sleepy", arLabel: "نعسان", color: "#64748B" }
 ];
 
-const animatedExpressionSamples: { key: ExpressionKey; motion: "blink" | "bounce" | "tilt" | "sleep"; label: string; arLabel: string }[] = [
-  { key: "attentive", motion: "blink", label: "Blink", arLabel: "رمشة" },
-  { key: "excited", motion: "bounce", label: "Bounce", arLabel: "ارتداد" },
-  { key: "curious", motion: "tilt", label: "Curious tilt", arLabel: "ميل فضولي" },
-  { key: "sleepy", motion: "sleep", label: "Sleepy drift", arLabel: "نعاس خفيف" }
+const animatedExpressionSamples: {
+  key: ExpressionKey;
+  motion: "blink" | "bounce" | "tilt" | "sleep";
+  label: string;
+  arLabel: string;
+  color: string;
+}[] = [
+  { key: "attentive", motion: "blink", label: "Blink", arLabel: "رمشة", color: "#2563EB" },
+  { key: "excited", motion: "bounce", label: "Bounce", arLabel: "ارتداد", color: "#2563EB" },
+  { key: "curious", motion: "tilt", label: "Curious tilt", arLabel: "ميل فضولي", color: "#D97706" },
+  { key: "sleepy", motion: "sleep", label: "Sleepy drift", arLabel: "نعاس خفيف", color: "#64748B" }
 ];
 
 function SectionNumber({ value }: { value: number }) {
@@ -329,7 +335,6 @@ function ExpressionFeatures({ expression }: { expression: ExpressionKey }) {
         <>
           <circle cx={69} cy={82} r={10} />
           <circle cx={111} cy={82} r={10} />
-          <path d="M70 119h40" />
         </>
       );
     case "surprised":
@@ -337,15 +342,13 @@ function ExpressionFeatures({ expression }: { expression: ExpressionKey }) {
         <>
           <circle cx={69} cy={78} r={8} />
           <circle cx={111} cy={78} r={8} />
-          <circle className="expression-square__stroke-only" cx={90} cy={116} r={13} />
         </>
       );
     case "excited":
       return (
         <>
-          <path d="M58 78l10-10 10 10-10 10z" />
-          <path d="M102 78l10-10 10 10-10 10z" />
-          <path d="M64 112c13 17 39 17 52 0" />
+          <path className="expression-square__filled-eye" d="M58 78l10-10 10 10-10 10z" />
+          <path className="expression-square__filled-eye" d="M102 78l10-10 10 10-10 10z" />
         </>
       );
     case "happy":
@@ -353,7 +356,6 @@ function ExpressionFeatures({ expression }: { expression: ExpressionKey }) {
         <>
           <path d="M59 78c6-7 14-7 20 0" />
           <path d="M101 78c6-7 14-7 20 0" />
-          <path d="M63 109c12 18 42 18 54 0" />
         </>
       );
     case "laughing":
@@ -361,7 +363,6 @@ function ExpressionFeatures({ expression }: { expression: ExpressionKey }) {
         <>
           <path d="M57 76l23 10" />
           <path d="M123 76l-23 10" />
-          <path d="M62 106c10 28 46 28 56 0z" fill="none" />
         </>
       );
     case "angry":
@@ -371,7 +372,6 @@ function ExpressionFeatures({ expression }: { expression: ExpressionKey }) {
           <path d="M125 69l-25 12" />
           <circle cx={69} cy={88} r={6} />
           <circle cx={111} cy={88} r={6} />
-          <path d="M71 121c12-10 26-10 38 0" />
         </>
       );
     case "sad":
@@ -379,7 +379,6 @@ function ExpressionFeatures({ expression }: { expression: ExpressionKey }) {
         <>
           <circle cx={69} cy={80} r={7} />
           <circle cx={111} cy={80} r={7} />
-          <path d="M68 123c11-13 33-13 44 0" />
         </>
       );
     case "scared":
@@ -387,7 +386,6 @@ function ExpressionFeatures({ expression }: { expression: ExpressionKey }) {
         <>
           <circle cx={69} cy={78} r={9} />
           <circle cx={111} cy={78} r={9} />
-          <path d="M72 116c8-11 28-11 36 0c-8 9-28 9-36 0z" fill="none" />
           <path d="M50 57l10 10M130 57l-10 10" />
         </>
       );
@@ -398,7 +396,6 @@ function ExpressionFeatures({ expression }: { expression: ExpressionKey }) {
           <path d="M100 66l27 11" />
           <rect x={63} y={80} width={14} height={7} rx={3.5} />
           <rect x={105} y={83} width={14} height={7} rx={3.5} />
-          <path d="M72 115h37" />
         </>
       );
     case "confused":
@@ -406,8 +403,6 @@ function ExpressionFeatures({ expression }: { expression: ExpressionKey }) {
         <>
           <circle cx={69} cy={82} r={7} />
           <path d="M105 76c11-9 27 2 16 14c-6 6-13 5-13 15" />
-          <circle cx={108} cy={119} r={4} />
-          <path d="M70 118c11 7 28 4 39-4" />
         </>
       );
     case "curious":
@@ -415,7 +410,6 @@ function ExpressionFeatures({ expression }: { expression: ExpressionKey }) {
         <>
           <circle cx={73} cy={80} r={8} />
           <circle cx={116} cy={74} r={8} />
-          <path d="M69 112c15 9 36 6 47-8" />
         </>
       );
     case "proud":
@@ -423,8 +417,6 @@ function ExpressionFeatures({ expression }: { expression: ExpressionKey }) {
         <>
           <path d="M58 78h22" />
           <path d="M100 78h22" />
-          <path d="M67 111c15 14 31 14 46 0" />
-          <path d="M76 129h28" />
         </>
       );
     case "shy":
@@ -434,7 +426,6 @@ function ExpressionFeatures({ expression }: { expression: ExpressionKey }) {
           <circle cx={111} cy={80} r={6} />
           <circle cx={53} cy={103} r={8} opacity={0.36} />
           <circle cx={127} cy={103} r={8} opacity={0.36} />
-          <path d="M76 113c8 7 20 7 28 0" />
         </>
       );
     case "unimpressed":
@@ -442,7 +433,6 @@ function ExpressionFeatures({ expression }: { expression: ExpressionKey }) {
         <>
           <path d="M59 79h22" />
           <path d="M99 79h22" />
-          <path d="M70 117h40" />
         </>
       );
     case "sleepy":
@@ -450,7 +440,6 @@ function ExpressionFeatures({ expression }: { expression: ExpressionKey }) {
         <>
           <path d="M57 80c8 6 16 6 24 0" />
           <path d="M99 80c8 6 16 6 24 0" />
-          <path d="M78 116c8 8 16 8 24 0" />
           <path d="M119 54h17l-17 17h17" />
         </>
       );
@@ -460,7 +449,6 @@ function ExpressionFeatures({ expression }: { expression: ExpressionKey }) {
         <>
           <rect x={61} y={76} width={15} height={15} rx={3} />
           <rect x={104} y={76} width={15} height={15} rx={3} />
-          <path d="M70 118h40" />
         </>
       );
   }
@@ -469,23 +457,27 @@ function ExpressionFeatures({ expression }: { expression: ExpressionKey }) {
 function ExpressionSquare({
   expression,
   label,
+  color,
   motion
 }: {
   expression: ExpressionKey;
   label: string;
+  color?: string;
   motion?: "blink" | "bounce" | "tilt" | "sleep";
 }) {
+  const style = color ? ({ "--expression-fill": color } as CSSProperties) : undefined;
+
   return (
     <svg
       className={`expression-square${motion ? ` expression-square--${motion}` : ""}`}
       viewBox="0 0 180 180"
       role="img"
       aria-labelledby={`expression-${expression}${motion ? `-${motion}` : ""}`}
+      style={style}
     >
       <title id={`expression-${expression}${motion ? `-${motion}` : ""}`}>{label}</title>
       <g className="expression-square__avatar">
-        <rect className="expression-square__body" x={22} y={30} width={124} height={124} rx={28} />
-        <rect className="expression-square__dot" x={126} y={12} width={34} height={34} rx={3} />
+        <rect className="expression-square__body" x={24} y={24} width={132} height={132} rx={32} />
         <g className="expression-square__features">
           <ExpressionFeatures expression={expression} />
         </g>
@@ -584,7 +576,7 @@ export function BrandGuidelinePage({ content, locale }: BrandGuidelinePageProps)
           <div className="expression-system" id="brand-expressions">
             <div className="expression-system__intro">
               <div className="expression-system__stage" aria-label={t.labels.squareExpression}>
-                <ExpressionSquare expression="happy" label={t.labels.squareExpression} motion="bounce" />
+                <ExpressionSquare expression="excited" label={t.labels.squareExpression} color="#2563EB" motion="bounce" />
               </div>
               <div>
                 <h3>{t.labels.squareExpression}</h3>
@@ -600,7 +592,7 @@ export function BrandGuidelinePage({ content, locale }: BrandGuidelinePageProps)
 
                   return (
                     <article className="expression-card" key={item.key}>
-                      <ExpressionSquare expression={item.key} label={label} />
+                      <ExpressionSquare expression={item.key} label={label} color={item.color} />
                       <p>{label}</p>
                     </article>
                   );
@@ -619,7 +611,7 @@ export function BrandGuidelinePage({ content, locale }: BrandGuidelinePageProps)
 
                   return (
                     <article className="expression-motion-card" key={`${item.key}-${item.motion}`}>
-                      <ExpressionSquare expression={item.key} label={label} motion={item.motion} />
+                      <ExpressionSquare expression={item.key} label={label} color={item.color} motion={item.motion} />
                       <p>{label}</p>
                     </article>
                   );
