@@ -16,6 +16,7 @@ type BrandGuideCopy = {
   subtitle: string;
   sections: {
     logo: string;
+    expressions: string;
     clearSpace: string;
     palette: string;
     typography: string;
@@ -28,6 +29,11 @@ type BrandGuideCopy = {
     icon: string;
     englishLockup: string;
     arabicLockup: string;
+    squareExpression: string;
+    expressionIntro: string;
+    staticExpressions: string;
+    animatedExpressions: string;
+    animatedIntro: string;
     clearSpaceBody: string;
     clearSpaceUnit: string;
     coreColors: string;
@@ -56,6 +62,7 @@ const copy: Record<Locale, BrandGuideCopy> = {
     subtitle: "AI Community for the Arab World",
     sections: {
       logo: "نظام الشعار",
+      expressions: "مربع بنّاء التعبيري",
       clearSpace: "المساحة الآمنة",
       palette: "لوحة الألوان الموسعة",
       typography: "الخطوط",
@@ -68,6 +75,12 @@ const copy: Record<Locale, BrandGuideCopy> = {
       icon: "الأيقونة",
       englishLockup: "الأيقونة + الاسم الإنجليزي",
       arabicLockup: "الأيقونة + الاسم العربي",
+      squareExpression: "المربع التعبيري",
+      expressionIntro:
+        "يمكن استخدام مربع بنّاء كشخصية خفيفة في المحتوى، المجتمع، والواجهات. الشكل يبقى أسود، بسيطاً، ومبنياً من مربعات واضحة مع تعبيرات مرحة.",
+      staticExpressions: "تعبيرات ثابتة",
+      animatedExpressions: "تعبيرات متحركة",
+      animatedIntro: "الحركة قصيرة وهادئة: رمشة، ارتداد، ميل خفيف، أو نعاس. تتوقف تلقائياً عند تفضيل تقليل الحركة.",
       clearSpaceBody:
         "حافظ على مساحة واضحة حول الأيقونة تساوي وحدة X من كل الجهات. لا تدخل نصوص أو رسومات أو عناصر أخرى داخل هذه المساحة.",
       clearSpaceUnit: "X = وحدة القياس",
@@ -95,6 +108,7 @@ const copy: Record<Locale, BrandGuideCopy> = {
     subtitle: "AI Community for the Arab World",
     sections: {
       logo: "Logo system",
+      expressions: "Bannaa expression square",
       clearSpace: "Clear space",
       palette: "Expanded color palette",
       typography: "Typography",
@@ -107,6 +121,12 @@ const copy: Record<Locale, BrandGuideCopy> = {
       icon: "Icon",
       englishLockup: "Icon + English wordmark",
       arabicLockup: "Icon + Arabic wordmark",
+      squareExpression: "Expression square",
+      expressionIntro:
+        "Use the Banna square as a light character across content, community, and product moments. The shape stays black, simple, and built from crisp square geometry with playful expressions.",
+      staticExpressions: "Static expressions",
+      animatedExpressions: "Animated expressions",
+      animatedIntro: "Motion should stay short and restrained: a blink, bounce, tilt, or sleepy drift. It respects reduced-motion preferences.",
       clearSpaceBody:
         "Maintain clear space around the icon equal to X on all sides. No text, graphics, or other elements should enter this area.",
       clearSpaceUnit: "X = unit of measurement",
@@ -221,6 +241,50 @@ const merchExamples = [
   }
 ];
 
+type ExpressionKey =
+  | "neutral"
+  | "attentive"
+  | "surprised"
+  | "excited"
+  | "happy"
+  | "laughing"
+  | "angry"
+  | "sad"
+  | "scared"
+  | "suspicious"
+  | "confused"
+  | "curious"
+  | "proud"
+  | "shy"
+  | "unimpressed"
+  | "sleepy";
+
+const expressionSamples: { key: ExpressionKey; label: string; arLabel: string }[] = [
+  { key: "neutral", label: "Neutral", arLabel: "حيادي" },
+  { key: "attentive", label: "Attentive", arLabel: "منتبه" },
+  { key: "surprised", label: "Surprised", arLabel: "متفاجئ" },
+  { key: "excited", label: "Excited", arLabel: "متحمس" },
+  { key: "happy", label: "Happy", arLabel: "سعيد" },
+  { key: "laughing", label: "Laughing", arLabel: "يضحك" },
+  { key: "angry", label: "Angry", arLabel: "غاضب" },
+  { key: "sad", label: "Sad", arLabel: "حزين" },
+  { key: "scared", label: "Scared", arLabel: "خائف" },
+  { key: "suspicious", label: "Suspicious", arLabel: "متشكك" },
+  { key: "confused", label: "Confused", arLabel: "محتار" },
+  { key: "curious", label: "Curious", arLabel: "فضولي" },
+  { key: "proud", label: "Proud", arLabel: "فخور" },
+  { key: "shy", label: "Shy", arLabel: "خجول" },
+  { key: "unimpressed", label: "Unimpressed", arLabel: "غير مبهر" },
+  { key: "sleepy", label: "Sleepy", arLabel: "نعسان" }
+];
+
+const animatedExpressionSamples: { key: ExpressionKey; motion: "blink" | "bounce" | "tilt" | "sleep"; label: string; arLabel: string }[] = [
+  { key: "attentive", motion: "blink", label: "Blink", arLabel: "رمشة" },
+  { key: "excited", motion: "bounce", label: "Bounce", arLabel: "ارتداد" },
+  { key: "curious", motion: "tilt", label: "Curious tilt", arLabel: "ميل فضولي" },
+  { key: "sleepy", motion: "sleep", label: "Sleepy drift", arLabel: "نعاس خفيف" }
+];
+
 function SectionNumber({ value }: { value: number }) {
   return <span className="brand-guide__num mono">{value}.</span>;
 }
@@ -255,6 +319,178 @@ function LogoLockup({ variant, locale }: { variant: "icon" | "en" | "ar"; locale
     <span className="brand-guide-lockup brand-guide-lockup--en" dir="ltr">
       <BrandLogo locale={locale === "ar" ? "en" : locale} />
     </span>
+  );
+}
+
+function ExpressionFeatures({ expression }: { expression: ExpressionKey }) {
+  switch (expression) {
+    case "attentive":
+      return (
+        <>
+          <circle cx={69} cy={82} r={10} />
+          <circle cx={111} cy={82} r={10} />
+          <path d="M70 119h40" />
+        </>
+      );
+    case "surprised":
+      return (
+        <>
+          <circle cx={69} cy={78} r={8} />
+          <circle cx={111} cy={78} r={8} />
+          <circle className="expression-square__stroke-only" cx={90} cy={116} r={13} />
+        </>
+      );
+    case "excited":
+      return (
+        <>
+          <path d="M58 78l10-10 10 10-10 10z" />
+          <path d="M102 78l10-10 10 10-10 10z" />
+          <path d="M64 112c13 17 39 17 52 0" />
+        </>
+      );
+    case "happy":
+      return (
+        <>
+          <path d="M59 78c6-7 14-7 20 0" />
+          <path d="M101 78c6-7 14-7 20 0" />
+          <path d="M63 109c12 18 42 18 54 0" />
+        </>
+      );
+    case "laughing":
+      return (
+        <>
+          <path d="M57 76l23 10" />
+          <path d="M123 76l-23 10" />
+          <path d="M62 106c10 28 46 28 56 0z" fill="none" />
+        </>
+      );
+    case "angry":
+      return (
+        <>
+          <path d="M55 69l25 12" />
+          <path d="M125 69l-25 12" />
+          <circle cx={69} cy={88} r={6} />
+          <circle cx={111} cy={88} r={6} />
+          <path d="M71 121c12-10 26-10 38 0" />
+        </>
+      );
+    case "sad":
+      return (
+        <>
+          <circle cx={69} cy={80} r={7} />
+          <circle cx={111} cy={80} r={7} />
+          <path d="M68 123c11-13 33-13 44 0" />
+        </>
+      );
+    case "scared":
+      return (
+        <>
+          <circle cx={69} cy={78} r={9} />
+          <circle cx={111} cy={78} r={9} />
+          <path d="M72 116c8-11 28-11 36 0c-8 9-28 9-36 0z" fill="none" />
+          <path d="M50 57l10 10M130 57l-10 10" />
+        </>
+      );
+    case "suspicious":
+      return (
+        <>
+          <path d="M54 70l28-5" />
+          <path d="M100 66l27 11" />
+          <rect x={63} y={80} width={14} height={7} rx={3.5} />
+          <rect x={105} y={83} width={14} height={7} rx={3.5} />
+          <path d="M72 115h37" />
+        </>
+      );
+    case "confused":
+      return (
+        <>
+          <circle cx={69} cy={82} r={7} />
+          <path d="M105 76c11-9 27 2 16 14c-6 6-13 5-13 15" />
+          <circle cx={108} cy={119} r={4} />
+          <path d="M70 118c11 7 28 4 39-4" />
+        </>
+      );
+    case "curious":
+      return (
+        <>
+          <circle cx={73} cy={80} r={8} />
+          <circle cx={116} cy={74} r={8} />
+          <path d="M69 112c15 9 36 6 47-8" />
+        </>
+      );
+    case "proud":
+      return (
+        <>
+          <path d="M58 78h22" />
+          <path d="M100 78h22" />
+          <path d="M67 111c15 14 31 14 46 0" />
+          <path d="M76 129h28" />
+        </>
+      );
+    case "shy":
+      return (
+        <>
+          <circle cx={69} cy={80} r={6} />
+          <circle cx={111} cy={80} r={6} />
+          <circle cx={53} cy={103} r={8} opacity={0.36} />
+          <circle cx={127} cy={103} r={8} opacity={0.36} />
+          <path d="M76 113c8 7 20 7 28 0" />
+        </>
+      );
+    case "unimpressed":
+      return (
+        <>
+          <path d="M59 79h22" />
+          <path d="M99 79h22" />
+          <path d="M70 117h40" />
+        </>
+      );
+    case "sleepy":
+      return (
+        <>
+          <path d="M57 80c8 6 16 6 24 0" />
+          <path d="M99 80c8 6 16 6 24 0" />
+          <path d="M78 116c8 8 16 8 24 0" />
+          <path d="M119 54h17l-17 17h17" />
+        </>
+      );
+    case "neutral":
+    default:
+      return (
+        <>
+          <rect x={61} y={76} width={15} height={15} rx={3} />
+          <rect x={104} y={76} width={15} height={15} rx={3} />
+          <path d="M70 118h40" />
+        </>
+      );
+  }
+}
+
+function ExpressionSquare({
+  expression,
+  label,
+  motion
+}: {
+  expression: ExpressionKey;
+  label: string;
+  motion?: "blink" | "bounce" | "tilt" | "sleep";
+}) {
+  return (
+    <svg
+      className={`expression-square${motion ? ` expression-square--${motion}` : ""}`}
+      viewBox="0 0 180 180"
+      role="img"
+      aria-labelledby={`expression-${expression}${motion ? `-${motion}` : ""}`}
+    >
+      <title id={`expression-${expression}${motion ? `-${motion}` : ""}`}>{label}</title>
+      <g className="expression-square__avatar">
+        <rect className="expression-square__body" x={22} y={30} width={124} height={124} rx={28} />
+        <rect className="expression-square__dot" x={126} y={12} width={34} height={34} rx={3} />
+        <g className="expression-square__features">
+          <ExpressionFeatures expression={expression} />
+        </g>
+      </g>
+    </svg>
   );
 }
 
@@ -343,9 +579,59 @@ export function BrandGuidelinePage({ content, locale }: BrandGuidelinePageProps)
           </div>
         </section>
 
+        <section className="brand-guide__section" aria-labelledby="brand-expressions">
+          <SectionTitle value={2}>{t.sections.expressions}</SectionTitle>
+          <div className="expression-system" id="brand-expressions">
+            <div className="expression-system__intro">
+              <div className="expression-system__stage" aria-label={t.labels.squareExpression}>
+                <ExpressionSquare expression="happy" label={t.labels.squareExpression} motion="bounce" />
+              </div>
+              <div>
+                <h3>{t.labels.squareExpression}</h3>
+                <p>{t.labels.expressionIntro}</p>
+              </div>
+            </div>
+
+            <div className="expression-system__block">
+              <h3>{t.labels.staticExpressions}</h3>
+              <div className="expression-grid">
+                {expressionSamples.map((item) => {
+                  const label = locale === "ar" ? item.arLabel : item.label;
+
+                  return (
+                    <article className="expression-card" key={item.key}>
+                      <ExpressionSquare expression={item.key} label={label} />
+                      <p>{label}</p>
+                    </article>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="expression-system__block">
+              <div className="expression-system__block-head">
+                <h3>{t.labels.animatedExpressions}</h3>
+                <p>{t.labels.animatedIntro}</p>
+              </div>
+              <div className="expression-motion-grid">
+                {animatedExpressionSamples.map((item) => {
+                  const label = locale === "ar" ? item.arLabel : item.label;
+
+                  return (
+                    <article className="expression-motion-card" key={`${item.key}-${item.motion}`}>
+                      <ExpressionSquare expression={item.key} label={label} motion={item.motion} />
+                      <p>{label}</p>
+                    </article>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </section>
+
         <div className="brand-guide__split">
           <section className="brand-guide__section" aria-labelledby="brand-clear-space">
-            <SectionTitle value={2}>{t.sections.clearSpace}</SectionTitle>
+            <SectionTitle value={3}>{t.sections.clearSpace}</SectionTitle>
             <div className="clear-space-demo" id="brand-clear-space">
               <div className="clear-space-demo__box">
                 <span className="clear-space-demo__x clear-space-demo__x--top">X</span>
@@ -364,7 +650,7 @@ export function BrandGuidelinePage({ content, locale }: BrandGuidelinePageProps)
           </section>
 
           <section className="brand-guide__section" aria-labelledby="brand-palette">
-            <SectionTitle value={3}>{t.sections.palette}</SectionTitle>
+            <SectionTitle value={4}>{t.sections.palette}</SectionTitle>
             <div className="palette-groups" id="brand-palette">
               {colorGroups.map((group) => (
                 <div className="palette-group" key={group.key}>
@@ -385,7 +671,7 @@ export function BrandGuidelinePage({ content, locale }: BrandGuidelinePageProps)
         </div>
 
         <section className="brand-guide__section" aria-labelledby="brand-typography">
-          <SectionTitle value={4}>{t.sections.typography}</SectionTitle>
+          <SectionTitle value={5}>{t.sections.typography}</SectionTitle>
           <div className="type-specimen-grid" id="brand-typography">
             <article className="type-specimen" dir="ltr">
               <span className="mono">{t.labels.englishTypeface}</span>
@@ -418,7 +704,7 @@ export function BrandGuidelinePage({ content, locale }: BrandGuidelinePageProps)
 
         <div className="brand-guide__split brand-guide__split--balanced">
           <section className="brand-guide__section" aria-labelledby="brand-usage">
-            <SectionTitle value={5}>{t.sections.usage}</SectionTitle>
+            <SectionTitle value={6}>{t.sections.usage}</SectionTitle>
             <div className="usage-grid" id="brand-usage">
               <article className="usage-card usage-card--light">
                 <LogoLockup variant="en" locale="en" />
@@ -436,7 +722,7 @@ export function BrandGuidelinePage({ content, locale }: BrandGuidelinePageProps)
           </section>
 
           <section className="brand-guide__section" aria-labelledby="brand-rules">
-            <SectionTitle value={6}>{t.sections.rules}</SectionTitle>
+            <SectionTitle value={7}>{t.sections.rules}</SectionTitle>
             <div className="brand-rules" id="brand-rules">
               <RuleCard state="do" label="Use approved lockups only">
                 <LogoLockup variant="en" locale="en" />
@@ -459,7 +745,7 @@ export function BrandGuidelinePage({ content, locale }: BrandGuidelinePageProps)
         </div>
 
         <section className="brand-guide__section" aria-labelledby="brand-principles">
-          <SectionTitle value={7}>{t.sections.principles}</SectionTitle>
+          <SectionTitle value={8}>{t.sections.principles}</SectionTitle>
           <div className="principle-grid" id="brand-principles">
             {principles.map((principle) => (
               <article key={principle.title} className="principle-card">
@@ -472,7 +758,7 @@ export function BrandGuidelinePage({ content, locale }: BrandGuidelinePageProps)
         </section>
 
         <section className="brand-guide__section" aria-labelledby="brand-preview">
-          <SectionTitle value={8}>{t.sections.preview}</SectionTitle>
+          <SectionTitle value={9}>{t.sections.preview}</SectionTitle>
           <div className="application-grid" id="brand-preview">
             <article className="application-card application-card--web">
               <BrandLogo locale="ar" />
