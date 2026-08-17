@@ -73,3 +73,4 @@ the exact hash).
 
 - Add brand expression square examples
 - Update official logo to excited square
+- Use black circle-eyed official logo

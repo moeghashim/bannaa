@@ -22,9 +22,10 @@ export function BrandMark({ size = 28, className, title }: BrandMarkProps) {
 type BrandLogoProps = {
   locale: Locale;
   className?: string;
+  markSize?: number;
 };
 
-export function BrandLogo({ locale, className }: BrandLogoProps) {
+export function BrandLogo({ locale, className, markSize }: BrandLogoProps) {
   if (locale === "ar") {
     return (
       <Image
@@ -41,7 +42,7 @@ export function BrandLogo({ locale, className }: BrandLogoProps) {
 
   return (
     <span className={`brand-logo brand-logo--en${className ? ` ${className}` : ""}`}>
-      <BrandMark size={30} title="Bannaa" />
+      <BrandMark size={markSize ?? 38} title="Bannaa" />
       <span>Bannaa</span>
     </span>
   );

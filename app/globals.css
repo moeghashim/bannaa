@@ -2316,10 +2316,6 @@ body {
 .expression-square__features path {
   fill: none;
 }
-.expression-square__features .expression-square__filled-eye {
-  fill: #ffffff;
-  stroke-width: 0;
-}
 .expression-square__features circle,
 .expression-square__features rect {
   stroke-width: 0;

@@ -154,15 +154,15 @@ Use the supplied SVG assets in [public/assets/brand](/Users/moe/bannaa/public/as
 - [brand_guideline.png](/Users/moe/bannaa/public/assets/brand/brand_guideline.png) is the source guideline image.
 - [app/icon.svg](/Users/moe/bannaa/app/icon.svg) is the Next.js favicon and mirrors the excited standalone icon geometry.
 
-The standalone icon is a colored rounded square with excited eyes. Do not add a detached square, mouth, tail, gradient, shadow, or extra facial features. Do not stretch, rotate, combine English and Arabic wordmarks into one lockup, or add effects.
+The standalone icon is a black rounded square with circular excited eyes. Do not add a detached square, mouth, tail, gradient, shadow, or extra facial features. Do not stretch, rotate, combine English and Arabic wordmarks into one lockup, or add effects.
 
 Clear space around the icon should be at least one quarter of the icon width on all sides.
 
 ### Expression Square
 
-The expression square is the new direction for the Banna mark. The excited eyes-only square is the official logo, and the wider expression set is for playful moments, social content, and product empty states.
+The expression square is the new direction for the Banna mark. The black excited eyes-only square is the official logo, and the wider expression set is for playful moments, social content, and product empty states.
 
-Expression squares should use colored rounded square bodies with white eyes only. Do not add mouths, detached squares, tails, gradients, or extra facial features.
+Expression squares should use rounded square bodies with white circular eyes only. The official mark is black; optional expression variants may use the extended brand colors. Do not add mouths, detached squares, tails, gradients, or extra facial features.
 
 Supported expressions include neutral, attentive, surprised, excited, happy, laughing, angry, sad, scared, suspicious, confused, curious, proud, shy, unimpressed, and sleepy. Animated versions should be CSS-only, short, subtle, and disabled by `prefers-reduced-motion`.
 
