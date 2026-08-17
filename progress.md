@@ -68,3 +68,7 @@ the exact hash).
 ## 2026-08-13
 
 - Add brand merch examples
+
+## 2026-08-17
+
+- Add brand expression square examples

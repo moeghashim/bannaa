@@ -158,6 +158,14 @@ The standalone icon is an open all-black geometric mark. Do not recolor the uppe
 
 Clear space around the icon should be at least one unit equal to the upper-right square on all sides.
 
+### Expression Square
+
+The expression square is an original content and community extension of the Banna mark. It uses a black rounded square body plus the detached upper-right square to create a simple character system for playful moments, social content, and product empty states.
+
+Expression squares must not replace the official logo lockups in navigation, favicon, legal, or partnership contexts. Keep the body and detached square all black, draw facial features in white or the page canvas color, and avoid adding colored tails or gradients to the mark itself.
+
+Supported expressions include neutral, attentive, surprised, excited, happy, laughing, angry, sad, scared, suspicious, confused, curious, proud, shy, unimpressed, and sleepy. Animated versions should be CSS-only, short, subtle, and disabled by `prefers-reduced-motion`.
+
 ## Colors
 
 Use a single light palette:
@@ -191,7 +199,7 @@ The current site structure is:
 - Content hub with filterable videos, shorts, X threads, and newsletters.
 - TikTok and YouTube channel section for sourcing short and long-form video posts.
 - Resources, join/get-started, and contact/partnership pages.
-- Brand guideline page displaying the supplied visual identity reference.
+- Brand guideline page displaying the supplied visual identity reference, downloadable logo assets, expression-square examples, and practical applications.
 
 ## Components
 
@@ -204,6 +212,8 @@ The current site structure is:
 **Video Thumbnails:** Video posts in the content hub should show a thumbnail area. Use light, brand-colored generated thumbnails by default, then replace with real video stills when available.
 
 **Video Channels:** Keep TikTok and YouTube links in the content system, not hard-coded in page markup. YouTube videos should render as lightweight fetched thumbnail cards from the public channel feed. TikTok should use the official profile embed so the account can load current public videos without a private API key.
+
+**Expression Square:** Use the expression square only for playful brand moments. Keep it inline SVG/CSS where possible instead of adding heavy image files. Motion should be ambient and restrained: blink, bounce, tilt, or sleepy drift.
 
 **Community:** Signup requires name and email at minimum and uses a signed HTTP-only cookie through Next route handlers. Production deployments must provide `COMMUNITY_AUTH_SECRET`; posts are ready to connect to a persistent database layer.
 
