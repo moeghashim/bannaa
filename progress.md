@@ -72,3 +72,4 @@ the exact hash).
 ## 2026-08-17
 
 - Add brand expression square examples
+- Update official logo to excited square
