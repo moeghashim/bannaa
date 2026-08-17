@@ -123,7 +123,7 @@ const copy: Record<Locale, BrandGuideCopy> = {
       arabicLockup: "Icon + Arabic wordmark",
       squareExpression: "Expression logo",
       expressionIntro:
-        "The new logo moves to a colored expression square with eyes only. The excited version is the official mark, while the wider color set supports content, community, and product moments.",
+        "The new logo moves to a black expression square with circular eyes only. The excited version is the official mark, while the wider color set supports content, community, and product moments.",
       staticExpressions: "Static expressions",
       animatedExpressions: "Animated expressions",
       animatedIntro: "Motion should stay short and restrained: a blink, bounce, tilt, or sleepy drift. It respects reduced-motion preferences.",
@@ -263,7 +263,7 @@ const expressionSamples: { key: ExpressionKey; label: string; arLabel: string; c
   { key: "neutral", label: "Neutral", arLabel: "حيادي", color: "#111111" },
   { key: "attentive", label: "Attentive", arLabel: "منتبه", color: "#2563EB" },
   { key: "surprised", label: "Surprised", arLabel: "متفاجئ", color: "#E8A48B" },
-  { key: "excited", label: "Excited", arLabel: "متحمس", color: "#2563EB" },
+  { key: "excited", label: "Excited", arLabel: "متحمس", color: "#111111" },
   { key: "happy", label: "Happy", arLabel: "سعيد", color: "#2F855A" },
   { key: "laughing", label: "Laughing", arLabel: "يضحك", color: "#EFCFCB" },
   { key: "angry", label: "Angry", arLabel: "غاضب", color: "#C2410C" },
@@ -286,7 +286,7 @@ const animatedExpressionSamples: {
   color: string;
 }[] = [
   { key: "attentive", motion: "blink", label: "Blink", arLabel: "رمشة", color: "#2563EB" },
-  { key: "excited", motion: "bounce", label: "Bounce", arLabel: "ارتداد", color: "#2563EB" },
+  { key: "excited", motion: "bounce", label: "Bounce", arLabel: "ارتداد", color: "#111111" },
   { key: "curious", motion: "tilt", label: "Curious tilt", arLabel: "ميل فضولي", color: "#D97706" },
   { key: "sleepy", motion: "sleep", label: "Sleepy drift", arLabel: "نعاس خفيف", color: "#64748B" }
 ];
@@ -323,7 +323,7 @@ function LogoLockup({ variant, locale }: { variant: "icon" | "en" | "ar"; locale
 
   return (
     <span className="brand-guide-lockup brand-guide-lockup--en" dir="ltr">
-      <BrandLogo locale={locale === "ar" ? "en" : locale} />
+      <BrandLogo locale={locale === "ar" ? "en" : locale} markSize={58} />
     </span>
   );
 }
@@ -333,43 +333,41 @@ function ExpressionFeatures({ expression }: { expression: ExpressionKey }) {
     case "attentive":
       return (
         <>
-          <circle cx={69} cy={82} r={10} />
-          <circle cx={111} cy={82} r={10} />
+          <circle cx={69} cy={82} r={11} />
+          <circle cx={111} cy={82} r={11} />
         </>
       );
     case "surprised":
       return (
         <>
-          <circle cx={69} cy={78} r={8} />
-          <circle cx={111} cy={78} r={8} />
+          <circle cx={69} cy={76} r={13} />
+          <circle cx={111} cy={76} r={13} />
         </>
       );
     case "excited":
       return (
         <>
-          <path className="expression-square__filled-eye" d="M58 78l10-10 10 10-10 10z" />
-          <path className="expression-square__filled-eye" d="M102 78l10-10 10 10-10 10z" />
+          <circle cx={69} cy={77} r={11} />
+          <circle cx={111} cy={77} r={11} />
         </>
       );
     case "happy":
       return (
         <>
-          <path d="M59 78c6-7 14-7 20 0" />
-          <path d="M101 78c6-7 14-7 20 0" />
+          <circle cx={69} cy={78} r={9} />
+          <circle cx={111} cy={78} r={9} />
         </>
       );
     case "laughing":
       return (
         <>
-          <path d="M57 76l23 10" />
-          <path d="M123 76l-23 10" />
+          <circle cx={68} cy={72} r={8} />
+          <circle cx={112} cy={72} r={8} />
         </>
       );
     case "angry":
       return (
         <>
-          <path d="M55 69l25 12" />
-          <path d="M125 69l-25 12" />
           <circle cx={69} cy={88} r={6} />
           <circle cx={111} cy={88} r={6} />
         </>
@@ -384,25 +382,22 @@ function ExpressionFeatures({ expression }: { expression: ExpressionKey }) {
     case "scared":
       return (
         <>
-          <circle cx={69} cy={78} r={9} />
-          <circle cx={111} cy={78} r={9} />
-          <path d="M50 57l10 10M130 57l-10 10" />
+          <circle cx={69} cy={77} r={12} />
+          <circle cx={111} cy={77} r={12} />
         </>
       );
     case "suspicious":
       return (
         <>
-          <path d="M54 70l28-5" />
-          <path d="M100 66l27 11" />
-          <rect x={63} y={80} width={14} height={7} rx={3.5} />
-          <rect x={105} y={83} width={14} height={7} rx={3.5} />
+          <circle cx={68} cy={82} r={6} />
+          <circle cx={112} cy={78} r={6} />
         </>
       );
     case "confused":
       return (
         <>
-          <circle cx={69} cy={82} r={7} />
-          <path d="M105 76c11-9 27 2 16 14c-6 6-13 5-13 15" />
+          <circle cx={68} cy={80} r={7} />
+          <circle cx={111} cy={85} r={10} />
         </>
       );
     case "curious":
@@ -415,40 +410,37 @@ function ExpressionFeatures({ expression }: { expression: ExpressionKey }) {
     case "proud":
       return (
         <>
-          <path d="M58 78h22" />
-          <path d="M100 78h22" />
+          <circle cx={69} cy={80} r={7} />
+          <circle cx={111} cy={80} r={7} />
         </>
       );
     case "shy":
       return (
         <>
-          <circle cx={69} cy={80} r={6} />
-          <circle cx={111} cy={80} r={6} />
-          <circle cx={53} cy={103} r={8} opacity={0.36} />
-          <circle cx={127} cy={103} r={8} opacity={0.36} />
+          <circle cx={70} cy={84} r={6} />
+          <circle cx={110} cy={84} r={6} />
         </>
       );
     case "unimpressed":
       return (
         <>
-          <path d="M59 79h22" />
-          <path d="M99 79h22" />
+          <circle cx={69} cy={82} r={5} />
+          <circle cx={111} cy={82} r={5} />
         </>
       );
     case "sleepy":
       return (
         <>
-          <path d="M57 80c8 6 16 6 24 0" />
-          <path d="M99 80c8 6 16 6 24 0" />
-          <path d="M119 54h17l-17 17h17" />
+          <circle cx={69} cy={86} r={5} />
+          <circle cx={111} cy={86} r={5} />
         </>
       );
     case "neutral":
     default:
       return (
         <>
-          <rect x={61} y={76} width={15} height={15} rx={3} />
-          <rect x={104} y={76} width={15} height={15} rx={3} />
+          <circle cx={69} cy={80} r={7} />
+          <circle cx={111} cy={80} r={7} />
         </>
       );
   }
@@ -576,7 +568,7 @@ export function BrandGuidelinePage({ content, locale }: BrandGuidelinePageProps)
           <div className="expression-system" id="brand-expressions">
             <div className="expression-system__intro">
               <div className="expression-system__stage" aria-label={t.labels.squareExpression}>
-                <ExpressionSquare expression="excited" label={t.labels.squareExpression} color="#2563EB" motion="bounce" />
+                <ExpressionSquare expression="excited" label={t.labels.squareExpression} color="#111111" motion="bounce" />
               </div>
               <div>
                 <h3>{t.labels.squareExpression}</h3>
