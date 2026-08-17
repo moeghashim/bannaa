@@ -304,7 +304,15 @@ function SectionTitle({ value, children }: { value: number; children: string }) 
   );
 }
 
-function LogoLockup({ variant, locale }: { variant: "icon" | "en" | "ar"; locale: Locale }) {
+function LogoLockup({
+  variant,
+  locale,
+  markSize
+}: {
+  variant: "icon" | "en" | "ar";
+  locale: Locale;
+  markSize?: number;
+}) {
   if (variant === "icon") {
     return (
       <span className="brand-guide-lockup brand-guide-lockup--icon">
@@ -323,7 +331,7 @@ function LogoLockup({ variant, locale }: { variant: "icon" | "en" | "ar"; locale
 
   return (
     <span className="brand-guide-lockup brand-guide-lockup--en" dir="ltr">
-      <BrandLogo locale={locale === "ar" ? "en" : locale} markSize={58} />
+      <BrandLogo locale={locale === "ar" ? "en" : locale} markSize={markSize} />
     </span>
   );
 }
@@ -347,8 +355,8 @@ function ExpressionFeatures({ expression }: { expression: ExpressionKey }) {
     case "excited":
       return (
         <>
-          <circle cx={69} cy={77} r={11} />
-          <circle cx={111} cy={77} r={11} />
+          <circle cx={68} cy={78} r={13} />
+          <circle cx={112} cy={78} r={13} />
         </>
       );
     case "happy":
@@ -541,7 +549,7 @@ export function BrandGuidelinePage({ content, locale }: BrandGuidelinePageProps)
               <LogoDownloadLinks title={t.labels.icon} files={logoDownloads.icon} downloadLabel={t.labels.download} />
             </article>
             <article>
-              <LogoLockup variant="en" locale={locale} />
+              <LogoLockup variant="en" locale={locale} markSize={72} />
               <p>{t.labels.englishLockup}</p>
               <LogoDownloadLinks title={t.labels.englishLockup} files={logoDownloads.en} downloadLabel={t.labels.download} />
             </article>
