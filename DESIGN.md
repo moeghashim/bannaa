@@ -149,20 +149,20 @@ The new guideline replaces the previous lime terminal identity. The site should 
 
 Use the supplied SVG assets in [public/assets/brand](/Users/moe/bannaa/public/assets/brand):
 
-- [icon.svg](/Users/moe/bannaa/public/assets/brand/icon.svg) is the primary standalone web mark and must remain all black.
-- [arabic_logo.svg](/Users/moe/bannaa/public/assets/brand/arabic_logo.svg) is the approved Arabic lockup reference and must keep the icon portion all black.
+- [icon.svg](/Users/moe/bannaa/public/assets/brand/icon.svg) is the primary standalone web mark and uses the excited eyes-only square.
+- [arabic_logo.svg](/Users/moe/bannaa/public/assets/brand/arabic_logo.svg) is the approved Arabic lockup reference and uses the excited square next to the Arabic wordmark.
 - [brand_guideline.png](/Users/moe/bannaa/public/assets/brand/brand_guideline.png) is the source guideline image.
-- [app/icon.svg](/Users/moe/bannaa/app/icon.svg) is the Next.js favicon and mirrors the all-black standalone icon geometry.
+- [app/icon.svg](/Users/moe/bannaa/app/icon.svg) is the Next.js favicon and mirrors the excited standalone icon geometry.
 
-The standalone icon is an open all-black geometric mark. Do not recolor the upper-right square in standalone icon, favicon, or Arabic lockup usage. Do not stretch, rotate, combine English and Arabic wordmarks into one lockup, or add shadows/effects.
+The standalone icon is a colored rounded square with excited eyes. Do not add a detached square, mouth, tail, gradient, shadow, or extra facial features. Do not stretch, rotate, combine English and Arabic wordmarks into one lockup, or add effects.
 
-Clear space around the icon should be at least one unit equal to the upper-right square on all sides.
+Clear space around the icon should be at least one quarter of the icon width on all sides.
 
 ### Expression Square
 
-The expression square is an original content and community extension of the Banna mark. It uses a black rounded square body plus the detached upper-right square to create a simple character system for playful moments, social content, and product empty states.
+The expression square is the new direction for the Banna mark. The excited eyes-only square is the official logo, and the wider expression set is for playful moments, social content, and product empty states.
 
-Expression squares must not replace the official logo lockups in navigation, favicon, legal, or partnership contexts. Keep the body and detached square all black, draw facial features in white or the page canvas color, and avoid adding colored tails or gradients to the mark itself.
+Expression squares should use colored rounded square bodies with white eyes only. Do not add mouths, detached squares, tails, gradients, or extra facial features.
 
 Supported expressions include neutral, attentive, surprised, excited, happy, laughing, angry, sad, scared, suspicious, confused, curious, proud, shy, unimpressed, and sleepy. Animated versions should be CSS-only, short, subtle, and disabled by `prefers-reduced-motion`.
 
@@ -203,7 +203,7 @@ The current site structure is:
 
 ## Components
 
-**Header:** Use the SVG mark through `BrandMark`, followed by the localized wordmark: `بنّاء` in Arabic and `Bannaa` in English. The language switcher stays visible on every page. No theme toggle.
+**Header:** Use the excited square SVG mark through `BrandMark`, followed by the localized wordmark: `بنّاء` in Arabic and `Bannaa` in English. The language switcher stays visible on every page. No theme toggle.
 
 **Buttons:** Primary buttons are electric blue with white text. Secondary buttons are white or transparent with a neutral stroke and charcoal text.
 
@@ -213,7 +213,7 @@ The current site structure is:
 
 **Video Channels:** Keep TikTok and YouTube links in the content system, not hard-coded in page markup. YouTube videos should render as lightweight fetched thumbnail cards from the public channel feed. TikTok should use the official profile embed so the account can load current public videos without a private API key.
 
-**Expression Square:** Use the expression square only for playful brand moments. Keep it inline SVG/CSS where possible instead of adding heavy image files. Motion should be ambient and restrained: blink, bounce, tilt, or sleepy drift.
+**Expression Square:** Use the excited square as the official logo. Use other colored eye-only expressions for playful brand moments. Keep them inline SVG/CSS where possible instead of adding heavy image files. Motion should be ambient and restrained: blink, bounce, tilt, or sleepy drift.
 
 **Community:** Signup requires name and email at minimum and uses a signed HTTP-only cookie through Next route handlers. Production deployments must provide `COMMUNITY_AUTH_SECRET`; posts are ready to connect to a persistent database layer.
 
@@ -223,7 +223,7 @@ Do:
 
 - Keep bilingual content centralized in [lib/content.ts](/Users/moe/bannaa/lib/content.ts).
 - Keep Arabic as the default route and preserve full English translations.
-- Use [public/assets/brand/icon.svg](/Users/moe/bannaa/public/assets/brand/icon.svg) for the web mark.
+- Use [public/assets/brand/icon.svg](/Users/moe/bannaa/public/assets/brand/icon.svg) for the official excited web mark.
 - Use electric blue for primary action and navigation emphasis.
 - Keep the site light, fast, and low-bandwidth friendly.
 
@@ -231,6 +231,7 @@ Don't:
 
 - Reintroduce dark mode.
 - Use the old lime accent.
+- Add a detached square, mouth, tail, gradient, or extra facial features to the official mark.
 - Distort, rotate, shadow, or combine logo lockups incorrectly.
 - Force Arabic into mono typography.
 - Hard-code content directly in route components when it belongs in the content system.

@@ -2303,19 +2303,22 @@ body {
   transform-box: fill-box;
   transform-origin: center;
 }
-.expression-square__body,
-.expression-square__dot {
-  fill: var(--fg);
+.expression-square__body {
+  fill: var(--expression-fill, var(--fg));
 }
 .expression-square__features {
-  fill: var(--bg);
-  stroke: var(--bg);
+  fill: #ffffff;
+  stroke: #ffffff;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 7;
 }
 .expression-square__features path {
   fill: none;
+}
+.expression-square__features .expression-square__filled-eye {
+  fill: #ffffff;
+  stroke-width: 0;
 }
 .expression-square__features circle,
 .expression-square__features rect {
