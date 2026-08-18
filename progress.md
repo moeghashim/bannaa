@@ -79,3 +79,4 @@ the exact hash).
 ## 2026-08-18
 
 - Switch Banna official logo to Blobatar boxy system
+- Fix Arabic brand page icon alignment
