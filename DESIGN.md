@@ -149,22 +149,22 @@ The new guideline replaces the previous lime terminal identity. The site should 
 
 Use the supplied SVG assets in [public/assets/brand](/Users/moe/bannaa/public/assets/brand):
 
-- [icon.svg](/Users/moe/bannaa/public/assets/brand/icon.svg) is the primary standalone web mark and uses the excited eyes-only square.
-- [arabic_logo.svg](/Users/moe/bannaa/public/assets/brand/arabic_logo.svg) is the approved Arabic lockup reference and uses the excited square next to the Arabic wordmark.
+- [icon.svg](/Users/moe/bannaa/public/assets/brand/icon.svg) is the primary standalone web mark and uses the boxy Blobatar mark.
+- [arabic_logo.svg](/Users/moe/bannaa/public/assets/brand/arabic_logo.svg) is the approved Arabic lockup reference and uses the boxy Blobatar mark next to the Arabic wordmark.
 - [brand_guideline.png](/Users/moe/bannaa/public/assets/brand/brand_guideline.png) is the source guideline image.
-- [app/icon.svg](/Users/moe/bannaa/app/icon.svg) is the Next.js favicon and mirrors the excited standalone icon geometry.
+- [app/icon.svg](/Users/moe/bannaa/app/icon.svg) is the Next.js favicon and mirrors the standalone icon geometry.
 
-The standalone icon is a black rounded square with circular excited eyes. Do not add a detached square, mouth, tail, gradient, shadow, or extra facial features. Do not stretch, rotate, combine English and Arabic wordmarks into one lockup, or add effects.
+The standalone icon is a black boxy Blobatar with two white capsule eyes. It is generated from `blobatar` with the boxy shape trait pinned, a black body, and white eyes. Do not add a detached square, mouth, tail, gradient, shadow, or extra facial features. Do not stretch, rotate, combine English and Arabic wordmarks into one lockup, or add effects.
 
 Clear space around the icon should be at least one quarter of the icon width on all sides.
 
 ### Expression Square
 
-The expression square is the new direction for the Banna mark. The black excited eyes-only square is the official logo, and the wider expression set is for playful moments, social content, and product empty states.
+The boxy Blobatar is the current direction for the Banna mark. The black idle boxy version is the official logo, and the wider expression set is for playful moments, social content, and product empty states.
 
-Expression squares should use rounded square bodies with white circular eyes only. The official mark is black; optional expression variants may use the extended brand colors. Do not add mouths, detached squares, tails, gradients, or extra facial features.
+Expression avatars should use the same pinned boxy Blobatar traits with eyes only. The official mark is black; optional expression variants may use the extended brand colors. Do not add mouths, detached squares, tails, gradients, or extra facial features.
 
-Supported expressions include neutral, attentive, surprised, excited, happy, laughing, angry, sad, scared, suspicious, confused, curious, proud, shy, unimpressed, and sleepy. Animated versions should be CSS-only, short, subtle, and disabled by `prefers-reduced-motion`.
+Supported Blobatar expressions include idle, happy, sad, mad, surprised, wink, sleepy, smug, unsure, scared, love, shy, and sick. Animated versions should be CSS-only, short, subtle, and disabled by `prefers-reduced-motion`.
 
 ## Colors
 
@@ -203,7 +203,7 @@ The current site structure is:
 
 ## Components
 
-**Header:** Use the excited square SVG mark through `BrandMark`, followed by the localized wordmark: `بنّاء` in Arabic and `Bannaa` in English. The language switcher stays visible on every page. No theme toggle.
+**Header:** Use the boxy Blobatar SVG mark through `BrandMark`, followed by the localized wordmark: `بنّاء` in Arabic and `Bannaa` in English. The language switcher stays visible on every page. No theme toggle.
 
 **Buttons:** Primary buttons are electric blue with white text. Secondary buttons are white or transparent with a neutral stroke and charcoal text.
 
@@ -213,7 +213,7 @@ The current site structure is:
 
 **Video Channels:** Keep TikTok and YouTube links in the content system, not hard-coded in page markup. YouTube videos should render as lightweight fetched thumbnail cards from the public channel feed. TikTok should use the official profile embed so the account can load current public videos without a private API key.
 
-**Expression Square:** Use the excited square as the official logo. Use other colored eye-only expressions for playful brand moments. Keep them inline SVG/CSS where possible instead of adding heavy image files. Motion should be ambient and restrained: blink, bounce, tilt, or sleepy drift.
+**Expression Avatar:** Use the black boxy Blobatar as the official logo. Use other colored eye-only Blobatar expressions for playful brand moments. Keep them inline SVG/CSS where possible instead of adding heavy image files. Motion should be ambient and restrained: blink, bounce, tilt, or sleepy drift.
 
 **Community:** Signup requires name and email at minimum and uses a signed HTTP-only cookie through Next route handlers. Production deployments must provide `COMMUNITY_AUTH_SECRET`; posts are ready to connect to a persistent database layer.
 
@@ -223,7 +223,7 @@ Do:
 
 - Keep bilingual content centralized in [lib/content.ts](/Users/moe/bannaa/lib/content.ts).
 - Keep Arabic as the default route and preserve full English translations.
-- Use [public/assets/brand/icon.svg](/Users/moe/bannaa/public/assets/brand/icon.svg) for the official excited web mark.
+- Use [public/assets/brand/icon.svg](/Users/moe/bannaa/public/assets/brand/icon.svg) for the official boxy Blobatar web mark.
 - Use electric blue for primary action and navigation emphasis.
 - Keep the site light, fast, and low-bandwidth friendly.
 
