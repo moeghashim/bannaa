@@ -1,5 +1,8 @@
 import Image from "next/image";
-import type { CSSProperties, ReactNode } from "react";
+import type { ReactNode } from "react";
+import { blobatar } from "blobatar";
+import type { BlobatarOptions, Expression } from "blobatar";
+import { happy, idle, love, mad, sad, scared, shy, sick, sleepy, smug, surprised, unsure, wink } from "blobatar/expression";
 
 import { BrandLogo, BrandMark } from "@/components/site/brand-mark";
 import { PageHero } from "@/components/site/page-hero";
@@ -77,7 +80,7 @@ const copy: Record<Locale, BrandGuideCopy> = {
       arabicLockup: "الأيقونة + الاسم العربي",
       squareExpression: "الشعار التعبيري",
       expressionIntro:
-        "الشعار الجديد ينتقل إلى مربع تعبيري ملوّن بعينين واضحتين فقط. النسخة المتحمسة هي الشعار الرسمي، وبقية الألوان تساعد في المحتوى، المجتمع، والواجهات.",
+        "الشعار الجديد يستخدم شخصية Blobatar صندوقية بعينين فقط. النسخة السوداء هي الشعار الرسمي، وبقية الألوان والتعبيرات تساعد في المحتوى، المجتمع، والواجهات.",
       staticExpressions: "تعبيرات ثابتة",
       animatedExpressions: "تعبيرات متحركة",
       animatedIntro: "الحركة قصيرة وهادئة: رمشة، ارتداد، ميل خفيف، أو نعاس. تتوقف تلقائياً عند تفضيل تقليل الحركة.",
@@ -123,7 +126,7 @@ const copy: Record<Locale, BrandGuideCopy> = {
       arabicLockup: "Icon + Arabic wordmark",
       squareExpression: "Expression logo",
       expressionIntro:
-        "The new logo moves to a black expression square with circular eyes only. The excited version is the official mark, while the wider color set supports content, community, and product moments.",
+        "The new logo uses a boxy Blobatar character with eyes only. The black version is the official mark, while the wider color and expression set supports content, community, and product moments.",
       staticExpressions: "Static expressions",
       animatedExpressions: "Animated expressions",
       animatedIntro: "Motion should stay short and restrained: a blink, bounce, tilt, or sleepy drift. It respects reduced-motion preferences.",
@@ -242,40 +245,63 @@ const merchExamples = [
 ];
 
 type ExpressionKey =
-  | "neutral"
-  | "attentive"
-  | "surprised"
-  | "excited"
+  | "idle"
   | "happy"
-  | "laughing"
-  | "angry"
   | "sad"
+  | "mad"
+  | "surprised"
+  | "wink"
+  | "sleepy"
+  | "smug"
+  | "unsure"
   | "scared"
-  | "suspicious"
-  | "confused"
-  | "curious"
-  | "proud"
+  | "love"
   | "shy"
-  | "unimpressed"
-  | "sleepy";
+  | "sick";
+
+const blobatarExpressions: Record<ExpressionKey, Expression> = {
+  idle,
+  happy,
+  sad,
+  mad,
+  surprised,
+  wink,
+  sleepy,
+  smug,
+  unsure,
+  scared,
+  love,
+  shy,
+  sick
+};
+
+const blobatarTraits: NonNullable<BlobatarOptions["traits"]> = {
+  shape: 0.65,
+  "body.r": 0.72,
+  "body.ratio": 0.54,
+  "body.n": 0.76,
+  "body.rot": 0.5,
+  "eye.ratio": 0.82,
+  "eye.rx": 0.7,
+  "eye.gap": 0.55,
+  "eye.lean": 0.5,
+  "gaze.y": 0.58
+};
 
 const expressionSamples: { key: ExpressionKey; label: string; arLabel: string; color: string }[] = [
-  { key: "neutral", label: "Neutral", arLabel: "حيادي", color: "#111111" },
-  { key: "attentive", label: "Attentive", arLabel: "منتبه", color: "#2563EB" },
-  { key: "surprised", label: "Surprised", arLabel: "متفاجئ", color: "#E8A48B" },
-  { key: "excited", label: "Excited", arLabel: "متحمس", color: "#111111" },
+  { key: "idle", label: "Boxy", arLabel: "صندوقي", color: "#111111" },
   { key: "happy", label: "Happy", arLabel: "سعيد", color: "#2F855A" },
-  { key: "laughing", label: "Laughing", arLabel: "يضحك", color: "#EFCFCB" },
-  { key: "angry", label: "Angry", arLabel: "غاضب", color: "#C2410C" },
   { key: "sad", label: "Sad", arLabel: "حزين", color: "#596274" },
+  { key: "mad", label: "Mad", arLabel: "غاضب", color: "#C2410C" },
+  { key: "surprised", label: "Surprised", arLabel: "متفاجئ", color: "#E8A48B" },
+  { key: "wink", label: "Wink", arLabel: "غمزة", color: "#2563EB" },
+  { key: "sleepy", label: "Sleepy", arLabel: "نعسان", color: "#64748B" },
+  { key: "smug", label: "Smug", arLabel: "واثق", color: "#111111" },
+  { key: "unsure", label: "Unsure", arLabel: "متردد", color: "#0F766E" },
   { key: "scared", label: "Scared", arLabel: "خائف", color: "#6D5BD0" },
-  { key: "suspicious", label: "Suspicious", arLabel: "متشكك", color: "#7C2D12" },
-  { key: "confused", label: "Confused", arLabel: "محتار", color: "#0F766E" },
-  { key: "curious", label: "Curious", arLabel: "فضولي", color: "#D97706" },
-  { key: "proud", label: "Proud", arLabel: "فخور", color: "#111111" },
-  { key: "shy", label: "Shy", arLabel: "خجول", color: "#BE5B7B" },
-  { key: "unimpressed", label: "Unimpressed", arLabel: "غير مبهر", color: "#475569" },
-  { key: "sleepy", label: "Sleepy", arLabel: "نعسان", color: "#64748B" }
+  { key: "love", label: "Love", arLabel: "محب", color: "#BE5B7B" },
+  { key: "shy", label: "Shy", arLabel: "خجول", color: "#EFCFCB" },
+  { key: "sick", label: "Sick", arLabel: "مرهق", color: "#7A8C68" }
 ];
 
 const animatedExpressionSamples: {
@@ -285,11 +311,21 @@ const animatedExpressionSamples: {
   arLabel: string;
   color: string;
 }[] = [
-  { key: "attentive", motion: "blink", label: "Blink", arLabel: "رمشة", color: "#2563EB" },
-  { key: "excited", motion: "bounce", label: "Bounce", arLabel: "ارتداد", color: "#111111" },
-  { key: "curious", motion: "tilt", label: "Curious tilt", arLabel: "ميل فضولي", color: "#D97706" },
+  { key: "wink", motion: "blink", label: "Blink", arLabel: "رمشة", color: "#2563EB" },
+  { key: "idle", motion: "bounce", label: "Bounce", arLabel: "ارتداد", color: "#111111" },
+  { key: "smug", motion: "tilt", label: "Tilt", arLabel: "ميل خفيف", color: "#D97706" },
   { key: "sleepy", motion: "sleep", label: "Sleepy drift", arLabel: "نعاس خفيف", color: "#64748B" }
 ];
+
+function normalizeBlobatarSvg(svg: string) {
+  const title = svg.match(/<title>.*?<\/title>/)?.[0] ?? "";
+  const body = svg
+    .replace(/^<svg[^>]*>/, "")
+    .replace(/<\/svg>\s*$/, "")
+    .replace(/<title>.*?<\/title>/, "");
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">${title}<g transform="matrix(1.45 0 0 1.45 -21 -20.1)">${body}</g></svg>`;
+}
 
 function SectionNumber({ value }: { value: number }) {
   return <span className="brand-guide__num mono">{value}.</span>;
@@ -336,124 +372,6 @@ function LogoLockup({
   );
 }
 
-function ExpressionFeatures({ expression }: { expression: ExpressionKey }) {
-  switch (expression) {
-    case "attentive":
-      return (
-        <>
-          <circle cx={69} cy={82} r={11} />
-          <circle cx={111} cy={82} r={11} />
-        </>
-      );
-    case "surprised":
-      return (
-        <>
-          <circle cx={69} cy={76} r={13} />
-          <circle cx={111} cy={76} r={13} />
-        </>
-      );
-    case "excited":
-      return (
-        <>
-          <circle cx={68} cy={78} r={13} />
-          <circle cx={112} cy={78} r={13} />
-        </>
-      );
-    case "happy":
-      return (
-        <>
-          <circle cx={69} cy={78} r={9} />
-          <circle cx={111} cy={78} r={9} />
-        </>
-      );
-    case "laughing":
-      return (
-        <>
-          <circle cx={68} cy={72} r={8} />
-          <circle cx={112} cy={72} r={8} />
-        </>
-      );
-    case "angry":
-      return (
-        <>
-          <circle cx={69} cy={88} r={6} />
-          <circle cx={111} cy={88} r={6} />
-        </>
-      );
-    case "sad":
-      return (
-        <>
-          <circle cx={69} cy={80} r={7} />
-          <circle cx={111} cy={80} r={7} />
-        </>
-      );
-    case "scared":
-      return (
-        <>
-          <circle cx={69} cy={77} r={12} />
-          <circle cx={111} cy={77} r={12} />
-        </>
-      );
-    case "suspicious":
-      return (
-        <>
-          <circle cx={68} cy={82} r={6} />
-          <circle cx={112} cy={78} r={6} />
-        </>
-      );
-    case "confused":
-      return (
-        <>
-          <circle cx={68} cy={80} r={7} />
-          <circle cx={111} cy={85} r={10} />
-        </>
-      );
-    case "curious":
-      return (
-        <>
-          <circle cx={73} cy={80} r={8} />
-          <circle cx={116} cy={74} r={8} />
-        </>
-      );
-    case "proud":
-      return (
-        <>
-          <circle cx={69} cy={80} r={7} />
-          <circle cx={111} cy={80} r={7} />
-        </>
-      );
-    case "shy":
-      return (
-        <>
-          <circle cx={70} cy={84} r={6} />
-          <circle cx={110} cy={84} r={6} />
-        </>
-      );
-    case "unimpressed":
-      return (
-        <>
-          <circle cx={69} cy={82} r={5} />
-          <circle cx={111} cy={82} r={5} />
-        </>
-      );
-    case "sleepy":
-      return (
-        <>
-          <circle cx={69} cy={86} r={5} />
-          <circle cx={111} cy={86} r={5} />
-        </>
-      );
-    case "neutral":
-    default:
-      return (
-        <>
-          <circle cx={69} cy={80} r={7} />
-          <circle cx={111} cy={80} r={7} />
-        </>
-      );
-  }
-}
-
 function ExpressionSquare({
   expression,
   label,
@@ -465,24 +383,23 @@ function ExpressionSquare({
   color?: string;
   motion?: "blink" | "bounce" | "tilt" | "sleep";
 }) {
-  const style = color ? ({ "--expression-fill": color } as CSSProperties) : undefined;
+  const svg = normalizeBlobatarSvg(
+    blobatar(`bannaa-${expression}`, {
+      background: false,
+      palette: { head: color ?? "#111111", eye: "#FFFFFF" },
+      traits: blobatarTraits,
+      expression: blobatarExpressions[expression],
+      title: label
+    })
+  );
 
   return (
-    <svg
+    <span
       className={`expression-square${motion ? ` expression-square--${motion}` : ""}`}
-      viewBox="0 0 180 180"
       role="img"
-      aria-labelledby={`expression-${expression}${motion ? `-${motion}` : ""}`}
-      style={style}
-    >
-      <title id={`expression-${expression}${motion ? `-${motion}` : ""}`}>{label}</title>
-      <g className="expression-square__avatar">
-        <rect className="expression-square__body" x={24} y={24} width={132} height={132} rx={32} />
-        <g className="expression-square__features">
-          <ExpressionFeatures expression={expression} />
-        </g>
-      </g>
-    </svg>
+      aria-label={label}
+      dangerouslySetInnerHTML={{ __html: svg }}
+    />
   );
 }
 
@@ -576,7 +493,7 @@ export function BrandGuidelinePage({ content, locale }: BrandGuidelinePageProps)
           <div className="expression-system" id="brand-expressions">
             <div className="expression-system__intro">
               <div className="expression-system__stage" aria-label={t.labels.squareExpression}>
-                <ExpressionSquare expression="excited" label={t.labels.squareExpression} color="#111111" motion="bounce" />
+                <ExpressionSquare expression="idle" label={t.labels.squareExpression} color="#111111" motion="bounce" />
               </div>
               <div>
                 <h3>{t.labels.squareExpression}</h3>

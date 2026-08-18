@@ -75,3 +75,7 @@ the exact hash).
 - Update official logo to excited square
 - Use black circle-eyed official logo
 - Correct shared official logo icon
+
+## 2026-08-18
+
+- Switch Banna official logo to Blobatar boxy system

@@ -1,5 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" role="img" aria-label="Bannaa excited logo">
-  <rect x="54" y="54" width="392" height="392" rx="96" fill="#111111"/>
-  <circle cx="188" cy="218" r="42" fill="#FFFFFF"/>
-  <circle cx="312" cy="218" r="42" fill="#FFFFFF"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 100 100" role="img" aria-label="Bannaa boxy logo"><title>Bannaa</title><g transform="matrix(1.45 0 0 1.45 -21 -20.1)"><g fill="#050607"><path d="M79.92 48.52C79.92 79.71 79.92 79.71 48.93 79.71C17.93 79.71 17.93 79.71 17.93 48.52C17.93 17.33 17.93 17.33 48.93 17.33C79.92 17.33 79.92 17.33 79.92 48.52Z"/></g><g fill="#F7F7F7"><path d="M40.97 47.35C40.97 56.17 40.97 56.17 37.99 56.17C35.02 56.17 35.02 56.17 35.02 47.35C35.02 38.52 35.02 38.52 37.99 38.52C40.97 38.52 40.97 38.52 40.97 47.35Z"/><path d="M59.56 46.53C59.5 54.52 59.5 54.52 56.71 54.5C53.93 54.47 53.93 54.47 53.99 46.49C54.06 38.5 54.06 38.5 56.84 38.52C59.62 38.54 59.62 38.54 59.56 46.53Z"/></g></g></svg>

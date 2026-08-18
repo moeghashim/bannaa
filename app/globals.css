@@ -2298,46 +2298,27 @@ body {
   overflow: visible;
   width: 100%;
 }
-.expression-square__avatar,
-.expression-square__features {
+.expression-square > svg {
+  display: block;
+  height: 100%;
+  overflow: visible;
+  width: 100%;
+}
+.expression-square > svg > g {
   transform-box: fill-box;
   transform-origin: center;
 }
-.expression-square__body {
-  fill: var(--expression-fill, var(--fg));
-}
-.expression-square__features {
-  fill: #ffffff;
-  stroke: #ffffff;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 7;
-}
-.expression-square__features path {
-  fill: none;
-}
-.expression-square__features circle,
-.expression-square__features rect {
-  stroke-width: 0;
-}
-.expression-square__features .expression-square__stroke-only {
-  fill: none;
-  stroke-width: 7;
-}
-.expression-square--blink .expression-square__features {
+.expression-square--blink > svg {
   animation: expression-blink 3.8s ease-in-out infinite;
 }
-.expression-square--bounce .expression-square__avatar {
+.expression-square--bounce > svg {
   animation: expression-bounce 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
-.expression-square--tilt .expression-square__avatar {
+.expression-square--tilt > svg {
   animation: expression-tilt 3.4s ease-in-out infinite;
 }
-.expression-square--sleep .expression-square__avatar {
+.expression-square--sleep > svg {
   animation: expression-sleep 4.2s ease-in-out infinite;
-}
-.expression-square--sleep .expression-square__features {
-  animation: expression-blink 4.2s ease-in-out infinite;
 }
 .clear-space-demo {
   align-items: center;
@@ -2754,11 +2735,10 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .expression-square--blink .expression-square__features,
-  .expression-square--bounce .expression-square__avatar,
-  .expression-square--tilt .expression-square__avatar,
-  .expression-square--sleep .expression-square__avatar,
-  .expression-square--sleep .expression-square__features {
+  .expression-square--blink > svg,
+  .expression-square--bounce > svg,
+  .expression-square--tilt > svg,
+  .expression-square--sleep > svg {
     animation: none;
   }
 }
