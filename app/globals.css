@@ -2686,6 +2686,10 @@ body {
   position: absolute;
 }
 
+[dir="rtl"] .application-card .brand-logo--ar {
+  justify-self: left;
+}
+
 @keyframes expression-blink {
   0%,
   7%,
