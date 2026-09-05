@@ -61,33 +61,6 @@ body {
 .center { align-items: center; }
 .hairline { height: 1px; background: var(--line); border: 0; }
 
-/* Status bar */
-.statusbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px var(--gutter);
-  border-bottom: 1px solid var(--line);
-  font-family: var(--f-mono);
-  font-size: 11px;
-  color: var(--fg-dim);
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(8px);
-  position: sticky;
-  top: 0;
-  z-index: 40;
-}
-.statusbar .dot {
-  width: 8px;
-  height: 8px;
-  background: var(--accent);
-  border-radius: 50%;
-  display: inline-block;
-  margin-inline-end: 8px;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
-}
-.statusbar .seg { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
-
 /* Nav */
 .nav {
   display: flex;
@@ -3010,8 +2983,7 @@ body {
 [dir="rtl"] .video-channels__eyebrow,
 [dir="rtl"] .video-channel-card__top .mono,
 [dir="rtl"] .youtube-video-card__meta,
-[dir="rtl"] .tiktok-panel__head .mono,
-[dir="rtl"] .statusbar__lang {
+[dir="rtl"] .tiktok-panel__head .mono {
   font-family: var(--f-body);
   letter-spacing: 0;
 }

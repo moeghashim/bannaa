@@ -2,55 +2,19 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { BrandLogo } from "@/components/site/brand-mark";
 import type { SiteContent } from "@/lib/content";
 import type { Locale } from "@/lib/i18n";
 
 type SiteHeaderProps = {
-  content: Pick<SiteContent, "statusBar" | "nav">;
+  content: Pick<SiteContent, "nav">;
   locale: Locale;
 };
 
 export function SiteHeader({ content, locale }: SiteHeaderProps) {
-  return (
-    <>
-      <StatusBar content={content.statusBar} />
-      <SiteNav content={content.nav} locale={locale} />
-    </>
-  );
-}
-
-function StatusBar({ content }: { content: SiteContent["statusBar"] }) {
-  const [clock, setClock] = useState<string | null>(null);
-
-  useEffect(() => {
-    const tick = () => {
-      const d = new Date();
-      setClock(`${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`);
-    };
-    tick();
-    const id = window.setInterval(tick, 1000);
-    return () => window.clearInterval(id);
-  }, []);
-
-  return (
-    <div className="statusbar">
-      <div className="seg">
-        <span>
-          <span className="dot" />
-          {content.os}
-        </span>
-        <span>{content.region}</span>
-      </div>
-      <div className="seg">
-        <span>{content.signal}</span>
-        <span className="statusbar__lang">{content.langLabel}</span>
-        <span suppressHydrationWarning>{clock ?? "--:--:--"}</span>
-      </div>
-    </div>
-  );
+  return <SiteNav content={content.nav} locale={locale} />;
 }
 
 function SiteNav({ content, locale }: { content: SiteContent["nav"]; locale: Locale }) {
@@ -140,8 +104,4 @@ function SiteNav({ content, locale }: { content: SiteContent["nav"]; locale: Loc
       </div>
     </nav>
   );
-}
-
-function pad(n: number): string {
-  return String(n).padStart(2, "0");
 }

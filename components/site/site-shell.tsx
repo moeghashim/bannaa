@@ -14,7 +14,7 @@ type SiteShellProps = {
 export function SiteShell({ children, content, locale }: SiteShellProps) {
   return (
     <>
-      <SiteHeader content={{ statusBar: content.statusBar, nav: content.nav }} locale={locale} />
+      <SiteHeader content={{ nav: content.nav }} locale={locale} />
       <main>{children}</main>
       <SiteFooter content={content.footer} locale={locale} />
     </>
