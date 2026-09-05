@@ -80,3 +80,7 @@ the exact hash).
 
 - Switch Banna official logo to Blobatar boxy system
 - Fix Arabic brand page icon alignment
+
+## 2026-09-05
+
+- Switch Arabic typography to Baloo Bhaijaan 2

@@ -41,13 +41,13 @@ typography:
     lineHeight: 1
     letterSpacing: "-0.02em"
   bodyMd:
-    fontFamily: IBM Plex Sans Arabic
+    fontFamily: Baloo Bhaijaan 2
     fontSize: 1rem
     fontWeight: 400
     lineHeight: 1.5
     letterSpacing: 0px
   bodyLg:
-    fontFamily: IBM Plex Sans Arabic
+    fontFamily: Baloo Bhaijaan 2
     fontSize: 1.125rem
     fontWeight: 400
     lineHeight: 1.6
@@ -181,7 +181,7 @@ Avoid the old electric lime and industrial orange accents. Avoid introducing a d
 
 ## Typography
 
-English display typography uses **Inter**. Arabic typography uses **IBM Plex Sans Arabic** for both display and body where Arabic text appears. **JetBrains Mono** is limited to small technical metadata and labels.
+English display typography uses **Inter**. Arabic typography uses **Baloo Bhaijaan 2** for both display and body where Arabic text appears. **JetBrains Mono** is limited to small technical metadata and labels.
 
 Arabic text must never be forced into JetBrains Mono. Keep RTL and LTR layouts symmetric through logical CSS properties.
 
