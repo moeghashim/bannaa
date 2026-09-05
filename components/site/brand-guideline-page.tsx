@@ -360,7 +360,7 @@ function LogoLockup({
   if (variant === "ar") {
     return (
       <span className="brand-guide-lockup brand-guide-lockup--ar">
-        <BrandLogo locale="ar" />
+        <BrandLogo locale="ar" markSize={72} />
       </span>
     );
   }

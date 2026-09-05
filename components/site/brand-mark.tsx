@@ -28,15 +28,14 @@ type BrandLogoProps = {
 export function BrandLogo({ locale, className, markSize }: BrandLogoProps) {
   if (locale === "ar") {
     return (
-      <Image
+      <span
         className={`brand-logo brand-logo--ar${className ? ` ${className}` : ""}`}
-        src="/assets/brand/arabic_logo.svg"
-        alt="بنّاء"
-        width={126}
-        height={45}
-        priority
-        unoptimized
-      />
+        aria-label="بنّاء"
+        dir="rtl"
+      >
+        <BrandMark size={markSize ?? 38} />
+        <span aria-hidden="true">بنّاء</span>
+      </span>
     );
   }
 

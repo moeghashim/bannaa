@@ -129,9 +129,12 @@ body {
   flex-shrink: 0;
 }
 .brand-logo--ar {
-  width: 126px;
-  height: auto;
-  display: block;
+  color: var(--fg);
+  font-family: var(--f-body);
+  font-size: 30px;
+  font-weight: 700;
+  gap: 10px;
+  line-height: 1;
 }
 .brand-logo--en {
   gap: 10px;
@@ -2137,8 +2140,9 @@ body {
   line-height: 1;
 }
 .brand-guide-lockup--ar .brand-logo--ar {
-  height: auto;
-  width: min(220px, 100%);
+  font-size: 46px;
+  gap: 18px;
+  max-width: 100%;
 }
 .brand-logo-grid {
   display: grid;
@@ -2885,6 +2889,10 @@ body {
   .brand-guide-lockup--en .brand-logo--en {
     --brand-mark-size: 42px;
     font-size: 34px;
+  }
+  .brand-guide-lockup--ar .brand-logo--ar {
+    font-size: 34px;
+    gap: 12px;
   }
   .clear-space-demo__box {
     padding: 42px;

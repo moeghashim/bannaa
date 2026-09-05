@@ -84,3 +84,4 @@ the exact hash).
 ## 2026-09-05
 
 - Switch Arabic typography to Baloo Bhaijaan 2
+- Render Arabic wordmark with Baloo Bhaijaan 2
