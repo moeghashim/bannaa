@@ -22,9 +22,9 @@
   --brand-cream: #f6efe5;
   --brand-sage: #dce6de;
 
-  --f-display: var(--font-display), "IBM Plex Sans Arabic", system-ui, sans-serif;
-  --f-body: var(--font-body), "IBM Plex Sans Arabic", system-ui, sans-serif;
-  --f-mono: var(--font-mono), var(--font-body), "IBM Plex Sans Arabic", ui-monospace, monospace;
+  --f-display: var(--font-display), "Baloo Bhaijaan 2", system-ui, sans-serif;
+  --f-body: var(--font-body), "Baloo Bhaijaan 2", system-ui, sans-serif;
+  --f-mono: var(--font-mono), var(--font-body), "Baloo Bhaijaan 2", ui-monospace, monospace;
   --radius: 2px;
   --gutter: 24px;
   --density: 0.85;
@@ -2944,7 +2944,7 @@ body {
   letter-spacing: 0;
 }
 
-/* Arabic display text uses IBM Plex Sans Arabic directly. Inter is loaded
+/* Arabic display text uses Baloo Bhaijaan 2 directly. Inter is loaded
    for English display typography only, so RTL pages should not rely on
    browser font fallback for headings or branded Arabic copy. */
 [dir="rtl"] .display,
@@ -2976,7 +2976,7 @@ body {
 
 /* Arabic font overrides for mono-styled elements that carry Arabic copy.
    JetBrains Mono has no Arabic glyphs, so these elements use the body
-   face (IBM Plex Sans Arabic) when the page is in RTL mode. Elements
+   face (Baloo Bhaijaan 2) when the page is in RTL mode. Elements
    that stay English in both locales (status bar, terminal chrome,
    stat sublabels, concept sub, coords) keep the mono face. */
 [dir="rtl"] .tag,

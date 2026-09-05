@@ -1,13 +1,13 @@
-import { IBM_Plex_Sans_Arabic, Inter, JetBrains_Mono } from "next/font/google";
+import { Baloo_Bhaijaan_2, Inter, JetBrains_Mono } from "next/font/google";
 import type { PropsWithChildren } from "react";
 import { Suspense } from "react";
 
 import "@/app/globals.css";
 import { GoogleAnalytics } from "@/components/site/google-analytics";
 
-const body = IBM_Plex_Sans_Arabic({
+const body = Baloo_Bhaijaan_2({
   subsets: ["arabic", "latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-body"
 });
 

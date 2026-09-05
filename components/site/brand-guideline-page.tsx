@@ -597,7 +597,7 @@ export function BrandGuidelinePage({ content, locale }: BrandGuidelinePageProps)
             </article>
             <article className="type-specimen type-specimen--ar" dir="rtl">
               <span className="mono">{t.labels.arabicTypeface}</span>
-              <strong className="type-specimen__name">IBM Plex Sans Arabic</strong>
+              <strong className="type-specimen__name">Baloo Bhaijaan 2</strong>
               <b>أب</b>
               <div>
                 <h3>{t.labels.headingExample}</h3>
