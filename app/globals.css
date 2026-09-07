@@ -3058,5 +3058,52 @@ body {
 ::-webkit-scrollbar-thumb { background: var(--line-2); border-radius: 0; }
 ::-webkit-scrollbar-thumb:hover { background: var(--fg-mute); }
 
+.spectrum-experience { padding-block: 12px 80px; }
+.spectrum-intro { padding-block: 24px; }
+.spectrum-intro > span { font-size: 11px; font-weight: 700; color: var(--fg-dim); }
+.spectrum-intro > p { font-size: 24px; margin-block: 12px; }
+.spectrum-selector { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); border-bottom: 1px solid var(--line); gap: 16px; }
+.tone-0 { --spectrum-tone: #596274; --spectrum-tint: #f0f2f5; }
+.tone-1 { --spectrum-tone: #2563eb; --spectrum-tint: #edf3ff; }
+.tone-2 { --spectrum-tone: #087c65; --spectrum-tint: #e8f5f0; }
+.tone-3 { --spectrum-tone: #a43562; --spectrum-tint: #fbeef3; }
+.spectrum-stop { background: transparent; text-align: start; color: var(--fg-dim); border: 0; border-bottom: 4px solid transparent; padding: 20px 12px; cursor: pointer; font: inherit; display: grid; gap: 10px; min-width: 0; }
+.spectrum-stop[aria-selected="true"] { border-bottom-color: var(--spectrum-tone); color: var(--fg); background: var(--spectrum-tint); }
+.spectrum-stop:hover { background: var(--spectrum-tint); }
+.spectrum-stop:focus-visible { outline: 2px solid var(--spectrum-tone); outline-offset: 2px; }
+.spectrum-stop strong { font-size: 22px; overflow-wrap: anywhere; }
+.spectrum-stop > span:last-child { font-size: 13px; }
+.spectrum-stop__number { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--spectrum-tone); color: var(--spectrum-tone); font-size: 13px; }
+.spectrum-detail { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.25fr); margin-top: 40px; gap: 56px; }
+.spectrum-detail__overview { background: var(--spectrum-tint); padding: 32px; }
+.spectrum-kicker { color: var(--spectrum-tone); font-size: 12px; font-weight: 700; }
+.spectrum-detail h2 { font-size: 40px; line-height: 1.2; margin-block: 16px; }
+.spectrum-detail p { line-height: 1.8; }
+.spectrum-detail h3 { font-size: 24px; margin-block: 0 20px; }
+.spectrum-detail__capabilities > ul { list-style: none; padding: 0; }
+.spectrum-detail__capabilities > ul > li { display: flex; gap: 20px; align-items: baseline; padding-block: 12px; border-bottom: 1px solid var(--line); }
+.spectrum-detail__capabilities > ul > li > span { font-size: 12px; color: var(--spectrum-tone); }
+.spectrum-detail__capabilities > ul > li p { margin: 0; font-size: 18px; }
+.spectrum-deliverable { border-inline-start: 3px solid var(--spectrum-tone); padding-inline-start: 20px; margin-block: 28px; }
+.spectrum-deliverable > span { color: var(--spectrum-tone); font-weight: 700; font-size: 12px; }
+.spectrum-depth { margin-block: 24px; }
+.spectrum-depth summary { cursor: pointer; font-weight: 600; padding-block: 12px; }
+.spectrum-depth h4 { margin-bottom: 0; }
+.spectrum-note { color: var(--fg-dim); font-size: 13px; }
+.agent-map { position: relative; height: 200px; margin-block: 24px; display: grid; place-items: center; border: 1px dashed var(--spectrum-tone); border-radius: 50%; max-width: 290px; margin-inline: auto; }
+.agent-map__center { display: grid; place-items: center; width: 140px; height: 140px; }
+.agent-map__node { position: absolute; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--spectrum-tone); color: white; font-size: 12px; }
+.agent-map__node:nth-child(2) { top: -18px; left: calc(50% - 18px); }
+.agent-map__node:nth-child(3) { right: -12px; top: calc(50% - 18px); }
+.agent-map__node:nth-child(4) { bottom: -18px; left: calc(50% - 18px); }
+.agent-map__node:nth-child(5) { left: -12px; top: calc(50% - 18px); }
+@media(max-width: 760px) {
+  .spectrum-selector { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; }
+  .spectrum-stop strong { font-size: 19px; }
+  .spectrum-detail { grid-template-columns: 1fr; gap: 28px; margin-top: 24px; }
+  .spectrum-detail__overview { padding: 24px; }
+  .spectrum-detail h2 { font-size: 32px; }
+}
+
 .consultation { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); align-items: start; }
 @media(max-width: 700px) { .consultation { grid-template-columns: 1fr; } }

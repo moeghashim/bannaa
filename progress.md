@@ -90,3 +90,4 @@ the exact hash).
 ## 2026-09-07
 
 - Add agent spectrum, Markdown blog, and consultation requests
+- Redesign agent spectrum with proficiency stages and character expressions

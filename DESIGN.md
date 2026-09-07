@@ -147,6 +147,11 @@ The new guideline replaces the previous lime terminal identity. The site should 
 
 ## Logo System
 
+Spectrum stage illustrations use transparent, black Blobatar variants in
+public/assets/brand/spectrum: unsure for Prerequisites, happy for Basics,
+idle for Advanced, and smug for Proficient. They keep the pinned boxy geometry
+and eye-only expression system; no white tile sits behind the character.
+
 Use the supplied SVG assets in [public/assets/brand](/Users/moe/bannaa/public/assets/brand):
 
 - [icon.svg](/Users/moe/bannaa/public/assets/brand/icon.svg) is the primary standalone web mark and uses the boxy Blobatar mark.
@@ -186,6 +191,12 @@ English display typography uses **Inter**. Arabic typography uses **Baloo Bhaija
 Arabic text must never be forced into JetBrains Mono. Keep RTL and LTR layouts symmetric through logical CSS properties.
 
 ## Layout
+
+The Spectrum now uses four selectable capability stages: Prerequisites, Basics,
+Advanced, and Proficient. Prerequisites remain entry requirements, not teaching.
+Each stage shows concrete capabilities and evidence of readiness. Proficient
+focuses on operating coordinated agents and measured improvement. Use gray,
+blue, green, and berry accents with keyboard-accessible stage tabs.
 
 The primary learning journey is the Agent Spectrum: prerequisites (entry requirements, not taught), Basics (first taught stage), and Advanced (second taught stage). The homepage, curriculum, and roadmap share this progression. The bilingual /spectrum page presents expandable topics and practical readiness or project outcomes. Use a gray, blue, and green three-column progression on desktop, ordered right to left in Arabic, and a vertical sequence on mobile. Keep the official logo and Baloo Bhaijaan 2 typography.
 
