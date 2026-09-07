@@ -86,3 +86,7 @@ the exact hash).
 - Switch Arabic typography to Baloo Bhaijaan 2
 - Render Arabic wordmark with Baloo Bhaijaan 2
 - Remove system status strip
+
+## 2026-09-07
+
+- Add agent spectrum, Markdown blog, and consultation requests

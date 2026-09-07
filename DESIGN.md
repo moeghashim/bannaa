@@ -187,6 +187,8 @@ Arabic text must never be forced into JetBrains Mono. Keep RTL and LTR layouts s
 
 ## Layout
 
+The primary learning journey is the Agent Spectrum: prerequisites (entry requirements, not taught), Basics (first taught stage), and Advanced (second taught stage). The homepage, curriculum, and roadmap share this progression. The bilingual /spectrum page presents expandable topics and practical readiness or project outcomes. Use a gray, blue, and green three-column progression on desktop, ordered right to left in Arabic, and a vertical sequence on mobile. Keep the official logo and Baloo Bhaijaan 2 typography.
+
 Use a mobile-first responsive layout with a maximum content width of `1440px` and a fixed `24px` outer gutter. Keep pages fast by preferring CSS, SVG, and structured content over heavy image dependencies.
 
 The current site structure is:

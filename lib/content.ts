@@ -1,4 +1,5 @@
 import type { Locale } from "@/lib/i18n";
+import { curriculum } from "@/lib/curriculum";
 
 export type NavLink = { id: string; label: string; href: string };
 export type FooterItem = { label: string; href?: string };
@@ -277,6 +278,32 @@ export type SiteContent = {
   };
 };
 
+function stageContent(locale: Locale, base: SiteContent): SiteContent {
+  const ar = locale === "ar";
+  const t = (en: string, arabic: string) => ar ? arabic : en;
+  const cards = curriculum(locale);
+  const homeIntro = t("Build useful AI agents, turn ideas into services, and share what works with a community of Arab builders.", "ابنِ وكلاء ذكاء اصطناعي مفيدة، وحوّل الأفكار إلى خدمات، وشارك ما ينجح مع مجتمع من البنّائين العرب.");
+  const intro = t("Check your prerequisites, learn the basics, then build reliable agents and coordinated systems.", "تحقق من استعدادك، تعلّم الأساسيات، ثم ابنِ وكلاء موثوقة وأنظمة منسّقة.");
+  const stageHero = { eyebrow: t("THE AGENT SPECTRUM", "طيف بناء الوكلاء"), title: t("From readiness", "من الاستعداد"), accent: t("to agent systems.", "إلى أنظمة الوكلاء."), intro };
+  return {
+    ...base,
+    metadata: { title: t("Bannaa — Learn to build AI agents", "بنّاء — تعلّم بناء وكلاء الذكاء الاصطناعي"), description: intro },
+    nav: { ...base.nav, links: [...base.nav.links.filter(link => !["tracks", "roadmap", "resources"].includes(link.id)), { id: "spectrum", label: t("Agent Spectrum", "طيف الوكلاء"), href: `/${locale}/spectrum` }, { id: "blog", label: t("Blog", "المدونة"), href: `/${locale}/blog` }, { id: "consultation", label: t("Consultation", "استشارة"), href: `/${locale}/consultation` }] },
+    hero: base.hero,
+    tracks: { ...base.tracks, eyebrow: t("YOUR PROGRESSION", "رحلتك"), title: t("Ready. Build.", "استعد. ابنِ."), titleAccent: t("Improve.", "حسّن."), description: intro, allLink: t("View the curriculum", "عرض المنهج"), cards },
+    marquee: t("PROMPTS|CONTEXT|TOOLS|SKILLS|HOOKS|AGENT LOOPS|EVALUATION|COORDINATION", "التوجيهات|السياق|الأدوات|المهارات|الخطافات|حلقات الوكلاء|التقييم|التنسيق").split("|"),
+    mission: { ...base.mission, title: t("AI talent.", "مهارات الذكاء الاصطناعي."), titleAccent: t("Built through practice.", "تُبنى بالممارسة."), description: t("Our ambition remains 10,000 small Arab companies. The path starts with people who can build, deploy, evaluate, and improve agent systems.", "طموحنا يبقى 10,000 شركة عربية صغيرة. الطريق يبدأ بأشخاص يستطيعون بناء أنظمة الوكلاء ونشرها وتقييمها وتحسينها."), pillars: [{ title: t("Build useful services", "ابنِ خدمات مفيدة"), desc: homeIntro }, { title: t("Share your experience", "شارك تجربتك"), desc: t("Publish experiments and lessons from real projects.", "انشر التجارب والدروس من مشاريع حقيقية.") }, { title: t("Get expert input", "استفد من الاستشارة"), desc: t("Discuss your next agent project with the team.", "ناقش مشروع الوكيل القادم مع الفريق.") }] },
+    pages: { ...base.pages, tracks: stageHero, roadmap: stageHero, mission: { ...stageHero, sections: [
+      { heading: t("Practical AI talent", "مهارات عملية في الذكاء الاصطناعي"), body: [intro, t("We help Arab builders develop the skills to create useful agent services and small, productive companies.", "نساعد البنّائين العرب على اكتساب مهارات إنشاء خدمات وكلاء مفيدة وشركات صغيرة عالية الإنتاجية.")] },
+      ...cards.map(c => ({ heading: c.title, body: [c.desc, ...c.outcomes] }))
+    ] } },
+    join: { ...base.join, hero: { ...stageHero, title: t("Ready to build?", "جاهز للبناء؟"), accent: t("Start with the prerequisites.", "ابدأ بالمتطلبات المسبقة.") }, steps: cards.map(c => ({ title: c.title, desc: c.desc })) },
+    cta: { ...base.cta, titleLine1: t("Your next idea", "فكرتك القادمة"), titleAccent: t("starts here.", "تبدأ هنا."), description: homeIntro },
+    footer: { ...base.footer, description: homeIntro, groups: base.footer.groups.map((g, i) => i === 0 ? { ...g, items: [...g.items, { label: t("Agent Spectrum", "طيف الوكلاء"), href: `/${locale}/spectrum` }, { label: t("Blog", "المدونة"), href: `/${locale}/blog` }, { label: t("Consultation", "استشارة"), href: `/${locale}/consultation` }] } : g) },
+    legal: { ...base.legal, about: { ...base.legal.about, intro, sections: cards.map(c => ({ heading: c.title, body: [c.desc] })) } }
+  };
+}
+
 const officeAddress = [
   "10claws Inc.",
   "2500 CityWest Blvd Ste. 150",
@@ -284,7 +311,7 @@ const officeAddress = [
   "United States"
 ];
 
-export const siteContent: Record<Locale, SiteContent> = {
+const baseContent: Record<Locale, SiteContent> = {
   ar: {
     metadata: {
       title: "بنّاء — شركات صغيرة بقوة الذكاء الاصطناعي",
@@ -1667,4 +1694,9 @@ export const siteContent: Record<Locale, SiteContent> = {
       }
     }
   }
+};
+
+export const siteContent: Record<Locale, SiteContent> = {
+  ar: stageContent("ar", baseContent.ar),
+  en: stageContent("en", baseContent.en)
 };

@@ -15,7 +15,7 @@ export function TracksPage({ content, locale }: TracksPageProps) {
       <PageHero copy={content.pages.tracks} />
       <section className="track-detail-list wrap">
         {content.tracks.cards.map((track) => (
-          <article key={track.id} className="track-detail card">
+          <article key={track.id} id={track.id} className="track-detail card">
             <span className="corner" />
             <div className="track-detail__art">
               <TrackGlyph kind={track.kind} />
