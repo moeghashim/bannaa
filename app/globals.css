@@ -3188,3 +3188,12 @@ body {
   .interaction__scene { grid-template-columns: 1fr; padding: 16px; gap: 16px; }
 }
 @media (prefers-reduced-motion: reduce) { .interaction__flow button { transition: none; } }
+
+.whatsapp-community { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 48px; padding-block: 56px; }
+.whatsapp-community h1 { font-size: clamp(32px, 4vw, 52px); line-height: 1.25; margin-block: 16px; }
+.whatsapp-community p { color: var(--fg-dim); line-height: 1.8; }
+.whatsapp-community .btn { margin-top: 16px; }
+.whatsapp-community figure { margin: 0; min-width: 0; }
+.whatsapp-community img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; }
+.whatsapp-community figcaption, .whatsapp-community__note { font-size: 13px; color: var(--fg-dim); margin-top: 12px; }
+@media (max-width: 760px) { .whatsapp-community { grid-template-columns: 1fr; gap: 28px; padding-block: 32px; } }

@@ -97,3 +97,4 @@ the exact hash).
 - Compact mission layout and add consultation packages with request modal
 - Consolidate blog articles into Content
 - Illustrate AI interactions across Spectrum stages
+- Replace community panel with WhatsApp preview and join request

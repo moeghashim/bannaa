@@ -228,7 +228,7 @@ The current site structure is:
 
 **Expression Avatar:** Use the black boxy Blobatar as the official logo. Use other colored eye-only Blobatar expressions for playful brand moments. Keep them inline SVG/CSS where possible instead of adding heavy image files. Motion should be ambient and restrained: blink, bounce, tilt, or sleepy drift.
 
-**Community:** Signup requires name and email at minimum and uses a signed HTTP-only cookie through Next route handlers. Production deployments must provide `COMMUNITY_AUTH_SECRET`; posts are ready to connect to a persistent database layer.
+**Community:** The dedicated community page presents the WhatsApp community with a preview and request-to-join action. The temporary generated preview at `public/assets/community/whatsapp-preview.png` is labelled as an illustration until a real screenshot is supplied. The join action remains disabled until its destination is supplied. The community panel is omitted from the homepage. Existing community session APIs remain available.
 
 ## Do's and Don'ts
 
