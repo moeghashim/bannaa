@@ -2,12 +2,17 @@
 
 import { useState } from "react";
 import type { FormEvent } from "react";
+import { consultationContent } from "@/lib/content";
 import type { Locale } from "@/lib/i18n";
 
-export function ConsultationForm({ locale, email }: { locale: Locale; email: string }) {
+export function ConsultationForm({ locale, email, planId }: { locale: Locale; email: string; planId: string }) {
+  const content = consultationContent[locale];
+  const selectedPlan = content.plans.find(plan => plan.id === planId) || content.plans[0];
+  const planValue = (plan: typeof selectedPlan) => `${plan.title} — ${plan.price} · ${plan.duration}`;
   const ar = locale === "ar";
   const [prepared, setPrepared] = useState(false);
   const labels = {
+    plan: content.planLabel,
     name: ar ? "اسمك" : "Your name",
     email: ar ? "بريدك الإلكتروني" : "Your email",
     team: ar ? "الفريق أو الشركة (اختياري)" : "Team or company (optional)",
@@ -25,6 +30,9 @@ export function ConsultationForm({ locale, email }: { locale: Locale; email: str
   }
   return <form className="consultation-form" onSubmit={submit}>
     <h3>{ar ? "أخبرنا عن احتياجك" : "Tell us what you need"}</h3>
+    <label>{labels.plan}<select name="plan" required defaultValue={planValue(selectedPlan)}>
+      {content.plans.map(plan => <option key={plan.id} value={planValue(plan)}>{planValue(plan)}</option>)}
+    </select></label>
     <div className="consultation-form__identity">
       <label>{labels.name}<input name="name" autoComplete="name" required maxLength={100} /></label>
       <label>{labels.email}<input name="email" type="email" autoComplete="email" required maxLength={200} /></label>

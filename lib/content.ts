@@ -1700,3 +1700,32 @@ export const siteContent: Record<Locale, SiteContent> = {
   ar: stageContent("ar", baseContent.ar),
   en: stageContent("en", baseContent.en)
 };
+
+export const consultationContent = {
+  en: {
+    eyebrow: "WORK WITH BANNAA",
+    title: "Turn your idea into a build plan.",
+    description: "Get focused advice in a single session or ongoing guidance throughout your project.",
+    request: "Request consultation",
+    close: "Close request",
+    planLabel: "Consultation option",
+    booking: "Or book a meeting",
+    plans: [
+      { id: "hour", title: "One-hour consultation", price: "$400", duration: "1 hour", includes: ["Discuss your challenge, review your approach, and define your next steps."] },
+      { id: "project", title: "Project consultation", price: "$2,500/mo", duration: "10 hours per month", includes: ["Architecture", "Implementation supervision", "Post-implementation support"] }
+    ]
+  },
+  ar: {
+    eyebrow: "اعمل مع بنّاء",
+    title: "حوّل فكرتك إلى خطة تنفيذ.",
+    description: "احصل على استشارة مركّزة في جلسة واحدة أو متابعة مستمرة لمشروعك.",
+    request: "اطلب استشارة",
+    close: "إغلاق الطلب",
+    planLabel: "خيار الاستشارة",
+    booking: "أو احجز موعداً",
+    plans: [
+      { id: "hour", title: "استشارة لمدة ساعة", price: "$400", duration: "ساعة واحدة", includes: ["ناقش التحدي، وراجع نهجك، وحدّد خطواتك القادمة."] },
+      { id: "project", title: "استشارة مشروع", price: "$2,500", duration: "شهرياً · 10 ساعات في الشهر", includes: ["تصميم البنية المعمارية", "الإشراف على التنفيذ", "دعم ما بعد التنفيذ"] }
+    ]
+  }
+};
