@@ -91,3 +91,7 @@ the exact hash).
 
 - Add agent spectrum, Markdown blog, and consultation requests
 - Redesign agent spectrum with proficiency stages and character expressions
+
+## 2026-09-08
+
+- Compact mission layout and add consultation packages with request modal
