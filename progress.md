@@ -95,3 +95,4 @@ the exact hash).
 ## 2026-09-08
 
 - Compact mission layout and add consultation packages with request modal
+- Consolidate blog articles into Content
