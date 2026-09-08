@@ -869,9 +869,9 @@ const baseContent: Record<Locale, SiteContent> = {
       },
       community: {
         eyebrow: "/ المجتمع",
-        title: "غرفة تشغيل",
-        accent: "للمؤسسين والبنّائين.",
-        intro: "مساحة بسيطة للانضمام، النشر، النقاش، ومشاركة ما يتم بناؤه."
+        title: "مجتمع بنّاء",
+        accent: "على واتساب.",
+        intro: "شارك ما تبنيه، ناقش تجاربك، وتعلّم مع مجتمع من البنّائين العرب."
       },
       hub: {
         eyebrow: "/ المحتوى",
@@ -1560,9 +1560,9 @@ const baseContent: Record<Locale, SiteContent> = {
       },
       community: {
         eyebrow: "/ community",
-        title: "An operating room",
-        accent: "for founders and builders.",
-        intro: "A simple space to join, post, discuss, and share what is being built."
+        title: "The Bannaa community",
+        accent: "on WhatsApp.",
+        intro: "Share what you are building, discuss your experiments, and learn alongside Arab builders."
       },
       hub: {
         eyebrow: "/ content",
@@ -1798,3 +1798,22 @@ export function spectrumInteractionContent(locale: Locale) {
     ]
   };
 }
+
+export const whatsappCommunityContent = {
+  ar: {
+    title: "مجتمع بنّاء على واتساب",
+    description: "شارك ما تبنيه، ناقش تجاربك، وتعلّم مع مجتمع من البنّائين العرب.",
+    caption: "تصوّر توضيحي مؤقت للمجتمع، وليس لقطة من المحادثات الفعلية.",
+    alt: "تصوّر لمجموعة بنّاء على واتساب مع رسائل عن بناء الوكلاء ومشاركة التجارب",
+    request: "اطلب الانضمام",
+    pending: "سيتوفر رابط طلب الانضمام قريباً."
+  },
+  en: {
+    title: "The Bannaa community on WhatsApp",
+    description: "Share what you are building, discuss your experiments, and learn alongside Arab builders.",
+    caption: "Temporary community illustration, not a screenshot of real conversations.",
+    alt: "Illustration of a Bannaa WhatsApp group discussing agents and sharing projects",
+    request: "Request to join",
+    pending: "The join-request link will be available soon."
+  }
+};

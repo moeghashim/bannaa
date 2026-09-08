@@ -1,4 +1,3 @@
-import { CommunityPanel } from "@/components/site/community-panel";
 import { CtaSection } from "@/components/site/cta-section";
 import { HeroSection } from "@/components/site/hero-section";
 import { Marquee } from "@/components/site/marquee";
@@ -18,7 +17,6 @@ export function BannaaHome({ content, locale }: BannaaHomeProps) {
         <HeroSection content={content.hero} locale={locale} />
         <Marquee items={content.marquee} />
         <MissionSection content={content.mission} />
-        <CommunityPanel content={content.community} locale={locale} />
         <CtaSection content={content.cta} locale={locale} />
     </SiteShell>
   );
