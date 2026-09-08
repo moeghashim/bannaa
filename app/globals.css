@@ -3148,3 +3148,43 @@ body {
   .consultation-option { padding: 20px; }
   .consultation-modal { padding: 16px; }
 }
+
+.interaction { grid-column: 1 / -1; border: 1px solid var(--line); border-top: 3px solid var(--spectrum-tone); padding: 28px; min-width: 0; }
+.interaction__header { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
+.interaction__header h3 { font-size: clamp(24px, 3vw, 36px); line-height: 1.25; margin-block: 10px; }
+.interaction__header p { color: var(--fg-dim); margin: 0; font-size: 15px; }
+.interaction__mode { color: var(--spectrum-tone); background: var(--spectrum-tint); padding: 8px 12px; font-size: 13px; flex-shrink: 0; }
+.interaction__flow { display: flex; list-style: none; padding: 0; margin-block: 28px 20px; gap: 28px; }
+.interaction__flow li { flex: 1; min-width: 0; position: relative; }
+.interaction__flow li:not(:last-child)::after { content: "→"; position: absolute; inset-inline-end: -22px; top: 50%; transform: translateY(-50%); color: var(--spectrum-tone); }
+.interaction:dir(rtl) .interaction__flow li:not(:last-child)::after { content: "←"; }
+.interaction__flow button { width: 100%; height: 100%; display: flex; flex-direction: column; gap: 12px; text-align: start; padding: 16px; font: inherit; background: var(--bg); color: var(--fg-dim); border: 1px solid var(--line); border-radius: 4px; cursor: pointer; transition: background 160ms ease, border-color 160ms ease; }
+.interaction__flow button:hover, .interaction__flow button.is-complete { border-color: var(--spectrum-tone); }
+.interaction__flow button.is-current { background: var(--spectrum-tint); border-color: var(--spectrum-tone); color: var(--spectrum-tone); box-shadow: inset 0 -3px 0 var(--spectrum-tone); }
+.interaction button:focus-visible { outline: 2px solid var(--spectrum-tone); outline-offset: 3px; }
+.interaction__number { font-size: 12px; font-weight: 700; }
+.interaction__flow strong { font-size: 17px; }
+.interaction__scene { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; background: var(--spectrum-tint); padding: 24px; border-radius: 4px; }
+.interaction__explanation h4 { font-size: 22px; margin: 8px 0; }
+.interaction__explanation p { font-size: 15px; margin: 0; }
+.interaction__output { border: 1px solid var(--line); background: var(--bg); padding: 20px; align-self: center; border-inline-start: 3px solid var(--spectrum-tone); }
+.interaction__output > span { font-size: 11px; font-weight: 700; color: var(--spectrum-tone); }
+.interaction__output p { font-size: 18px; margin: 10px 0 0; }
+.interaction__output--0 { border-radius: 18px 18px 4px 18px; }
+.interaction__loop { display: flex; gap: 12px; align-items: center; border-inline-start: 2px dashed var(--spectrum-tone); border-bottom: 2px dashed var(--spectrum-tone); padding: 0 16px 12px; margin-bottom: 20px; color: var(--spectrum-tone); }
+.interaction__loop > span { font-size: 32px; }
+.interaction__loop p { margin: 0; font-size: 13px; }
+.interaction__footer { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 20px; }
+.interaction__footer p { font-size: 14px; color: var(--fg-dim); margin: 0; max-width: 700px; }
+.interaction__footer button { flex-shrink: 0; color: var(--spectrum-tone); border-color: var(--spectrum-tone); }
+.interaction__outcome { display: flex; gap: 10px; color: var(--spectrum-tone); font-size: 14px; font-weight: 700; margin-top: 16px; }
+@media (max-width: 760px) {
+  .interaction { padding: 18px; }
+  .interaction__header, .interaction__footer { flex-direction: column; gap: 16px; align-items: flex-start; }
+  .interaction__mode { flex-shrink: 1; }
+  .interaction__flow { flex-direction: column; gap: 22px; margin-block: 20px; }
+  .interaction__flow button { flex-direction: row; align-items: center; padding: 12px; }
+  .interaction__flow li:not(:last-child)::after, .interaction:dir(rtl) .interaction__flow li:not(:last-child)::after { content: "↓"; inset-inline-end: auto; inset-inline-start: 20px; top: auto; bottom: -22px; transform: none; }
+  .interaction__scene { grid-template-columns: 1fr; padding: 16px; gap: 16px; }
+}
+@media (prefers-reduced-motion: reduce) { .interaction__flow button { transition: none; } }
