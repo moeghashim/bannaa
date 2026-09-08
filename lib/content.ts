@@ -288,7 +288,7 @@ function stageContent(locale: Locale, base: SiteContent): SiteContent {
   return {
     ...base,
     metadata: { title: t("Bannaa — Learn to build AI agents", "بنّاء — تعلّم بناء وكلاء الذكاء الاصطناعي"), description: intro },
-    nav: { ...base.nav, links: [...base.nav.links.filter(link => !["tracks", "roadmap", "resources"].includes(link.id)), { id: "spectrum", label: t("Agent Spectrum", "طيف الوكلاء"), href: `/${locale}/spectrum` }, { id: "blog", label: t("Blog", "المدونة"), href: `/${locale}/blog` }, { id: "consultation", label: t("Consultation", "استشارة"), href: `/${locale}/consultation` }] },
+    nav: { ...base.nav, links: [...base.nav.links.filter(link => !["tracks", "roadmap", "resources"].includes(link.id)), { id: "spectrum", label: t("Agent Spectrum", "طيف الوكلاء"), href: `/${locale}/spectrum` }, { id: "consultation", label: t("Consultation", "استشارة"), href: `/${locale}/consultation` }] },
     hero: base.hero,
     tracks: { ...base.tracks, eyebrow: t("YOUR PROGRESSION", "رحلتك"), title: t("Ready. Build.", "استعد. ابنِ."), titleAccent: t("Improve.", "حسّن."), description: intro, allLink: t("View the curriculum", "عرض المنهج"), cards },
     marquee: t("PROMPTS|CONTEXT|TOOLS|SKILLS|HOOKS|AGENT LOOPS|EVALUATION|COORDINATION", "التوجيهات|السياق|الأدوات|المهارات|الخطافات|حلقات الوكلاء|التقييم|التنسيق").split("|"),
@@ -299,7 +299,7 @@ function stageContent(locale: Locale, base: SiteContent): SiteContent {
     ] } },
     join: { ...base.join, hero: { ...stageHero, title: t("Ready to build?", "جاهز للبناء؟"), accent: t("Start with the prerequisites.", "ابدأ بالمتطلبات المسبقة.") }, steps: cards.map(c => ({ title: c.title, desc: c.desc })) },
     cta: { ...base.cta, titleLine1: t("Your next idea", "فكرتك القادمة"), titleAccent: t("starts here.", "تبدأ هنا."), description: homeIntro },
-    footer: { ...base.footer, description: homeIntro, groups: base.footer.groups.map((g, i) => i === 0 ? { ...g, items: [...g.items, { label: t("Agent Spectrum", "طيف الوكلاء"), href: `/${locale}/spectrum` }, { label: t("Blog", "المدونة"), href: `/${locale}/blog` }, { label: t("Consultation", "استشارة"), href: `/${locale}/consultation` }] } : g) },
+    footer: { ...base.footer, description: homeIntro, groups: base.footer.groups.map((g, i) => i === 0 ? { ...g, items: [...g.items, { label: t("Agent Spectrum", "طيف الوكلاء"), href: `/${locale}/spectrum` }, { label: t("Consultation", "استشارة"), href: `/${locale}/consultation` }] } : g) },
     legal: { ...base.legal, about: { ...base.legal.about, intro, sections: cards.map(c => ({ heading: c.title, body: [c.desc] })) } }
   };
 }
@@ -1728,4 +1728,9 @@ export const consultationContent = {
       { id: "project", title: "استشارة مشروع", price: "$2,500", duration: "شهرياً · 10 ساعات في الشهر", includes: ["تصميم البنية المعمارية", "الإشراف على التنفيذ", "دعم ما بعد التنفيذ"] }
     ]
   }
+};
+
+export const articleContent = {
+  ar: { title: "مقالات الفريق", back: "كل المحتوى" },
+  en: { title: "Team articles", back: "All content" }
 };

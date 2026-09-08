@@ -1,6 +1,4 @@
 import { CommunityPanel } from "@/components/site/community-panel";
-import { BlogList } from "@/components/site/blog-list";
-import { getPosts } from "@/lib/blog";
 import { CtaSection } from "@/components/site/cta-section";
 import { HeroSection } from "@/components/site/hero-section";
 import { Marquee } from "@/components/site/marquee";
@@ -20,8 +18,6 @@ export function BannaaHome({ content, locale }: BannaaHomeProps) {
         <HeroSection content={content.hero} locale={locale} />
         <Marquee items={content.marquee} />
         <MissionSection content={content.mission} />
-        <section className="wrap"><header className="sec-head"><h2>{locale === "ar" ? "من مدونة الفريق" : "From the team"}</h2><a href={`/${locale}/blog`}>{locale === "ar" ? "كل المقالات" : "All articles"}</a></header></section>
-        <BlogList posts={getPosts(locale).slice(0, 3).map(({ body, ...post }) => { void body; return post; })} locale={locale} />
         <CommunityPanel content={content.community} locale={locale} />
         <CtaSection content={content.cta} locale={locale} />
     </SiteShell>
