@@ -1734,3 +1734,67 @@ export const articleContent = {
   ar: { title: "مقالات الفريق", back: "كل المحتوى" },
   en: { title: "Team articles", back: "All content" }
 };
+
+export function spectrumInteractionContent(locale: Locale) {
+  const t = (en: string, ar: string) => locale === "ar" ? ar : en;
+  const step = (en: string, ar: string, detail: string, detailAr: string, output: string, outputAr: string) => ({ label: t(en, ar), detail: t(detail, detailAr), output: t(output, outputAr) });
+  return {
+    eyebrow: t("HOW YOU INTERACT WITH AI", "كيف تتفاعل مع الذكاء الاصطناعي"),
+    example: t("One example: a registration page for your event.", "مثال واحد: صفحة تسجيل لفعاليتك."),
+    next: t("Next step", "الخطوة التالية"),
+    replay: t("Walk through again", "استعرض من البداية"),
+    hint: t("Select a step to see what happens.", "اختر خطوة لترى ما يحدث."),
+    result: t("WHAT YOU GET", "ما الذي تحصل عليه"),
+    stages: [
+      {
+        title: t("A message in. A message back.", "رسالة منك. ورسالة إليك."),
+        mode: t("Chat example · ChatGPT", "مثال محادثة · ChatGPT"),
+        role: t("You ask, read, and carry out the instructions yourself.", "أنت تسأل وتقرأ وتنفّذ التعليمات بنفسك."),
+        outcome: t("An answer to use", "إجابة تستفيد منها"),
+        steps: [
+          step("You ask", "أنت تسأل", "You describe what you need in a single message.", "تصف ما تحتاجه في رسالة واحدة.", "How do I build an event registration page?", "كيف أبني صفحة تسجيل لفعالية؟"),
+          step("AI responds", "الذكاء الاصطناعي يجيب", "In this chat-only example, the model generates text; it does not change your project.", "في مثال المحادثة النصية هذا، يولّد النموذج نصاً دون تعديل مشروعك.", "Add a name field, an email field, and a submit button.", "أضف حقلاً للاسم وحقلاً للبريد وزر إرسال."),
+          step("You act", "أنت تنفّذ", "You turn the answer into a working page and check it.", "تحوّل الإجابة إلى صفحة تعمل وتتحقق منها.", "A written explanation. Building the page is still your next step.", "شرح مكتوب. بناء الصفحة لا يزال خطوتك التالية.")
+        ]
+      },
+      {
+        title: t("A goal in. A working result out.", "هدف منك. ونتيجة تعمل."),
+        mode: t("Coding-agent example · Codex", "مثال وكيل برمجي · Codex"),
+        role: t("You define the outcome, give context, and review the work.", "تحدّد النتيجة وتوفّر السياق وتراجع العمل."),
+        outcome: t("A reviewable artifact", "عمل جاهز للمراجعة"),
+        steps: [
+          step("Set the goal", "حدّد الهدف", "Give the agent your project and a clear definition of done.", "زوّد الوكيل بمشروعك وتعريف واضح للإنجاز.", "Build a registration form. Validate email and show a confirmation.", "ابنِ نموذج تسجيل. تحقّق من البريد واعرض تأكيداً."),
+          step("Agent works", "الوكيل يعمل", "With project access, the agent reads files, edits code, and runs checks using tools.", "مع إتاحة المشروع، يقرأ الوكيل الملفات ويعدّل الكود ويشغّل الفحوصات بالأدوات.", "Form added → validation implemented → checks run.", "إضافة النموذج ← تنفيذ التحقق ← تشغيل الفحوصات."),
+          step("Review the result", "راجع النتيجة", "Inspect the running page and code changes; request corrections if needed.", "افحص الصفحة وتغييرات الكود واطلب التصحيح عند الحاجة.", "A working local page and a code diff you can review.", "صفحة محلية تعمل وتغييرات كود يمكنك مراجعتها.")
+        ]
+      },
+      {
+        title: t("Tools turn intent into action.", "الأدوات تحوّل النية إلى تنفيذ."),
+        mode: t("Connected agent workflow", "سير عمل لوكيل متصل بالأدوات"),
+        role: t("You connect tools, set permissions, and approve the release.", "تربط الأدوات وتحدّد الصلاحيات وتعتمد النشر."),
+        outcome: t("A deployed service", "خدمة منشورة"),
+        steps: [
+          step("Plan", "خطّط", "The agent breaks the goal into actions across connected systems.", "يقسّم الوكيل الهدف إلى إجراءات عبر الأنظمة المتصلة.", "Save registrations, test the flow, and publish the page.", "احفظ التسجيلات واختبر التجربة وانشر الصفحة."),
+          step("Call tools", "استدعِ الأدوات", "The agent invokes a database tool and a terminal, then reads their results.", "يستدعي الوكيل أداة قاعدة البيانات والطرفية ثم يقرأ نتائجهما.", "Database: registration saved. Terminal: app built.", "قاعدة البيانات: حُفظ التسجيل. الطرفية: اكتمل البناء."),
+          step("Verify", "تحقّق", "A browser tool checks the real flow. Failures return to the agent for correction.", "تفحص أداة المتصفح التجربة الفعلية. تعود الأخطاء إلى الوكيل لإصلاحها.", "Valid email → saved. Invalid email → useful error.", "بريد صحيح ← حفظ. بريد غير صالح ← رسالة واضحة."),
+          step("Approve", "اعتمد", "You inspect the preview before authorizing publication.", "تفحص المعاينة قبل السماح بالنشر.", "Preview reviewed. Release approved.", "تمت مراجعة المعاينة واعتماد النشر."),
+          step("Deploy", "انشر", "The deployment tool publishes the approved version and returns its status.", "تنشر أداة النشر النسخة المعتمدة وتعيد حالتها.", "A live registration page with persistent storage.", "صفحة تسجيل منشورة مع تخزين دائم.")
+        ]
+      },
+      {
+        title: t("Results feed the next improvement.", "النتائج تغذّي التحسين التالي."),
+        mode: t("Measured improvement · recursive extension", "تحسين مقاس · امتداد تكراري"),
+        role: t("You set the objective and independent tests. Keep changes only when the evidence supports them.", "تحدّد الهدف والاختبارات المستقلة. تعتمد التغييرات حين تدعمها الأدلة."),
+        outcome: t("An evaluated enhancement", "تحسين خضع للتقييم"),
+        loop: t("Feed results back into the next cycle. Improving the evaluator itself is the recursive step; independent checks still decide whether to keep it.", "أعد النتائج إلى الدورة التالية. تحسين المُقيِّم نفسه هو الخطوة التكرارية؛ وتبقى الاختبارات المستقلة أساس اعتماد التغيير."),
+        steps: [
+          step("Observe", "راقب", "The system reads test results and feedback from the deployed service.", "يقرأ النظام نتائج الاختبار والملاحظات من الخدمة المنشورة.", "Feedback: some visitors do not understand the email error.", "ملاحظة: بعض الزوار لا يفهمون رسالة خطأ البريد."),
+          step("Propose a change", "اقترح تغييراً", "An agent proposes a specific change to code, prompts, or skills.", "يقترح وكيل تغييراً محدّداً في الكود أو التوجيهات أو المهارات.", "Candidate: clearer validation text and an example email.", "مقترح: رسالة تحقق أوضح ومثال للبريد."),
+          step("Evaluate", "قيّم", "Compare the candidate with the current version on independent cases. Improvement is not assumed.", "قارن المقترح بالنسخة الحالية على حالات مستقلة. التحسّن ليس مفترضاً.", "Check clarity, successful submissions, and regressions.", "افحص الوضوح ونجاح التسجيل وأي تراجع في الوظائف."),
+          step("Keep or revert", "اعتمد أو تراجع", "Keep a change only if it meets the criteria; otherwise restore the previous version.", "اعتمد التغيير إذا حقّق المعايير، وإلا فاستعد النسخة السابقة.", "Evidence supports the change → release. Otherwise → revert.", "الأدلة تدعم التغيير ← نشر. وإلا ← تراجع."),
+          step("Improve the loop", "حسّن الحلقة", "Experiment with better evaluation criteria or improvement instructions. Validate that process change independently too.", "جرّب معايير تقييم أو تعليمات تحسين أفضل. تحقّق من تغيير العملية بشكل مستقل أيضاً.", "Add a missing accessibility check to future evaluations, then repeat.", "أضف فحص إتاحة مفقوداً للتقييمات القادمة، ثم كرّر.")
+        ]
+      }
+    ]
+  };
+}

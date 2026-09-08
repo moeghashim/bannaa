@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { SpectrumInteraction } from "@/components/site/spectrum-interaction";
 import { spectrumStages } from "@/lib/spectrum";
 import type { SiteContent } from "@/lib/content";
 import type { Locale } from "@/lib/i18n";
@@ -26,6 +27,7 @@ export function AgentSpectrum({ content, locale }: { content: SiteContent; local
       }}><span className="spectrum-stop__number">{item.num}</span><strong>{item.title}</strong><span>{index === 0 ? (ar ? "قبل الانضمام" : "Before joining") : [ar ? "افهم واربط" : "Understand & connect", ar ? "ابنِ وانشر" : "Build & deploy", ar ? "شغّل وطوّر" : "Operate & evolve"][index - 1]}</span></button>)}
     </div>
     <div id="spectrum-panel" role="tabpanel" aria-labelledby={`tab-${stage.key}`} className={`spectrum-detail tone-${selected}`} tabIndex={0}>
+      <SpectrumInteraction key={stage.key} locale={locale} stageIndex={selected} />
       <div className="spectrum-detail__overview">
         <span className="spectrum-kicker">{stage.num} / {selected === 0 ? (ar ? "متطلبات، وليست دروساً" : "REQUIRED, NOT TAUGHT") : stage.sub}</span>
         <h2>{stage.title}</h2><p>{stage.desc}</p>

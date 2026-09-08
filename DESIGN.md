@@ -194,7 +194,7 @@ Arabic text must never be forced into JetBrains Mono. Keep RTL and LTR layouts s
 
 The Spectrum now uses four selectable capability stages: Prerequisites, Basics,
 Advanced, and Proficient. Prerequisites remain entry requirements, not teaching.
-Each stage shows concrete capabilities and evidence of readiness. Proficient
+Each stage shows concrete capabilities and evidence of readiness. A shared, interactive example illustrates message exchange, agent-produced work, tool calls and deployment, and measured improvement. Step buttons and a next-step control reveal concrete outputs; the final stage feeds evaluation back into the improvement process. Keep the flow right to left in Arabic, stack it vertically on mobile, and disable transitions for reduced motion. Proficient
 focuses on operating coordinated agents and measured improvement. Use gray,
 blue, green, and berry accents with keyboard-accessible stage tabs.
 
