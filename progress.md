@@ -98,3 +98,7 @@ the exact hash).
 - Consolidate blog articles into Content
 - Illustrate AI interactions across Spectrum stages
 - Replace community panel with WhatsApp preview and join request
+
+## 2026-09-10
+
+- Add animated builder landscape and software factory to homepage

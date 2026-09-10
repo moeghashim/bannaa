@@ -1,4 +1,5 @@
-import { PipelineTerminal } from "@/components/site/pipeline-terminal";
+import { HeroLandscape } from "@/components/site/hero-landscape";
+import { CodeFactory } from "@/components/site/code-factory";
 import type { SiteContent } from "@/lib/content";
 import type { Locale } from "@/lib/i18n";
 
@@ -9,8 +10,8 @@ type HeroSectionProps = {
 
 export function HeroSection({ content, locale }: HeroSectionProps) {
   return (
-    <section className="hero" id="top">
-      <div className="abs-fill grid-bg hero__grid-bg" aria-hidden="true" />
+    <section className="hero hero--landscape" id="top">
+      <HeroLandscape locale={locale} />
       <div className="hero__wrap">
         <div className="hero__tags">
           {content.tags.map((t) => (
@@ -40,7 +41,7 @@ export function HeroSection({ content, locale }: HeroSectionProps) {
             </div>
           </div>
           <div className="hero__terminal-slot">
-            <PipelineTerminal content={content.terminal} />
+            <CodeFactory locale={locale} />
           </div>
         </div>
 

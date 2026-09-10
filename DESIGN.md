@@ -248,3 +248,9 @@ Don't:
 - Distort, rotate, shadow, or combine logo lockups incorrectly.
 - Force Arabic into mono typography.
 - Hard-code content directly in route components when it belongs in the content system.
+
+### Builder landscape and software factory
+
+The homepage replaces the homepage grid background with an ivory architectural landscape and a separate blue ceramic cube. Generated assets and prompts are in `public/assets/hero/`. The scene stays still while the cube gently floats and its shadow changes. A localized pause control stops the motion; reduced-motion preferences disable it. Keep the existing hero content and links readable over the scene.
+
+The hero's terminal is replaced with a miniature illustrated software factory. A conveyor feeds a robotic assembly station, which connects to a restaurant or fleet depot. Visitors choose the business and inspect four stages; the machine, kitchen steam, and delivery vehicles animate without code or screen imagery. Pause and reduced-motion support preserve a fully readable static illustration. The original terminal component remains in the repository.

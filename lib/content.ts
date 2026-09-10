@@ -1817,3 +1817,27 @@ export const whatsappCommunityContent = {
     pending: "The join-request link will be available soon."
   }
 };
+
+export const heroLandscapeContent = {
+  ar: { pause: "إيقاف حركة الخلفية", resume: "تشغيل حركة الخلفية" },
+  en: { pause: "Pause background motion", resume: "Resume background motion" }
+};
+
+export const codeFactoryContent = {
+  ar: {
+    title: "من فكرة إلى شركة تعمل", eyebrow: "مصنع البرمجيات", restaurant: "مطعم", fleet: "خدمات الأسطول",
+    pause: "إيقاف الحركة", play: "تشغيل الحركة", idea: "فكرتك", factory: "نبني ونربط", business: "مشروعك يعمل",
+    stages: ["نفهم العمل", "نبني النظام", "نربط العمليات", "نُشغّل المشروع"],
+    restaurantDetails: ["مطعم يحتاج إلى تنظيم الطلبات والمخزون.", "وكلاء تبني نظام الحجز والطلبات والمطبخ.", "الطلب يصل إلى المطبخ، والمخزون يتحدّث.", "وجبات جاهزة، توصيل منظم، وتجربة أفضل للعميل."],
+    fleetDetails: ["شركة خدمات تحتاج إلى إدارة المركبات والمهام.", "وكلاء تبني نظام الجدولة والتوزيع والصيانة.", "المهمة تصل إلى المركبة المناسبة والمسار يتحدّث.", "مركبات تتحرك، مهام تُنجز، وصيانة في موعدها."],
+    illustration: "توضيح لكيف تتحول البرمجيات إلى عمليات حقيقية"
+  },
+  en: {
+    title: "An idea becomes a working business", eyebrow: "THE SOFTWARE FACTORY", restaurant: "Restaurant", fleet: "Fleet services",
+    pause: "Pause animation", play: "Play animation", idea: "Your idea", factory: "Build & connect", business: "Business in motion",
+    stages: ["Understand", "Build", "Connect", "Operate"],
+    restaurantDetails: ["A restaurant needs to organize orders and stock.", "Agents build bookings, ordering, and kitchen workflows.", "Orders reach the kitchen. Inventory updates with every meal.", "Meals ready, deliveries coordinated, customers looked after."],
+    fleetDetails: ["A service company needs to coordinate vehicles and jobs.", "Agents build scheduling, dispatch, and maintenance workflows.", "The right vehicle receives the job and an updated route.", "Vehicles moving, jobs completed, maintenance on schedule."],
+    illustration: "An illustration of software becoming real operations"
+  }
+};
