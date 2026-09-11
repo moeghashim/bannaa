@@ -102,3 +102,7 @@ the exact hash).
 ## 2026-09-10
 
 - Add animated builder landscape and software factory to homepage
+
+## 2026-09-11
+
+- Preserve footer side padding on mobile and desktop
