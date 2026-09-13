@@ -154,22 +154,22 @@ and eye-only expression system; no white tile sits behind the character.
 
 Use the supplied SVG assets in [public/assets/brand](/Users/moe/bannaa/public/assets/brand):
 
-- [icon.svg](/Users/moe/bannaa/public/assets/brand/icon.svg) is the primary standalone web mark and uses the boxy Blobatar mark.
-- [arabic_logo.svg](/Users/moe/bannaa/public/assets/brand/arabic_logo.svg) is the approved Arabic lockup reference and uses the boxy Blobatar mark next to the Arabic wordmark.
+- [icon.svg](/Users/moe/bannaa/public/assets/brand/icon.svg) is the primary standalone web mark and uses the round Blobatar mark.
+- [arabic_logo.svg](/Users/moe/bannaa/public/assets/brand/arabic_logo.svg) is the approved Arabic lockup reference and uses the round Blobatar mark next to the Arabic wordmark.
 - [brand_guideline.png](/Users/moe/bannaa/public/assets/brand/brand_guideline.png) is the source guideline image.
 - [app/icon.svg](/Users/moe/bannaa/app/icon.svg) is the Next.js favicon and mirrors the standalone icon geometry.
 
-The standalone icon is a black boxy Blobatar with two white capsule eyes. It is generated from `blobatar` with the boxy shape trait pinned, a black body, and white eyes. Do not add a detached square, mouth, tail, gradient, shadow, or extra facial features. Do not stretch, rotate, combine English and Arabic wordmarks into one lockup, or add effects.
+The standalone icon is a black round Blobatar with two white capsule eyes. It is generated from `blobatar` with the round shape trait pinned, a black body, and white eyes. Do not add a detached square, mouth, tail, gradient, shadow, or extra facial features. Do not stretch, rotate, combine English and Arabic wordmarks into one lockup, or add effects.
 
 Clear space around the icon should be at least one quarter of the icon width on all sides.
 
-### Expression Square
+### Expression Character
 
-The boxy Blobatar is the current direction for the Banna mark. The black idle boxy version is the official logo, and the wider expression set is for playful moments, social content, and product empty states.
+The round Blobatar is the current direction for the Banna mark. The black idle round version is the official logo, and the wider expression set is for playful moments, social content, and product empty states.
 
-Expression avatars should use the same pinned boxy Blobatar traits with eyes only. The official mark is black; optional expression variants may use the extended brand colors. Do not add mouths, detached squares, tails, gradients, or extra facial features.
+Expression avatars should use the same pinned round Blobatar traits with eyes only. The official mark is black; optional expression variants may use the extended brand colors. Do not add mouths, detached squares, tails, gradients, or extra facial features.
 
-Supported Blobatar expressions include idle, happy, sad, mad, surprised, wink, sleepy, smug, unsure, scared, love, shy, and sick. Animated versions should be CSS-only, short, subtle, and disabled by `prefers-reduced-motion`.
+Supported Blobatar expressions include idle, happy, sad, mad, surprised, wink, sleepy, smug, unsure, scared, love, shy, and sick. The shared main mark uses Blobatar’s native `animate="always"` CSS motion (breathing, bobbing, blinking, and gaze) in both locales, including touch devices. Respect `prefers-reduced-motion`. Traits and colors are pinned in `lib/brand.ts`; static downloads and the favicon use matching round geometry. Spectrum stage illustrations retain their existing boxy shapes as learning-stage artwork.
 
 ## Colors
 
@@ -216,7 +216,7 @@ The current site structure is:
 
 ## Components
 
-**Header:** Use the boxy Blobatar SVG mark through `BrandMark`, followed by the localized wordmark: `بنّاء` in Arabic and `Bannaa` in English. The language switcher stays visible on every page. No theme toggle.
+**Header:** Use the round Blobatar SVG mark through `BrandMark`, followed by the localized wordmark: `بنّاء` in Arabic and `Bannaa` in English. The language switcher stays visible on every page. No theme toggle.
 
 **Buttons:** Primary buttons are electric blue with white text. Secondary buttons are white or transparent with a neutral stroke and charcoal text.
 
@@ -226,7 +226,7 @@ The current site structure is:
 
 **Video Channels:** Keep TikTok and YouTube links in the content system, not hard-coded in page markup. YouTube videos should render as lightweight fetched thumbnail cards from the public channel feed. TikTok should use the official profile embed so the account can load current public videos without a private API key.
 
-**Expression Avatar:** Use the black boxy Blobatar as the official logo. Use other colored eye-only Blobatar expressions for playful brand moments. Keep them inline SVG/CSS where possible instead of adding heavy image files. Motion should be ambient and restrained: blink, bounce, tilt, or sleepy drift.
+**Expression Avatar:** Use the black round Blobatar as the official logo. Use other colored eye-only Blobatar expressions for playful brand moments. Keep them inline SVG/CSS where possible instead of adding heavy image files. Motion should be ambient and restrained: blink, bounce, tilt, or sleepy drift.
 
 **Community:** The dedicated community page presents the WhatsApp community with a preview and request-to-join action. The temporary generated preview at `public/assets/community/whatsapp-preview.png` is labelled as an illustration until a real screenshot is supplied. The join action remains disabled until its destination is supplied. The community panel is omitted from the homepage. Existing community session APIs remain available.
 
@@ -236,7 +236,7 @@ Do:
 
 - Keep bilingual content centralized in [lib/content.ts](/Users/moe/bannaa/lib/content.ts).
 - Keep Arabic as the default route and preserve full English translations.
-- Use [public/assets/brand/icon.svg](/Users/moe/bannaa/public/assets/brand/icon.svg) for the official boxy Blobatar web mark.
+- Use [public/assets/brand/icon.svg](/Users/moe/bannaa/public/assets/brand/icon.svg) for the official round Blobatar web mark.
 - Use electric blue for primary action and navigation emphasis.
 - Keep the site light, fast, and low-bandwidth friendly.
 
@@ -254,3 +254,7 @@ Don't:
 The homepage replaces the homepage grid background with an ivory architectural landscape and a separate blue ceramic cube. Generated assets and prompts are in `public/assets/hero/`. The scene stays still while the cube gently floats and its shadow changes. A localized pause control stops the motion; reduced-motion preferences disable it. Keep the existing hero content and links readable over the scene.
 
 The hero's terminal is replaced with a miniature illustrated software factory. A conveyor feeds a robotic assembly station, which connects to a restaurant or fleet depot. Visitors choose the business and inspect four stages; the machine, kitchen steam, and delivery vehicles animate without code or screen imagery. Pause and reduced-motion support preserve a fully readable static illustration. The original terminal component remains in the repository.
+
+### Round mark reference settings
+
+Use Blobatar 2.7 and its matching React renderer to match the approved editor reference. Preserve the editor seed `alain00` for unpinned axes (body size 0.367, eye size 0.937, eye squareness 0.664, separation 0.842, lean 0.002, gaze x 0.895, gaze y 0.296). Pin round shape at 0.11, body proportion at 0.095, body squareness at 0.832, and eye roundness at 0.617. Override the reference ink/hue with the requested black body and white eyes. The main mark continues to animate in always mode.

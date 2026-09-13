@@ -106,3 +106,7 @@ the exact hash).
 ## 2026-09-11
 
 - Preserve footer side padding on mobile and desktop
+
+## 2026-09-13
+
+- Adopt the round black logo with continuous animation
