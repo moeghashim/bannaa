@@ -149,7 +149,7 @@ The new guideline replaces the previous lime terminal identity. The site should 
 
 Spectrum stage illustrations use transparent, black Blobatar variants in
 public/assets/brand/spectrum: unsure for Prerequisites, happy for Basics,
-idle for Advanced, and smug for Proficient. They keep the pinned boxy geometry
+idle for Advanced, and smug for Proficient. They share the approved round logo seed and geometry
 and eye-only expression system; no white tile sits behind the character.
 
 Use the supplied SVG assets in [public/assets/brand](/Users/moe/bannaa/public/assets/brand):
@@ -157,7 +157,7 @@ Use the supplied SVG assets in [public/assets/brand](/Users/moe/bannaa/public/as
 - [icon.svg](/Users/moe/bannaa/public/assets/brand/icon.svg) is the primary standalone web mark and uses the round Blobatar mark.
 - [arabic_logo.svg](/Users/moe/bannaa/public/assets/brand/arabic_logo.svg) is the approved Arabic lockup reference and uses the round Blobatar mark next to the Arabic wordmark.
 - [brand_guideline.png](/Users/moe/bannaa/public/assets/brand/brand_guideline.png) is the source guideline image.
-- [app/icon.svg](/Users/moe/bannaa/app/icon.svg) is the Next.js favicon and mirrors the standalone icon geometry.
+- [app/icon.svg](/Users/moe/bannaa/app/icon.svg) is the Next.js SVG favicon and mirrors the standalone icon geometry. `app/favicon.ico` supplies 16px, 32px, and 48px browser fallbacks; `app/apple-icon.png` supplies the 180px Apple touch icon. All use the approved round black mark.
 
 The standalone icon is a black round Blobatar with two white capsule eyes. It is generated from `blobatar` with the round shape trait pinned, a black body, and white eyes. Do not add a detached square, mouth, tail, gradient, shadow, or extra facial features. Do not stretch, rotate, combine English and Arabic wordmarks into one lockup, or add effects.
 
@@ -169,7 +169,7 @@ The round Blobatar is the current direction for the Banna mark. The black idle r
 
 Expression avatars should use the same pinned round Blobatar traits with eyes only. The official mark is black; optional expression variants may use the extended brand colors. Do not add mouths, detached squares, tails, gradients, or extra facial features.
 
-Supported Blobatar expressions include idle, happy, sad, mad, surprised, wink, sleepy, smug, unsure, scared, love, shy, and sick. The shared main mark uses Blobatar’s native `animate="always"` CSS motion (breathing, bobbing, blinking, and gaze) in both locales, including touch devices. Respect `prefers-reduced-motion`. Traits and colors are pinned in `lib/brand.ts`; static downloads and the favicon use matching round geometry. Spectrum stage illustrations retain their existing boxy shapes as learning-stage artwork.
+Supported Blobatar expressions include idle, happy, sad, mad, surprised, wink, sleepy, smug, unsure, scared, love, shy, and sick. The shared main mark uses Blobatar’s native `animate="always"` CSS motion (breathing, bobbing, blinking, and gaze) in both locales, including touch devices. Respect `prefers-reduced-motion`. Traits and colors are pinned in `lib/brand.ts`; static downloads and the favicon use matching round geometry. Spectrum stage illustrations use the approved round shape with stage-specific eye expressions.
 
 ## Colors
 
@@ -258,3 +258,7 @@ The hero's terminal is replaced with a miniature illustrated software factory. A
 ### Round mark reference settings
 
 Use Blobatar 2.7 and its matching React renderer to match the approved editor reference. Preserve the editor seed `alain00` for unpinned axes (body size 0.367, eye size 0.937, eye squareness 0.664, separation 0.842, lean 0.002, gaze x 0.895, gaze y 0.296). Pin round shape at 0.11, body proportion at 0.095, body squareness at 0.832, and eye roundness at 0.617. Override the reference ink/hue with the requested black body and white eyes. The main mark continues to animate in always mode.
+
+### Character playground
+
+The bilingual brand page includes a character lab with the approved round seed and geometry, native Blobatar expressions, custom body/eye/accessory/backdrop colors, hats, laptop and thinking scenes. Accessories belong to playful character variants, not the official logo. Preview motion is optional and respects reduced motion. SVG and 1000px PNG exports share the same standalone SVG composition with an optional transparent background; exports are static. Merchandise examples use SVG illustrations with the current mark.
