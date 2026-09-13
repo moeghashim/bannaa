@@ -1,10 +1,11 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { blobatar } from "blobatar";
-import type { BlobatarOptions, Expression } from "blobatar";
+import type { Expression } from "blobatar";
 import { happy, idle, love, mad, sad, scared, shy, sick, sleepy, smug, surprised, unsure, wink } from "blobatar/expression";
 
 import { BrandLogo, BrandMark } from "@/components/site/brand-mark";
+import { brandSeed, brandTraits } from "@/lib/brand";
 import { PageHero } from "@/components/site/page-hero";
 import { SiteShell } from "@/components/site/site-shell";
 import type { SiteContent } from "@/lib/content";
@@ -65,7 +66,7 @@ const copy: Record<Locale, BrandGuideCopy> = {
     subtitle: "AI Community for the Arab World",
     sections: {
       logo: "نظام الشعار",
-      expressions: "مربع بنّاء التعبيري",
+      expressions: "شخصية بنّاء التعبيرية",
       clearSpace: "المساحة الآمنة",
       palette: "لوحة الألوان الموسعة",
       typography: "الخطوط",
@@ -80,7 +81,7 @@ const copy: Record<Locale, BrandGuideCopy> = {
       arabicLockup: "الأيقونة + الاسم العربي",
       squareExpression: "الشعار التعبيري",
       expressionIntro:
-        "الشعار الجديد يستخدم شخصية Blobatar صندوقية بعينين فقط. النسخة السوداء هي الشعار الرسمي، وبقية الألوان والتعبيرات تساعد في المحتوى، المجتمع، والواجهات.",
+        "الشعار الجديد يستخدم شخصية Blobatar دائرية بعينين فقط. النسخة السوداء هي الشعار الرسمي، وبقية الألوان والتعبيرات تساعد في المحتوى، المجتمع، والواجهات.",
       staticExpressions: "تعبيرات ثابتة",
       animatedExpressions: "تعبيرات متحركة",
       animatedIntro: "الحركة قصيرة وهادئة: رمشة، ارتداد، ميل خفيف، أو نعاس. تتوقف تلقائياً عند تفضيل تقليل الحركة.",
@@ -126,7 +127,7 @@ const copy: Record<Locale, BrandGuideCopy> = {
       arabicLockup: "Icon + Arabic wordmark",
       squareExpression: "Expression logo",
       expressionIntro:
-        "The new logo uses a boxy Blobatar character with eyes only. The black version is the official mark, while the wider color and expression set supports content, community, and product moments.",
+        "The new logo uses a round Blobatar character with eyes only. The black version is the official mark, while the wider color and expression set supports content, community, and product moments.",
       staticExpressions: "Static expressions",
       animatedExpressions: "Animated expressions",
       animatedIntro: "Motion should stay short and restrained: a blink, bounce, tilt, or sleepy drift. It respects reduced-motion preferences.",
@@ -275,21 +276,8 @@ const blobatarExpressions: Record<ExpressionKey, Expression> = {
   sick
 };
 
-const blobatarTraits: NonNullable<BlobatarOptions["traits"]> = {
-  shape: 0.65,
-  "body.r": 0.72,
-  "body.ratio": 0.54,
-  "body.n": 0.76,
-  "body.rot": 0.5,
-  "eye.ratio": 0.82,
-  "eye.rx": 0.7,
-  "eye.gap": 0.55,
-  "eye.lean": 0.5,
-  "gaze.y": 0.58
-};
-
 const expressionSamples: { key: ExpressionKey; label: string; arLabel: string; color: string }[] = [
-  { key: "idle", label: "Boxy", arLabel: "صندوقي", color: "#111111" },
+  { key: "idle", label: "Round", arLabel: "دائري", color: "#111111" },
   { key: "happy", label: "Happy", arLabel: "سعيد", color: "#2F855A" },
   { key: "sad", label: "Sad", arLabel: "حزين", color: "#596274" },
   { key: "mad", label: "Mad", arLabel: "غاضب", color: "#C2410C" },
@@ -324,7 +312,7 @@ function normalizeBlobatarSvg(svg: string) {
     .replace(/<\/svg>\s*$/, "")
     .replace(/<title>.*?<\/title>/, "");
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">${title}<g transform="matrix(1.45 0 0 1.45 -21 -20.1)">${body}</g></svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">${title}<g transform="matrix(1.18 0 0 1.18 -9 -9)">${body}</g></svg>`;
 }
 
 function SectionNumber({ value }: { value: number }) {
@@ -387,7 +375,7 @@ function ExpressionSquare({
     blobatar(`bannaa-${expression}`, {
       background: false,
       palette: { head: color ?? "#111111", eye: "#FFFFFF" },
-      traits: blobatarTraits,
+      traits: brandTraits,
       expression: blobatarExpressions[expression],
       title: label
     })
