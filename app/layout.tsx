@@ -3,6 +3,7 @@ import type { PropsWithChildren } from "react";
 import { Suspense } from "react";
 
 import "@/app/globals.css";
+import "blobatar/motion.css";
 import { GoogleAnalytics } from "@/components/site/google-analytics";
 
 const body = Baloo_Bhaijaan_2({

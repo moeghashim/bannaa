@@ -91,10 +91,14 @@ body {
   position: relative;
   flex-shrink: 0;
 }
-.brand-mark img {
+.brand-mark img,
+.brand-mark > svg {
   width: 100%;
   height: 100%;
   display: block;
+}
+.brand-mark > svg {
+  transform: scale(1.18);
 }
 .brand-logo {
   display: inline-flex;
@@ -2503,7 +2507,8 @@ body {
 .usage-card--dark p {
   color: #ffffff;
 }
-.usage-card--dark .brand-mark img {
+.usage-card--dark .brand-mark img,
+.usage-card--dark .brand-mark > svg {
   filter: invert(1);
 }
 .usage-card--warm {
