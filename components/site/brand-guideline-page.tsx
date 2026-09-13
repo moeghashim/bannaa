@@ -6,6 +6,7 @@ import { happy, idle, love, mad, sad, scared, shy, sick, sleepy, smug, surprised
 
 import { BrandLogo, BrandMark } from "@/components/site/brand-mark";
 import { brandSeed, brandTraits } from "@/lib/brand";
+import { BrandPlayground } from "@/components/site/brand-playground";
 import { PageHero } from "@/components/site/page-hero";
 import { SiteShell } from "@/components/site/site-shell";
 import type { SiteContent } from "@/lib/content";
@@ -112,7 +113,7 @@ const copy: Record<Locale, BrandGuideCopy> = {
     subtitle: "AI Community for the Arab World",
     sections: {
       logo: "Logo system",
-      expressions: "Bannaa expression square",
+      expressions: "Bannaa expressions",
       clearSpace: "Clear space",
       palette: "Expanded color palette",
       typography: "Typography",
@@ -228,19 +229,19 @@ const merchExamples = [
   {
     title: "T-shirt",
     arTitle: "تيشيرت",
-    src: "/assets/brand/merch-tshirt.png",
+    src: "/assets/brand/merch-tshirt.svg",
     alt: "Banna logo t-shirt mockup"
   },
   {
     title: "Tote bag",
     arTitle: "حقيبة قماش",
-    src: "/assets/brand/merch-tote.png",
+    src: "/assets/brand/merch-tote.svg",
     alt: "Banna logo tote bag mockup"
   },
   {
     title: "Cap",
     arTitle: "قبعة",
-    src: "/assets/brand/merch-cap.png",
+    src: "/assets/brand/merch-cap.svg",
     alt: "Banna logo cap mockup"
   }
 ];
@@ -372,7 +373,7 @@ function ExpressionSquare({
   motion?: "blink" | "bounce" | "tilt" | "sleep";
 }) {
   const svg = normalizeBlobatarSvg(
-    blobatar(`bannaa-${expression}`, {
+    blobatar(brandSeed, {
       background: false,
       palette: { head: color ?? "#111111", eye: "#FFFFFF" },
       traits: brandTraits,
@@ -444,6 +445,8 @@ export function BrandGuidelinePage({ content, locale }: BrandGuidelinePageProps)
           </div>
           <BrandMark size={88} title="Bannaa" />
         </header>
+
+        <BrandPlayground locale={locale} />
 
         <section className="brand-guide__section" aria-labelledby="brand-logo-system">
           <SectionTitle value={1}>{t.sections.logo}</SectionTitle>

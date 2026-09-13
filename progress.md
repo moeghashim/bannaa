@@ -110,3 +110,4 @@ the exact hash).
 ## 2026-09-13
 
 - Adopt the round black logo with continuous animation
+- Add a logo playground and update Spectrum characters

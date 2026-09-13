@@ -1841,3 +1841,32 @@ export const codeFactoryContent = {
     illustration: "An illustration of software becoming real operations"
   }
 };
+
+export const brandPlaygroundCopy = {
+  en: {
+    eyebrow: "THE CHARACTER LAB", title: "A little character. A lot of possibility.",
+    intro: "Dress up your building buddy. Give it a mood, a new color, or something to work on. Then take it with you.",
+    colors: "Make it yours", body: "Body", eyes: "Eyes", accent: "Accessories", background: "Backdrop",
+    mood: "How are we feeling?", hat: "Top it off", scene: "Set the scene", transparent: "Transparent background",
+    motion: "Animate preview", surprise: "Surprise me", reset: "Reset", svg: "Download SVG", png: "Download PNG",
+    exporting: "Creating PNG…", exported: "Your character is ready.", error: "Export didn’t work. Please try again.",
+    note: "Exports are still images · PNG 1000 × 1000 · SVG scales to any size",
+    distinction: "Made for play. The official Bannaa logo stays black with white eyes.",
+    preview: "Your Bannaa character", hats: { none: "No hat", cap: "Builder cap", beanie: "Cozy beanie", crown: "Big ideas", party: "Party time" },
+    scenes: { portrait: "Just me", laptop: "At work", thinking: "Thinking" },
+    moods: { idle: "Chill", happy: "Happy", wink: "Wink", thinking: "Curious", love: "Love", surprised: "Wow", sleepy: "Sleepy", smug: "Confident", unsure: "Unsure", sad: "Sad", mad: "Mad", scared: "Scared", shy: "Shy", sick: "Under the weather" },
+  },
+  ar: {
+    eyebrow: "مختبر الشخصية", title: "شخصية صغيرة. احتمالات كبيرة.",
+    intro: "اختر لرفيقك لوناً ومزاجاً وقبعة، أو اجعله يعمل على فكرة جديدة. ثم حمّله وخذه معك.",
+    colors: "على ذوقك", body: "الجسم", eyes: "العينان", accent: "الإكسسوارات", background: "الخلفية",
+    mood: "كيف المزاج؟", hat: "أضف قبعة", scene: "اختر المشهد", transparent: "خلفية شفافة",
+    motion: "تحريك المعاينة", surprise: "فاجئني", reset: "إعادة ضبط", svg: "تحميل SVG", png: "تحميل PNG",
+    exporting: "جارٍ إنشاء PNG…", exported: "شخصيتك جاهزة.", error: "تعذّر التصدير. حاول مرة أخرى.",
+    note: "التصدير صورة ثابتة · PNG 1000 × 1000 · SVG قابل للتكبير",
+    distinction: "هذه النسخ للمرح والإبداع. يبقى شعار بنّاء الرسمي أسود بعينين بيضاوين.",
+    preview: "شخصية بنّاء الخاصة بك", hats: { none: "بلا قبعة", cap: "قبعة البنّاء", beanie: "قبعة شتوية", crown: "أفكار ملكية", party: "وقت الاحتفال" },
+    scenes: { portrait: "الشخصية", laptop: "في العمل", thinking: "يفكّر" },
+    moods: { idle: "هادئ", happy: "سعيد", wink: "غمزة", thinking: "فضولي", love: "محب", surprised: "متفاجئ", sleepy: "نعسان", smug: "واثق", unsure: "متردد", sad: "حزين", mad: "غاضب", scared: "خائف", shy: "خجول", sick: "مرهق" },
+  },
+} as const;

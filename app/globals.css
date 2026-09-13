@@ -3276,3 +3276,47 @@ body {
 @keyframes factory-deliver { 0%,20%,100% { transform: translate(0,0); } 60%,75% { transform: translate(28px,7px); } }
 @media (max-width: 760px) { .code-factory { padding: 18px 12px 12px; } .code-factory__labels { font-size: 10px; } .code-factory__detail { min-height: 64px; } }
 @media (prefers-reduced-motion: reduce) { .factory-scene * { animation: none !important; transition: none !important; } }
+
+/* Character lab */
+.brand-lab { margin-block: 32px 64px; border: 1px solid var(--line, #EDE2D3); border-radius: 20px; overflow: hidden; background: #fff; }
+.brand-lab__intro { padding: 32px; background: #F6EFE5; }
+.brand-lab__intro > .mono { color: #2563EB; font-size: 12px; margin: 0 0 12px; }
+.brand-lab__intro h2 { font-size: clamp(28px, 3vw, 44px); line-height: 1.15; margin: 0 0 14px; max-width: 700px; }
+.brand-lab__intro > p:last-child { color: #596274; max-width: 660px; margin: 0; }
+.brand-lab__workspace { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 36px; padding: 32px; align-items: start; }
+.brand-lab__canvas-column { position: sticky; top: 95px; min-width: 0; }
+.brand-lab__canvas { border: 1px solid #EDE2D3; border-radius: 20px; overflow: hidden; aspect-ratio: 1; background: #F6EFE5; }
+.brand-lab__canvas svg { display: block; width: 100%; height: 100%; }
+.brand-lab__canvas.is-transparent { background: repeating-conic-gradient(#eee 0% 25%, #fff 0% 50%) 0 / 20px 20px; }
+.brand-lab__canvas.is-animated .lab-float { animation: lab-float 4s ease-in-out infinite; }
+@keyframes lab-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+.brand-lab__toggles { display: flex; flex-wrap: wrap; gap: 10px 20px; margin-block: 18px; font-size: 14px; }
+.brand-lab__toggles label { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+.brand-lab input[type="checkbox"] { accent-color: #2563EB; width: 17px; height: 17px; }
+.brand-lab__exports { display: flex; gap: 10px; }
+.brand-lab__exports button { flex: 1; justify-content: center; }
+.brand-lab__note { color: #596274; font-size: 13px; margin: 14px 0 0; }
+.brand-lab__status { font-size: 14px; min-height: 22px; margin: 8px 0 0; color: #2563EB; }
+.brand-lab__controls { min-width: 0; }
+.brand-lab__controls fieldset { border: 0; padding: 0; margin: 24px 0 0; min-width: 0; }
+.brand-lab__controls legend { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+.brand-lab__actions { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.brand-lab__reset { border: 0; background: none; color: #596274; text-decoration: underline; cursor: pointer; padding: 10px; }
+.brand-lab__swatches { display: flex; gap: 12px; margin-bottom: 16px; }
+.brand-lab__swatches button { width: 36px; height: 36px; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 1px #EDE2D3; cursor: pointer; }
+.brand-lab__swatches button[aria-pressed="true"] { box-shadow: 0 0 0 2px #2563EB; }
+.brand-lab__colors { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 8px; }
+.brand-lab__colors label { display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 12px; color: #596274; padding: 8px 4px; background: #F5F6F8; border-radius: 8px; }
+.brand-lab__colors input { width: 36px; height: 30px; padding: 0; border: 0; background: none; cursor: pointer; }
+.brand-lab__choices { display: flex; flex-wrap: wrap; gap: 7px; }
+.brand-lab__choices button { border: 1px solid #DCE6DE; border-radius: 9px; padding: 8px 12px; min-height: 40px; background: white; color: #111; font: inherit; font-size: 14px; cursor: pointer; }
+.brand-lab__choices button[aria-pressed="true"] { color: #fff; background: #2563EB; border-color: #2563EB; }
+.brand-lab button:focus-visible, .brand-lab input:focus-visible { outline: 3px solid #2563EB; outline-offset: 4px; }
+.brand-lab button:disabled { opacity: .65; cursor: progress; }
+@media (max-width: 760px) {
+  .brand-lab__workspace { grid-template-columns: 1fr; gap: 20px; padding: 18px; }
+  .brand-lab__intro { padding: 24px 18px; }
+  .brand-lab__canvas-column { position: static; }
+  .brand-lab__exports { flex-wrap: wrap; }
+}
+@media (prefers-reduced-motion: reduce) { .brand-lab__canvas.is-animated .lab-float { animation: none; } }
