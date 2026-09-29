@@ -1,9 +1,8 @@
 "use client";
 
-import { Blobatar } from "@blobatar/react";
+import Image from "next/image";
 import type { CSSProperties } from "react";
 
-import { brandPalette, brandSeed, brandTraits } from "@/lib/brand";
 import type { Locale } from "@/lib/i18n";
 
 type BrandMarkProps = {
@@ -17,8 +16,7 @@ export function BrandMark({ size = 28, className, title }: BrandMarkProps) {
 
   return (
     <span className={`brand-mark${className ? ` ${className}` : ""}`} style={style}>
-      <Blobatar name={brandSeed} size={size} title={title} background={false}
-        palette={brandPalette} traits={brandTraits} animate="always" />
+      <Image src="/assets/launch/logo.png" width={size} height={size} alt={title ?? ""} style={{ objectFit: "contain" }} />
     </span>
   );
 }

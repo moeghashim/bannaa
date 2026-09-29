@@ -111,3 +111,7 @@ the exact hash).
 
 - Adopt the round black logo with continuous animation
 - Add a logo playground and update Spectrum characters
+
+## 2026-09-29
+
+- Publish the approved Bannaa character design

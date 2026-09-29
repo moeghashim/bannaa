@@ -37,8 +37,8 @@ export function MissionPage({ content, locale }: MissionPageProps) {
           </div>
           <div className="right">
             {locale === "ar"
-              ? "كل فيديو، خيط، نشرة، نقاش، أو مورد يجب أن يدعم هدف بناء 10,000 شركة صغيرة عالية الإنتاجية."
-              : "Every video, thread, newsletter, discussion, or resource should support the goal of enabling 10,000 high-productivity micro-startups."}
+              ? "كل فيديو، خيط، نشرة، نقاش، أو مورد يجب أن يدعم هدف بناء 100 شركة صغيرة عالية الإنتاجية."
+              : "Every video, thread, newsletter, discussion, or resource should support the goal of enabling 100 high-productivity micro-startups."}
           </div>
         </header>
         <div className="mission-track-grid">

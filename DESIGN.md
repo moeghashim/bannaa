@@ -262,3 +262,13 @@ Use Blobatar 2.7 and its matching React renderer to match the approved editor re
 ### Character playground
 
 The bilingual brand page includes a character lab with the approved round seed and geometry, native Blobatar expressions, custom body/eye/accessory/backdrop colors, hats, laptop and thinking scenes. Accessories belong to playful character variants, not the official logo. Preview motion is optional and respects reduced motion. SVG and 1000px PNG exports share the same standalone SVG composition with an optional transparent background; exports are static. Merchandise examples use SVG illustrations with the current mark.
+
+## Approved production redesign — 2026-09-29
+
+This revision supersedes the white/electric-blue homepage and black official mark described above. The homepage uses the approved public concept: warm cream `#faf8f2`, forest text `#243d31`, muted green `#647065`, sage panels `#e9eddf`, pale peach/oat editorial cards, and a forest mission panel. Typography is DM Sans for English and Baloo Bhaijaan 2 for Arabic. Scoped styles in `app/launch.css` preserve the existing inner-page layouts.
+
+The official header/footer mark and browser icons now use the sage plush character's head from `public/assets/launch/logo.png`. `BrandMark` uses the same asset on existing routes. The older Blobatar playground remains available as a legacy creative tool; its expressions do not define the current official identity.
+
+The compact, unboxed homepage animation uses the three-cell transparent `scenes.webp` asset for building, imagining, and vibing. React manages scene selection, timed playback, pause, reduced-motion preference, and page visibility. Keep the artwork on the cream canvas with no card background or shadow. Both locales include accessible stage tabs and native lesson dialogs.
+
+The ambition is 100 small Arab companies. Homepage copy lives in `launchCopy` in `lib/content.ts`. Existing routes, consultation forms, analytics, and footer navigation remain available. This release does not add the proposed community platform.

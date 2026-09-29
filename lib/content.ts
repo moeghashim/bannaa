@@ -292,7 +292,7 @@ function stageContent(locale: Locale, base: SiteContent): SiteContent {
     hero: base.hero,
     tracks: { ...base.tracks, eyebrow: t("YOUR PROGRESSION", "رحلتك"), title: t("Ready. Build.", "استعد. ابنِ."), titleAccent: t("Improve.", "حسّن."), description: intro, allLink: t("View the curriculum", "عرض المنهج"), cards },
     marquee: t("PROMPTS|CONTEXT|TOOLS|SKILLS|HOOKS|AGENT LOOPS|EVALUATION|COORDINATION", "التوجيهات|السياق|الأدوات|المهارات|الخطافات|حلقات الوكلاء|التقييم|التنسيق").split("|"),
-    mission: { ...base.mission, title: t("AI talent.", "مهارات الذكاء الاصطناعي."), titleAccent: t("Built through practice.", "تُبنى بالممارسة."), description: t("Our ambition remains 10,000 small Arab companies. The path starts with people who can build, deploy, evaluate, and improve agent systems.", "طموحنا يبقى 10,000 شركة عربية صغيرة. الطريق يبدأ بأشخاص يستطيعون بناء أنظمة الوكلاء ونشرها وتقييمها وتحسينها."), pillars: [{ title: t("Build useful services", "ابنِ خدمات مفيدة"), desc: homeIntro }, { title: t("Share your experience", "شارك تجربتك"), desc: t("Publish experiments and lessons from real projects.", "انشر التجارب والدروس من مشاريع حقيقية.") }, { title: t("Get expert input", "استفد من الاستشارة"), desc: t("Discuss your next agent project with the team.", "ناقش مشروع الوكيل القادم مع الفريق.") }] },
+    mission: { ...base.mission, title: t("AI talent.", "مهارات الذكاء الاصطناعي."), titleAccent: t("Built through practice.", "تُبنى بالممارسة."), description: t("Our ambition remains 100 small Arab companies. The path starts with people who can build, deploy, evaluate, and improve agent systems.", "طموحنا يبقى 100 شركة عربية صغيرة. الطريق يبدأ بأشخاص يستطيعون بناء أنظمة الوكلاء ونشرها وتقييمها وتحسينها."), pillars: [{ title: t("Build useful services", "ابنِ خدمات مفيدة"), desc: homeIntro }, { title: t("Share your experience", "شارك تجربتك"), desc: t("Publish experiments and lessons from real projects.", "انشر التجارب والدروس من مشاريع حقيقية.") }, { title: t("Get expert input", "استفد من الاستشارة"), desc: t("Discuss your next agent project with the team.", "ناقش مشروع الوكيل القادم مع الفريق.") }] },
     pages: { ...base.pages, tracks: stageHero, roadmap: stageHero, mission: { ...stageHero, sections: [
       { heading: t("Practical AI talent", "مهارات عملية في الذكاء الاصطناعي"), body: [intro, t("We help Arab builders develop the skills to create useful agent services and small, productive companies.", "نساعد البنّائين العرب على اكتساب مهارات إنشاء خدمات وكلاء مفيدة وشركات صغيرة عالية الإنتاجية.")] },
       ...cards.map(c => ({ heading: c.title, body: [c.desc, ...c.outcomes] }))
@@ -321,7 +321,7 @@ const baseContent: Record<Locale, SiteContent> = {
     statusBar: {
       os: "BANNAA_OS // v4.0 // ACTIVE",
       region: "REGION: ARAB WORLD",
-      signal: "MISSION: 10,000 MICRO-STARTUPS",
+      signal: "MISSION: 100 MICRO-STARTUPS",
       langLabel: "LANG: العربية"
     },
     nav: {
@@ -343,7 +343,7 @@ const baseContent: Record<Locale, SiteContent> = {
       tags: [
         { label: "عربي أوّلاً" },
         { label: "شركات من 1–10 أشخاص" },
-        { label: "10,000 شركة صغيرة", tone: "warn" }
+        { label: "100 شركة صغيرة", tone: "warn" }
       ],
       titleLine1: "ابنِ شركة",
       titleAccent: "صغيرة.",
@@ -363,7 +363,7 @@ const baseContent: Record<Locale, SiteContent> = {
         ],
         planHead: "// COMPANY_OF_10.md",
         planRows: [
-          { k: "المهمة", v: "10,000 شركة عربية صغيرة" },
+          { k: "المهمة", v: "100 شركة عربية صغيرة" },
           { k: "الفريق", v: "1–10 أشخاص" },
           { k: "النموذج", v: "AI-native · فريق صغير" },
           { k: "المخرجات", v: "منتج + توزيع + إيراد" },
@@ -391,7 +391,7 @@ const baseContent: Record<Locale, SiteContent> = {
     ],
     mission: {
       eyebrow: "/ المهمة",
-      title: "10,000",
+      title: "100",
       titleAccent: "شركة عربية صغيرة.",
       description:
         "بنّاء موجود ليجهّز الشباب العربي لطفرة الذكاء الاصطناعي: شركات صغيرة من 1 إلى 10 أشخاص، عالية الإنتاجية، قادرة على بناء منتجات محددة بسرعة وتستهدف إيرادات كبيرة.",
@@ -410,7 +410,7 @@ const baseContent: Record<Locale, SiteContent> = {
           desc: "المنتجات أصبحت أسهل وأرخص في الإنشاء، والتمويل لم يعد العائق الأول عندما يستطيع فريق صغير الشحن بسرعة."
         },
         {
-          title: "10,000 بدل 100–200",
+          title: "100 بدل 100–200",
           desc: "الهدف ليس زيادة طفيفة في عدد الشركات، بل مضاعفة قدرة المنطقة على إنتاج آلاف الشركات الصغيرة عالية الأداء."
         }
       ]
@@ -837,14 +837,14 @@ const baseContent: Record<Locale, SiteContent> = {
             heading: "الهدف الأساسي",
             body: [
               "مساعدة الشباب العربي على بناء شركات صغيرة مدعومة بالذكاء الاصطناعي من 1 إلى 10 أشخاص، تعمل بإنتاجية عالية ويمكنها تحقيق عشرات إلى مئات الملايين من الدولارات في الإيراد.",
-              "بدلاً من 100–200 شركة ناشئة ظهرت في العالم العربي خلال العقود الماضية، يهدف بنّاء إلى تمكين إنشاء 10,000 شركة صغيرة."
+              "بدلاً من 100–200 شركة ناشئة ظهرت في العالم العربي خلال العقود الماضية، يهدف بنّاء إلى تمكين إنشاء 100 شركة صغيرة."
             ]
           },
           {
             heading: "كيف نستخدم المسارات",
             body: [
               "كل ما يعلّمه بنّاء وكل ما ينتجه من محتوى يعود إلى واحد أو أكثر من ثلاثة مسارات: مهارة المؤسس، البناء في عصر AI، ومهارة البنّاء.",
-              "أي فيديو، خيط X، نشرة، مورد، أو نقاش مجتمعي يجب أن يدعم الهدف الأكبر: 10,000 شركة صغيرة عالية الإنتاجية في العالم العربي."
+              "أي فيديو، خيط X، نشرة، مورد، أو نقاش مجتمعي يجب أن يدعم الهدف الأكبر: 100 شركة صغيرة عالية الإنتاجية في العالم العربي."
             ]
           }
         ]
@@ -1012,7 +1012,7 @@ const baseContent: Record<Locale, SiteContent> = {
     statusBar: {
       os: "BANNAA_OS // v4.0 // ACTIVE",
       region: "REGION: ARAB WORLD",
-      signal: "MISSION: 10,000 MICRO-STARTUPS",
+      signal: "MISSION: 100 MICRO-STARTUPS",
       langLabel: "LANG: EN"
     },
     nav: {
@@ -1034,7 +1034,7 @@ const baseContent: Record<Locale, SiteContent> = {
       tags: [
         { label: "Arabic-first" },
         { label: "Companies of 1–10" },
-        { label: "10,000 micro-startups", tone: "warn" }
+        { label: "100 micro-startups", tone: "warn" }
       ],
       titleLine1: "Build a",
       titleAccent: "small company.",
@@ -1054,7 +1054,7 @@ const baseContent: Record<Locale, SiteContent> = {
         ],
         planHead: "// COMPANY_OF_10.md",
         planRows: [
-          { k: "Mission", v: "10,000 Arab micro-startups" },
+          { k: "Mission", v: "100 Arab micro-startups" },
           { k: "Team", v: "1–10 people" },
           { k: "Model", v: "AI-native · lean" },
           { k: "Outputs", v: "Product + distribution + revenue" },
@@ -1082,7 +1082,7 @@ const baseContent: Record<Locale, SiteContent> = {
     ],
     mission: {
       eyebrow: "/ mission",
-      title: "10,000",
+      title: "100",
       titleAccent: "Arab micro-startups.",
       description:
         "Bannaa exists to get Arab youth ready for the AI boom: small companies of 1 to 10 people, operating with exceptional productivity, building specific products quickly, and aiming at serious revenue.",
@@ -1101,7 +1101,7 @@ const baseContent: Record<Locale, SiteContent> = {
           desc: "Products are easier and cheaper to create, and funding is no longer the primary constraint when small teams can ship fast."
         },
         {
-          title: "10,000 instead of 100–200",
+          title: "100 instead of 100–200",
           desc: "The goal is not a marginal increase in startups; it is a step-change in the region's ability to produce high-output micro-companies."
         }
       ]
@@ -1528,14 +1528,14 @@ const baseContent: Record<Locale, SiteContent> = {
             heading: "The core goal",
             body: [
               "Help Arab youth build lean, AI-powered companies of 1 to 10 people that operate with exceptional productivity and can generate tens of millions to hundreds of millions of dollars in revenue.",
-              "Instead of the 100–200 startups created in the Arab world over recent decades, Bannaa aims to enable the creation of 10,000 micro-startups."
+              "Instead of the 100–200 startups created in the Arab world over recent decades, Bannaa aims to enable the creation of 100 micro-startups."
             ]
           },
           {
             heading: "How the tracks are used",
             body: [
               "Everything Bannaa teaches and builds content around maps back to one or more of three tracks: Founder Skill Set, Building in the Age of AI, and Builder Skill Set.",
-              "Every video, X thread, newsletter, resource, or community discussion should support the larger goal: 10,000 high-productivity micro-startups across the Arab world."
+              "Every video, X thread, newsletter, resource, or community discussion should support the larger goal: 100 high-productivity micro-startups across the Arab world."
             ]
           }
         ]
@@ -1869,4 +1869,357 @@ export const brandPlaygroundCopy = {
     scenes: { portrait: "الشخصية", laptop: "في العمل", thinking: "يفكّر" },
     moods: { idle: "هادئ", happy: "سعيد", wink: "غمزة", thinking: "فضولي", love: "محب", surprised: "متفاجئ", sleepy: "نعسان", smug: "واثق", unsure: "متردد", sad: "حزين", mad: "غاضب", scared: "خائف", shy: "خجول", sick: "مرهق" },
   },
+} as const;
+
+
+/** Approved bilingual homepage design. */
+export const launchCopy = {
+  "en": {
+    "brand": "Bannaa",
+    "title": "Bannaa — Learn. Build. Launch.",
+    "desc": "Learn AI, build useful things, and turn your ideas into a small business. A space for Arab builders.",
+    "skip": "Skip to content",
+    "nav": [
+      "Your path",
+      "Our purpose",
+      "Field notes"
+    ],
+    "start": "Start building",
+    "lang": "العربية",
+    "eyebrow": "AI skills. Real projects. Small businesses.",
+    "headline": [
+      "Learn AI.",
+      "Build what’s next."
+    ],
+    "intro": "Learn AI. Build something useful. Turn your ideas into a small business — one thoughtful step at a time.",
+    "explore": "Find your starting point",
+    "about": "Meet Bannaa",
+    "note": "Arabic-first. Hands-on. Built for the curious.",
+    "artLabel": "It starts with “what if?”",
+    "artCaption": "A small idea, taking shape.",
+    "artSub": "Your next chapter starts here.",
+    "principles": [
+      "Learn by making",
+      "Build with purpose",
+      "Grow together"
+    ],
+    "pathEye": "A path, not a shortcut",
+    "pathTitle": "Where will you begin?",
+    "pathIntro": "Start where you are. Build your confidence through real projects, then take the next step.",
+    "tabs": [
+      "Get ready",
+      "The basics",
+      "Build agents",
+      "Go further"
+    ],
+    "pathLabel": "YOUR NEXT SMALL STEP",
+    "curriculum": "Explore the full curriculum",
+    "outcome": "SOMETHING TO SHOW FOR IT",
+    "stages": [
+      [
+        "Make room for a new skill.",
+        "A few foundations make the journey easier. Check your starting point before the taught stages.",
+        [
+          "Explain an idea and the result you want",
+          "Make small HTML, CSS, and JavaScript changes",
+          "Break a problem into steps and check the answer"
+        ],
+        "Describe a real task and edit a simple webpage."
+      ],
+      [
+        "From a good prompt to a real project.",
+        "Learn how to work with AI, connect the pieces, and put your first useful app into the world.",
+        [
+          "Give AI clear instructions and useful context",
+          "Connect a frontend, backend, and an API",
+          "Use GitHub and learn to diagnose errors"
+        ],
+        "A live app that calls a model or tool, with tests and error logs."
+      ],
+      [
+        "Give your ideas a little independence.",
+        "Build agents that use tools, remember context, and complete a real task reliably.",
+        [
+          "Connect tools and memory to your agent",
+          "Design action loops with clear stopping points",
+          "Test, monitor, and recover from failures"
+        ],
+        "A complete agent service with memory, tools, and evaluations."
+      ],
+      [
+        "Build systems that get better.",
+        "Coordinate agents, measure what matters, and improve the work with confidence.",
+        [
+          "Choose the right architecture for a real problem",
+          "Measure quality, time, and cost",
+          "Test improvements independently and roll back safely"
+        ],
+        "A coordinated system that improves on a single-agent baseline."
+      ]
+    ],
+    "missionEye": "Small teams. Meaningful impact.",
+    "missionTitle": "The future can be built by a few good people.",
+    "missionBody": "We believe a small team with the right skills can make something that matters. Bannaa helps Arab builders turn AI knowledge into useful services and productive businesses.",
+    "ambition": "THE AMBITION WE’RE BUILDING TOWARD",
+    "missionLabel": "small Arab companies. More people creating their own possibilities.",
+    "notesEye": "A little something to start with",
+    "notesTitle": "Ideas for your next small step.",
+    "notesIntro": "Short, practical starting points. Open one, try it, and see where it takes you.",
+    "read": "Try this idea",
+    "notes": [
+      [
+        "LEARN",
+        "5 MIN READ",
+        "Give your prompt a purpose.",
+        "A clearer brief is the first step toward a more useful answer."
+      ],
+      [
+        "BUILD",
+        "A SMALL EXPERIMENT",
+        "Your first useful AI workflow.",
+        "Start with one task you repeat. Make the next time easier."
+      ],
+      [
+        "GROW",
+        "A QUESTION TO ASK",
+        "Find a problem worth solving.",
+        "A small business starts with a real person who needs a hand."
+      ]
+    ],
+    "promptLabel": "A BETTER STARTING POINT",
+    "prompt": "“Help me do this one thing.<br>Here’s what good looks like.”",
+    "flow": [
+      "An input",
+      "An agent",
+      "A result"
+    ],
+    "ideaLabel": "A NOTE TO YOUR FUTURE SELF",
+    "idea": "Start with<br>someone.<br>Not something.",
+    "closeEye": "Curiosity looks good on you",
+    "closeTitle": "Your next idea deserves a first step.",
+    "closeBody": "You don’t need to have it all figured out. Bring a little curiosity. We’ll help you find a place to start.",
+    "closeCta": "Explore your path",
+    "consult": "Talk about your project",
+    "footer": "Built for curious minds. Made for the Arab world.",
+    "close": "Close",
+    "lessons": [
+      [
+        "Choose a real task, such as writing a reply to a customer.",
+        "Give the model the relevant facts, your audience, and a clear example of the tone you want.",
+        "Describe what a successful answer must include. Check the result against those requirements."
+      ],
+      [
+        "Pick a repetitive task, such as turning meeting notes into a list of actions.",
+        "Define the input and expected output. Try it manually with three different examples before automating.",
+        "Check for missing details and invented facts. Keep human review in the workflow until the results are reliable."
+      ],
+      [
+        "Speak to someone about a task that regularly takes too much time. Ask how they do it today.",
+        "Look for a repeated, specific frustration. Describe the problem without proposing your product.",
+        "Make the smallest useful version and ask them to try it. Use their response to decide what to build next."
+      ]
+    ],
+    "navigationLabel": "Main navigation",
+    "studioLabel": "From idea to finished work",
+    "studioTitle": "THE BANNAA STUDIO",
+    "play": "Play animation",
+    "pause": "Pause animation",
+    "sceneAlt": "Bannaa character learning, building, and enjoying the process",
+    "chooseScene": "Choose a scene",
+    "sceneLabels": [
+      "Building",
+      "Imagining",
+      "Vibing"
+    ],
+    "scenes": [
+      [
+        "Making an idea real.",
+        "Try. Tweak. Make progress."
+      ],
+      [
+        "What if we tried this?",
+        "Every project starts with a question."
+      ],
+      [
+        "Find your own rhythm.",
+        "Enjoy the process of making."
+      ]
+    ],
+    "contact": "Say hello",
+    "moreLinks": "Explore Bannaa"
+  },
+  "ar": {
+    "brand": "بنّاء",
+    "title": "بنّاء — تعلّم. ابنِ. انطلق.",
+    "desc": "تعلّم الذكاء الاصطناعي، وابنِ منتجات مفيدة، وحوّل أفكارك إلى شركة صغيرة. مساحة للبنّائين العرب.",
+    "skip": "انتقل إلى المحتوى",
+    "nav": [
+      "رحلتك",
+      "لماذا بنّاء",
+      "أفكار عملية"
+    ],
+    "start": "ابدأ البناء",
+    "lang": "English",
+    "eyebrow": "مهارات الذكاء الاصطناعي. مشاريع حقيقية.",
+    "headline": [
+      "تعلّم الذكاء الاصطناعي.",
+      "وابنِ ما تتخيّله."
+    ],
+    "intro": "تعلّم الذكاء الاصطناعي. ابنِ شيئاً مفيداً. وحوّل أفكارك إلى شركة صغيرة، خطوة مدروسة في كل مرة.",
+    "explore": "اكتشف نقطة البداية",
+    "about": "تعرّف على بنّاء",
+    "note": "بالعربي أولاً. بالممارسة دائماً. لكل فضولي.",
+    "artLabel": "البداية بسؤال: «ماذا لو؟»",
+    "artCaption": "فكرة صغيرة، بدأت تتشكّل.",
+    "artSub": "خطوتك القادمة تبدأ هنا.",
+    "principles": [
+      "تعلّم بالممارسة",
+      "ابنِ لهدف",
+      "نكبر معاً"
+    ],
+    "pathEye": "رحلة تعلّم، خطوة بخطوة",
+    "pathTitle": "من أين تبدأ رحلتك؟",
+    "pathIntro": "ابدأ من مستواك اليوم. ابنِ ثقتك بمشاريع حقيقية، ثم انتقل إلى الخطوة التالية.",
+    "tabs": [
+      "استعد",
+      "الأساسيات",
+      "بناء الوكلاء",
+      "التمكّن"
+    ],
+    "pathLabel": "خطوتك الصغيرة القادمة",
+    "curriculum": "استكشف المنهج كاملاً",
+    "outcome": "نتيجة تقدر تشاركها",
+    "stages": [
+      [
+        "أساس واضح لبداية أقوى.",
+        "بعض المعارف تجعل الرحلة أسهل. تأكّد من استعدادك قبل البدء بالمراحل التعليمية.",
+        [
+          "اشرح فكرتك والنتيجة التي تريدها",
+          "عدّل صفحة بسيطة باستخدام HTML وCSS وJavaScript",
+          "قسّم المشكلة إلى خطوات وتحقّق من الإجابة"
+        ],
+        "وصف مهمة حقيقية وتعديل صفحة ويب بسيطة."
+      ],
+      [
+        "من توجيه واضح إلى مشروع حقيقي.",
+        "تعلّم العمل مع الذكاء الاصطناعي، واربط الأجزاء، وأطلق أول تطبيق مفيد لك.",
+        [
+          "اكتب توجيهات واضحة وقدّم سياقاً مفيداً",
+          "اربط واجهة وخادماً وواجهة برمجية",
+          "استخدم GitHub وتعلّم تشخيص الأخطاء"
+        ],
+        "تطبيق منشور يستدعي نموذجاً أو أداة، مع اختبارات وسجلات أخطاء."
+      ],
+      [
+        "امنح أفكارك قدرة على العمل.",
+        "ابنِ وكلاء تستخدم الأدوات، وتتذكّر السياق، وتنجز مهمة حقيقية بموثوقية.",
+        [
+          "اربط الأدوات والذاكرة بالوكيل",
+          "صمّم حلقات عمل بشروط توقف واضحة",
+          "اختبر الأداء وراقبه وتعافَ من الإخفاقات"
+        ],
+        "خدمة وكيل متكاملة بذاكرة وأدوات واختبارات تقييم."
+      ],
+      [
+        "ابنِ أنظمة تتحسّن باستمرار.",
+        "نسّق بين الوكلاء، وقِس ما يهم، وطوّر العمل بثقة.",
+        [
+          "اختر البنية المناسبة لمشكلة حقيقية",
+          "قِس الجودة والوقت والتكلفة",
+          "اختبر التحسينات بشكل مستقل وتراجع عنها بأمان"
+        ],
+        "نظام منسّق يحقق تحسّناً مقارنة بوكيل واحد."
+      ]
+    ],
+    "missionEye": "فرق صغيرة. أثر يستحق.",
+    "missionTitle": "المستقبل قد يبنيه فريق صغير يؤمن بفكرته.",
+    "missionBody": "نؤمن أن فريقاً صغيراً يمتلك المهارات المناسبة يستطيع صنع شيء له قيمة. بنّاء يساعد البنّائين العرب على تحويل معرفة الذكاء الاصطناعي إلى خدمات مفيدة وشركات منتجة.",
+    "ambition": "الطموح الذي نعمل لأجله",
+    "missionLabel": "شركة عربية صغيرة. وأشخاص أكثر يصنعون فرصهم بأنفسهم.",
+    "notesEye": "شيء بسيط تبدأ به اليوم",
+    "notesTitle": "أفكار لخطوتك القادمة.",
+    "notesIntro": "بدايات قصيرة وعملية. اختر فكرة، جرّبها، واكتشف إلى أين تأخذك.",
+    "read": "جرّب هذه الفكرة",
+    "notes": [
+      [
+        "تعلّم",
+        "قراءة ٥ دقائق",
+        "امنح توجيهك هدفاً واضحاً.",
+        "طلب أوضح هو أول خطوة نحو إجابة أكثر فائدة."
+      ],
+      [
+        "ابنِ",
+        "تجربة صغيرة",
+        "أول سير عمل مفيد لك.",
+        "ابدأ بمهمة تكررها. واجعل المرة القادمة أسهل."
+      ],
+      [
+        "انطلق",
+        "سؤال يستحق",
+        "ابحث عن مشكلة تستحق الحل.",
+        "الشركة الصغيرة تبدأ بشخص حقيقي يحتاج مساعدة."
+      ]
+    ],
+    "promptLabel": "بداية أفضل",
+    "prompt": "«ساعدني في هذه المهمة.<br>وهذه هي النتيجة التي أريدها.»",
+    "flow": [
+      "مدخلات",
+      "وكيل",
+      "نتيجة"
+    ],
+    "ideaLabel": "ملاحظة لنفسك",
+    "idea": "ابدأ بإنسان.<br>ثم ابحث<br>عن الفكرة.",
+    "closeEye": "الفضول بداية جميلة",
+    "closeTitle": "فكرتك القادمة تستحق خطوة أولى.",
+    "closeBody": "لا تحتاج كل الإجابات الآن. تعال بفضولك، وسنساعدك على اكتشاف نقطة البداية.",
+    "closeCta": "اكتشف رحلتك",
+    "consult": "لنتحدّث عن مشروعك",
+    "footer": "للعقول الفضولية. ولعالم عربي يبني.",
+    "close": "إغلاق",
+    "lessons": [
+      [
+        "اختر مهمة حقيقية، مثل كتابة ردّ على أحد العملاء.",
+        "قدّم الحقائق المهمة، وحدّد الجمهور، وأضف مثالاً واضحاً على الأسلوب المطلوب.",
+        "اشرح ما الذي يجب أن تتضمّنه الإجابة الناجحة، ثم راجع النتيجة بناءً على هذه الشروط."
+      ],
+      [
+        "اختر مهمة متكررة، مثل تحويل ملاحظات اجتماع إلى قائمة إجراءات.",
+        "حدّد المدخلات والنتيجة المطلوبة. جرّبها يدوياً مع ثلاثة أمثلة مختلفة قبل أتمتتها.",
+        "راجع التفاصيل الناقصة والمعلومات المختلقة. أبقِ المراجعة البشرية حتى تصبح النتائج موثوقة."
+      ],
+      [
+        "تحدّث إلى شخص عن مهمة تستهلك وقته باستمرار. اسأله كيف ينجزها اليوم.",
+        "ابحث عن صعوبة محددة ومتكررة. صِف المشكلة قبل أن تقترح منتجك.",
+        "ابنِ أصغر نسخة مفيدة واطلب منه تجربتها. استخدم ملاحظاته لتقرّر ما تبنيه بعدها."
+      ]
+    ],
+    "navigationLabel": "التنقل الرئيسي",
+    "studioLabel": "من الفكرة إلى الإنجاز",
+    "studioTitle": "داخل ورشة بنّاء",
+    "play": "تشغيل الحركة",
+    "pause": "إيقاف الحركة",
+    "sceneAlt": "شخصية بنّاء تتعلّم وتبني وتستمتع بالعمل",
+    "chooseScene": "اختر مشهداً",
+    "sceneLabels": [
+      "نبني",
+      "نفكّر",
+      "نستمتع"
+    ],
+    "scenes": [
+      [
+        "فكرة تتحوّل إلى واقع.",
+        "تجربة. تعديل. تقدّم."
+      ],
+      [
+        "وماذا لو جرّبنا هذا؟",
+        "كل مشروع يبدأ بسؤال."
+      ],
+      [
+        "على إيقاعك الخاص.",
+        "استمتع بالرحلة وأنت تبني."
+      ]
+    ],
+    "contact": "تواصل معنا",
+    "moreLinks": "استكشف بنّاء"
+  }
 } as const;
