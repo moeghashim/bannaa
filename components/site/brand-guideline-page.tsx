@@ -5,7 +5,6 @@ import type { ReactNode } from "react";
 
 import { BrandLogo, BrandMark } from "@/components/site/brand-mark";
 import { brandGuideCopy } from "@/lib/content";
-import { BrandPlayground } from "@/components/site/brand-playground";
 import { PageHero } from "@/components/site/page-hero";
 import { SiteShell } from "@/components/site/site-shell";
 import type { SiteContent } from "@/lib/content";
@@ -204,8 +203,6 @@ export function BrandGuidelinePage({ content, locale }: BrandGuidelinePageProps)
           <BrandMark size={88} title="Bannaa" />
         </header>
 
-        <details className="legacy-brand-tool"><summary>{t.archive}</summary><BrandPlayground locale={locale} /></details>
-
         <section className="brand-guide__section" aria-labelledby="brand-logo-system">
           <SectionTitle value={1}>{t.sections.logo}</SectionTitle>
           <div className="brand-logo-grid" id="brand-logo-system">
@@ -241,7 +238,7 @@ export function BrandGuidelinePage({ content, locale }: BrandGuidelinePageProps)
           <SectionTitle value={2}>{t.sections.expressions}</SectionTitle>
           <p>{t.labels.expressionIntro}</p>
           <div className="identity-scenes" id="brand-expressions">{[0,1,2].map((scene) => <div key={scene} className="identity-scene" style={{ backgroundPosition: scene === 0 ? "left" : scene === 1 ? "center" : "right" }} role="img" aria-label={t.scenes[scene]} />)}</div>
-          <p>{t.labels.animatedIntro}</p>
+          <p>{t.labels.sceneGuidance}</p>
         </section>
 
         <div className="brand-guide__split">

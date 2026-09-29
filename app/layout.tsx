@@ -6,7 +6,6 @@ import "@/app/globals.css";
 import "@/app/launch.css";
 import "@/app/identity.css";
 import "@/app/site-footer.css";
-import "blobatar/motion.css";
 import { GoogleAnalytics } from "@/components/site/google-analytics";
 
 const body = Baloo_Bhaijaan_2({

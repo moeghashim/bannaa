@@ -9,8 +9,6 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@blobatar/react": "^2.7.0",
-    "blobatar": "^2.7.0",
     "gray-matter": "^4.0.3",
     "next": "15.5.14",
     "react": "19.2.4",

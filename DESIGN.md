@@ -143,9 +143,9 @@ components:
 
 The approved sage character identity is authoritative across all routes. Use cream canvas `#FAF8F2`, forest ink `#243D31`, sage panels `#E9EDDF`, sage accent `#778768`, and muted green `#647065`. Typography is DM Sans for English and Baloo Bhaijaan 2 for Arabic.
 
-The official mark is the character head in `public/assets/launch/logo.png`. Current icon and bilingual lockup downloads live in `public/assets/brand/`; browser icons use the simplified small-size face. Never invert the character image on dark backgrounds. Preserve its proportions, colors, and clear space. Transparent scene artwork supports content rather than occupying the main page.
+The official mark is the character head in `public/assets/launch/logo.png`. Current icon and bilingual lockup downloads live in `public/assets/brand/`; browser icons use the simplified small-size face. The downloadable lockups match the on-site orientation: the English lockup places the character before the wordmark, and the Arabic lockup places it to the right of the wordmark. Both are cropped to their content with matching margins. Never invert the character image on dark backgrounds. Preserve its proportions, colors, and clear space. Transparent scene artwork supports content rather than occupying the main page.
 
-Secondary routes use `app/identity.css` through `SiteShell` or the legal page wrapper. Keep content, forms, navigation, and locale switching intact. The bilingual brand guide documents current artwork, downloads, color values, typography, and usage. The former Blobatar playground remains inside an explicitly labelled experimental archive.
+Secondary routes use `app/identity.css` through `SiteShell` or the legal page wrapper. Keep content, forms, navigation, and locale switching intact. The bilingual brand guide documents current artwork, downloads, color values, typography, and usage. The former Blobatar playground and its dependencies have been removed.
 
 ### Shared homepage footer
 
@@ -286,7 +286,7 @@ The bilingual brand page includes a character lab with the approved round seed a
 
 This revision supersedes the white/electric-blue homepage and black official mark described above. The homepage uses the approved public concept: warm cream `#faf8f2`, forest text `#243d31`, muted green `#647065`, sage panels `#e9eddf`, pale peach/oat editorial cards, and a forest mission panel. Typography is DM Sans for English and Baloo Bhaijaan 2 for Arabic. Scoped styles in `app/launch.css` preserve the existing inner-page layouts.
 
-The official header/footer mark and browser icons now use the sage plush character's head from `public/assets/launch/logo.png`. `BrandMark` uses the same asset on existing routes. The older Blobatar playground remains available as a legacy creative tool; its expressions do not define the current official identity.
+The official header/footer mark and browser icons now use the sage plush character's head from `public/assets/launch/logo.png`. `BrandMark` uses the same asset on existing routes. The older Blobatar playground has since been removed; its expressions do not define the current official identity.
 
 The compact, unboxed homepage animation uses the three-cell transparent `scenes.webp` asset for building, imagining, and vibing. React manages scene selection, timed playback, pause, reduced-motion preference, and page visibility. Keep the artwork on the cream canvas with no card background or shadow. Both locales include accessible stage tabs and native lesson dialogs.
 

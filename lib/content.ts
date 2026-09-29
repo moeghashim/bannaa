@@ -1828,35 +1828,6 @@ export const codeFactoryContent = {
   }
 };
 
-export const brandPlaygroundCopy = {
-  en: {
-    eyebrow: "THE CHARACTER LAB", title: "A little character. A lot of possibility.",
-    intro: "Dress up your building buddy. Give it a mood, a new color, or something to work on. Then take it with you.",
-    colors: "Make it yours", body: "Body", eyes: "Eyes", accent: "Accessories", background: "Backdrop",
-    mood: "How are we feeling?", hat: "Top it off", scene: "Set the scene", transparent: "Transparent background",
-    motion: "Animate preview", surprise: "Surprise me", reset: "Reset", svg: "Download SVG", png: "Download PNG",
-    exporting: "Creating PNG…", exported: "Your character is ready.", error: "Export didn’t work. Please try again.",
-    note: "Exports are still images · PNG 1000 × 1000 · SVG scales to any size",
-    distinction: "Made for play. The official Bannaa logo stays black with white eyes.",
-    preview: "Your Bannaa character", hats: { none: "No hat", cap: "Builder cap", beanie: "Cozy beanie", crown: "Big ideas", party: "Party time" },
-    scenes: { portrait: "Just me", laptop: "At work", thinking: "Thinking" },
-    moods: { idle: "Chill", happy: "Happy", wink: "Wink", thinking: "Curious", love: "Love", surprised: "Wow", sleepy: "Sleepy", smug: "Confident", unsure: "Unsure", sad: "Sad", mad: "Mad", scared: "Scared", shy: "Shy", sick: "Under the weather" },
-  },
-  ar: {
-    eyebrow: "مختبر الشخصية", title: "شخصية صغيرة. احتمالات كبيرة.",
-    intro: "اختر لرفيقك لوناً ومزاجاً وقبعة، أو اجعله يعمل على فكرة جديدة. ثم حمّله وخذه معك.",
-    colors: "على ذوقك", body: "الجسم", eyes: "العينان", accent: "الإكسسوارات", background: "الخلفية",
-    mood: "كيف المزاج؟", hat: "أضف قبعة", scene: "اختر المشهد", transparent: "خلفية شفافة",
-    motion: "تحريك المعاينة", surprise: "فاجئني", reset: "إعادة ضبط", svg: "تحميل SVG", png: "تحميل PNG",
-    exporting: "جارٍ إنشاء PNG…", exported: "شخصيتك جاهزة.", error: "تعذّر التصدير. حاول مرة أخرى.",
-    note: "التصدير صورة ثابتة · PNG 1000 × 1000 · SVG قابل للتكبير",
-    distinction: "هذه النسخ للمرح والإبداع. يبقى شعار بنّاء الرسمي أسود بعينين بيضاوين.",
-    preview: "شخصية بنّاء الخاصة بك", hats: { none: "بلا قبعة", cap: "قبعة البنّاء", beanie: "قبعة شتوية", crown: "أفكار ملكية", party: "وقت الاحتفال" },
-    scenes: { portrait: "الشخصية", laptop: "في العمل", thinking: "يفكّر" },
-    moods: { idle: "هادئ", happy: "سعيد", wink: "غمزة", thinking: "فضولي", love: "محب", surprised: "متفاجئ", sleepy: "نعسان", smug: "واثق", unsure: "متردد", sad: "حزين", mad: "غاضب", scared: "خائف", shy: "خجول", sick: "مرهق" },
-  },
-} as const;
-
 
 /** Approved bilingual homepage design. */
 export const launchCopy = {
@@ -2211,7 +2182,6 @@ export const launchCopy = {
 } as const;
 
 type BrandGuideCopy = {
-  archive: string;
   scenes: string[];
   rules: string[];
   subtitle: string;
@@ -2230,11 +2200,8 @@ type BrandGuideCopy = {
     icon: string;
     englishLockup: string;
     arabicLockup: string;
-    squareExpression: string;
     expressionIntro: string;
-    staticExpressions: string;
-    animatedExpressions: string;
-    animatedIntro: string;
+    sceneGuidance: string;
     clearSpaceBody: string;
     clearSpaceUnit: string;
     coreColors: string;
@@ -2260,7 +2227,6 @@ type BrandGuideCopy = {
 
 export const brandGuideCopy: Record<Locale, BrandGuideCopy> = {
   ar: {
-    archive: "أداة الشخصية السابقة — أرشيف تجريبي",
     scenes: ["البناء", "التخيّل", "الاستمتاع"],
     rules: ["استخدم ملفات الشعار المعتمدة فقط", "استخدم الشعار العربي في المحتوى العربي", "لا تمدّد الشعار أو تشوّهه", "لا تدوّر الشعار أو تضف مؤثرات"],
     subtitle: "AI Community for the Arab World",
@@ -2279,12 +2245,9 @@ export const brandGuideCopy: Record<Locale, BrandGuideCopy> = {
       icon: "الأيقونة",
       englishLockup: "الأيقونة + الاسم الإنجليزي",
       arabicLockup: "الأيقونة + الاسم العربي",
-      squareExpression: "الرسوم المساندة",
       expressionIntro:
         "تعتمد الهوية على رأس أخضر ناعم بوجه كريمي وعينين سوداويين وابتسامة. الرأس الأخضر هو الشعار الرسمي. استخدم الرسوم الشفافة للبناء والتخيّل والاستمتاع كعناصر مساندة، دون أن تطغى على المحتوى.",
-      staticExpressions: "تعبيرات ثابتة",
-      animatedExpressions: "تعبيرات متحركة",
-      animatedIntro: "الحركة قصيرة وهادئة: رمشة، ارتداد، ميل خفيف، أو نعاس. تتوقف تلقائياً عند تفضيل تقليل الحركة.",
+      sceneGuidance: "تأتي مشاهد البناء والتخيّل والاستمتاع كرسوم شفافة. ضعها على الخلفية الكريمية دون بطاقة أو خلفية أو ظل، وحافظ على نسبها وألوانها، ودعها تساند المحتوى بدل أن تتصدره.",
       clearSpaceBody:
         "حافظ على مساحة واضحة حول الأيقونة تساوي وحدة X من كل الجهات. لا تدخل نصوص أو رسومات أو عناصر أخرى داخل هذه المساحة.",
       clearSpaceUnit: "X = وحدة القياس",
@@ -2309,7 +2272,6 @@ export const brandGuideCopy: Record<Locale, BrandGuideCopy> = {
     }
   },
   en: {
-    archive: "Previous character tool — experimental archive",
     scenes: ["Building", "Imagining", "Vibing"],
     rules: ["Use approved lockups only", "Use the Arabic lockup for Arabic contexts", "Do not stretch or distort", "Do not rotate or add effects"],
     subtitle: "AI Community for the Arab World",
@@ -2328,12 +2290,9 @@ export const brandGuideCopy: Record<Locale, BrandGuideCopy> = {
       icon: "Icon",
       englishLockup: "Icon + English wordmark",
       arabicLockup: "Icon + Arabic wordmark",
-      squareExpression: "Character artwork",
       expressionIntro:
         "The official mark is a soft sage head with a cream face, black eyes, and a smile. Transparent building, imagining, and vibing scenes support the content without dominating it.",
-      staticExpressions: "Static expressions",
-      animatedExpressions: "Animated expressions",
-      animatedIntro: "Motion should stay short and restrained: a blink, bounce, tilt, or sleepy drift. It respects reduced-motion preferences.",
+      sceneGuidance: "The building, imagining, and vibing scenes ship as transparent artwork. Place them on the cream canvas without a card, background, or shadow, keep their proportions and colors, and let them support the content rather than lead it.",
       clearSpaceBody:
         "Maintain clear space around the icon equal to X on all sides. No text, graphics, or other elements should enter this area.",
       clearSpaceUnit: "X = unit of measurement",
