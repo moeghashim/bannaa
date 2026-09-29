@@ -115,3 +115,4 @@ the exact hash).
 ## 2026-09-29
 
 - Publish the approved Bannaa character design
+- Add a small-size character favicon
