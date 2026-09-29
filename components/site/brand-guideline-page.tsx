@@ -238,9 +238,9 @@ export function BrandGuidelinePage({ content, locale }: BrandGuidelinePageProps)
         </section>
 
         <section className="brand-guide__section" aria-labelledby="brand-expressions">
-          <h2 id="brand-expressions">{t.sections.expressions}</h2>
+          <SectionTitle value={2}>{t.sections.expressions}</SectionTitle>
           <p>{t.labels.expressionIntro}</p>
-          <div className="identity-scenes">{[0,1,2].map((scene) => <div key={scene} className="identity-scene" style={{ backgroundPosition: scene === 0 ? "left" : scene === 1 ? "center" : "right" }} role="img" aria-label={t.scenes[scene]} />)}</div>
+          <div className="identity-scenes" id="brand-expressions">{[0,1,2].map((scene) => <div key={scene} className="identity-scene" style={{ backgroundPosition: scene === 0 ? "left" : scene === 1 ? "center" : "right" }} role="img" aria-label={t.scenes[scene]} />)}</div>
           <p>{t.labels.animatedIntro}</p>
         </section>
 

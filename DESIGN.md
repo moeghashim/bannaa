@@ -147,6 +147,12 @@ The official mark is the character head in `public/assets/launch/logo.png`. Curr
 
 Secondary routes use `app/identity.css` through `SiteShell` or the legal page wrapper. Keep content, forms, navigation, and locale switching intact. The bilingual brand guide documents current artwork, downloads, color values, typography, and usage. The former Blobatar playground remains inside an explicitly labelled experimental archive.
 
+### Shared homepage footer
+
+`SiteFooter` renders the same compact logo, localized footer line, social/contact links, and grouped directory on the homepage and secondary pages. Shared styling lives in `app/site-footer.css`; keep changes centralized so both layouts remain identical.
+
+The Spectrum overview uses the official character head through `BrandMark` in all four stages. Stage selection and capability-map nodes remain interactive; the former stage mascot SVGs have been removed.
+
 ## Historical design notes
 
 Earlier black-mark and electric-blue rules below are retained as history and are superseded by the current identity above.
@@ -289,9 +295,3 @@ The ambition is 100 small Arab companies. Homepage copy lives in `launchCopy` in
 ### Small-size character favicon
 
 Browser icons use a simplified sage-and-cream character face with a dark outline and larger eyes, optimized for tiny tabs. The plush on-page logo stays unchanged. `app/favicon.ico` contains 16, 32, 48, 64, 128, and 256px frames; `app/icon.svg` embeds the 256px image; `app/apple-icon.png` is 180px. Downloadable PNGs are at `public/assets/brand/favicon-character.png` (512px) and `favicon-32.png`.
-
-### Shared homepage footer
-
-`SiteFooter` renders the same compact logo, localized footer line, social/contact links, and grouped directory on the homepage and secondary pages. Shared styling lives in `app/site-footer.css`; keep changes centralized so both layouts remain identical.
-
-The Spectrum overview uses the official character head through `BrandMark` in all four stages. Stage selection and capability-map nodes remain interactive; the former stage mascot SVGs are no longer rendered.

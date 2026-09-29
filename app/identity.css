@@ -16,8 +16,6 @@ html:has(.identity-shell), body:has(.identity-shell) { background: #faf8f2; }
 .identity-shell .page-hero__title { font-size:clamp(40px,5vw,68px); font-weight:600; line-height:1.25; letter-spacing:-.025em; }
 .identity-shell .page-hero__title .accent { color:#778768; }
 .identity-shell .page-hero__intro { max-width:760px; line-height:1.8; }
-.identity-shell .footer { background:var(--bg); margin-top:72px; }
-.identity-shell .footer__brand-col { max-width:420px; }
 .identity-shell .card { border-radius:12px; }
 .identity-shell a:focus-visible, .identity-shell button:focus-visible, .identity-shell summary:focus-visible { outline:3px solid #9c7556; outline-offset:4px; }
 .identity-shell .brand-guide__masthead { background:var(--bg-2); border-radius:14px; }

@@ -118,3 +118,4 @@ the exact hash).
 - Add a small-size character favicon
 
 - Align secondary pages and brand assets with the new identity
+- Fix brand guide copy gaps and prune footer leftovers

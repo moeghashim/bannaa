@@ -265,11 +265,7 @@ export type SiteContent = {
     button: string;
   };
   footer: {
-    description: string;
-    tags: string[];
     groups: FooterGroup[];
-    copyright: string;
-    slogan: string;
   };
   legal: {
     about: LegalPageCopy;
@@ -299,7 +295,7 @@ function stageContent(locale: Locale, base: SiteContent): SiteContent {
     ] } },
     join: { ...base.join, hero: { ...stageHero, title: t("Ready to build?", "جاهز للبناء؟"), accent: t("Start with the prerequisites.", "ابدأ بالمتطلبات المسبقة.") }, steps: cards.map(c => ({ title: c.title, desc: c.desc })) },
     cta: { ...base.cta, titleLine1: t("Your next idea", "فكرتك القادمة"), titleAccent: t("starts here.", "تبدأ هنا."), description: homeIntro },
-    footer: { ...base.footer, description: homeIntro, groups: base.footer.groups.map((g, i) => i === 0 ? { ...g, items: [...g.items, { label: t("Agent Spectrum", "طيف الوكلاء"), href: `/${locale}/spectrum` }, { label: t("Consultation", "استشارة"), href: `/${locale}/consultation` }] } : g) },
+    footer: { ...base.footer, groups: base.footer.groups.map((g, i) => i === 0 ? { ...g, items: [...g.items, { label: t("Agent Spectrum", "طيف الوكلاء"), href: `/${locale}/spectrum` }, { label: t("Consultation", "استشارة"), href: `/${locale}/consultation` }] } : g) },
     legal: { ...base.legal, about: { ...base.legal.about, intro, sections: cards.map(c => ({ heading: c.title, body: [c.desc] })) } }
   };
 }
@@ -889,9 +885,6 @@ const baseContent: Record<Locale, SiteContent> = {
       button: "انضم ↙"
     },
     footer: {
-      description:
-        "بنّاء منصة ومجتمع عربي يساعد المؤسسين والبنّائين على إنشاء شركات صغيرة مدعومة بالذكاء الاصطناعي.",
-      tags: ["عربي أوّلاً", "AI-native", "© 2026"],
       groups: [
         {
           title: "الموقع",
@@ -920,9 +913,7 @@ const baseContent: Record<Locale, SiteContent> = {
             { label: "الشروط", href: "/ar/terms" }
           ]
         }
-      ],
-      copyright: "جزء من 10claws.com — بنّاء. مصنوع لصنّاع الشركات الصغيرة.",
-      slogan: "BUILD SMALL / EARN BIG"
+      ]
     },
     legal: {
       about: {
@@ -1580,9 +1571,6 @@ const baseContent: Record<Locale, SiteContent> = {
       button: "Join ↙"
     },
     footer: {
-      description:
-        "Bannaa is an Arabic-first platform and community helping founders and builders create AI-powered micro-companies.",
-      tags: ["Arabic-first", "AI-native", "© 2026"],
       groups: [
         {
           title: "Site",
@@ -1611,9 +1599,7 @@ const baseContent: Record<Locale, SiteContent> = {
             { label: "Terms", href: "/en/terms" }
           ]
         }
-      ],
-      copyright: "Part of 10claws.com — Bannaa. Made for micro-company builders.",
-      slogan: "BUILD SMALL / EARN BIG"
+      ]
     },
     legal: {
       about: {
@@ -2368,7 +2354,7 @@ export const brandGuideCopy: Record<Locale, BrandGuideCopy> = {
     },
     bodyExamples: {
       english: "Bannaa is an AI community for the Arab world. We share knowledge, build projects, and create impact together.",
-      arabic: "بنّاء مجتمع لك ذكاء الاصطناعي في العالم العربي. نتشارك المعرفة، نبني المشاريع، ونصنع الأثر معاً."
+      arabic: "بنّاء مجتمع للذكاء الاصطناعي في العالم العربي. نتشارك المعرفة، نبني المشاريع، ونصنع الأثر معاً."
     }
   }
 };
