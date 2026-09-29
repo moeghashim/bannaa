@@ -13,10 +13,10 @@ type SiteShellProps = {
 
 export function SiteShell({ children, content, locale }: SiteShellProps) {
   return (
-    <>
+    <div className="identity-shell">
       <SiteHeader content={{ nav: content.nav }} locale={locale} />
       <main>{children}</main>
       <SiteFooter content={content.footer} locale={locale} />
-    </>
+    </div>
   );
 }

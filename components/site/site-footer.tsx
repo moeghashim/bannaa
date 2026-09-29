@@ -1,77 +1,43 @@
-import type { ReactNode } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
-import { BrandLogo } from "@/components/site/brand-mark";
-import type { Locale } from "@/lib/i18n";
+import { launchCopy } from "@/lib/content";
 import type { SiteContent } from "@/lib/content";
+import type { Locale } from "@/lib/i18n";
 
 type SiteFooterProps = {
   content: SiteContent["footer"];
   locale: Locale;
+  contained?: boolean;
 };
 
-const PARENT_DOMAIN = "10claws.com";
-const PARENT_URL = "https://10claws.com";
+export function SiteFooter({ content, locale, contained = false }: SiteFooterProps) {
+  const copy = launchCopy[locale];
 
-function renderCopyright(text: string): ReactNode {
-  const idx = text.indexOf(PARENT_DOMAIN);
-  if (idx === -1) return text;
   return (
-    <>
-      {text.slice(0, idx)}
-      <a
-        className="footer__parent-link"
-        href={PARENT_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {PARENT_DOMAIN}
-      </a>
-      {text.slice(idx + PARENT_DOMAIN.length)}
-    </>
-  );
-}
-
-export function SiteFooter({ content, locale }: SiteFooterProps) {
-  return (
-    <footer className="footer wrap" id="footer">
-      <div className="footer__grid">
-        <div className="footer__brand-col">
-          <div className="brand" style={{ marginBottom: 16 }}>
-            <BrandLogo locale={locale} />
-          </div>
-          <p>{content.description}</p>
-          <div className="tags">
-            {content.tags.map((t, i) => (
-              <span key={t} className="tag">
-                {i === 0 ? <span className="pip" /> : null}
-                {t}
-              </span>
-            ))}
-          </div>
+    <div className={`shared-footer${contained ? " shared-footer--contained" : ""}`}>
+      <footer className="shared-footer__main" id="footer">
+        <Link className="shared-footer__brand" href={`/${locale}`}>
+          <Image src="/assets/launch/logo.png" width={37} height={37} alt="" />
+          <span>{locale === "ar" ? "بنّاء" : "Bannaa"}</span>
+        </Link>
+        <p>{copy.footer}</p>
+        <div className="shared-footer__links">
+          <a href="https://www.youtube.com/@bannaateam">YouTube</a>
+          <a href="https://www.tiktok.com/@bannaahq">TikTok</a>
+          <Link href={`/${locale}/contact`}>{copy.contact}</Link>
         </div>
-        {content.groups.map((g) => (
-          <div className="footer__col" key={g.title}>
-            <h4>{g.title}</h4>
-            <ul>
-              {g.items.map((it) => (
-                <li key={it.label}>
-                  <a href={it.href ?? "#"}>{it.label}</a>
-                </li>
-              ))}
-            </ul>
+      </footer>
+      <nav className="shared-footer__directory" aria-label={copy.moreLinks}>
+        {content.groups.map(group => (
+          <div key={group.title}>
+            <strong>{group.title}</strong>
+            {group.items.map(item => item.href ? (
+              <Link key={item.label} href={item.href}>{item.label}</Link>
+            ) : <span key={item.label}>{item.label}</span>)}
           </div>
         ))}
-        <div className="footer__coords">
-          <span>LAT 24.71</span>
-          <span>LNG 46.67</span>
-          <span>v3.0.1</span>
-        </div>
-      </div>
-      <hr className="hairline" style={{ margin: "32px 0 16px" }} />
-      <div className="footer__bottom">
-        <span>{renderCopyright(content.copyright)}</span>
-        <span>{content.slogan}</span>
-      </div>
-    </footer>
+      </nav>
+    </div>
   );
 }

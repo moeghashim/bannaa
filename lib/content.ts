@@ -2223,3 +2223,152 @@ export const launchCopy = {
     "moreLinks": "استكشف بنّاء"
   }
 } as const;
+
+type BrandGuideCopy = {
+  archive: string;
+  scenes: string[];
+  rules: string[];
+  subtitle: string;
+  sections: {
+    logo: string;
+    expressions: string;
+    clearSpace: string;
+    palette: string;
+    typography: string;
+    usage: string;
+    rules: string;
+    principles: string;
+    preview: string;
+  };
+  labels: {
+    icon: string;
+    englishLockup: string;
+    arabicLockup: string;
+    squareExpression: string;
+    expressionIntro: string;
+    staticExpressions: string;
+    animatedExpressions: string;
+    animatedIntro: string;
+    clearSpaceBody: string;
+    clearSpaceUnit: string;
+    coreColors: string;
+    extendedNeutrals: string;
+    warmAccents: string;
+    englishTypeface: string;
+    arabicTypeface: string;
+    headingExample: string;
+    bodyExample: string;
+    lightBackground: string;
+    darkBackground: string;
+    warmBackground: string;
+    do: string;
+    dont: string;
+    download: string;
+    downloadAll: string;
+  };
+  bodyExamples: {
+    english: string;
+    arabic: string;
+  };
+};
+
+export const brandGuideCopy: Record<Locale, BrandGuideCopy> = {
+  ar: {
+    archive: "أداة الشخصية السابقة — أرشيف تجريبي",
+    scenes: ["البناء", "التخيّل", "الاستمتاع"],
+    rules: ["استخدم ملفات الشعار المعتمدة فقط", "استخدم الشعار العربي في المحتوى العربي", "لا تمدّد الشعار أو تشوّهه", "لا تدوّر الشعار أو تضف مؤثرات"],
+    subtitle: "AI Community for the Arab World",
+    sections: {
+      logo: "نظام الشعار",
+      expressions: "شخصية بنّاء التعبيرية",
+      clearSpace: "المساحة الآمنة",
+      palette: "لوحة الألوان",
+      typography: "الخطوط",
+      usage: "أمثلة الاستخدام",
+      rules: "افعل / لا تفعل",
+      principles: "مبادئ الهوية",
+      preview: "تطبيقات الهوية"
+    },
+    labels: {
+      icon: "الأيقونة",
+      englishLockup: "الأيقونة + الاسم الإنجليزي",
+      arabicLockup: "الأيقونة + الاسم العربي",
+      squareExpression: "الرسوم المساندة",
+      expressionIntro:
+        "تعتمد الهوية على رأس أخضر ناعم بوجه كريمي وعينين سوداويين وابتسامة. الرأس الأخضر هو الشعار الرسمي. استخدم الرسوم الشفافة للبناء والتخيّل والاستمتاع كعناصر مساندة، دون أن تطغى على المحتوى.",
+      staticExpressions: "تعبيرات ثابتة",
+      animatedExpressions: "تعبيرات متحركة",
+      animatedIntro: "الحركة قصيرة وهادئة: رمشة، ارتداد، ميل خفيف، أو نعاس. تتوقف تلقائياً عند تفضيل تقليل الحركة.",
+      clearSpaceBody:
+        "حافظ على مساحة واضحة حول الأيقونة تساوي وحدة X من كل الجهات. لا تدخل نصوص أو رسومات أو عناصر أخرى داخل هذه المساحة.",
+      clearSpaceUnit: "X = وحدة القياس",
+      coreColors: "الألوان الأساسية",
+      extendedNeutrals: "درجات محايدة",
+      warmAccents: "ألوان دافئة",
+      englishTypeface: "الخط الإنجليزي",
+      arabicTypeface: "الخط العربي",
+      headingExample: "مثال عنوان",
+      bodyExample: "مثال نص",
+      lightBackground: "على خلفية فاتحة",
+      darkBackground: "على خلفية داكنة",
+      warmBackground: "على خلفية دافئة",
+      do: "افعل",
+      dont: "لا تفعل",
+      download: "تحميل",
+      downloadAll: "تحميل ملفات الشعار"
+    },
+    bodyExamples: {
+      english: "Bannaa is an AI community for the Arab world. We share knowledge, build projects, and create impact together.",
+      arabic: "بنّاء مجتمع للذكاء الاصطناعي في العالم العربي. نتشارك المعرفة، نبني المشاريع، ونصنع الأثر معاً."
+    }
+  },
+  en: {
+    archive: "Previous character tool — experimental archive",
+    scenes: ["Building", "Imagining", "Vibing"],
+    rules: ["Use approved lockups only", "Use the Arabic lockup for Arabic contexts", "Do not stretch or distort", "Do not rotate or add effects"],
+    subtitle: "AI Community for the Arab World",
+    sections: {
+      logo: "Logo system",
+      expressions: "Bannaa expressions",
+      clearSpace: "Clear space",
+      palette: "Color palette",
+      typography: "Typography",
+      usage: "Usage examples",
+      rules: "Do / Don't",
+      principles: "Brand principles",
+      preview: "Application preview"
+    },
+    labels: {
+      icon: "Icon",
+      englishLockup: "Icon + English wordmark",
+      arabicLockup: "Icon + Arabic wordmark",
+      squareExpression: "Character artwork",
+      expressionIntro:
+        "The official mark is a soft sage head with a cream face, black eyes, and a smile. Transparent building, imagining, and vibing scenes support the content without dominating it.",
+      staticExpressions: "Static expressions",
+      animatedExpressions: "Animated expressions",
+      animatedIntro: "Motion should stay short and restrained: a blink, bounce, tilt, or sleepy drift. It respects reduced-motion preferences.",
+      clearSpaceBody:
+        "Maintain clear space around the icon equal to X on all sides. No text, graphics, or other elements should enter this area.",
+      clearSpaceUnit: "X = unit of measurement",
+      coreColors: "Core colors",
+      extendedNeutrals: "Extended neutrals",
+      warmAccents: "Warm accents",
+      englishTypeface: "English typeface",
+      arabicTypeface: "Arabic typeface",
+      headingExample: "Heading example",
+      bodyExample: "Body text example",
+      lightBackground: "On light background",
+      darkBackground: "On dark background",
+      warmBackground: "On warm background",
+      do: "Do",
+      dont: "Don't",
+      download: "Download",
+      downloadAll: "Download logo files"
+    },
+    bodyExamples: {
+      english: "Bannaa is an AI community for the Arab world. We share knowledge, build projects, and create impact together.",
+      arabic: "بنّاء مجتمع لك ذكاء الاصطناعي في العالم العربي. نتشارك المعرفة، نبني المشاريع، ونصنع الأثر معاً."
+    }
+  }
+};

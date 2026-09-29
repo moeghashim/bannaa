@@ -1,11 +1,10 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
-import { blobatar } from "blobatar";
-import type { Expression } from "blobatar";
-import { happy, idle, love, mad, sad, scared, shy, sick, sleepy, smug, surprised, unsure, wink } from "blobatar/expression";
+
+
 
 import { BrandLogo, BrandMark } from "@/components/site/brand-mark";
-import { brandSeed, brandTraits } from "@/lib/brand";
+import { brandGuideCopy } from "@/lib/content";
 import { BrandPlayground } from "@/components/site/brand-playground";
 import { PageHero } from "@/components/site/page-hero";
 import { SiteShell } from "@/components/site/site-shell";
@@ -17,161 +16,21 @@ type BrandGuidelinePageProps = {
   locale: Locale;
 };
 
-type BrandGuideCopy = {
-  subtitle: string;
-  sections: {
-    logo: string;
-    expressions: string;
-    clearSpace: string;
-    palette: string;
-    typography: string;
-    usage: string;
-    rules: string;
-    principles: string;
-    preview: string;
-  };
-  labels: {
-    icon: string;
-    englishLockup: string;
-    arabicLockup: string;
-    squareExpression: string;
-    expressionIntro: string;
-    staticExpressions: string;
-    animatedExpressions: string;
-    animatedIntro: string;
-    clearSpaceBody: string;
-    clearSpaceUnit: string;
-    coreColors: string;
-    extendedNeutrals: string;
-    warmAccents: string;
-    englishTypeface: string;
-    arabicTypeface: string;
-    headingExample: string;
-    bodyExample: string;
-    lightBackground: string;
-    darkBackground: string;
-    warmBackground: string;
-    do: string;
-    dont: string;
-    download: string;
-    downloadAll: string;
-  };
-  bodyExamples: {
-    english: string;
-    arabic: string;
-  };
-};
-
-const copy: Record<Locale, BrandGuideCopy> = {
-  ar: {
-    subtitle: "AI Community for the Arab World",
-    sections: {
-      logo: "نظام الشعار",
-      expressions: "شخصية بنّاء التعبيرية",
-      clearSpace: "المساحة الآمنة",
-      palette: "لوحة الألوان الموسعة",
-      typography: "الخطوط",
-      usage: "أمثلة الاستخدام",
-      rules: "افعل / لا تفعل",
-      principles: "مبادئ الهوية",
-      preview: "تطبيقات الهوية"
-    },
-    labels: {
-      icon: "الأيقونة",
-      englishLockup: "الأيقونة + الاسم الإنجليزي",
-      arabicLockup: "الأيقونة + الاسم العربي",
-      squareExpression: "الشعار التعبيري",
-      expressionIntro:
-        "الشعار الجديد يستخدم شخصية Blobatar دائرية بعينين فقط. النسخة السوداء هي الشعار الرسمي، وبقية الألوان والتعبيرات تساعد في المحتوى، المجتمع، والواجهات.",
-      staticExpressions: "تعبيرات ثابتة",
-      animatedExpressions: "تعبيرات متحركة",
-      animatedIntro: "الحركة قصيرة وهادئة: رمشة، ارتداد، ميل خفيف، أو نعاس. تتوقف تلقائياً عند تفضيل تقليل الحركة.",
-      clearSpaceBody:
-        "حافظ على مساحة واضحة حول الأيقونة تساوي وحدة X من كل الجهات. لا تدخل نصوص أو رسومات أو عناصر أخرى داخل هذه المساحة.",
-      clearSpaceUnit: "X = وحدة القياس",
-      coreColors: "الألوان الأساسية",
-      extendedNeutrals: "درجات محايدة",
-      warmAccents: "ألوان دافئة",
-      englishTypeface: "الخط الإنجليزي",
-      arabicTypeface: "الخط العربي",
-      headingExample: "مثال عنوان",
-      bodyExample: "مثال نص",
-      lightBackground: "على خلفية فاتحة",
-      darkBackground: "على خلفية داكنة",
-      warmBackground: "على خلفية دافئة",
-      do: "افعل",
-      dont: "لا تفعل",
-      download: "تحميل",
-      downloadAll: "تحميل ملفات الشعار"
-    },
-    bodyExamples: {
-      english: "Bannaa is an AI community for the Arab world. We share knowledge, build projects, and create impact together.",
-      arabic: "بنّاء مجتمع لك ذكاء الاصطناعي في العالم العربي. نتشارك المعرفة، نبني المشاريع، ونصنع الأثر معاً."
-    }
-  },
-  en: {
-    subtitle: "AI Community for the Arab World",
-    sections: {
-      logo: "Logo system",
-      expressions: "Bannaa expressions",
-      clearSpace: "Clear space",
-      palette: "Expanded color palette",
-      typography: "Typography",
-      usage: "Usage examples",
-      rules: "Do / Don't",
-      principles: "Brand principles",
-      preview: "Application preview"
-    },
-    labels: {
-      icon: "Icon",
-      englishLockup: "Icon + English wordmark",
-      arabicLockup: "Icon + Arabic wordmark",
-      squareExpression: "Expression logo",
-      expressionIntro:
-        "The new logo uses a round Blobatar character with eyes only. The black version is the official mark, while the wider color and expression set supports content, community, and product moments.",
-      staticExpressions: "Static expressions",
-      animatedExpressions: "Animated expressions",
-      animatedIntro: "Motion should stay short and restrained: a blink, bounce, tilt, or sleepy drift. It respects reduced-motion preferences.",
-      clearSpaceBody:
-        "Maintain clear space around the icon equal to X on all sides. No text, graphics, or other elements should enter this area.",
-      clearSpaceUnit: "X = unit of measurement",
-      coreColors: "Core colors",
-      extendedNeutrals: "Extended neutrals",
-      warmAccents: "Warm accents",
-      englishTypeface: "English typeface",
-      arabicTypeface: "Arabic typeface",
-      headingExample: "Heading example",
-      bodyExample: "Body text example",
-      lightBackground: "On light background",
-      darkBackground: "On dark background",
-      warmBackground: "On warm background",
-      do: "Do",
-      dont: "Don't",
-      download: "Download",
-      downloadAll: "Download logo files"
-    },
-    bodyExamples: {
-      english: "Bannaa is an AI community for the Arab world. We share knowledge, build projects, and create impact together.",
-      arabic: "بنّاء مجتمع لك ذكاء الاصطناعي في العالم العربي. نتشارك المعرفة، نبني المشاريع، ونصنع الأثر معاً."
-    }
-  }
-};
-
 const colorGroups = [
   {
     key: "coreColors",
     colors: [
-      { name: "Charcoal", hex: "#111111" },
-      { name: "White", hex: "#FFFFFF" },
-      { name: "Electric Blue", hex: "#2563EB" },
-      { name: "Light Gray", hex: "#F5F6F8" }
+      { name: "Forest", hex: "#243D31" },
+      { name: "Cream canvas", hex: "#FAF8F2" },
+      { name: "Sage accent", hex: "#778768" },
+      { name: "Sage surface", hex: "#E9EDDF" }
     ]
   },
   {
     key: "extendedNeutrals",
     colors: [
       { name: "Warm Cream", hex: "#F6EFE5" },
-      { name: "Soft Beige", hex: "#EDE2D3" }
+      { name: "Muted green", hex: "#647065" }
     ]
   },
   {
@@ -216,7 +75,7 @@ const logoDownloads = {
     { label: "SVG", href: "/assets/brand/icon.svg", filename: "bannaa-icon.svg" },
     { label: "PNG", href: "/assets/brand/icon.png", filename: "bannaa-icon.png" }
   ],
-  en: [{ label: "PNG", href: "/assets/brand/english_logo.png", filename: "bannaa-english-logo.png" }],
+  en: [{ label: "SVG", href: "/assets/brand/english_logo.svg", filename: "bannaa-english-logo.svg" }, { label: "PNG", href: "/assets/brand/english_logo.png", filename: "bannaa-english-logo.png" }],
   ar: [
     { label: "SVG", href: "/assets/brand/arabic_logo.svg", filename: "bannaa-arabic-logo.svg" },
     { label: "PNG", href: "/assets/brand/arabic_logo.png", filename: "bannaa-arabic-logo.png" }
@@ -245,76 +104,6 @@ const merchExamples = [
     alt: "Banna logo cap mockup"
   }
 ];
-
-type ExpressionKey =
-  | "idle"
-  | "happy"
-  | "sad"
-  | "mad"
-  | "surprised"
-  | "wink"
-  | "sleepy"
-  | "smug"
-  | "unsure"
-  | "scared"
-  | "love"
-  | "shy"
-  | "sick";
-
-const blobatarExpressions: Record<ExpressionKey, Expression> = {
-  idle,
-  happy,
-  sad,
-  mad,
-  surprised,
-  wink,
-  sleepy,
-  smug,
-  unsure,
-  scared,
-  love,
-  shy,
-  sick
-};
-
-const expressionSamples: { key: ExpressionKey; label: string; arLabel: string; color: string }[] = [
-  { key: "idle", label: "Round", arLabel: "دائري", color: "#111111" },
-  { key: "happy", label: "Happy", arLabel: "سعيد", color: "#2F855A" },
-  { key: "sad", label: "Sad", arLabel: "حزين", color: "#596274" },
-  { key: "mad", label: "Mad", arLabel: "غاضب", color: "#C2410C" },
-  { key: "surprised", label: "Surprised", arLabel: "متفاجئ", color: "#E8A48B" },
-  { key: "wink", label: "Wink", arLabel: "غمزة", color: "#2563EB" },
-  { key: "sleepy", label: "Sleepy", arLabel: "نعسان", color: "#64748B" },
-  { key: "smug", label: "Smug", arLabel: "واثق", color: "#111111" },
-  { key: "unsure", label: "Unsure", arLabel: "متردد", color: "#0F766E" },
-  { key: "scared", label: "Scared", arLabel: "خائف", color: "#6D5BD0" },
-  { key: "love", label: "Love", arLabel: "محب", color: "#BE5B7B" },
-  { key: "shy", label: "Shy", arLabel: "خجول", color: "#EFCFCB" },
-  { key: "sick", label: "Sick", arLabel: "مرهق", color: "#7A8C68" }
-];
-
-const animatedExpressionSamples: {
-  key: ExpressionKey;
-  motion: "blink" | "bounce" | "tilt" | "sleep";
-  label: string;
-  arLabel: string;
-  color: string;
-}[] = [
-  { key: "wink", motion: "blink", label: "Blink", arLabel: "رمشة", color: "#2563EB" },
-  { key: "idle", motion: "bounce", label: "Bounce", arLabel: "ارتداد", color: "#111111" },
-  { key: "smug", motion: "tilt", label: "Tilt", arLabel: "ميل خفيف", color: "#D97706" },
-  { key: "sleepy", motion: "sleep", label: "Sleepy drift", arLabel: "نعاس خفيف", color: "#64748B" }
-];
-
-function normalizeBlobatarSvg(svg: string) {
-  const title = svg.match(/<title>.*?<\/title>/)?.[0] ?? "";
-  const body = svg
-    .replace(/^<svg[^>]*>/, "")
-    .replace(/<\/svg>\s*$/, "")
-    .replace(/<title>.*?<\/title>/, "");
-
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">${title}<g transform="matrix(1.18 0 0 1.18 -9 -9)">${body}</g></svg>`;
-}
 
 function SectionNumber({ value }: { value: number }) {
   return <span className="brand-guide__num mono">{value}.</span>;
@@ -361,37 +150,6 @@ function LogoLockup({
   );
 }
 
-function ExpressionSquare({
-  expression,
-  label,
-  color,
-  motion
-}: {
-  expression: ExpressionKey;
-  label: string;
-  color?: string;
-  motion?: "blink" | "bounce" | "tilt" | "sleep";
-}) {
-  const svg = normalizeBlobatarSvg(
-    blobatar(brandSeed, {
-      background: false,
-      palette: { head: color ?? "#111111", eye: "#FFFFFF" },
-      traits: brandTraits,
-      expression: blobatarExpressions[expression],
-      title: label
-    })
-  );
-
-  return (
-    <span
-      className={`expression-square${motion ? ` expression-square--${motion}` : ""}`}
-      role="img"
-      aria-label={label}
-      dangerouslySetInnerHTML={{ __html: svg }}
-    />
-  );
-}
-
 function LogoDownloadLinks({
   title,
   files,
@@ -431,7 +189,7 @@ function RuleCard({
 }
 
 export function BrandGuidelinePage({ content, locale }: BrandGuidelinePageProps) {
-  const t = copy[locale];
+  const t = brandGuideCopy[locale];
 
   return (
     <SiteShell content={content} locale={locale}>
@@ -440,13 +198,13 @@ export function BrandGuidelinePage({ content, locale }: BrandGuidelinePageProps)
         <header className="brand-guide__masthead">
           <div>
             <p className="brand-guide__eyebrow mono">Bannaa Brand Guidelines</p>
-            <h1>Bannaa Brand Guidelines</h1>
+            <h2>{content.pages.brand.title}</h2>
             <p>{t.subtitle}</p>
           </div>
           <BrandMark size={88} title="Bannaa" />
         </header>
 
-        <BrandPlayground locale={locale} />
+        <details className="legacy-brand-tool"><summary>{t.archive}</summary><BrandPlayground locale={locale} /></details>
 
         <section className="brand-guide__section" aria-labelledby="brand-logo-system">
           <SectionTitle value={1}>{t.sections.logo}</SectionTitle>
@@ -480,53 +238,10 @@ export function BrandGuidelinePage({ content, locale }: BrandGuidelinePageProps)
         </section>
 
         <section className="brand-guide__section" aria-labelledby="brand-expressions">
-          <SectionTitle value={2}>{t.sections.expressions}</SectionTitle>
-          <div className="expression-system" id="brand-expressions">
-            <div className="expression-system__intro">
-              <div className="expression-system__stage" aria-label={t.labels.squareExpression}>
-                <ExpressionSquare expression="idle" label={t.labels.squareExpression} color="#111111" motion="bounce" />
-              </div>
-              <div>
-                <h3>{t.labels.squareExpression}</h3>
-                <p>{t.labels.expressionIntro}</p>
-              </div>
-            </div>
-
-            <div className="expression-system__block">
-              <h3>{t.labels.staticExpressions}</h3>
-              <div className="expression-grid">
-                {expressionSamples.map((item) => {
-                  const label = locale === "ar" ? item.arLabel : item.label;
-
-                  return (
-                    <article className="expression-card" key={item.key}>
-                      <ExpressionSquare expression={item.key} label={label} color={item.color} />
-                      <p>{label}</p>
-                    </article>
-                  );
-                })}
-              </div>
-            </div>
-
-            <div className="expression-system__block">
-              <div className="expression-system__block-head">
-                <h3>{t.labels.animatedExpressions}</h3>
-                <p>{t.labels.animatedIntro}</p>
-              </div>
-              <div className="expression-motion-grid">
-                {animatedExpressionSamples.map((item) => {
-                  const label = locale === "ar" ? item.arLabel : item.label;
-
-                  return (
-                    <article className="expression-motion-card" key={`${item.key}-${item.motion}`}>
-                      <ExpressionSquare expression={item.key} label={label} color={item.color} motion={item.motion} />
-                      <p>{label}</p>
-                    </article>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
+          <h2 id="brand-expressions">{t.sections.expressions}</h2>
+          <p>{t.labels.expressionIntro}</p>
+          <div className="identity-scenes">{[0,1,2].map((scene) => <div key={scene} className="identity-scene" style={{ backgroundPosition: scene === 0 ? "left" : scene === 1 ? "center" : "right" }} role="img" aria-label={t.scenes[scene]} />)}</div>
+          <p>{t.labels.animatedIntro}</p>
         </section>
 
         <div className="brand-guide__split">
@@ -575,7 +290,7 @@ export function BrandGuidelinePage({ content, locale }: BrandGuidelinePageProps)
           <div className="type-specimen-grid" id="brand-typography">
             <article className="type-specimen" dir="ltr">
               <span className="mono">{t.labels.englishTypeface}</span>
-              <strong className="type-specimen__name">Inter</strong>
+              <strong className="type-specimen__name">DM Sans</strong>
               <b>Aa</b>
               <div>
                 <h3>{t.labels.headingExample}</h3>
@@ -624,18 +339,18 @@ export function BrandGuidelinePage({ content, locale }: BrandGuidelinePageProps)
           <section className="brand-guide__section" aria-labelledby="brand-rules">
             <SectionTitle value={7}>{t.sections.rules}</SectionTitle>
             <div className="brand-rules" id="brand-rules">
-              <RuleCard state="do" label="Use approved lockups only">
+              <RuleCard state="do" label={t.rules[0]}>
                 <LogoLockup variant="en" locale="en" />
               </RuleCard>
-              <RuleCard state="do" label="Use the Arabic lockup for Arabic contexts">
+              <RuleCard state="do" label={t.rules[1]}>
                 <LogoLockup variant="ar" locale="ar" />
               </RuleCard>
-              <RuleCard state="dont" label="Do not stretch or distort">
+              <RuleCard state="dont" label={t.rules[2]}>
                 <span className="brand-rule-card__stretch">
                   <LogoLockup variant="en" locale="en" />
                 </span>
               </RuleCard>
-              <RuleCard state="dont" label="Do not rotate or add effects">
+              <RuleCard state="dont" label={t.rules[3]}>
                 <span className="brand-rule-card__tilt">
                   <LogoLockup variant="icon" locale="en" />
                 </span>
@@ -673,7 +388,7 @@ export function BrandGuidelinePage({ content, locale }: BrandGuidelinePageProps)
             </article>
             <article className="application-card application-card--app">
               <BrandMark size={34} title="Bannaa" />
-              <h3>مرحباً</h3>
+              <h3>{locale === "ar" ? "مرحباً" : "Welcome"}</h3>
               <div className="application-card__chips">
                 <span>تعلم</span>
                 <span>ابن</span>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import { BrandMark } from "@/components/site/brand-mark";
 import { SpectrumInteraction } from "@/components/site/spectrum-interaction";
 import { spectrumStages } from "@/lib/spectrum";
 import type { SiteContent } from "@/lib/content";
@@ -32,7 +32,7 @@ export function AgentSpectrum({ content, locale }: { content: SiteContent; local
         <span className="spectrum-kicker">{stage.num} / {selected === 0 ? (ar ? "متطلبات، وليست دروساً" : "REQUIRED, NOT TAUGHT") : stage.sub}</span>
         <h2>{stage.title}</h2><p>{stage.desc}</p>
         <div className={`agent-map agent-map--${selected}`} aria-hidden="true">
-          <div className="agent-map__center"><Image src={`/assets/brand/spectrum/stage-${selected}.svg`} alt="" width={140} height={140} unoptimized /></div>
+          <div className="agent-map__center"><BrandMark size={140} /></div>
           {Array.from({ length: selected + 1 }, (_, index) => <span className="agent-map__node" key={index}>{["01", "02", "03", "04"][index]}</span>)}
         </div>
         <p className="spectrum-note">{selected === 0 ? (ar ? "يبدأ التدريس من الأساسيات. تحقق من استعدادك قبل الانضمام." : "Teaching starts at Basics. Check your readiness before joining.") : (ar ? "التقدم يُثبت بالمشاريع والنتائج، وليس بعدد الأدوات." : "Progress is demonstrated through projects and outcomes, not tool counts.")}</p>

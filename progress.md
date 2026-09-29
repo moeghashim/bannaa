@@ -116,3 +116,5 @@ the exact hash).
 
 - Publish the approved Bannaa character design
 - Add a small-size character favicon
+
+- Align secondary pages and brand assets with the new identity

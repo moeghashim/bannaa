@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import type { KeyboardEvent } from "react";
+import { SiteFooter } from "@/components/site/site-footer";
 import { launchCopy } from "@/lib/content";
 import type { SiteContent } from "@/lib/content";
 import type { Locale } from "@/lib/i18n";
@@ -77,8 +78,7 @@ export function BannaaHome({ content, locale }: { content: SiteContent; locale: 
         <section className="closing"><div className="eyebrow">{c.closeEye}</div><h2>{c.closeTitle}</h2><p>{c.closeBody}</p><a className="pill primary" href="#path">{c.closeCta}</a><Link className="text-link" href={`/${locale}/consultation`}>{c.consult}</Link></section>
         <dialog ref={dialog} aria-labelledby="lesson-title" onClick={event => { if (event.target !== dialog.current) return; const rect = event.currentTarget.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.current?.close(); }}><button className="dialog-close" aria-label={c.close} onClick={() => dialog.current?.close()}>×</button><div className="eyebrow">{c.notesEye}</div><h2 id="lesson-title">{c.notes[lessonIndex][2]}</h2><ol>{c.lessons[lessonIndex].map(step => <li key={step}>{step}</li>)}</ol><a className="pill primary" href="#path" onClick={() => dialog.current?.close()}>{c.closeCta}</a></dialog>
       </main>
-      <footer className="footer"><Link className="brand" href={`/${locale}`}>{logo}</Link><p>{c.footer}</p><div className="footer-links"><a href="https://www.youtube.com/@bannaateam">YouTube</a><a href="https://www.tiktok.com/@bannaahq">TikTok</a><Link href={`/${locale}/contact`}>{c.contact}</Link></div></footer>
-      <nav className="launch-directory" aria-label={c.moreLinks}>{content.footer.groups.map(group => <div key={group.title}><strong>{group.title}</strong>{group.items.map(item => item.href ? <Link key={item.label} href={item.href}>{item.label}</Link> : <span key={item.label}>{item.label}</span>)}</div>)}</nav>
+      <SiteFooter content={content.footer} locale={locale} contained />
     </div>
   </div>;
 }

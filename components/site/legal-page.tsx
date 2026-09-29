@@ -13,7 +13,7 @@ type LegalPageProps = {
 
 export function LegalPage({ content, copy, locale }: LegalPageProps) {
   return (
-    <>
+    <div className="identity-shell">
       <SiteHeader content={{ nav: content.nav }} locale={locale} />
       <main className="legal wrap">
         <p className="legal__eyebrow mono">{copy.eyebrow}</p>
@@ -45,6 +45,6 @@ export function LegalPage({ content, copy, locale }: LegalPageProps) {
         </p>
       </main>
       <SiteFooter content={content.footer} locale={locale} />
-    </>
+    </div>
   );
 }
