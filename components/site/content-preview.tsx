@@ -1,3 +1,4 @@
+import { communitySpaceCopy } from "@/lib/content";
 import { HubVideoThumbnail } from "@/components/site/hub-video-thumbnail";
 import type { SiteContent } from "@/lib/content";
 import type { Locale } from "@/lib/i18n";
@@ -21,8 +22,8 @@ export function ContentPreview({ content, locale }: ContentPreviewProps) {
         </div>
         <div className="right">
           <div>{content.hub.description}</div>
-          <a className="ul" href={`/${locale}/hub`} style={{ marginTop: 12 }}>
-            {locale === "ar" ? "افتح مركز المحتوى →" : "Open content hub →"}
+          <a className="ul" href={`/${locale}/community`} style={{ marginTop: 12 }}>
+            {communitySpaceCopy[locale].homeAction}
           </a>
         </div>
       </header>

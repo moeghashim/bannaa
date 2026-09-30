@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import type { KeyboardEvent } from "react";
 import { SiteFooter } from "@/components/site/site-footer";
+import { CommunitySnapshot } from "@/components/site/community-snapshot";
 import { launchCopy } from "@/lib/content";
 import type { SiteContent } from "@/lib/content";
 import type { Locale } from "@/lib/i18n";
@@ -55,7 +56,7 @@ export function BannaaHome({ content, locale }: { content: SiteContent; locale: 
     <div className="wrap">
       <header className="header">
         <Link className="brand" href={`/${locale}`}>{logo}</Link>
-        <nav className="nav" aria-label={c.navigationLabel}>{c.nav.map((label, i) => <a key={label} href={`#${["path", "purpose", "notes"][i]}`}>{label}</a>)}</nav>
+        <nav className="nav" aria-label={c.navigationLabel}>{c.nav.map((label, i) => <a key={label} href={`#${["path", "purpose", "notes"][i]}`}>{label}</a>)}<Link href={`/${locale}/community`}>{content.nav.links.find(item => item.id === "community")?.label}</Link></nav>
         <div className="header-actions"><Link className="language" href={`/${ar ? "en" : "ar"}`} lang={ar ? "en" : "ar"}>{c.lang}</Link><a className="pill primary" href="#path">{c.start}</a></div>
       </header>
       <main id="main">
@@ -73,6 +74,7 @@ export function BannaaHome({ content, locale }: { content: SiteContent; locale: 
           <div className="tabs" role="tablist" aria-label={c.pathTitle}>{c.tabs.map((label, i) => <button key={label} className="tab" role="tab" id={`tab-${i}`} aria-controls="learning-panel" aria-selected={stageIndex === i} tabIndex={stageIndex === i ? 0 : -1} ref={el => { tabs.current[i] = el; }} onClick={() => setStageIndex(i)} onKeyDown={event => tabKey(event, i)}><span className="num">0{i + 1}</span><span>{label}</span></button>)}</div>
           <div className="learning-panel" id="learning-panel" role="tabpanel" tabIndex={0} aria-labelledby={`tab-${stageIndex}`}><div><span className="label">{c.pathLabel}</span><h3>{stage[0]}</h3><p>{stage[1]}</p><Link className="text-link" href={`/${locale}/spectrum`}>{c.curriculum}</Link></div><div><ul className="check-list">{stage[2].map(text => <li key={text}>{text}</li>)}</ul><div className="outcome"><strong>{c.outcome}</strong><span>{stage[3]}</span></div></div></div>
         </section>
+        <CommunitySnapshot locale={locale} />
         <section className="mission" id="purpose"><div><div className="eyebrow">{c.missionEye}</div><h2>{c.missionTitle}</h2><p>{c.missionBody}</p></div><div className="mission-aside"><span className="ambition">{c.ambition}</span><div className="mission-number">100</div><div className="mission-label">{c.missionLabel}</div></div></section>
         <section className="section" id="notes"><div className="section-heading"><div><div className="eyebrow"><span className="line" />{c.notesEye}</div><h2>{c.notesTitle}</h2></div><p>{c.notesIntro}</p></div><div className="journal-grid">{c.notes.map((note, i) => <article className="journal-card" key={note[2]}><span className="article-number">0{i + 1}</span><div className="journal-body"><div className="journal-meta"><span>{note[0]}</span><span>{note[1]}</span></div><h3>{note[2]}</h3><p>{note[3]}</p><button onClick={() => { setLessonIndex(i); dialog.current?.showModal(); }} aria-haspopup="dialog">{c.read}<span className="sr-only">: {note[2]}</span></button></div></article>)}</div></section>
         <section className="closing"><div className="eyebrow">{c.closeEye}</div><h2>{c.closeTitle}</h2><p>{c.closeBody}</p><a className="pill primary" href="#path">{c.closeCta}</a><Link className="text-link" href={`/${locale}/consultation`}>{c.consult}</Link></section>

@@ -1,3 +1,4 @@
+import { ParentBrandCredit } from "@/components/site/parent-brand-credit";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -28,6 +29,7 @@ export function SiteFooter({ content, locale, contained = false }: SiteFooterPro
           <Link href={`/${locale}/contact`}>{copy.contact}</Link>
         </div>
       </footer>
+      <div className="shared-footer__bottom">
       <nav className="shared-footer__directory" aria-label={copy.moreLinks}>
         {content.groups.map(group => (
           <div key={group.title}>
@@ -38,6 +40,8 @@ export function SiteFooter({ content, locale, contained = false }: SiteFooterPro
           </div>
         ))}
       </nav>
+      <div className="shared-footer__credit"><ParentBrandCredit locale={locale} /></div>
+      </div>
     </div>
   );
 }

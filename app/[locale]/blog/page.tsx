@@ -4,5 +4,5 @@ import { isLocale } from "@/lib/i18n";
 export default async function BlogRedirect({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
-  permanentRedirect(`/${locale}/hub`);
+  permanentRedirect(`/${locale}/community`);
 }

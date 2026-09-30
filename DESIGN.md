@@ -295,3 +295,15 @@ The ambition is 100 small Arab companies. Homepage copy lives in `launchCopy` in
 ### Small-size character favicon
 
 Browser icons use a simplified sage-and-cream character face with a dark outline and larger eyes, optimized for tiny tabs. The plush on-page logo stays unchanged. `app/favicon.ico` contains 16, 32, 48, 64, 128, and 256px frames; `app/icon.svg` embeds the 256px image; `app/apple-icon.png` is 180px. Downloadable PNGs are at `public/assets/brand/favicon-character.png` (512px) and `favicon-32.png`.
+
+### Community layout preview
+
+The separate bilingual community page uses the homepage cream, forest green, sage, and restrained peach palette. It has a main update feed and a project sidebar, stacked on mobile, with direction mirrored for Arabic. The homepage includes a compact three-card community snapshot beneath the learning path and a Community navigation link. The current layout contains explicitly illustrative content and a device-local draft composer, not connected membership or shared posting. Posts and their attached images and videos are publicly readable. Creating posts, replies and reactions requires a signed-in invited member. Server and database write permissions must enforce active membership once the backend is connected. The local preview displays an invitation prompt for interactions and explicitly offers a non-publishing composer demonstration.
+
+The community composer supports up to four validated raster images (5 MB each), optional image descriptions, and a validated YouTube video link. Attachment drafts are stored locally in IndexedDB. The feed-preview action is explicitly local to the browser session; it does not upload or publish content. YouTube playback begins only after a click and uses a fixed embed host. Closing the composer removes its video player.
+
+Tutorials and member updates share one feed. Per-post stage tags use the homepage learning stages (Get ready, The basics, Build agents, Go further). Selecting a tag filters this same feed and reveals a pinned Start here guide with suggested lesson steps; All posts clears the stage selection. Bannaa-authored starter tutorials carry a distinct tutorial badge and open dedicated full lesson pages. Reading remains public; lesson participation uses the invitation prompt. Category tabs and sorting rows remain removed.
+
+Reading now uses dedicated localized community article routes rather than dialogs, for both member posts and tutorials. Feed text, read links, project links and pinned-guide links open these pages. A learning-tag panel appears in the sidebar (left in Arabic, mirrored in English); selected stages are stored in the URL query and article tags return to the matching feed. Dialogs remain only for writing previews and invitation prompts.
+
+The shared footer places the linked 10claws credit on the same row as the final directory links, at the outer left in Arabic and outer right in English. The retired Hub, Blog index, and Resources routes redirect to the community; legacy article routes have been removed. Sample post dates remain illustrative until publication data comes from the backend.

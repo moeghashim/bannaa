@@ -26,3 +26,10 @@
  .shared-footer__brand:lang(ar) { font-size:29px; }
  .shared-footer__links { gap:14px; font-size:11px; }
 }
+
+.shared-footer__bottom { display:flex; align-items:flex-end; gap:24px; border-top:1px solid #dcded4; }
+.shared-footer__bottom .shared-footer__directory { flex:1; min-width:0; border-top:0; }
+.shared-footer__credit { flex:none; padding-bottom:32px; white-space:nowrap; font-size:12px; color:#647065; }
+.shared-footer__credit .parent-brand-credit { margin:0; }
+.shared-footer__credit a { text-decoration:underline; text-underline-offset:3px; }
+@media(max-width:480px) { .shared-footer__bottom { gap:12px; } .shared-footer__directory { gap:18px; } .shared-footer__directory>div { gap:8px 12px; } }

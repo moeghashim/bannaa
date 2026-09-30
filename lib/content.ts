@@ -331,8 +331,6 @@ const baseContent: Record<Locale, SiteContent> = {
         { id: "tracks", label: "تعلّم", href: "/ar/tracks" },
         { id: "roadmap", label: "الخطة", href: "/ar/roadmap" },
         { id: "community", label: "المجتمع", href: "/ar/community" },
-        { id: "hub", label: "المحتوى", href: "/ar/hub" },
-        { id: "resources", label: "الموارد", href: "/ar/resources" }
       ]
     },
     hero: {
@@ -894,13 +892,11 @@ const baseContent: Record<Locale, SiteContent> = {
             { label: "الخطة", href: "/ar/roadmap" },
             { label: "دليل الهوية", href: "/ar/brand" },
             { label: "المجتمع", href: "/ar/community" },
-            { label: "المحتوى", href: "/ar/hub" }
           ]
         },
         {
           title: "ابدأ",
           items: [
-            { label: "الموارد", href: "/ar/resources" },
             { label: "انضم", href: "/ar/join" },
             { label: "الشراكات", href: "/ar/contact" },
             { label: "عن بنّاء", href: "/ar/about" }
@@ -1017,8 +1013,6 @@ const baseContent: Record<Locale, SiteContent> = {
         { id: "tracks", label: "Learn", href: "/en/tracks" },
         { id: "roadmap", label: "Roadmap", href: "/en/roadmap" },
         { id: "community", label: "Community", href: "/en/community" },
-        { id: "hub", label: "Content", href: "/en/hub" },
-        { id: "resources", label: "Resources", href: "/en/resources" }
       ]
     },
     hero: {
@@ -1580,13 +1574,11 @@ const baseContent: Record<Locale, SiteContent> = {
             { label: "Roadmap", href: "/en/roadmap" },
             { label: "Brand Guidelines", href: "/en/brand" },
             { label: "Community", href: "/en/community" },
-            { label: "Content", href: "/en/hub" }
           ]
         },
         {
           title: "Start",
           items: [
-            { label: "Resources", href: "/en/resources" },
             { label: "Join", href: "/en/join" },
             { label: "Partnerships", href: "/en/contact" },
             { label: "About", href: "/en/about" }
@@ -1716,10 +1708,6 @@ export const consultationContent = {
   }
 };
 
-export const articleContent = {
-  ar: { title: "مقالات الفريق", back: "كل المحتوى" },
-  en: { title: "Team articles", back: "All content" }
-};
 
 export function spectrumInteractionContent(locale: Locale) {
   const t = (en: string, ar: string) => locale === "ar" ? ar : en;
@@ -2317,3 +2305,90 @@ export const brandGuideCopy: Record<Locale, BrandGuideCopy> = {
     }
   }
 };
+export const communitySpaceCopy = {
+  en: {
+    sorts: ["Newest", "Unanswered", "Popular"], replies: "replies", introductions: "New introductions", streaks: "Building streaks", streakNote: "Illustrative activity · consecutive days", days: "days", memberNote: "Getting started with their first project", write: "Write an update",
+    brand: "Bannaa", home: "Back to Bannaa", title: "The community", eyebrow: "THE BUILDERS’ COMMUNITY",
+    intro: "A space to build in public, ask good questions, and help each other move forward.",
+    preview: "Community preview", notice: "These are illustrative updates. Accounts and shared posting are not connected yet.",
+    filters: ["All updates", "Progress", "Questions", "Launches"], search: "Search updates or projects", empty: "No updates match your search.",
+    composer: "What did you move forward today?", composerNote: "Try writing an update. Your draft stays in this browser until you clear it.", draft: "Your private draft", save: "Save draft", saved: "Draft saved on this device", clear: "Clear draft", type: "Update type",
+    join: "Build alongside us", joinBody: "Bring an idea, a question, or a work in progress. You don’t need a finished product to belong here.", joinAction: "Read freely · Participate by invitation",
+    projects: "Projects in the making", challenge: "This week’s small step", challengeBody: "Show one person what you’re building. Ask what would make it more useful.", principle: "Be curious. Be generous. Share what you learn.",
+    like: "Encourage", liked: "Encouraged", detail: "Read update", close: "Close", example: "Example update", projectLabel: "Project", sample: "Illustrative projects", replyNote: "Replies will open when member access is available.",
+    homeTitle: "Build something. Grow together.", homeBody: "Explore questions, small wins, and projects. Join by invitation to participate.", homeAction: "Explore the community",
+    posts: [
+      { name: "Sara", initials: "S", kind: 1, project: "Arabic reading companion", body: "My first working prototype can now turn an article into a short reading exercise. Today’s small win: making the instructions clearer.", detail: "Next step: ask three learners to try one exercise and tell me where they get stuck. I’m learning that a smaller feature can lead to better feedback.", color: "sage" },
+      { name: "Omar", initials: "O", kind: 2, project: "An assistant for small shops", body: "How would you test an AI assistant with shop owners before building the whole product?", detail: "I’m starting with stock questions and daily summaries. I’d love to understand which task costs owners the most time before deciding what to automate.", color: "peach" },
+      { name: "Lina", initials: "L", kind: 3, project: "My first learning journal", body: "Published the first version of my learning journal. A simple page, three lessons, and a place to share what I try next.", detail: "The most useful lesson so far: publish something small enough that you can improve it this week. Next, I want to make the reading experience better on mobile.", color: "oat" }
+    ]
+  },
+  ar: {
+    sorts: ["الأحدث", "بلا ردود", "الأكثر تفاعلاً"], replies: "ردود", introductions: "تعارف جديد", streaks: "نواصل البناء", streakNote: "نشاط توضيحي · أيام متتالية", days: "أيام", memberNote: "تبدأ رحلتها مع مشروعها الأول", write: "اكتب مشاركة",
+    brand: "بنّاء", home: "العودة إلى بنّاء", title: "المجتمع", eyebrow: "مجتمع البنّائين",
+    intro: "مساحة نشارك فيها ما نبنيه، ونطرح أسئلتنا، ونساعد بعضنا على التقدّم.",
+    preview: "معاينة المجتمع", notice: "هذه مشاركات توضيحية. الحسابات والنشر المشترك غير متاحين بعد.",
+    filters: ["كل المشاركات", "خطوات تقدّم", "أسئلة", "إطلاقات"], search: "ابحث في المشاركات أو المشاريع", empty: "لا توجد مشاركات تطابق بحثك.",
+    composer: "ما الخطوة التي أنجزتها اليوم؟", composerNote: "جرّب كتابة مشاركة. تبقى مسودتك في هذا المتصفح حتى تحذفها.", draft: "مسودتك الخاصة", save: "احفظ المسودة", saved: "حُفظت المسودة على هذا الجهاز", clear: "احذف المسودة", type: "نوع المشاركة",
+    join: "ابنِ معنا", joinBody: "تعال بفكرة، أو سؤال، أو مشروع تعمل عليه. لا تحتاج إلى منتج مكتمل لتكون بيننا.", joinAction: "القراءة للجميع · المشاركة بالدعوة",
+    projects: "مشاريع تتشكّل", challenge: "خطوتك الصغيرة هذا الأسبوع", challengeBody: "اعرض ما تبنيه على شخص واحد. واسأله: ما الذي يجعله أكثر فائدة؟", principle: "كن فضولياً. شارك بسخاء. انقل ما تتعلّمه.",
+    like: "شجّع", liked: "تم التشجيع", detail: "اقرأ المشاركة", close: "إغلاق", example: "مشاركة توضيحية", projectLabel: "المشروع", sample: "مشاريع توضيحية", replyNote: "ستتاح الردود عند فتح العضوية.",
+    homeTitle: "نبني شيئاً. ونكبر معاً.", homeBody: "استكشف الأسئلة والإنجازات الصغيرة والمشاريع. انضم بالدعوة لتشارك.", homeAction: "استكشف المجتمع",
+    posts: [
+      { name: "سارة", initials: "س", kind: 1, project: "رفيق القراءة بالعربية", body: "أصبح نموذجي الأول يحوّل المقال إلى تمرين قراءة قصير. إنجاز اليوم الصغير: جعل التعليمات أوضح.", detail: "الخطوة القادمة: أطلب من ثلاثة متعلّمين تجربة تمرين واحد وإخباري أين واجهوا صعوبة. أكتشف أن الميزة الأصغر قد تعطينا ملاحظات أفضل.", color: "sage" },
+      { name: "عمر", initials: "ع", kind: 2, project: "مساعد للمتاجر الصغيرة", body: "كيف تختبرون فكرة مساعد ذكي مع أصحاب المتاجر قبل بناء المنتج كاملاً؟", detail: "أبدأ بأسئلة المخزون والملخّصات اليومية. أريد معرفة المهمة التي تستهلك وقت أصحاب المتاجر قبل اختيار ما سأعمل على أتمتته.", color: "peach" },
+      { name: "لينا", initials: "ل", kind: 3, project: "دفتر تعلّمي الأول", body: "أطلقت النسخة الأولى من دفتر تعلّمي. صفحة بسيطة، وثلاثة دروس، ومساحة أشارك فيها تجربتي القادمة.", detail: "أهم درس حتى الآن: انشر شيئاً صغيراً تستطيع تحسينه هذا الأسبوع. خطوتي القادمة تحسين تجربة القراءة على الجوال.", color: "oat" }
+    ]
+  }
+} as const;
+
+export const communityMediaCopy = {
+  en: {
+    addImages: "Add images", imageHint: "Up to 4 images · JPG, PNG, WebP or GIF · 5 MB each", youtube: "YouTube video", youtubePlaceholder: "Paste a YouTube video link", invalidYoutube: "Enter a valid YouTube video link (watch, Shorts, live or youtu.be).", invalidImages: "Choose up to 4 valid JPG, PNG, WebP or GIF images, no larger than 5 MB each.", remove: "Remove image", description: "Image description", removeVideo: "Remove video", play: "Play video", videoTitle: "YouTube video player", openYoutube: "Watch on YouTube", preview: "Preview in feed", local: "Your local post preview", localNote: "Visible only in this browser session. Nothing has been published.", draftNote: "Text and attachments are saved on this device when you save your draft.", storageError: "Could not save or clear the draft on this device. Your current edits are still here.", loading: "Loading attachments…"
+  },
+  ar: {
+    addImages: "أضف صوراً", imageHint: "حتى 4 صور · JPG أو PNG أو WebP أو GIF · 5 ميغابايت للصورة", youtube: "فيديو يوتيوب", youtubePlaceholder: "ألصق رابط فيديو يوتيوب", invalidYoutube: "أدخل رابط فيديو يوتيوب صالحاً، بما في ذلك Shorts أو البث أو youtu.be.", invalidImages: "اختر حتى 4 صور صالحة بصيغة JPG أو PNG أو WebP أو GIF، لا تتجاوز 5 ميغابايت للصورة.", remove: "حذف الصورة", description: "وصف الصورة", removeVideo: "حذف الفيديو", play: "شغّل الفيديو", videoTitle: "مشغّل فيديو يوتيوب", openYoutube: "شاهد على يوتيوب", preview: "عاين في المشاركات", local: "معاينة مشاركتك المحلية", localNote: "تظهر في جلسة المتصفح هذه فقط. لم تُنشر المشاركة.", draftNote: "يُحفظ النص والمرفقات على هذا الجهاز عند حفظ المسودة.", storageError: "تعذّر حفظ المسودة أو حذفها على هذا الجهاز. تعديلاتك الحالية ما زالت هنا.", loading: "جارٍ تحميل المرفقات…"
+  }
+} as const;
+
+export const communityAccessCopy = {
+  en: { title: "Join the conversation by invitation", body: "Anyone can read posts and watch their videos. Posting, replying and reacting require an invited member account.", pending: "Member sign-in is not connected in this layout preview.", preview: "Preview the composer", previewNote: "Try the layout locally. This does not publish a post or grant membership.", reply: "Reply" },
+  ar: { title: "انضم إلى الحوار بالدعوة", body: "يمكن للجميع قراءة المشاركات ومشاهدة فيديوهاتها. النشر والردود والتفاعلات تتطلب حساب عضو انضم بالدعوة.", pending: "تسجيل دخول الأعضاء غير متصل في معاينة التصميم هذه.", preview: "جرّب تصميم محرّر المشاركة", previewNote: "جرّب التصميم محلياً. لن تُنشر مشاركة ولن تحصل على عضوية.", reply: "ردّ" }
+} as const;
+
+export const communityLearningCopy = {
+  en: {
+    tags: "Learning tags", official: "Bannaa tutorial", author: "Bannaa", back: "All posts", pinned: "Pinned · Start here", guide: "Your suggested learning order", read: "Read tutorial", practice: "Try it, then share what you built", stages: ["Get ready", "The basics", "Build agents", "Go further"],
+    tutorials: [
+      { title: "Turn an idea into a small first project", intro: "Start with one person, one problem, and one useful outcome.", steps: [ ["Choose a real problem", "Write down who you are helping and one task they struggle with. Ask them how they handle it today."], ["Make the first version smaller", "Pick one outcome you can demonstrate on a single page. Set aside accounts, payments and extra features until you test the idea."], ["Show someone", "Sketch the page, show it to the person you chose, and ask them to explain what they would do next. Share what surprised you."] ] },
+      { title: "Write a clearer instruction for AI", intro: "Give the model a task, useful context, and a way to check the result.", steps: [ ["Describe the outcome", "Explain what you want to produce and who it is for. For example: a short welcome message for a first-time learner."], ["Add context and boundaries", "Provide relevant facts, a tone example and a length limit. Leave out personal or confidential information you do not need."], ["Check and improve", "Compare the result with your requirements. Identify one specific problem and revise the instruction. Share the before and after."] ] },
+      { title: "Plan your first useful agent", intro: "Start with one bounded task and a clear point for human review.", steps: [ ["Define one job", "Choose a task such as turning your own notes into a draft weekly summary. Describe what a good result looks like."], ["Choose inputs and tools", "List exactly what the agent needs to read and which tools it needs. Start with read-only access and prepared sample inputs."], ["Test before taking action", "Try normal, incomplete and misleading inputs. Require a person to approve any message or external change. Share one failure and your fix."] ] },
+      { title: "Improve a project with real feedback", intro: "Make one measurable improvement instead of adding more features.", steps: [ ["Watch someone use it", "Give a volunteer a concrete task and observe where they hesitate. Avoid explaining the interface before they try it."], ["Choose one improvement", "Pick the biggest obstacle and define a simple measure, such as completing the task without help."], ["Repeat the same task", "Make the change and test again. Compare what happened and publish the lesson, including anything that is still unclear."] ] }
+    ]
+  },
+  ar: {
+    tags: "وسوم التعلّم", official: "درس من بنّاء", author: "بنّاء", back: "كل المشاركات", pinned: "مثبّت · ابدأ هنا", guide: "ترتيب مقترح للتعلّم", read: "اقرأ الدرس", practice: "جرّب، ثم شارك ما بنيته", stages: ["استعد", "الأساسيات", "بناء الوكلاء", "التمكّن"],
+    tutorials: [
+      { title: "حوّل فكرتك إلى مشروع أول صغير", intro: "ابدأ بشخص واحد، ومشكلة واحدة، ونتيجة مفيدة.", steps: [ ["اختر مشكلة حقيقية", "حدّد من تساعده ومهمة واحدة تصعب عليه. اسأله كيف ينجزها اليوم."], ["صغّر النسخة الأولى", "اختر نتيجة تستطيع توضيحها في صفحة واحدة. أجّل الحسابات والدفع والمزايا الإضافية حتى تختبر الفكرة."], ["اعرضها على شخص", "ارسم الصفحة واعرضها على الشخص الذي اخترته. اطلب منه شرح ما سيفعله بعدها، وشارك ما فاجأك."] ] },
+      { title: "اكتب توجيهاً أوضح للذكاء الاصطناعي", intro: "حدّد المهمة والسياق المفيد وطريقة مراجعة النتيجة.", steps: [ ["صف النتيجة المطلوبة", "اشرح ما تريد إنتاجه ولمن. مثلاً: رسالة ترحيب قصيرة لشخص يبدأ التعلّم لأول مرة."], ["أضف السياق والحدود", "قدّم المعلومات المناسبة ومثالاً على الأسلوب وحدّاً للطول. لا تضف بيانات شخصية أو سرية لا تحتاج إليها."], ["راجع وحسّن", "قارن النتيجة بمتطلباتك. حدّد مشكلة واحدة وعدّل التوجيه لمعالجتها. شارك المقارنة قبل التعديل وبعده."] ] },
+      { title: "خطّط لوكيلك المفيد الأول", intro: "ابدأ بمهمة محدودة ونقطة واضحة للمراجعة البشرية.", steps: [ ["حدّد مهمة واحدة", "اختر مهمة مثل تحويل ملاحظاتك إلى مسودة ملخّص أسبوعي. صف النتيجة الجيدة التي تتوقعها."], ["اختر المدخلات والأدوات", "اكتب ما يحتاج الوكيل إلى قراءته والأدوات اللازمة فقط. ابدأ بصلاحيات القراءة ومدخلات تجريبية جاهزة."], ["اختبر قبل التنفيذ", "جرّب مدخلات عادية وناقصة ومضلّلة. اشترط مراجعة بشرية لأي رسالة أو تغيير خارجي. شارك خطأً اكتشفته وكيف عالجته."] ] },
+      { title: "حسّن مشروعك بملاحظات حقيقية", intro: "حقّق تحسّناً واحداً يمكن ملاحظته بدلاً من إضافة مزايا أكثر.", steps: [ ["راقب شخصاً يستخدمه", "اطلب من متطوّع إنجاز مهمة محدّدة وراقب أين يتردّد. لا تشرح الواجهة قبل أن يجرّبها."], ["اختر تحسيناً واحداً", "اختر أكبر عائق وحدّد مقياساً بسيطاً، مثل إكمال المهمة دون مساعدة."], ["أعد تجربة المهمة", "نفّذ التغيير واختبر من جديد. قارن النتيجة وشارك ما تعلّمته، بما في ذلك ما يزال غير واضح."] ] }
+    ]
+  }
+} as const;
+
+// Fixed dates for the current illustrative feed; live posts will use persisted publication timestamps.
+export const communityPublicationDates = {
+  'first-small-project': '2026-09-29',
+  'clearer-ai-instructions': '2026-09-29',
+  'first-useful-agent': '2026-09-29',
+  'improve-with-feedback': '2026-09-29',
+  'reading-companion-prototype': '2026-09-28',
+  'testing-a-shop-assistant': '2026-09-27',
+  'first-learning-journal': '2026-09-26'
+} as const;
+
+export const parentBrandCopy = {
+  en: "Part of",
+  ar: "جزء من"
+} as const;

@@ -1,27 +1,10 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-
-import { HubPage } from "@/components/site/hub-page";
-import { siteContent } from "@/lib/content";
+import { notFound, permanentRedirect } from "next/navigation";
 import { isLocale } from "@/lib/i18n";
-import { getLatestYouTubeVideos } from "@/lib/video-feeds";
 
-export const revalidate = 3600;
-
-type PageProps = {
-  params: Promise<{ locale: string }>;
-};
-
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { locale } = await params;
-  if (!isLocale(locale)) return {};
-  const copy = siteContent[locale].pages.hub;
-  return { title: copy.title, description: copy.intro };
-}
+type PageProps = { params: Promise<{ locale: string }> };
 
 export default async function HubRoute({ params }: PageProps) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
-  const latestVideos = await getLatestYouTubeVideos({ limit: 6 });
-  return <HubPage content={siteContent[locale]} locale={locale} latestVideos={latestVideos} />;
+  permanentRedirect(`/${locale}/community`);
 }
