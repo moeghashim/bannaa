@@ -19,5 +19,5 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function CommunityRoute({ params }: PageProps) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
-  return <CommunityPage content={siteContent[locale]} locale={locale} />;
+  return <CommunityPage locale={locale} />;
 }

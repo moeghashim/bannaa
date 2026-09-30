@@ -124,3 +124,4 @@ the exact hash).
 ## 2026-09-30
 
 - Add the public community preview and simplify site navigation
+- Tidy community drafts, dates and stage mapping

@@ -10,10 +10,9 @@ import { CommunityMedia } from "@/components/site/community-media";
 import { communityDraftStorage, youtubeVideoId } from "@/lib/community-media";
 import type { CommunityImage, CommunityDraft } from "@/lib/community-media";
 import { communityLearningCopy, communityAccessCopy, communityMediaCopy, communitySpaceCopy } from "@/lib/content";
-import type { SiteContent } from "@/lib/content";
 import type { Locale } from "@/lib/i18n";
 
-export function CommunityPage({ locale }: { content: SiteContent; locale: Locale }) {
+export function CommunityPage({ locale }: { locale: Locale }) {
   const c = communitySpaceCopy[locale];
   const learning = communityLearningCopy[locale];
   const [stage, setStage] = useState<number | null>(null);
@@ -42,16 +41,13 @@ export function CommunityPage({ locale }: { content: SiteContent; locale: Locale
   const [draft, setDraft] = useState("");
   const [saved, setSaved] = useState(false);
   const composerDialog = useRef<HTMLDialogElement>(null);
-  const storageKey = `bannaa.community.draft.${locale}`;
   useEffect(() => {
     let active = true;
     communityDraftStorage(locale).then(value => {
-      if (!active) return;
-      if (value) { setDraft(value.body); setImages(value.images); setYoutube(value.youtube); }
-      else { try { setDraft(localStorage.getItem(storageKey) ?? ""); } catch { /* The composer remains usable without storage. */ } }
+      if (active && value) { setDraft(value.body); setImages(value.images); setYoutube(value.youtube); }
     }).catch(() => { if (active) setMediaError(mediaCopy.storageError); }).finally(() => { if (active) setBusy(false); });
     return () => { active = false; };
-  }, [locale, storageKey, mediaCopy.storageError]);
+  }, [locale, mediaCopy.storageError]);
   async function saveDraft() {
     setBusy(true); setMediaError("");
     try { await communityDraftStorage(locale, { body: draft, images, youtube }); setSaved(true); }
@@ -62,7 +58,6 @@ export function CommunityPage({ locale }: { content: SiteContent; locale: Locale
     setBusy(true); setMediaError("");
     try {
       await communityDraftStorage(locale, null);
-      localStorage.removeItem(storageKey);
       setDraft(""); setImages([]); setYoutube(""); setSaved(false);
     } catch { setMediaError(mediaCopy.storageError); }
     finally { setBusy(false); }
