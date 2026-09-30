@@ -125,3 +125,4 @@ the exact hash).
 
 - Add the public community preview and simplify site navigation
 - Tidy community drafts, dates and stage mapping
+- Point the old community note at the feed preview
