@@ -174,25 +174,6 @@ export type SiteContent = {
     allLink: string;
     cards: TrackCard[];
   };
-  community: {
-    eyebrow: string;
-    title: string;
-    titleAccent: string;
-    description: string;
-    bullets: string[];
-    signupTitle: string;
-    nameLabel: string;
-    namePlaceholder: string;
-    emailLabel: string;
-    emailPlaceholder: string;
-    postLabel: string;
-    postPlaceholder: string;
-    joinButton: string;
-    postButton: string;
-    signedInPrefix: string;
-    emptyState: string;
-    demoNote: string;
-  };
   hub: {
     eyebrow: string;
     title: string;
@@ -471,27 +452,6 @@ const baseContent: Record<Locale, SiteContent> = {
           ]
         }
       ]
-    },
-    community: {
-      eyebrow: "/ المجتمع",
-      title: "ادخل غرفة",
-      titleAccent: "البنّائين.",
-      description:
-        "المجتمع هو طبقة التنفيذ: أعضاء ينشرون التقدّم، يسألون، يشاركون قوالب، ويجدون شركاء بناء.",
-      bullets: ["انضم باسم وبريد فقط", "انشر تقدّمك أو سؤالك", "ناقش أفكار المسارات والمحتوى", "المحتوى العام يبقى مفتوحاً للجميع"],
-      signupTitle: "حساب مجتمع بسيط",
-      nameLabel: "الاسم",
-      namePlaceholder: "اسمك",
-      emailLabel: "البريد الإلكتروني",
-      emailPlaceholder: "you@example.com",
-      postLabel: "منشور جديد",
-      postPlaceholder: "ما الذي تبنيه أو تحتاج مساعدة فيه؟",
-      joinButton: "إنشاء حساب",
-      postButton: "نشر",
-      signedInPrefix: "مسجّل كـ",
-      emptyState: "لا توجد منشورات بعد. ابدأ النقاش الأول.",
-      demoNote:
-        "هذا نموذج واجهة جاهز للربط بمزوّد auth وقاعدة بيانات. لا تُرسل البيانات إلى خادم حالياً."
     },
     hub: {
       eyebrow: "/ المحتوى",
@@ -1153,27 +1113,6 @@ const baseContent: Record<Locale, SiteContent> = {
           ]
         }
       ]
-    },
-    community: {
-      eyebrow: "/ community",
-      title: "Enter the",
-      titleAccent: "builder room.",
-      description:
-        "The community is the execution layer: members post progress, ask questions, share templates, and find building partners.",
-      bullets: ["Join with name and email", "Post progress or questions", "Discuss track ideas and content", "Public pages remain open to everyone"],
-      signupTitle: "Simple community account",
-      nameLabel: "Name",
-      namePlaceholder: "Your name",
-      emailLabel: "Email",
-      emailPlaceholder: "you@example.com",
-      postLabel: "New post",
-      postPlaceholder: "What are you building or where do you need help?",
-      joinButton: "Create account",
-      postButton: "Post",
-      signedInPrefix: "Signed in as",
-      emptyState: "No posts yet. Start the first discussion.",
-      demoNote:
-        "This is a production UI stub ready to connect to an auth provider and database. It does not send data to a server yet."
     },
     hub: {
       eyebrow: "/ content",
@@ -2306,38 +2245,30 @@ export const brandGuideCopy: Record<Locale, BrandGuideCopy> = {
   }
 };
 export const communitySpaceCopy = {
-  en: {
-    sorts: ["Newest", "Unanswered", "Popular"], replies: "replies", introductions: "New introductions", streaks: "Building streaks", streakNote: "Illustrative activity · consecutive days", days: "days", memberNote: "Getting started with their first project", write: "Write an update",
-    brand: "Bannaa", home: "Back to Bannaa", title: "The community", eyebrow: "THE BUILDERS’ COMMUNITY",
-    intro: "A space to build in public, ask good questions, and help each other move forward.",
-    preview: "Community preview", notice: "These are illustrative updates. Accounts and shared posting are not connected yet.",
-    filters: ["All updates", "Progress", "Questions", "Launches"], search: "Search updates or projects", empty: "No updates match your search.",
-    composer: "What did you move forward today?", composerNote: "Try writing an update. Your draft stays in this browser until you clear it.", draft: "Your private draft", save: "Save draft", saved: "Draft saved on this device", clear: "Clear draft", type: "Update type",
+  en: { replies: "replies", introductions: "New introductions", streaks: "Building streaks", streakNote: "Illustrative activity · consecutive days", streakDays: ["12 days", "8 days", "5 days"], memberNote: "Getting started with their first project", write: "Write an update",
+    brand: "Bannaa", home: "Back to Bannaa", title: "The community", search: "Search updates or projects", empty: "No updates match your search.",
+    composer: "What did you move forward today?", draft: "Your private draft", save: "Save draft", saved: "Draft saved on this device", clear: "Clear draft",
     join: "Build alongside us", joinBody: "Bring an idea, a question, or a work in progress. You don’t need a finished product to belong here.", joinAction: "Read freely · Participate by invitation",
     projects: "Projects in the making", challenge: "This week’s small step", challengeBody: "Show one person what you’re building. Ask what would make it more useful.", principle: "Be curious. Be generous. Share what you learn.",
-    like: "Encourage", liked: "Encouraged", detail: "Read update", close: "Close", example: "Example update", projectLabel: "Project", sample: "Illustrative projects", replyNote: "Replies will open when member access is available.",
+    like: "Encourage", detail: "Read update", close: "Close", example: "Example update", sample: "Illustrative projects",
     homeTitle: "Build something. Grow together.", homeBody: "Explore questions, small wins, and projects. Join by invitation to participate.", homeAction: "Explore the community",
     posts: [
-      { name: "Sara", initials: "S", kind: 1, project: "Arabic reading companion", body: "My first working prototype can now turn an article into a short reading exercise. Today’s small win: making the instructions clearer.", detail: "Next step: ask three learners to try one exercise and tell me where they get stuck. I’m learning that a smaller feature can lead to better feedback.", color: "sage" },
-      { name: "Omar", initials: "O", kind: 2, project: "An assistant for small shops", body: "How would you test an AI assistant with shop owners before building the whole product?", detail: "I’m starting with stock questions and daily summaries. I’d love to understand which task costs owners the most time before deciding what to automate.", color: "peach" },
-      { name: "Lina", initials: "L", kind: 3, project: "My first learning journal", body: "Published the first version of my learning journal. A simple page, three lessons, and a place to share what I try next.", detail: "The most useful lesson so far: publish something small enough that you can improve it this week. Next, I want to make the reading experience better on mobile.", color: "oat" }
+      { name: "Sara", initials: "S", project: "Arabic reading companion", body: "My first working prototype can now turn an article into a short reading exercise. Today’s small win: making the instructions clearer.", detail: "Next step: ask three learners to try one exercise and tell me where they get stuck. I’m learning that a smaller feature can lead to better feedback.", color: "sage" },
+      { name: "Omar", initials: "O", project: "An assistant for small shops", body: "How would you test an AI assistant with shop owners before building the whole product?", detail: "I’m starting with stock questions and daily summaries. I’d love to understand which task costs owners the most time before deciding what to automate.", color: "peach" },
+      { name: "Lina", initials: "L", project: "My first learning journal", body: "Published the first version of my learning journal. A simple page, three lessons, and a place to share what I try next.", detail: "The most useful lesson so far: publish something small enough that you can improve it this week. Next, I want to make the reading experience better on mobile.", color: "oat" }
     ]
   },
-  ar: {
-    sorts: ["الأحدث", "بلا ردود", "الأكثر تفاعلاً"], replies: "ردود", introductions: "تعارف جديد", streaks: "نواصل البناء", streakNote: "نشاط توضيحي · أيام متتالية", days: "أيام", memberNote: "تبدأ رحلتها مع مشروعها الأول", write: "اكتب مشاركة",
-    brand: "بنّاء", home: "العودة إلى بنّاء", title: "المجتمع", eyebrow: "مجتمع البنّائين",
-    intro: "مساحة نشارك فيها ما نبنيه، ونطرح أسئلتنا، ونساعد بعضنا على التقدّم.",
-    preview: "معاينة المجتمع", notice: "هذه مشاركات توضيحية. الحسابات والنشر المشترك غير متاحين بعد.",
-    filters: ["كل المشاركات", "خطوات تقدّم", "أسئلة", "إطلاقات"], search: "ابحث في المشاركات أو المشاريع", empty: "لا توجد مشاركات تطابق بحثك.",
-    composer: "ما الخطوة التي أنجزتها اليوم؟", composerNote: "جرّب كتابة مشاركة. تبقى مسودتك في هذا المتصفح حتى تحذفها.", draft: "مسودتك الخاصة", save: "احفظ المسودة", saved: "حُفظت المسودة على هذا الجهاز", clear: "احذف المسودة", type: "نوع المشاركة",
+  ar: { replies: "ردود", introductions: "تعارف جديد", streaks: "نواصل البناء", streakNote: "نشاط توضيحي · أيام متتالية", streakDays: ["12 يوماً", "8 أيام", "5 أيام"], memberNote: "تبدأ رحلتها مع مشروعها الأول", write: "اكتب مشاركة",
+    brand: "بنّاء", home: "العودة إلى بنّاء", title: "المجتمع", search: "ابحث في المشاركات أو المشاريع", empty: "لا توجد مشاركات تطابق بحثك.",
+    composer: "ما الخطوة التي أنجزتها اليوم؟", draft: "مسودتك الخاصة", save: "احفظ المسودة", saved: "حُفظت المسودة على هذا الجهاز", clear: "احذف المسودة",
     join: "ابنِ معنا", joinBody: "تعال بفكرة، أو سؤال، أو مشروع تعمل عليه. لا تحتاج إلى منتج مكتمل لتكون بيننا.", joinAction: "القراءة للجميع · المشاركة بالدعوة",
     projects: "مشاريع تتشكّل", challenge: "خطوتك الصغيرة هذا الأسبوع", challengeBody: "اعرض ما تبنيه على شخص واحد. واسأله: ما الذي يجعله أكثر فائدة؟", principle: "كن فضولياً. شارك بسخاء. انقل ما تتعلّمه.",
-    like: "شجّع", liked: "تم التشجيع", detail: "اقرأ المشاركة", close: "إغلاق", example: "مشاركة توضيحية", projectLabel: "المشروع", sample: "مشاريع توضيحية", replyNote: "ستتاح الردود عند فتح العضوية.",
+    like: "شجّع", detail: "اقرأ المشاركة", close: "إغلاق", example: "مشاركة توضيحية", sample: "مشاريع توضيحية",
     homeTitle: "نبني شيئاً. ونكبر معاً.", homeBody: "استكشف الأسئلة والإنجازات الصغيرة والمشاريع. انضم بالدعوة لتشارك.", homeAction: "استكشف المجتمع",
     posts: [
-      { name: "سارة", initials: "س", kind: 1, project: "رفيق القراءة بالعربية", body: "أصبح نموذجي الأول يحوّل المقال إلى تمرين قراءة قصير. إنجاز اليوم الصغير: جعل التعليمات أوضح.", detail: "الخطوة القادمة: أطلب من ثلاثة متعلّمين تجربة تمرين واحد وإخباري أين واجهوا صعوبة. أكتشف أن الميزة الأصغر قد تعطينا ملاحظات أفضل.", color: "sage" },
-      { name: "عمر", initials: "ع", kind: 2, project: "مساعد للمتاجر الصغيرة", body: "كيف تختبرون فكرة مساعد ذكي مع أصحاب المتاجر قبل بناء المنتج كاملاً؟", detail: "أبدأ بأسئلة المخزون والملخّصات اليومية. أريد معرفة المهمة التي تستهلك وقت أصحاب المتاجر قبل اختيار ما سأعمل على أتمتته.", color: "peach" },
-      { name: "لينا", initials: "ل", kind: 3, project: "دفتر تعلّمي الأول", body: "أطلقت النسخة الأولى من دفتر تعلّمي. صفحة بسيطة، وثلاثة دروس، ومساحة أشارك فيها تجربتي القادمة.", detail: "أهم درس حتى الآن: انشر شيئاً صغيراً تستطيع تحسينه هذا الأسبوع. خطوتي القادمة تحسين تجربة القراءة على الجوال.", color: "oat" }
+      { name: "سارة", initials: "س", project: "رفيق القراءة بالعربية", body: "أصبح نموذجي الأول يحوّل المقال إلى تمرين قراءة قصير. إنجاز اليوم الصغير: جعل التعليمات أوضح.", detail: "الخطوة القادمة: أطلب من ثلاثة متعلّمين تجربة تمرين واحد وإخباري أين واجهوا صعوبة. أكتشف أن الميزة الأصغر قد تعطينا ملاحظات أفضل.", color: "sage" },
+      { name: "عمر", initials: "ع", project: "مساعد للمتاجر الصغيرة", body: "كيف تختبرون فكرة مساعد ذكي مع أصحاب المتاجر قبل بناء المنتج كاملاً؟", detail: "أبدأ بأسئلة المخزون والملخّصات اليومية. أريد معرفة المهمة التي تستهلك وقت أصحاب المتاجر قبل اختيار ما سأعمل على أتمتته.", color: "peach" },
+      { name: "لينا", initials: "ل", project: "دفتر تعلّمي الأول", body: "أطلقت النسخة الأولى من دفتر تعلّمي. صفحة بسيطة، وثلاثة دروس، ومساحة أشارك فيها تجربتي القادمة.", detail: "أهم درس حتى الآن: انشر شيئاً صغيراً تستطيع تحسينه هذا الأسبوع. خطوتي القادمة تحسين تجربة القراءة على الجوال.", color: "oat" }
     ]
   }
 } as const;

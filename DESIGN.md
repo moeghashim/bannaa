@@ -247,7 +247,7 @@ The current site structure is:
 
 **Expression Avatar:** Use the black round Blobatar as the official logo. Use other colored eye-only Blobatar expressions for playful brand moments. Keep them inline SVG/CSS where possible instead of adding heavy image files. Motion should be ambient and restrained: blink, bounce, tilt, or sleepy drift.
 
-**Community:** The WhatsApp preview page has been replaced by the public community feed; see "Community layout preview" below. Existing community session APIs remain available.
+**Community:** The WhatsApp preview page has been replaced by the public community feed; see "Community layout preview" below. The unused demo signup panel and session APIs have been retired. The current composer stores drafts locally in IndexedDB; real membership and shared posting remain future backend work. See README.md for setup and preview limitations.
 
 ## Do's and Don'ts
 
