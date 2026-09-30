@@ -227,7 +227,7 @@ The current site structure is:
 - Mission/about page.
 - Tracks/learn page with Founder Skill Set, Building in the Age of AI, and Builder Skill Set.
 - Track roadmap page with Done, Doing, and To do status columns for each track.
-- Community page with simple signup and posting UI.
+- Community page; see "Community layout preview" below.
 - Content hub with filterable videos, shorts, X threads, and newsletters.
 - TikTok and YouTube channel section for sourcing short and long-form video posts.
 - Resources, join/get-started, and contact/partnership pages.

@@ -128,3 +128,4 @@ the exact hash).
 - Point the old community note at the feed preview
 
 - Clean up retired community code and update maintenance dependencies
+- no-mistakes(document): Point site structure community entry at feed preview
