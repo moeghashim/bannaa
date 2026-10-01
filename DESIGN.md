@@ -316,3 +316,11 @@ role has a separate introduction video and a browser-local video reply with
 email only. Sample videos in `public/assets/jobs/` use the approved character
 head, localized typography, synthetic narration, and matching VTT captions.
 All pages visibly identify the roles as samples and submissions as closed.
+
+### Missing-page experience
+
+Root and localized 404 boundaries share the cream-and-sage identity, homepage
+header/footer, and localized recovery links. A compact approved character head
+floats inside the zero of a large typographic 404; the logo retains its colors
+and proportions. The orbit and accents can be paused and remain still for
+reduced-motion preferences. Unknown locale prefixes fall back to Arabic.

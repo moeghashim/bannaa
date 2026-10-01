@@ -2346,3 +2346,30 @@ export const jobsCopy = {
     ]
   }
 } as const;
+
+export const notFoundCopy = {
+  en: {
+    eyebrow: "A SMALL DETOUR", caption: "OFF THE MAP. STILL FULL OF POSSIBILITIES.",
+    title: "This page took", accent: "the scenic route.",
+    intro: "We couldn’t find this page. No worries—there’s plenty left to learn, build, and discover.",
+    home: "Take me home", community: "Find my people", next: "Your next step is right here.",
+    pause: "Pause motion", resume: "Resume motion",
+    links: [
+      { path: "tracks", label: "Learn something new" },
+      { path: "spectrum", label: "Find your starting point" },
+      { path: "jobs", label: "Explore the sample roles" }
+    ]
+  },
+  ar: {
+    eyebrow: "خطوة جانبية صغيرة", caption: "خارج الخريطة. داخل عالم الاحتمالات.",
+    title: "يبدو أن هذه الصفحة", accent: "أخذت طريقاً آخر.",
+    intro: "لم نجد هذه الصفحة. لا بأس، ما زال أمامك الكثير لتتعلّمه وتبنيه وتكتشفه.",
+    home: "لنعد إلى البداية", community: "خذني إلى المجتمع", next: "خطوتك القادمة لا تزال هنا.",
+    pause: "إيقاف الحركة", resume: "تشغيل الحركة",
+    links: [
+      { path: "tracks", label: "تعلّم شيئاً جديداً" },
+      { path: "spectrum", label: "اعرف من أين تبدأ" },
+      { path: "jobs", label: "استكشف الوظائف التجريبية" }
+    ]
+  }
+} as const;

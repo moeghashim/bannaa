@@ -133,3 +133,4 @@ the exact hash).
 ## 2026-10-01
 
 - Add bilingual video job application previews
+- Add a bilingual branded 404 page
