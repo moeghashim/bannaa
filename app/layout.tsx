@@ -6,6 +6,7 @@ import "@/app/globals.css";
 import "@/app/launch.css";
 import "@/app/identity.css";
 import "@/app/site-footer.css";
+import "@/app/jobs.css";
 import "@/app/community.css";
 import { GoogleAnalytics } from "@/components/site/google-analytics";
 

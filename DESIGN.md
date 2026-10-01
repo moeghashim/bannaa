@@ -307,3 +307,12 @@ Tutorials and member updates share one feed. Per-post stage tags use the homepag
 Reading now uses dedicated localized community article routes rather than dialogs, for both member posts and tutorials. Feed text, read links, project links and pinned-guide links open these pages. A learning-tag panel appears in the sidebar (left in Arabic, mirrored in English); selected stages are stored in the URL query and article tags return to the matching feed. Dialogs remain only for writing previews and invitation prompts.
 
 The shared footer places the linked 10claws credit on the same row as the final directory links, at the outer left in Arabic and outer right in English. The retired Hub, Blog index, and Resources routes redirect to the community; legacy article routes have been removed. Sample post dates remain illustrative until publication data comes from the backend.
+
+### Video job application preview
+
+The bilingual jobs preview uses the shared SiteShell, cream canvas, forest ink,
+sage panels, and a restrained peach accent for the second role. Each imaginary
+role has a separate introduction video and a browser-local video reply with
+email only. Sample videos in `public/assets/jobs/` use the approved character
+head, localized typography, synthetic narration, and matching VTT captions.
+All pages visibly identify the roles as samples and submissions as closed.
