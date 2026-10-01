@@ -11,15 +11,23 @@ import type { Locale } from "@/lib/i18n";
 type SiteHeaderProps = {
   content: Pick<SiteContent, "nav">;
   locale: Locale;
+  pathname?: string;
 };
 
-export function SiteHeader({ content, locale }: SiteHeaderProps) {
-  return <SiteNav content={content.nav} locale={locale} />;
+export function SiteHeader({ content, locale, pathname }: SiteHeaderProps) {
+  return <SiteNav content={content.nav} locale={locale} pathname={pathname} />;
 }
 
-function SiteNav({ content, locale }: { content: SiteContent["nav"]; locale: Locale }) {
+type SiteNavProps = {
+  content: SiteContent["nav"];
+  locale: Locale;
+  pathname?: string;
+};
+
+function SiteNav({ content, locale, pathname: stablePathname }: SiteNavProps) {
   const otherLocale: Locale = locale === "ar" ? "en" : "ar";
-  const pathname = usePathname();
+  const routerPathname = usePathname();
+  const pathname = stablePathname ?? routerPathname;
   const localizedPath = pathname?.startsWith(`/${locale}`)
     ? pathname.replace(`/${locale}`, `/${otherLocale}`)
     : `/${otherLocale}`;

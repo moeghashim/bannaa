@@ -10,21 +10,22 @@ import { notFoundCopy, siteContent } from "@/lib/content";
 import { getDirection, type Locale } from "@/lib/i18n";
 
 const subscribe = () => () => {};
-const getServerLocale = (): Locale => "ar";
+const getServerPathname = () => "/ar";
 
 export function NotFoundPage() {
-  const pathname = usePathname();
-  const locale = useSyncExternalStore(
+  const routerPathname = usePathname();
+  const pathname = useSyncExternalStore(
     subscribe,
-    (): Locale => pathname?.split("/")[1] === "en" ? "en" : "ar",
-    getServerLocale
+    () => routerPathname,
+    getServerPathname
   );
+  const locale: Locale = pathname.split("/")[1] === "en" ? "en" : "ar";
   const copy = notFoundCopy[locale];
   const [paused, setPaused] = useState(false);
 
   return (
     <div lang={locale} dir={getDirection(locale)}>
-      <SiteShell content={siteContent[locale]} locale={locale}>
+      <SiteShell content={siteContent[locale]} locale={locale} pathname={pathname}>
         <section className={`lost-page${paused ? " lost-page--paused" : ""}`}>
           <div className="lost-page__meta">
             <span><i aria-hidden="true" />{copy.eyebrow}</span>
@@ -65,7 +66,7 @@ export function NotFoundPage() {
             ))}</div>
           </div>
 
-          <button className="lost-page__motion" aria-pressed={paused} onClick={() => setPaused(value => !value)}>
+          <button className="lost-page__motion" onClick={() => setPaused(value => !value)}>
             <span aria-hidden="true">{paused ? "▷" : "Ⅱ"}</span>{paused ? copy.resume : copy.pause}
           </button>
         </section>
