@@ -9,12 +9,13 @@ type SiteShellProps = {
   children: ReactNode;
   content: SiteContent;
   locale: Locale;
+  pathname?: string;
 };
 
-export function SiteShell({ children, content, locale }: SiteShellProps) {
+export function SiteShell({ children, content, locale, pathname }: SiteShellProps) {
   return (
     <div className="identity-shell">
-      <SiteHeader content={{ nav: content.nav }} locale={locale} />
+      <SiteHeader content={{ nav: content.nav }} locale={locale} pathname={pathname} />
       <main>{children}</main>
       <SiteFooter content={content.footer} locale={locale} />
     </div>

@@ -133,3 +133,6 @@ the exact hash).
 ## 2026-10-01
 
 - Add bilingual video job application previews
+- Add a bilingual branded 404 page
+- Stabilize 404 header language switch and motion toggle
+- Fix language switching on unmatched routes
