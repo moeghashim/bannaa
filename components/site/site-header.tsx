@@ -28,9 +28,10 @@ function SiteNav({ content, locale, pathname: stablePathname }: SiteNavProps) {
   const otherLocale: Locale = locale === "ar" ? "en" : "ar";
   const routerPathname = usePathname();
   const pathname = stablePathname ?? routerPathname;
-  const localizedPath = pathname?.startsWith(`/${locale}`)
-    ? pathname.replace(`/${locale}`, `/${otherLocale}`)
-    : `/${otherLocale}`;
+  const localizedPath =
+    pathname === `/${locale}` || pathname.startsWith(`/${locale}/`)
+      ? `/${otherLocale}${pathname.slice(locale.length + 1)}`
+      : `/${otherLocale}`;
   const [menuOpen, setMenuOpen] = useState(false);
   const closeMenu = () => setMenuOpen(false);
 
