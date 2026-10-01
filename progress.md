@@ -129,3 +129,7 @@ the exact hash).
 
 - Clean up retired community code and update maintenance dependencies
 - no-mistakes(document): Point site structure community entry at feed preview
+
+## 2026-10-01
+
+- Add bilingual video job application previews

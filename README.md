@@ -39,6 +39,21 @@ IndexedDB. Previewing a draft does not upload or publish it. The obsolete demo
 signup/session API and its `COMMUNITY_AUTH_SECRET` setting are no longer used.
 Real membership must enforce invitation access on the server when implemented.
 
+## Jobs preview
+
+Visit `/ar/jobs` or `/en/jobs` for the two imaginary roles and their individual
+video application pages. Sample introduction videos include synthetic narration
+and captions in each language. They are demonstrations to replace with the
+hiring team's recorded introductions before opening real positions.
+
+Applicants can try recording up to three minutes and enter an email address.
+Recordings remain in browser memory; the preview does not upload, persist, or
+send the recording or email. Navigating away discards the recording. The optional
+introduction file picker also previews a local file without uploading it.
+The pages are marked noindex, and applications are explicitly closed. A private
+submission backend and hiring review access are required before accepting real
+applications.
+
 ## Project guidance
 
 - [AGENTS.md](AGENTS.md): development and contribution rules.
