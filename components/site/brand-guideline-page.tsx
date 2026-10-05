@@ -301,14 +301,14 @@ export function BrandGuidelinePage({ content, locale }: BrandGuidelinePageProps)
             <article className="type-specimen type-specimen--ar" dir="rtl">
               <span className="mono">{t.labels.arabicTypeface}</span>
               <strong className="type-specimen__name">Baloo Bhaijaan 2</strong>
-              <b>أب</b>
+              <b lang="ar">أب</b>
               <div>
                 <h3>{t.labels.headingExample}</h3>
-                <p className="type-specimen__heading">نبني المستقبل معاً.</p>
+                <p className="type-specimen__heading" lang="ar">نبني المستقبل معاً.</p>
               </div>
               <div>
                 <h3>{t.labels.bodyExample}</h3>
-                <p>{t.bodyExamples.arabic}</p>
+                <p lang="ar">{t.bodyExamples.arabic}</p>
               </div>
             </article>
           </div>
@@ -374,19 +374,19 @@ export function BrandGuidelinePage({ content, locale }: BrandGuidelinePageProps)
           <div className="application-grid" id="brand-preview">
             <article className="application-card application-card--web">
               <BrandLogo locale="ar" />
-              <h3>تعلّم الذكاء الاصطناعي بالعربية.</h3>
-              <span className="btn primary">ابدأ الآن</span>
+              <h3 lang="ar" dir="rtl">تعلّم الذكاء الاصطناعي بالعربية.</h3>
+              <span className="btn primary" lang="ar" dir="rtl">ابدأ الآن</span>
               <p>Digital / Web</p>
             </article>
             <article className="application-card application-card--social">
               <BrandLogo locale="en" />
-              <h3>شارك المعرفة. نبني المستقبل معاً.</h3>
+              <h3 lang="ar" dir="rtl">شارك المعرفة. نبني المستقبل معاً.</h3>
               <p>Community / Social</p>
             </article>
             <article className="application-card application-card--app">
               <BrandMark size={34} title="Bannaa" />
               <h3>{locale === "ar" ? "مرحباً" : "Welcome"}</h3>
-              <div className="application-card__chips">
+              <div className="application-card__chips" lang="ar" dir="rtl">
                 <span>تعلم</span>
                 <span>ابن</span>
                 <span>أطلق</span>
