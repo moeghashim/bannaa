@@ -24,7 +24,12 @@ html:has(.identity-shell), body:has(.identity-shell) { background: #faf8f2; }
 .identity-shell .brand-guide .usage-card--dark { background:var(--fg); color:var(--bg); }
 .identity-shell .brand-guide .usage-card--warm { background:#f6efe5; }
 .identity-shell .type-specimen { font-family:'DM Sans',sans-serif; }
-.identity-shell .type-specimen--ar { font-family:'Baloo Bhaijaan 2',sans-serif; }
+.identity-shell .type-specimen--ar {
+ --f-body: 'Baloo Bhaijaan 2', sans-serif; --f-display: 'Baloo Bhaijaan 2', sans-serif;
+ font-family:var(--f-body);
+}
+.identity-shell .brand-guide .brand-logo--ar,
+.identity-shell .brand-guide [lang="ar"] { font-family:'Baloo Bhaijaan 2',sans-serif; }
 .identity-scenes { display:flex; justify-content:space-evenly; gap:16px; flex-wrap:wrap; margin:32px 0; }
 .identity-scene { width:220px; height:220px; background-image:url('/assets/launch/scenes.webp'); background-size:660px 220px; background-repeat:no-repeat; }
 @media(max-width:980px) { .identity-shell .nav { margin-inline:24px; } }

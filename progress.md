@@ -136,3 +136,7 @@ the exact hash).
 - Add a bilingual branded 404 page
 - Stabilize 404 header language switch and motion toggle
 - Fix language switching on unmatched routes
+
+## 2026-10-05
+
+- Correct Arabic fonts in the brand guide
